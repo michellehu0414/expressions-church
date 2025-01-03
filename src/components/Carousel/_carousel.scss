@@ -1,0 +1,102 @@
+@use "../../scss/abstracts/all-abstracts" as *;
+
+.carousel-container {
+  flex-direction: row;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+
+  .carousel-items {
+    width: 5000px;
+    transform: translate3d(0px, 0px, 0px);
+    touch-action: pan-y;
+    cursor: grab;
+    user-select: none;
+  }
+
+  .carousel-item {
+    float: left;
+    max-width: $content-max-width;
+
+    img {
+      max-width: $content-max-width;
+    }
+  }
+}
+
+.grab {
+  cursor: -moz-grab;
+}
+.grabbing {
+  cursor: -moz-grabbing;
+}
+
+.item_arrow {
+  float: left;
+  height: 65px;
+  margin-bottom: 1px;
+  position: absolute;
+  width: 45px;
+}
+.nav_dot {
+  border-radius: 50%;
+  float: left;
+  height: 8px;
+  margin-left: 8px;
+  transition: background-color 0.3s ease;
+  width: 8px;
+  background-color: rgb(230, 230, 230);
+  transform: translate(0px, 0px);
+}
+
+.nav_dot:hover .item_arrow:hover {
+  cursor: pointer;
+}
+
+.item_next {
+  background-color: #2d96cd;
+  left: 1000px;
+  top: 0;
+}
+.item_prev {
+  background-color: #000;
+  display: none;
+  left: 1000px;
+  top: 66px;
+}
+.fa {
+  color: #1e1e1e;
+  font-size: 3em;
+  margin-left: 14px;
+  margin-top: 10px;
+}
+.nav_dots {
+  background-color: #1e1e1e;
+  bottom: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+.item_arrows {
+  position: absolute;
+  top: 200px;
+  width: 1000px;
+  height: 1px;
+  z-index: 5000;
+  border: 0px solid green;
+}
+
+.item_arrow {
+  position: absolute;
+  width: 45px;
+  height: 65px;
+  /*
+background-color: #2d96cd;
+*/
+  margin-bottom: 1px;
+  float: left;
+}

@@ -1,0 +1,67 @@
+@use "../../scss/abstracts/all-abstracts" as *;
+
+$card-font-color: $black;
+
+.card {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    border-radius: 1rem;
+    position: relative;
+    overflow: hidden;
+
+    &_icon-wrapper {
+        width: 2.75rem;
+        height: 2.75rem;
+        margin-bottom: 1rem;
+
+        @include breakpoint(med) {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.5;
+            z-index: 1;
+            -webkit-text-size-adjust: 100%;
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            bottom: 1rem;
+            right: 1rem;
+            width: 8rem;
+            height: 8rem;
+            position: absolute;
+        }
+    }
+
+    img {
+        height: 100%;
+        margin: auto;
+    }
+
+    &_content {
+        width: 100%;
+        z-index: 2;
+
+        @include breakpoint(med) {
+            margin: auto;
+        }
+    }
+
+    &_heading {
+        font-size: 1.25rem;
+        font-weight: 500 !important;
+        margin-bottom: 0.5rem;
+        color: $card-font-color !important;
+
+        @include breakpoint(med) {
+            font-size: 1.5rem;
+        }
+    }
+
+    &_body {
+        display: flex;
+        font-size: 1.125rem;
+        color: $card-font-color !important;
+        margin-bottom: 0;
+    }
+}

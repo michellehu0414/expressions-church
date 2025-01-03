@@ -1,0 +1,230 @@
+@use "../abstracts/all-abstracts" as *;
+
+.content-max-width {
+	width: 90vw;
+	max-width: $content-max-width;
+	margin: auto;
+}
+
+.section-container {
+	display: flex;
+	flex-direction: column;
+	align-items: left;
+	padding: calc(4.12rem - 5px) 0;
+	width: 100vw;
+	@extend %container-border-bottom;
+	overflow-x: visible !important;
+
+	&.equal-padding {
+		padding: 2.5rem 0;
+	}
+
+	>img,
+	figure {
+		margin: 1rem auto;
+	}
+
+	>.content,
+	.content-wrapper,
+	.subsection {
+		max-width: $content-max-width;
+		width: 90vw;
+		margin: auto;
+		align-items: left;
+		overflow-x: visible !important;
+
+		>figure>img {
+			margin: 0;
+		}
+
+		&.medium-small {
+			max-width: 50rem;
+		}
+
+		&.medium {
+			max-width: 1000px;
+		}
+
+		&.large {
+			max-width: 1200px;
+		}
+
+		&.xl {
+			max-width: 1400px;
+		}
+
+		&.xxl {
+			max-width: 1600px;
+			width: 90%;
+		}
+	}
+
+	>.content,
+	.content-wrapper,
+	.subsection,
+	.content-full-width {
+		margin-top: 1.5rem;
+
+		@include breakpoint(med) {
+			margin-top: 3rem;
+		}
+
+		@include breakpoint(lg) {
+			margin-top: 6rem;
+		}
+	}
+
+	@include breakpoint(med) {
+		padding: 4rem 0 calc(6.12rem - 5px) 0;
+
+		&.equal-padding {
+			padding: 4rem 0;
+		}
+
+		>img,
+		figure {
+			margin: 2rem auto;
+		}
+	}
+
+	@include breakpoint(lg) {
+		padding: 4rem 0 calc(6.12rem - 5px) 0;
+
+		&.equal-padding {
+			padding: 6rem 0;
+		}
+	}
+}
+
+.content-wrapper,
+.subsection .content {
+	max-width: $content-max-width;
+	width: 90vw;
+	margin: auto;
+	align-items: left;
+	margin-top: 1rem;
+	overflow-x: visible !important;
+
+	>figure>img {
+		margin: 0;
+	}
+
+	&.medium-small {
+		max-width: 50rem;
+	}
+
+	&.medium {
+		max-width: 1000px;
+	}
+
+	&.large {
+		max-width: 1200px;
+	}
+
+	&.xl {
+		max-width: 1400px;
+	}
+
+	&.xxl {
+		max-width: 1600px;
+		width: 90%;
+	}
+}
+
+@include breakpoint(med) {
+	.subsection {
+		margin-top: 6rem;
+	}
+}
+
+//
+// main {
+// 	div>img:only-child {
+// 		margin: 0;
+// 	}
+// }
+
+.container-full-width {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+	background-color: $lightest-grey;
+	width: 100vw;
+	padding: 2rem 0;
+
+	@include breakpoint(med) {
+		padding: 4rem 0;
+		margin: 4rem 0;
+	}
+
+	@include breakpoint(lg) {
+		padding: 6rem 0;
+	}
+}
+
+// Header
+.header-container {
+	width: 90vw;
+	max-width: $content-max-width;
+	margin: 0 auto;
+
+	>h2 {
+		margin-bottom: 1.25rem;
+		color: $black;
+	}
+
+	span {
+		@extend %subheader;
+	}
+
+	.secondary-text {
+		margin: 0;
+	}
+
+	&.short-v {
+		margin-bottom: 2rem;
+
+		>h3 {
+			margin-top: 0;
+		}
+	}
+
+	&.header-container-postup-h3 {
+		margin-top: 2rem;
+		margin-bottom: 1rem;
+
+		@include breakpoint(med) {
+			margin-top: 3rem;
+		}
+
+		@include breakpoint(lg) {
+			margin-top: 5rem;
+		}
+	}
+}
+
+.img-project-schedule {
+	max-width: 28rem;
+	width: 100%;
+	margin: 0;
+	margin-bottom: 2rem;
+}
+
+.content,
+.content-wrapper,
+.subsection,
+.section-container,
+.container-full-width {
+	> :first-child {
+		margin-top: 0;
+	}
+
+	> :last-child,
+	> :only-child {
+		margin-bottom: 0;
+	}
+}
+
+.section-container> :is(.subsection, .content-wrapper, .content):first-of-type {
+	margin-top: 0;
+}

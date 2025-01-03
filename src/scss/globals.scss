@@ -1,0 +1,376 @@
+@use "abstracts/all-abstracts" as *;
+@use "utilities/all-utilities" as *;
+
+$beige: #fff3dc;
+$off-black: #1e1e1e;
+//
+// :root {
+//     --teal-background: #cce2e6;
+//     --dark-teal: #005563;
+//     --off-black: $off-black;
+// }
+
+html {
+    background-color: black;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+    margin: 0;
+}
+
+body {
+    font-family: Poppins;
+    color: white;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    z-index: -1;
+}
+
+html,
+body {
+    margin: 0 auto;
+    height: 100%;
+    background-image: url('https://vrwpaviv.elementor.cloud/wp-content/uploads/2024/12/bg-texture-scaled.webp');
+    background-size: cover;
+    background-repeat: repeat;
+    background-position: top left;
+    background-attachment: fixed;
+}
+
+.texture-overlay {
+    position: absolute;
+    /* Position it over the whole page */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://vrwpaviv.elementor.cloud/wp-content/uploads/2024/12/bg-texture-scaled.webp');
+    background-size: cover;
+    background-repeat: repeat;
+    background-position: center;
+    opacity: 0.75;
+    pointer-events: none;
+    z-index: 1;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.section_content {
+    width: 95%;
+    margin: auto;
+}
+
+p {
+    color: #dbdbdb;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 150%;
+    margin: 0;
+
+    @include breakpoint(med) {
+        font-size: 1.125rem;
+    }
+}
+
+h1 {
+    font-size: 1.875rem;
+    font-size: 2.375rem;
+    font-weight: 500;
+    line-height: 120%;
+    /* Adjusted for all devices */
+    letter-spacing: 0;
+
+    @include breakpoint(med) {
+        font-size: 2.375rem;
+        font-weight: 600;
+        line-height: 110%;
+        letter-spacing: -0.07125rem;
+        font-size: 3.375rem;
+    }
+}
+
+h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 110%;
+    letter-spacing: 0.015rem;
+    margin: 0;
+    width: fit-content;
+    max-width: 100%;
+
+    .outlined {
+        font-size: 3rem;
+    }
+
+    @include breakpoint(med) {
+        font-size: 3.875rem;
+        letter-spacing: 0.1rem;
+
+        .outlined {
+            -webkit-text-stroke-width: 1.5px;
+            font-size: 4rem;
+        }
+    }
+}
+
+h3 {
+    font-size: 1.75rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 135%;
+
+    @include breakpoint(med) {
+        font-size: 2.0625rem;
+        letter-spacing: 0.04125rem;
+    }
+}
+
+h4 {
+    font-size: 1.35rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 135%;
+    /* 2.10938rem */
+    letter-spacing: -0.03125rem;
+}
+
+ul {
+    padding: 0;
+    margin-left: -0.25rem;
+}
+
+li {
+    font-size: 1.125rem;
+    color: #4a4a4a;
+    margin-top: 0.5rem;
+    padding-left: 0.25rem;
+}
+
+nav {
+    height: 3rem;
+}
+
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+    margin: 0 auto 3rem;
+    text-align: center;
+    width: fit-content;
+    max-width: 95%;
+
+    img {
+        flex: 0 0 auto;
+        opacity: 0.8;
+        z-index: -1000;
+    }
+}
+
+h1,
+h2,
+h3,
+h4 {
+    text-transform: uppercase;
+    max-width: 100%;
+    text-wrap: wrap;
+
+    >span.outlined {
+        font-weight: 800;
+        text-align: center;
+        -webkit-text-stroke-width: 1.25px;
+        -webkit-text-stroke-color: $beige;
+        color: transparent;
+        letter-spacing: 0.08rem;
+    }
+
+    >span.filled {
+        color: $beige;
+        height: fit-content;
+    }
+}
+
+
+
+// Buttons
+button {
+    height: 3.25rem !important;
+    width: fit-content;
+    cursor: pointer;
+    text-wrap: nowrap;
+    border-radius: 3.125rem !important;
+
+    p {
+        color: white;
+        font-weight: 500;
+        margin-bottom: 0 !important;
+        font-size: 1.125rem;
+    }
+}
+
+.primary-button {
+    display: flex;
+    padding: 0 1.5rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 0.5rem;
+    border: 2.5px solid #B7D6D9;
+    background: url(https://vrwpaviv.elementor.cloud/wp-content/uploads/2024/12/bg-chalk-teal-1.webp) 50% / cover no-repeat, #336770;
+
+    &:hover {
+        color: white;
+        border: 2.5px solid #00798d;
+        background: linear-gradient(0deg,
+                rgba(0, 240, 255, 0.3) 0%,
+                rgba(0, 240, 255, 0.3) 100%),
+            url(https://vrwpaviv.elementor.cloud/wp-content/uploads/2024/12/primary-button-bg-hover-image-only-min.png) 0% / cover no-repeat;
+    }
+
+    &:active {
+        border: 2.5px solid #00798d;
+        background: linear-gradient(0deg,
+                rgba(0, 165, 176, 0.3) 0%,
+                rgba(0, 165, 176, 0.3) 100%),
+            url(https://vrwpaviv.elementor.cloud/wp-content/uploads/2024/12/primary-button-bg-hover-image-only-min.png) 50% / cover no-repeat;
+    }
+
+    &:visited {
+        background: url(https://vrwpaviv.elementor.cloud/wp-content/uploads/2024/12/primary-button-bg.png) 50% / cover no-repeat;
+        color: white;
+    }
+}
+
+.primary-button.black {
+    background: $off-black !important;
+    width: fit-content;
+    height: 3.5rem;
+    padding: 1rem 1.5rem;
+    border: 0;
+    transition: background 0.3s ease-in-out;
+
+    p,
+    span {
+        color: white !important;
+    }
+
+    span {
+        font-size: 1.25rem;
+    }
+
+    &:hover {
+        background: #4DA1AF !important;
+    }
+}
+
+.primary-button.white {
+    background: transparent;
+    border: transparent;
+    background: #23aab4;
+
+    p {
+        color: white !important;
+    }
+
+    a {
+        cursor: pointer;
+        color: white;
+    }
+
+    a:hover {
+        color: white;
+    }
+}
+
+.secondary-button {
+    display: flex;
+    height: 3.25rem;
+    padding: 1rem 1.5rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.1);
+
+    border-radius: 3.125rem;
+    border: 2px solid white;
+    color: white;
+
+    &:hover {
+        border: 2px solid #00798d;
+        background: #cce2e6;
+        color: #00798d;
+    }
+
+    &:active {
+        border-color: var(--dark-teal);
+        background: var(--teal-background);
+        color: var(--dark-teal);
+    }
+}
+
+
+/*Spacing*/
+.margin-0 {
+    margin: 0 !important;
+}
+
+.mt-8 {
+    margin-top: 0.5rem;
+}
+
+.mt-16 {
+    margin-top: 1rem;
+}
+
+.mt-24 {
+    margin-top: 1.5rem;
+}
+
+.mt-32 {
+    margin-top: 2rem;
+}
+
+.mb-0 {
+    margin-bottom: 0;
+}
+
+.mb-8 {
+    margin-bottom: 0.5rem;
+}
+
+.mb-16 {
+    margin-bottom: 1rem;
+}
+
+.mb-24 {
+    margin-bottom: 1.5rem;
+}
+
+.mb-32 {
+    margin-bottom: 2rem;
+}
+
+.pd-0 {
+    padding: 0;
+}
+
+.pt-0 {
+    padding-top: 0;
+}
+
+.pv-8 {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.text-nowrap {
+    text-wrap: nowrap;
+}

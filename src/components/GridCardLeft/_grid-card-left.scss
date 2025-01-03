@@ -1,0 +1,73 @@
+@use "../../scss/abstracts/all-abstracts" as *;
+
+// Grid container with a card on the left
+.grid-card-left {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	grid-template-rows: auto auto;
+	grid-template-areas:
+		'. a'
+		'b c';
+	align-items: start;
+	justify-content: flex-end;
+	margin: auto;
+	column-gap: 2rem;
+	row-gap: 0;
+	width: 95%;
+	max-width: 50rem;
+	margin-bottom: 4rem;
+
+	.content {
+		color: $black;
+		font-size: 1.125rem;
+		text-wrap: wrap;
+		grid-area: a;
+		margin-bottom: 1.5rem;
+
+		.headline {
+			font-size: 1.5rem;
+			color: $black;
+			margin: 0;
+			margin-bottom: 0.5rem;
+			font-weight: 500;
+		}
+	}
+
+	.card {
+		grid-area: b;
+		@include flex(column, 0.5rem);
+		padding: 1.5rem 1rem 1.5rem 2rem;
+		padding-left: 2.5rem;
+		border-radius: 0.25rem;
+		height: fit-content;
+		background-color: $light-grey;
+		width: 17rem;
+
+		.subheader {
+			font-size: 1rem;
+			text-transform: uppercase;
+			font-family: 'Source Code Pro', monospace;
+			color: $medium-grey;
+			margin: 0;
+			letter-spacing: 1px;
+			line-height: 100%;
+		}
+		ul {
+			width: 100%;
+			margin: 0;
+			font-weight: 400;
+			gap: 0.25rem;
+			margin: 0 !important;
+
+			li {
+				font-weight: 400;
+				font-size: 1rem;
+				color: $off-black !important;
+			}
+		}
+	}
+
+	img {
+		grid-area: c;
+	}
+}

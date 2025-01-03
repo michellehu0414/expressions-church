@@ -1,0 +1,55 @@
+@use '../../scss/abstracts/all-abstracts' as *;
+
+.scroll-button {
+    cursor: pointer;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    background-color: transparent;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+
+    p {
+        margin-bottom: 0;
+    }
+
+    svg {
+        fill: $link-blue;
+    }
+
+    &:hover {
+        opacity: 0.5;
+        transform: scale(1.1);
+        transform: translateY(-0.15rem);
+    }
+
+    &:active {
+        opacity: 0.75;
+    }
+}
+
+a.link-blue:hover {
+    opacity: 0.75;
+}
+
+.scroll-button-chevron-down {
+    cursor: pointer;
+    font-size: 1.125rem;
+    background-color: transparent;
+    border: 0;
+    margin: 0 auto;
+    padding: 0;
+    transition: opacity 0.3s ease, transform 0.2s ease;
+    height: fit-content;
+
+    &:hover {
+        transform: scale(1.1);
+        opacity: 0.5;
+    }
+}
+
+.scroll-to-challenge-svg {
+    stroke: $black !important;
+    width: 4rem;
+    height: 4rem;
+    fill: none !important;
+}

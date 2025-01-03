@@ -1,0 +1,151 @@
+@use "../abstracts/all-abstracts" as *;
+
+$diner-trends-border: 1px solid $black;
+
+.diner-trends-grid {
+	@include grid-container(2,
+		auto,
+		0.5rem,
+		0.5rem); // 3 columns, auto rows, 20px gaps
+	// Using the grid-item mixin for the items
+	max-width: $content-max-width;
+	margin: auto;
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+
+	>div {
+		// border: $diner-trends-border;
+		background-color: white;
+		padding: 2rem;
+		border-radius: 5px;
+		background-color: $lightest-grey;
+
+		>p {
+			color: $black;
+			text-align: left;
+			flex: 0 auto;
+			align-self: auto;
+			margin: 0;
+			font-size: 1.4rem;
+			font-weight: 500;
+			line-height: 150%;
+
+			strong {
+				color: $emphasis-blue;
+			}
+		}
+	}
+
+	.item-5 {
+		@include grid-item(2, 1);
+
+		>p {
+			margin-bottom: 1.5rem;
+			text-align: center;
+			font-weight: 550;
+		}
+	}
+}
+
+.dining-factors-grid {
+	@include flex(row, 1rem, stretch);
+	text-align: center;
+
+	>div {
+		@include flex(row, 1rem);
+		width: 100%;
+
+		>div {
+			text-align: center;
+
+			p {
+				color: $off-black;
+				text-align: center;
+				flex: 0 auto;
+				margin-bottom: 0;
+				font-size: 1.125rem;
+				font-weight: 500;
+			}
+		}
+	}
+}
+
+.dining-factors-grid-small {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat(3, auto);
+	column-gap: 0.5rem;
+	margin: 1.5rem 0;
+
+	>div {
+		display: flex;
+		flex-direction: row;
+		gap: 0.75rem;
+		align-items: center;
+		justify-content: center;
+		border: 2px solid $subdued-green;
+		;
+		padding: 1rem;
+		border-radius: 6px;
+		background-color: $lightest-green;
+
+
+		p {
+			color: $primary-green;
+			text-align: center;
+			flex: 0 auto;
+			margin-bottom: 0;
+			font-size: 1.125rem;
+			font-weight: 500;
+		}
+	}
+
+
+	.dining-factors-icon {
+		width: 2.5rem;
+		height: 2.5rem;
+		margin-bottom: 0;
+		fill: $medium-green;
+	}
+
+	@include breakpoint(med) {
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-rows: auto;
+	}
+}
+
+.dining-factors-icon {
+	width: 5rem;
+	height: 5rem;
+	margin-bottom: 0.5rem;
+	fill: #C0DDFF;
+}
+
+.ic-dining-factors-location {
+	width: 4.5rem;
+	margin-bottom: 1rem;
+}
+
+.dining-factors-number {
+	font-size: 1.4rem;
+	color: $off-black;
+	font-weight: 500;
+}
+
+.blockquote-statistic-highlight {
+	margin: 0;
+
+	.blockquote_content {
+		margin: 0;
+		padding: 0.25rem 0;
+		padding-left: 1rem;
+		border-color: $medium-light-grey;
+		background-color: transparent;
+		color: $black;
+	}
+}
+
+.blockquote-text {
+	margin: 0;
+	color: $black;
+}

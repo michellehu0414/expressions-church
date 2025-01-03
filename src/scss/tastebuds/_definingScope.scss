@@ -1,0 +1,30 @@
+@use "../abstracts/all-abstracts" as *;
+
+.user-interview-findings_wrapper {
+	@include flex(column, 2rem);
+	margin: auto;
+	border-radius: 1.25rem;
+	background-color: $light-grey;
+	padding: 3rem;
+	margin-bottom: 0.5rem;
+}
+
+.img-user-interview-findings {
+	width: 100%;
+	max-width: 1000px;
+	background-color: white;
+	margin: 2rem auto;
+	padding: 0;
+	border: 0;
+}
+
+.img-diner-journey_wrapper {
+	width: 100%;
+	max-width: 1000px;
+	border: 1px solid $medium-light-grey;
+	margin: auto;
+
+	img {
+		width: 100%;
+	}
+}

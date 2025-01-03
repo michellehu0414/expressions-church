@@ -1,0 +1,51 @@
+@use "../../scss/abstracts/all-abstracts" as *;
+
+$blockquote_author-image-size: 2.5rem;
+
+blockquote {
+  @include flex(row, 1rem, start, flex-end);
+  margin: 0;
+}
+
+.blockquote {
+  &_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+    align-items: flex-start;
+    align-self: auto;
+    border-left: 4px solid #2Fa89F;
+    padding: 0 1.25rem;
+
+    >p {
+      @extend %quote-text;
+      margin: 0;
+      width: 95%;
+    }
+  }
+
+  &_author {
+    @extend %flex-row;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &_author-image {
+    border-radius: 25px;
+    margin: auto 0 0.5rem 0;
+    object-fit: cover;
+    width: $blockquote_author-image-size;
+    height: $blockquote_author-image-size;
+  }
+
+  &_author-name {
+    color: $dark-grey;
+    font-size: 1rem;
+    margin-bottom: 0;
+
+    @include breakpoint(med) {
+      font-size: 1.125rem;
+    }
+  }
+}

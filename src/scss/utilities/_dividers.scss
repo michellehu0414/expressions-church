@@ -1,0 +1,21 @@
+@use "../abstracts/variables" as *;
+
+hr {
+  box-sizing: content-box;
+  height: 0.5px;
+  background-color: $medium-light-grey;
+  border: none;
+
+  &.dashed-blue {
+    border-style: dashed;
+    background-color: $light-blue;
+  }
+
+  &.solid-black {
+    background-color: $black;
+  }
+
+  &.solid-grey {
+    background-color: $light-grey;
+  }
+}

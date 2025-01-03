@@ -1,0 +1,71 @@
+@use "../../scss/abstracts/variables" as *;
+@use "../../scss/abstracts/breakpoints-mixins" as *;
+@use "../../scss/abstracts/placeholders" as *;
+@use "../../components/NavBar/NavBar" as *;
+
+.hero-overview-wrapper {
+	@extend %flex-col;
+}
+
+.hero {
+	@extend %flex-start;
+	height: auto;
+	overflow: hidden;
+	min-height: 17rem;
+	height: 60vh;
+	max-height: 20.25rem;
+	padding-top: calc($navbar-mobile-height + 1rem);
+	width: 100%;
+
+	@include breakpoint(med) {
+		max-height: 36rem;
+		padding-top: 6rem;
+	}
+
+	@include breakpoint(xl) {
+		max-height: none;
+	}
+
+	@include breakpoint(xxl) {
+		height: 65vh;
+	}
+}
+
+.hero-video {
+	display: flex;
+	max-width: 80%;
+	max-height: 21rem;
+	margin: auto;
+
+	&-postup {
+		margin: auto;
+		width: 50%;
+	}
+
+	&-wrapper {
+		display: flex;
+		margin: 0 auto;
+		width: 100%;
+	}
+
+	@include breakpoint(med) {
+		width: 90%;
+		margin: auto;
+		max-height: none;
+
+		&-postup {
+			max-width: 17rem;
+		}
+
+		&-tastebuds {
+			max-width: 28rem;
+		}
+	}
+
+}
+
+@include breakpoint(med) {
+	.hero-overview-wrapper {
+		max-height: 100vh;
+	}
+}

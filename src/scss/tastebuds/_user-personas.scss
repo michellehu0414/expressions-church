@@ -1,0 +1,94 @@
+@use "../abstracts/all-abstracts" as *;
+@use "tastebuds-variables" as *;
+
+.img-user-persona {
+  border: 1px solid $light-grey;
+  border-radius: 2px;
+  width: 100%;
+}
+
+.user-persona_container {
+  display: grid;
+  grid-template-columns: 2.25rem auto;
+  grid-template-rows: repeat(2, auto);
+  grid-template-areas: 'a b' 'c c';
+  justify-content: center;
+  align-items: center;
+  row-gap: 0.5rem;
+  margin-bottom: 1rem !important;
+}
+
+.user-persona_icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 100%;
+  grid-area: a;
+  margin-left: 0.75rem;
+}
+
+.user-persona_content {
+  background-color: $lightest-grey;
+  padding: 1rem;
+  border-radius: 1rem;
+  border-bottom-left-radius: 0;
+  grid-area: c;
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  span {
+    font-weight: 500;
+    color: $emphasis-blue;
+  }
+}
+
+.user-persona_title {
+  display: none;
+  font-weight: 500;
+  color: $emphasis-blue;
+  font-size: 1rem;
+  grid-area: b;
+  margin-bottom: 0;
+  margin-left: 0.75rem;
+}
+
+@include breakpoint(med) {
+
+  .user-persona_container {
+    grid-template-columns: 3rem auto;
+    grid-template-areas: '. b' 'a c';
+    column-gap: 1rem;
+    align-items: end;
+    margin-bottom: 0.5rem !important;
+    transform: translateX(-4rem);
+  }
+
+  .user-persona_icon {
+    width: 3rem;
+    height: 3rem;
+    margin-left: 0;
+  }
+
+  .user-persona_content {
+    width: calc(100% + 4rem);
+  }
+}
+
+.user-persona_tabs.tabs-container {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+
+  @include breakpoint(med) {
+    margin-top: 3rem;
+  }
+
+  .tabs-menu {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .total-satisfaction-method {
+    margin-top: 2rem;
+  }
+}

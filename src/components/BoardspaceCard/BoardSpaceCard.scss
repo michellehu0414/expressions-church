@@ -1,0 +1,124 @@
+@use "../../scss/abstracts/all-abstracts" as *;
+
+/* Card Styles */
+.cards-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px; // Adjust the gap between cards as needed
+    align-items: flex-start; // Align items to the start (left)
+    justify-content: center;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    flex: 1; // Allow the cards to grow and fill the available space
+    padding: 24px;
+    gap: 1.5rem;
+    align-items: left;
+    justify-content: left;
+    min-width: 316px;
+    background: $lightest-grey;
+
+    p {
+        margin-bottom: 0;
+    }
+
+    &_headline {
+        font-weight: 500;
+        line-height: 100%;
+    }
+}
+
+.grid-cards {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 1rem;
+    width: 100%;
+
+    @include breakpoint(mobile-lg) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid-item {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        align-items: stretch;
+        align-self: start;
+        background-color: white;
+        border-radius: 10px;
+        overflow: hidden;
+        min-width: 0;
+        border: 0.5px solid $light-grey;
+        box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.15);
+
+        .card-icon {
+            display: flex;
+            padding: 1rem;
+            background-color: $lightest-grey;
+
+            @include breakpoint(lg) {
+                padding: 2rem 1rem;
+            }
+        }
+
+        img {
+            margin: auto;
+            @include iconSize(med);
+
+            @include breakpoint(lg) {
+                @include iconSize(lg);
+            }
+        }
+
+        @include breakpoint(mobile-lg) {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto auto;
+            justify-content: left;
+            /* Center content horizontally */
+            align-items: left;
+
+            /* Center content vertically */
+            img {
+                margin: 0;
+            }
+        }
+
+        .content {
+            padding: 1rem;
+
+            p.headline {
+                color: $black;
+                font-weight: 500;
+                margin-bottom: 4px;
+            }
+
+            p {
+                padding-bottom: 0.5rem;
+                font-size: 1rem;
+            }
+
+            @include breakpoint(mobile-lg) {
+                p.headline {
+                    font-size: 1.125rem;
+                    margin-bottom: 4px;
+                }
+
+                p {
+                    font-size: 1rem;
+                }
+            }
+
+            @include breakpoint(lg) {
+                p.headline {
+                    font-size: 18px;
+                    margin-bottom: 4px;
+                }
+
+                p {
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+}

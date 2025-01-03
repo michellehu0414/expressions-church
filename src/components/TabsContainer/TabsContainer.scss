@@ -1,0 +1,171 @@
+@use '../../scss/abstracts/breakpoints-mixins' as *;
+@use '../../scss/abstracts/variables' as *;
+@use '../../scss/abstracts/placeholders' as *;
+
+$tab-border-radius: 3rem;
+$tab-button-height: 2.5rem;
+$tabs-menu-height: 3rem;
+$tab-menu-padding: 0.25rem;
+
+.tabs {
+    &-container {
+        width: 95vw;
+        max-width: $content-max-width;
+        margin: 2rem auto 0;
+    }
+
+    &-menu {
+        display: flex;
+        align-items: center;
+        position: relative;
+        background-color: $light-grey;
+        padding: $tab-menu-padding;
+        overflow: hidden;
+        width: 100%;
+        height: $tabs-menu-height;
+        border-radius: $tab-border-radius;
+
+        //
+        &.two-menu-items .tabs-menu-slider,
+        &.two-menu-items .tab-button {
+            width: 50% !important;
+        }
+
+        &.three-menu-items .tabs-menu-slider,
+        &.three-menu-items .tab-button {
+            width: 33.3333% !important;
+        }
+    }
+
+    &-menu-slider {
+        position: absolute;
+        border-radius: $tab-border-radius;
+        height: calc($tabs-menu-height - $tab-menu-padding*2);
+        background-color: white;
+        border-radius: $tab-border-radius;
+        box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.10);
+        width: 25%;
+        transition: left 0.3s ease;
+    }
+}
+
+
+// Tab content
+.tab {
+    &-subheading {
+        font-weight: 500;
+        letter-spacing: 0;
+        line-height: 130%;
+        color: $black;
+        font-size: 1.3rem;
+    }
+
+    &-content {
+        display: none;
+        padding: 2rem 1rem 0 1rem;
+
+        >div,
+        blockquote {
+            margin-bottom: 2rem;
+        }
+
+        > :last-child {
+            margin-bottom: 0;
+        }
+
+        &.active {
+            display: block;
+        }
+    }
+
+    &-button {
+        cursor: pointer;
+        @extend %flex-row;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        width: 25%;
+        height: $tab-button-height;
+        border: none;
+        border-radius: $tab-border-radius;
+        background-color: transparent;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+
+        p {
+            text-align: center;
+            font-weight: 400;
+            color: $medium-grey;
+            font-size: 1.125rem;
+            z-index: 2;
+            margin: 0;
+            width: fit-content;
+            transition: font-weight 0.3s ease, color 0.3s ease;
+        }
+
+        &.active>p {
+            color: $black;
+            font-weight: 500;
+        }
+
+        &:hover p {
+            color: white;
+            font-weight: 500;
+        }
+    }
+
+    &-content-grid {
+        display: grid;
+        align-items: center;
+        gap: 2rem;
+        width: 100%;
+        margin-bottom: 2rem;
+
+        img {
+            margin: 0;
+            width: 100%;
+        }
+
+        p {
+            margin-bottom: 0.5rem;
+
+            &:last-child {
+                margin: 0;
+            }
+        }
+    }
+}
+
+@include breakpoint(med) {
+    .tab {
+        &-content-grid {
+            grid-template-columns: 1fr 3fr;
+            grid-template-rows: auto;
+        }
+
+        &-content {
+            padding: 2rem 1rem 0 1rem;
+        }
+
+        &-button {
+            p {
+                font-size: 1.2rem;
+            }
+        }
+    }
+}
+
+.img-sketch-filters {
+    align-self: auto;
+    border-bottom: 2px solid $black;
+    flex: 0 auto;
+    max-width: 221px;
+}
+
+.tab2-list {
+    font-size: 1.125rem;
+    line-height: 150%;
+
+    li {
+        padding-bottom: 1rem;
+    }
+}

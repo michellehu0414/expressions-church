@@ -1,0 +1,74 @@
+@use "../../scss/abstracts/all-abstracts" as *;
+
+.accordion {
+	border-bottom: 1.5px solid #000;
+}
+
+.accordionHeader {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1.25rem 0;
+	border-radius: 0;
+	width: 100%;
+	height: fit-content;
+	border: 0;
+	cursor: pointer;
+	overflow: hidden;
+	background-color: #fff;
+	color: #1e1e1e;
+	transition: background-color 0.2s, transform 0.4s; // Transition for color and flex content
+
+	p {
+		font-size: 1.125rem;
+		font-weight: 600;
+		line-height: 130%;
+		text-align: left;
+		margin: 0;
+		vertical-align: middle;
+	}
+
+	&:hover p {
+		color: $emphasis-blue;
+	}
+}
+
+.accordionContent {
+	border: 0;
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.2s ease-out;
+
+	p {
+		font-size: 1rem;
+		margin-bottom: 1rem;
+	}
+}
+
+.accordion-arrow {
+	transition: transform 0.4s;
+	width: 2.5rem;
+	height: 2.5rem;
+	margin-left: 1rem;
+
+	&.hover {
+		color: $emphasis-blue;
+	}
+
+	&.active {
+		transform: rotate(-180deg);
+	}
+}
+@include breakpoint(med) {
+	.accordionHeader p {
+		font-size: 1.5rem;
+	}
+
+	.accordionContent p {
+		font-size: 1.125rem;
+	}
+}
+
+.accordion:first-child {
+	border-top: 1.5px solid #000;
+}

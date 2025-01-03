@@ -1,0 +1,38 @@
+@use "../../scss/abstracts/variables" as *;
+@use "../../scss/abstracts/breakpoints-mixins" as *;
+
+$progress-bar-height-mobile: 4px;
+$progress-bar-height-med: 6px;
+$back-to-top-default-color: $off-black;
+$back-to-top-hover-color: #28282D;
+
+.progress-bar-container {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: $lightest-grey;
+    height: $progress-bar-height-mobile;
+    width: 100vw;
+    z-index: 2000;
+}
+
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: $progress-bar-height-mobile;
+    background-color: $teal-accent;
+    transition: width 0.25s ease;
+}
+
+@include breakpoint(med) {
+    .progress-bar-container {
+        height: $progress-bar-height-med;
+    }
+
+    .progress-bar {
+        height: $progress-bar-height-med;
+    }
+}

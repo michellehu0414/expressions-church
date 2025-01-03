@@ -1,0 +1,370 @@
+@use "../abstracts/all-abstracts" as *;
+
+$details-wrapper-gap: 1rem;
+$details-wrapper-gap-xl: 5rem;
+$details-wrapper-gap-xxl: 8rem;
+
+.overview {
+	width: 100vw;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: start;
+	padding: 1.75rem 0 1rem;
+	height: fit-content;
+	gap: 1rem;
+
+	&__content-wrapper,
+	&__content-wrapper--boardspace {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		margin: auto;
+		width: 90vw;
+		gap: 1.5rem;
+		height: 100%;
+
+		&--boardspace {
+			max-width: 90vw;
+		}
+
+		@include breakpoint(med) {
+			flex-direction: row;
+			gap: 2rem;
+			margin: 0 auto;
+			align-items: stretch;
+		}
+
+		@include breakpoint(lg) {
+			height: fit-content;
+			margin: 0 auto;
+			gap: $details-wrapper-gap-xl;
+		}
+
+		@include breakpoint(xxl) {
+			gap: $details-wrapper-gap-xxl;
+		}
+	}
+
+	&__title {
+		color: $black;
+		font-size: clamp(2.66rem, 8vw, 6rem);
+		font-weight: 550;
+		line-height: 100%;
+		letter-spacing: 0.02rem;
+		margin-bottom: 0.75rem;
+		width: fit-content;
+
+		@include breakpoint(med) {
+			margin-bottom: 1rem;
+		}
+
+		@include breakpoint(lg) {
+			margin-bottom: 1.5rem;
+		}
+	}
+
+	&__tagline {
+		align-self: center;
+		color: $medium-grey;
+		margin: 0;
+		font-size: clamp(1.3rem, 2.2vw, 2rem);
+		font-weight: 450;
+		line-height: 140%;
+		max-width: 34rem;
+
+		@include breakpoint(med) {
+			margin-bottom: 0;
+			margin-left: 4px;
+		}
+	}
+
+	&__tags-wrapper {
+		display: none;
+		gap: 0.5rem;
+		overflow-x: auto;
+		white-space: nowrap;
+		cursor: pointer;
+		scrollbar-width: none;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+
+		@include breakpoint(med) {
+			flex-wrap: wrap;
+		}
+	}
+
+	&__tag {
+		display: flex;
+		height: 1.5rem;
+		padding: 0 0.5rem;
+		justify-content: center;
+		align-items: center;
+		border-radius: 0.3125rem;
+		font-size: 0.75rem;
+		font-weight: 400;
+		line-height: 150%;
+		text-transform: capitalize;
+
+		&--postup {
+			background: $postup-tag-background;
+			color: $postup-tag-color;
+		}
+
+		&--tastebuds {
+			background: $tastebuds-tag-background;
+			color: $tastebuds-tag-color;
+		}
+
+		&--boardspace {
+			background: $boardspace-tag-background;
+			color: $boardspace-tag-color;
+		}
+
+		@include breakpoint(med) {
+			height: 1.75rem;
+			font-size: 0.875rem;
+		}
+	}
+
+	&__details {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: repeat(2, auto);
+		gap: 1rem 0.5rem;
+
+		@include breakpoint(lg) {
+			grid-template-columns: repeat(3, auto);
+			grid-template-rows: auto;
+			grid-template-areas: 'a b c';
+			gap: $details-wrapper-gap-xl;
+			margin-top: 1.375rem;
+		}
+	}
+
+	&__details-list {
+		ul {
+			padding: 0;
+			margin: 0;
+			margin-top: 0.25rem;
+			list-style: none;
+			gap: 0;
+
+			li {
+				color: $dark-grey;
+				line-height: 155%;
+				font-size: 1rem;
+				margin-bottom: 0;
+				font-weight: 350;
+				text-wrap: nowrap;
+				padding-left: 0;
+			}
+		}
+
+		&.involvement-list {
+			grid-area: a;
+		}
+
+		&.discipline-list {
+			grid-area: b;
+		}
+
+		@include breakpoint(med) {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+
+			ul,
+			li {
+				width: 100%;
+			}
+		}
+
+		@include breakpoint(lg) {
+			ul>li {
+				line-height: 160%;
+				font-size: 1.125rem;
+			}
+		}
+	}
+
+	&__details-container {
+		display: flex;
+		flex-direction: row;
+		gap: 1rem;
+
+		&-postup {
+			gap: 3rem;
+		}
+
+		@include breakpoint(med) {
+			flex-direction: column;
+			align-items: flex-start;
+			width: fit-content;
+		}
+
+		@include breakpoint(lg) {
+			ul li {
+				font-weight: 350;
+				font-size: 1.125rem;
+			}
+		}
+	}
+
+	&__details-headline {
+		color: $black;
+		font-weight: 450;
+		line-height: 125%;
+		margin-bottom: 0.25rem;
+		width: 100%;
+
+		@include breakpoint(med) {
+			font-size: 1.15rem;
+			letter-spacing: 0.02rem;
+		}
+	}
+
+	&__details-headline-tools {
+		margin-bottom: 0.5rem !important;
+
+		@include breakpoint(med) {
+			margin-bottom: 0.25rem;
+		}
+	}
+
+	&__tools-flex-container {
+		display: flex;
+		flex-direction: row;
+		gap: 0.5rem;
+	}
+
+	&__tools-grid-container {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 0.5rem;
+		width: fit-content;
+
+		@include breakpoint(lg) {
+			grid-template-columns: repeat(2, 1fr);
+			grid-template-rows: repeat(2, 1fr);
+		}
+
+		@include breakpoint(xxl) {
+			grid-template-columns: repeat(4, 1fr);
+			grid-template-rows: auto;
+			gap: 0.75rem;
+		}
+	}
+
+	&__boardspace-tools {
+		display: grid;
+		grid-template-rows: auto;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 0.5rem;
+		width: fit-content;
+	}
+
+	&__tools-logo-wrapper {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 2.5rem;
+		height: 2.5rem;
+		overflow: hidden;
+		border-radius: 0.5rem;
+		box-shadow: $fixed-shadow;
+
+		img {
+			width: 1.75rem;
+			height: auto;
+		}
+
+		&--canva img {
+			width: 2.5rem;
+			height: 2.5rem;
+		}
+
+		&--miro {
+			background: #ffd12b;
+		}
+
+		&--general,
+		&--figma,
+		&--white-bg {
+			padding: 0.5rem;
+			background: #2e3139;
+		}
+
+		&--white-bg {
+			background: #fff;
+		}
+
+		@include breakpoint(med) {
+			width: 3rem;
+			height: 3rem;
+			border-radius: 0.55rem;
+
+			img {
+				width: 2rem;
+				height: auto;
+			}
+
+			&--canva img {
+				width: 3rem;
+				height: 3rem;
+			}
+		}
+	}
+
+	&__details-timeline-tools {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: $details-wrapper-gap;
+
+		@include breakpoint(lg) {
+			display: flex;
+			flex-direction: column;
+		}
+	}
+
+	&__details-container-01 {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: $details-wrapper-gap;
+
+		>.involvement-list,
+		>.discipline-list {
+			grid-area: unset;
+		}
+
+		@include breakpoint(xl) {
+			gap: $details-wrapper-gap-xl;
+		}
+	}
+
+	&__button-wrapper {
+		display: flex;
+		justify-content: center;
+	}
+
+	@include breakpoint(med) {
+		flex: 1;
+		gap: 2rem;
+		justify-content: space-between;
+		max-height: 24rem;
+		padding-top: 3rem;
+	}
+
+	@include breakpoint(lg) {
+		height: 40vh;
+		padding-top: 3rem;
+		gap: 3rem;
+	}
+
+	@include breakpoint(xxl) {
+		height: 35vh;
+		max-height: none;
+	}
+}

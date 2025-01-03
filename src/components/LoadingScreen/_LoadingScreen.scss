@@ -1,0 +1,33 @@
+/* src/LoadingComponent.scss */
+
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+    z-index: 2001;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+    /* 1-second dissolve effect */
+}
+
+#loading-screen.dissolve {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#loading-text {
+    font-family: 'Inter' sans-serif;
+    font-size: 1.125rem;
+    color: #4a4a4a;
+    margin: auto;
+    opacity: 0.1;
+    /* Start with low opacity */
+    transition: opacity 0.3s ease-in-out;
+}

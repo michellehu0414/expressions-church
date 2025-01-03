@@ -1,0 +1,38 @@
+@keyframes fadeInRight {
+    0% {
+      opacity: 0;
+      transform: translateX(20px); /* Start 20px to the right */
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0); /* Slide back to its original position */
+    }
+  }
+
+  @keyframes fadeInLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(-20px); /* Start 20px to the left */
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0); /* Slide back to its original position */
+    }
+  }
+
+  /* Set the initial hidden state */
+  .pre-animation {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(0); /* Set to zero initially */
+  }
+
+  .animate__fadeInRight {
+    animation: fadeInRight 1s ease forwards; /* Fade and slide in from the right */
+    visibility: visible !important; /* Ensure visibility once animated */
+  }
+
+  .animate__fadeInLeft {
+    animation: fadeInLeft 1s ease forwards; /* Fade and slide in from the left */
+    visibility: visible !important; /* Ensure visibility once animated */
+  }

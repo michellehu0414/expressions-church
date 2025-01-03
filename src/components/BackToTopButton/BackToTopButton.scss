@@ -1,0 +1,115 @@
+@use "../../scss/abstracts/all-abstracts" as *;
+
+$back-to-top-size-mobile: 3rem;
+$back-to-top-size-small: 3.25rem;
+$back-to-top-size-medium: 3.5rem;
+$transition-duration: 0.3s;
+$transition-ease: ease-in-out;
+$back-to-top-hover-color: #28282D;
+
+.btn-back-to-top-label {
+    display: none;
+    white-space: nowrap;
+    font-size: 1.125rem;
+    margin: auto 0;
+    transform: translateX(100%);
+    font-weight: 500;
+    opacity: 0;
+}
+
+.btn-back-to-top-svg {
+    display: inline-block;
+    stroke: $black;
+    opacity: 1 !important;
+}
+
+.btn-back-to-top {
+    @extend %flex-row-reverse;
+    cursor: pointer;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    background-color: rgba(168, 168, 168, 0.15);
+    border-radius: 3.125rem;
+    align-items: center;
+    justify-content: end;
+    height: $back-to-top-size-mobile;
+    width: $back-to-top-size-mobile;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+
+    &.show {
+        opacity: 1;
+        visibility: visible;
+
+        &:hover {
+            background-color: $teal-accent;
+        }
+
+        &:active {
+            background-color: #288F87;
+        }
+    }
+}
+
+@include breakpoint(sm) {
+
+    .btn-back-to-top,
+    .btn-back-to-top-svg {
+        width: $back-to-top-size-small;
+        height: $back-to-top-size-small;
+    }
+
+    .btn-back-to-top {
+
+        &:hover,
+        &.hover-effect {
+            background-color: $back-to-top-hover-color;
+            width: 9.625rem;
+
+            .btn-back-to-top-label {
+                display: inline-flex;
+                opacity: 1;
+                transform: translateX(-3.25rem);
+            }
+
+            .btn-back-to-top-svg {
+                stroke: white;
+            }
+        }
+
+        &:active {
+            background-color: $teal-accent;
+        }
+    }
+}
+
+@include breakpoint(med) {
+
+    .btn-back-to-top,
+    .btn-back-to-top-svg {
+        width: $back-to-top-size-medium;
+        height: $back-to-top-size-medium;
+    }
+
+    .btn-back-to-top:hover,
+    .btn-back-to-top.hover-effect {
+        width: 10.5rem;
+    }
+}
+
+.btn-back-to-top,
+.btn-back-to-top-label,
+.btn-back-to-top-svg {
+    position: fixed;
+    color: white;
+    transition:
+        display 0.3s $transition-ease,
+        background-color 0.3s $transition-ease,
+        visibility $transition-duration $transition-ease,
+        opacity $transition-duration $transition-ease,
+        width $transition-duration linear,
+        transform $transition-duration $transition-ease,
+        stroke $transition-duration $transition-ease,
+        color $transition-duration $transition-ease;
+}

@@ -1,0 +1,238 @@
+@use "../../scss/abstracts/all-abstracts" as *;
+
+$accordion-border-color: #e9e9e9;
+//
+// .accordion {
+// 	width: 100%;
+// 	background-color: #f0f0f0;
+// 	padding: 0;
+// 	padding: 0.25rem 1rem;
+// 	cursor: pointer;
+// 	overflow: hidden;
+// 	/* Ensure content is hidden when collapsed */
+// 	border-radius: 0;
+// 	border-radius: 10px;
+// 	/* Remove the default button border */
+// 	text-align: left;
+// 	// border-top: 1.5px solid $accordion-border-color;
+// 	// border-bottom: 1.5px solid $accordion-border-color;
+// 	border: 1.5px solid $accordion-border-color;
+// }
+
+.accordion {
+	width: 100%;
+	background-color: transparent;
+	padding: 0;
+	cursor: pointer;
+	overflow: hidden;
+	/* Ensure content is hidden when collapsed */
+	border-radius: 0;
+	/* Remove the default button border */
+	text-align: left;
+	border-radius: 6px;
+	border: 1.25px solid $accordion-border-color;
+	// border-top: 1.5px solid $accordion-border-color;
+	// border-bottom: 1.5px solid $accordion-border-color;
+	height: fit-content;
+	transition: height 0.3s ease-out;
+	background-color: $lightest-grey;
+
+	&.border-top-0 {
+		border-top: 0;
+	}
+}
+
+.accordion_header {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	transition: background-color 0.3s ease-out;
+	padding: 0.75rem 1rem;
+
+	&:hover {
+		p {
+			color: $primary-color;
+		}
+
+		.accordion_icon {
+			stroke: $primary-color;
+		}
+	}
+}
+
+$grey-accordion-header-content-color: $off-black;
+
+.accordion_header p {
+	font-size: 1.15rem;
+	font-weight: 500;
+	color: $grey-accordion-header-content-color;
+	flex: 1;
+	margin: 0;
+}
+
+.accordion_icon {
+	transition: transform 0.3s ease-out;
+	width: 1.5rem;
+	height: 1.5rem;
+	stroke: $grey-accordion-header-content-color;
+}
+
+.accordion_content {
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.3s ease-out, padding 0.3s ease-out, background-color 0.3s ease-out;
+	color: $dark-grey;
+	padding: 0 1rem;
+
+	li {
+		color: $dark-grey;
+		font-weight: 400;
+
+		span {
+			font-weight: 500;
+			color: $dark-grey;
+		}
+	}
+
+	p {
+		margin-top: 0.75rem;
+		color: #1e1e1e;
+	}
+
+	p:first-child {
+		margin-top: 0;
+	}
+
+	>p:last-child,
+	>img {
+		margin-bottom: 0.75rem;
+	}
+}
+
+.accordion-active .accordion_content {
+	max-height: fit-content;
+	padding-bottom: 0.75rem;
+	/* Adjust to a large value to ensure full content visibility */
+	/* Add padding to match the top */
+}
+
+.accordion-active .accordion_icon {
+	transform: rotate(-180deg);
+}
+
+
+// Minimalistic black and white style
+$minimalistic-accordion-header-color: $black;
+
+.accordion.border-black {
+	border-radius: 0;
+	border: 0;
+	border-top: 1.5px solid $minimalistic-accordion-header-color;
+	border-bottom: 1.5px solid $minimalistic-accordion-header-color;
+	border-color: $minimalistic-accordion-header-color;
+	background-color: transparent;
+
+	p {
+		color: $minimalistic-accordion-header-color;
+	}
+
+
+	.accordion_header p {
+		color: $minimalistic-accordion-header-color;
+	}
+
+	.accordion_icon {
+		stroke: $minimalistic-accordion-header-color;
+	}
+
+	.accordion_header {
+		padding: 0.75rem 0.25rem;
+	}
+
+	.accordion_content {
+		padding: 0 0.25rem;
+	}
+}
+
+$subdued-accordion-header-color: $off-black;
+
+.accordion.subdued {
+	border-radius: 0;
+	border: 0;
+	border-top: 1.5px solid $subdued-accordion-header-color;
+	border-bottom: 1.5px solid $subdued-accordion-header-color;
+	border-color: $subdued-accordion-header-color;
+	background-color: transparent;
+
+	p {
+		color: $subdued-accordion-header-color;
+	}
+
+
+	.accordion_header p {
+		color: $subdued-accordion-header-color;
+	}
+
+	.accordion_icon {
+		stroke: $subdued-accordion-header-color;
+	}
+
+	.accordion_header {
+		padding: 0.75rem 0.25rem;
+	}
+
+	.accordion_content {
+		padding: 0 0.25rem;
+	}
+}
+
+
+.accordion--transparent--outlined {
+	background-color: transparent;
+	border-radius: 0;
+	border-top: 2px solid $black;
+	border-bottom: 2px solid $black;
+	padding: 1rem 0;
+
+	.accordion__header {
+		background-color: transparent;
+
+		p {
+			color: black;
+			font-size: 1.35rem;
+			font-weight: normal;
+		}
+
+		.accordion__icon {
+			width: 2rem;
+			height: 2rem;
+		}
+	}
+
+	.accordion__content {
+		color: $dark-grey;
+	}
+}
+
+.accordion--grey--outlined {
+	background-color: $light-grey;
+
+	.accordion__header {
+		background-color: transparent;
+
+		p {
+			color: black;
+			font-size: 1.35rem;
+			font-weight: normal;
+		}
+
+		.accordion__icon {
+			width: 2rem;
+			height: 2rem;
+		}
+	}
+
+	.accordion__content {
+		color: $dark-grey;
+	}
+}

@@ -1,0 +1,113 @@
+@use "../abstracts/all-abstracts" as *;
+
+.airbnb-strengths_headline {
+	margin-bottom: 0.5rem;
+
+	@include breakpoint(med) {
+		margin-bottom: 1.5rem;
+		margin-top: 2.5rem;
+	}
+}
+
+.airbnb-strengths_container {
+	@include flex(row, 1rem, center);
+	padding-top: 1rem;
+	width: 100%;
+	height: fit-content;
+	max-width: $content-max-width;
+	margin-bottom: 1.5rem;
+
+	@include breakpoint(med) {
+		align-items: center;
+		gap: 2rem;
+		margin: auto;
+		padding: 1.75rem;
+		width: 100%;
+		background-color: #f6f6f6;
+		border-radius: 1rem;
+		margin-bottom: 2rem;
+	}
+
+	@include breakpoint(lg) {
+		flex-direction: row;
+		gap: 3rem;
+	}
+}
+
+.img-airbnb-wrapper {
+	display: none;
+	width: 4rem;
+	height: 4rem;
+	align-items: flex-end;
+	justify-content: flex-end;
+	margin-left: 1.34rem;
+
+	@extend %show-med-flex;
+}
+
+.img-airbnb {
+	max-width: none;
+	width: 84.5px;
+}
+
+
+.ic-airbnb-strengths-checkmark {
+	display: flex;
+	width: 1rem;
+	height: 1rem;
+
+	@include breakpoint(med) {
+		width: 1.25rem;
+		height: 1.25rem;
+	}
+}
+
+.airbnb-strengths_content-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(3, auto);
+	row-gap: 1rem;
+	column-gap: 0;
+	margin: 0;
+	width: 100%;
+
+	div {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 0.75rem;
+
+		p {
+			margin: 0;
+			font-size: 0.889rem;
+		}
+
+		img {
+			margin: 0;
+		}
+	}
+
+	@include breakpoint(med) {
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: repeat(3, auto);
+		row-gap: 1rem;
+		column-gap: 2rem;
+
+		div {
+			gap: 1rem;
+
+			p {
+				margin: 0;
+				font-size: 1rem;
+			}
+		}
+	}
+
+	@include breakpoint(lg) {
+		column-gap: 2.5rem;
+
+		div>p {
+			font-size: 1.125rem;
+		}
+	}
+}

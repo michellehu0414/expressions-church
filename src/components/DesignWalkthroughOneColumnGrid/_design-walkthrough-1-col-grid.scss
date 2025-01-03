@@ -1,0 +1,28 @@
+@use "../../scss/abstracts/all-abstracts" as *;
+
+.design-walkthrough_grid-1-col {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: auto;
+	margin: 0 auto;
+	row-gap: 2rem;
+	width: $content-max-width;
+	align-items: start;
+	justify-content: start;
+
+	video {
+		max-height: $wireframe-max-height;
+		width: fit-content;
+	}
+
+	.subheading {
+		margin-bottom: 0.5rem;
+	}
+
+	div {
+		display: block;
+		flex-direction: column;
+		height: fit-content;
+		max-width: 20rem;
+	}
+}

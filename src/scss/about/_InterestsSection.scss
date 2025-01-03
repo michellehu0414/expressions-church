@@ -1,0 +1,219 @@
+@use "../../scss/abstracts/breakpoints-mixins" as *;
+@use "../../scss/abstracts/variables" as *;
+
+#interests {
+	padding: 3rem 0;
+
+	@include breakpoint(med) {
+		display: block;
+		padding: 5rem 0;
+	}
+
+	h2 {
+		color: white;
+		margin-bottom: 1.5rem;
+	}
+}
+
+.interests-section-heading-wrapper {
+	margin-bottom: 0.5rem;
+}
+
+.interests-wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: fit-content;
+	width: 90vw;
+	margin: auto;
+	padding: 0;
+
+	h2 {
+		display: block;
+		color: white;
+		margin-bottom: 1.5rem;
+		width: fit-content;
+		text-align: center;
+	}
+
+	h3 {
+		width: 100%;
+	}
+}
+
+.interest-grid-container {
+	display: grid;
+	align-self: center;
+	margin: auto;
+	width: 100%;
+	grid-template-columns: auto;
+	grid-template-rows: repeat(6, 1fr);
+	row-gap: 1rem;
+	column-gap: 1rem;
+}
+
+.interest-card {
+	padding: 1.5rem;
+	align-items: flex-start;
+	gap: 0.5rem;
+	background: #f9f9f9;
+	border-radius: 0.5rem;
+	width: 100%;
+}
+
+.card_content-wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-self: stretch;
+	gap: 0.5rem;
+	column-gap: 1.5rem;
+	align-self: stretch;
+	border-radius: 0.1875rem;
+	// border: 2px solid #cc4d4d;
+	height: 100%;
+	margin: auto;
+	width: fit-content;
+}
+
+.card_headline {
+	color: #1e1e1e;
+	font-size: 1.5rem;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 110%;
+	/* 2.2rem */
+	margin-bottom: 0;
+	grid-area: b;
+	height: fit-content;
+}
+
+.card_body {
+	color: $dark-grey;
+	font-size: 1rem;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 145%;
+	/* 1.25rem */
+	margin-bottom: 0;
+	grid-area: c;
+}
+
+.interest-card-graphic {
+	width: 5rem;
+	opacity: 0.75;
+	grid-area: a;
+	margin-bottom: 0.5rem;
+}
+
+@include breakpoint(sm) {
+	.interests-section-heading-wrapper {
+		margin-bottom: 1.5rem;
+	}
+
+	.interest-grid-container {
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: auto auto auto;
+	}
+}
+
+// New design!
+.section-interests-mobile-swiper {
+	display: none;
+	background-color: black;
+
+	h2 {
+		display: block;
+		color: white;
+		margin-bottom: 1.5rem;
+		width: fit-content;
+	}
+
+	.swiper {
+		margin: auto;
+		height: fit-content;
+	}
+
+	.swiper-slide {
+		display: flex;
+		max-width: 20rem;
+		padding: 0.75rem;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.5rem;
+		border-radius: 0.1rem;
+		background: #ffff;
+
+		transition: transform 1s ease;
+	}
+
+	.card_headline {
+		font-size: 1.5rem;
+	}
+
+	@include breakpoint(med) {
+		display: none;
+	}
+}
+
+#resetSwiper {
+	color: white;
+}
+
+// Old design black boring cards -yawns-
+#hmu-swiper-old,
+.swiper {
+	width: 85vw;
+	height: 220px;
+
+	.swiper-slide {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding: 0rem 1.5rem;
+		font-size: 22px;
+		font-weight: bold;
+		color: #fff;
+		border-radius: 2px;
+		background: linear-gradient(0deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.15) 100%), #000;
+
+		transition: transform 1s ease;
+
+		.emoji {
+			font-size: 2rem;
+			margin-top: -0.5rem;
+			margin-bottom: 0.5rem;
+		}
+
+		.headline {
+			font-size: 1.25rem;
+			font-weight: 600;
+			line-height: 110%;
+			/* 1.375rem */
+			letter-spacing: -0.0375rem;
+			color: white;
+			margin-bottom: 0.5rem;
+		}
+
+		.body {
+			color: #fff;
+			font-family: Inter;
+			font-size: 0.875rem;
+			font-style: normal;
+			font-weight: 500;
+			line-height: 130%;
+			/* 1.1375rem */
+			margin-bottom: 0;
+		}
+
+		a {
+			display: block;
+			color: #479cff;
+			font-family: Inter;
+			font-size: 0.875rem;
+			font-style: normal;
+			font-weight: 500;
+			line-height: 130%;
+		}
+	}
+}

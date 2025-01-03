@@ -1,0 +1,100 @@
+// $primary-color: #076261;
+
+@use "abstracts/all-abstracts" as *;
+
+@use "base/all-base";
+
+@use "../components/global-components";
+
+@use "../components/project-components";
+
+@use "postup/all-postup";
+
+@use "sections/all-sections";
+
+@use "utilities/all-utilities";
+
+@use "../components/MediaCarousel/MediaCarousel";
+
+$super-light-grey: #fafafa;
+
+#hero {
+    background-color: #8BB7AA;
+}
+
+/* iOS-specific styles */
+@media only screen and (min-device-width: 375px) and (max-device-width: 1024px) {
+
+    body,
+    #hero {
+        background-color: #8CB6AC;
+    }
+}
+
+#overview {
+    background-color: transparent;
+}
+
+#the-constraints {
+    background-color: $lightest-grey;
+}
+
+#final-prototype {
+    background-color: $lightest-grey;
+    border: 0;
+}
+
+#the-solution.content-full-width {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    @include breakpoint(med) {
+        gap: 2.5rem;
+    }
+
+    @include breakpoint(lg) {
+        gap: 3rem;
+    }
+}
+
+// .navbar-top {
+//     position: fixed;
+//     width: 100%;
+//     transition: background-color 0.1s ease-in;
+// }
+//
+// .default-nav-color {
+//     background-color: transparent;
+// }
+//
+// .postup-hero-nav-color {
+//     background-color: transparent;
+// }
+//
+// .navbar-color-overview,
+// .navbar-color-the-solution {
+//     background-color: transparent;
+// }
+//
+// .hero-overview-wrapper,
+// // #intro,
+// #hero,
+// #overview,
+// #the-challenge,
+// #the-constraints,
+// #the-solution,
+// #research-process,
+// // #monday,
+// // #tuesday,
+// // #wednesday,
+// // #thursday,
+// // #friday,
+// #iterations-monetization,
+// #final-prototype,
+// #next-steps,
+// #reflection,
+// #conclusion,
+// #thank-you {
+//     display: none !important;
+// }

@@ -1,0 +1,236 @@
+@use "../abstracts/variables" as *;
+
+// Brand colors
+.teal-accent {
+	color: $teal-accent !important;
+}
+
+.hot-pink {
+	color: $hot-pink-accent !important;
+}
+
+.primary-green {
+	color: $primary-green !important;
+}
+
+.secondary-green {
+	color: $secondary-green !important;
+}
+
+.forest-green {
+	color: $forest-green !important;
+}
+
+.medium-green {
+	color: $medium-green !important;
+}
+
+.subdued-green {
+	color: $subdued-green !important;
+}
+
+.lightest-green {
+	color: $lightest-green !important;
+}
+
+.teal {
+	color: $teal !important;
+}
+
+.dark-grey {
+	color: $dark-grey !important;
+}
+
+.off-black {
+	color: $off-black !important;
+}
+
+.emphasis-blue {
+	color: $emphasis-blue !important;
+}
+
+.medium-grey {
+	color: $medium-grey !important;
+}
+
+.lightest-grey {
+	color: $lightest-grey !important;
+}
+
+.invalid-red {
+	color: $invalid-red !important;
+}
+
+.medium-light-grey {
+	color: $medium-light-grey !important;
+}
+
+.light-grey {
+	color: $light-grey !important;
+}
+
+.light-blue {
+	color: $light-blue !important;
+}
+
+.link-blue {
+	color: #0281e3;
+}
+
+.black {
+	color: $black !important;
+}
+
+.sub-grey {
+	color: $sub-grey !important;
+}
+
+.emphasis {
+	color: $emphasis !important;
+}
+
+.transparent {
+	color: transparent !important;
+}
+
+// Background colors
+
+.bg- {
+	&-transparent {
+		background-color: transparent !important;
+	}
+
+	&lightest-green {
+		background-color: $lightest-green !important;
+		background: $lightest-green !important;
+	}
+
+	&light-blue {
+		background-color: var(--light-blue) !important;
+	}
+
+	&light-grey {
+		background-color: $light-grey !important;
+	}
+
+	&light-medium-grey {
+		background-color: $light-medium-grey !important;
+	}
+
+	&lightest-grey {
+		background-color: $lightest-grey !important;
+	}
+
+	&transparent {
+		background-color: transparent !important;
+	}
+
+	&medium-grey {
+		background-color: $medium-grey !important;
+	}
+
+	&medium-light-grey {
+		background-color: $medium-light-grey !important;
+	}
+
+	&dark-grey {
+		background-color: $dark-grey !important;
+	}
+
+	&white {
+		background-color: #fff !important;
+	}
+}
+
+// Colors - greyscale
+.white {
+	color: #ffffff !important;
+}
+
+.pure-black {
+	color: $pure-black !important;
+}
+
+.black {
+	color: $black !important;
+}
+
+.off-black {
+	color: $off-black !important;
+}
+
+.dark-grey {
+	color: $dark-grey !important;
+}
+
+.medium-grey {
+	color: $medium-grey !important;
+}
+
+.medium-light-grey {
+	color: $medium-light-grey !important;
+}
+
+.light-grey {
+	color: $light-grey !important;
+}
+
+.lightest-grey {
+	color: $lightest-grey !important;
+}
+
+.sub-grey {
+	color: $sub-grey !important;
+}
+
+// Colors
+.emphasis-blue {
+	color: $emphasis-blue !important;
+}
+
+.invalid-red {
+	color: $invalid-red !important;
+}
+
+.light-blue {
+	color: $light-blue !important;
+}
+
+.emphasis {
+	color: $emphasis !important;
+}
+
+.primary-bg {
+	color: $primary-bg !important;
+}
+
+.primary-color {
+	color: $primary-color !important;
+}
+
+// Background colors
+.bg- {
+	&light-blue {
+		background-color: $light-blue !important;
+	}
+
+	&lightest-grey {
+		background-color: $lightest-grey !important;
+	}
+
+	&dark-grey {
+		background-color: $dark-grey !important;
+	}
+
+	&off-black {
+		background-color: $off-black !important;
+	}
+
+	&black {
+		background-color: $black !important;
+	}
+
+	&f4f4f4 {
+		background-color: #f4f4f4;
+	}
+}

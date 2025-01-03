@@ -1,0 +1,57 @@
+  /* Hide original browser scrollbars */
+  .scrollable-content {
+      height: 100vh;
+      /* Example height, adjust as needed */
+      overflow-y: scroll;
+      position: relative;
+      -ms-overflow-style: none;
+      /* IE and Edge */
+      scrollbar-width: none;
+      /* Firefox */
+  }
+
+  .scrollable-content::-webkit-scrollbar {
+      display: none;
+      /* Chrome, Safari, WebKit browsers */
+  }
+
+  /* Custom scrollbar styles */
+  .c-scrollbar {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 11px;
+      height: 100vh;
+      /* Full height of the container */
+      background: none;
+      /* Slight background for visibility */
+      opacity: 0;
+      /* Hidden by default */
+      transition: opacity 0.3s ease;
+      /* Smooth fade in/out */
+      z-index: 3000;
+  }
+
+  .c-scrollbar.show {
+      opacity: 1;
+      /* Show scrollbar when scrolling */
+  }
+
+  .c-scrollbar_thumb {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: black;
+      width: 7px;
+      border-radius: 0;
+      cursor: -webkit-grab;
+      cursor: grab;
+      margin: 2px;
+      transition: opacity 0.3s ease;
+      transform: none;
+  }
+
+  .has-scroll-dragging .c-scrollbar_thumb {
+      cursor: -webkit-grabbing;
+      cursor: grabbing;
+  }

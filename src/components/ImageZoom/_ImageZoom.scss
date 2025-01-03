@@ -1,0 +1,63 @@
+.img-zoomable {
+	cursor: zoom-in;
+}
+
+.img-zoomable.img-zoomed {
+	transform: scale(1.5);
+	max-width: 90vw;
+	z-index: 500;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform-origin: center;
+	transition: width 0.25s ease, height 0.25s ease;
+	transform: translate(-50%, -50%);
+
+	cursor: zoom-out;
+}
+
+.overlay {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 400;
+}
+
+.overlay.active {
+	display: block;
+}
+
+.click-zoom input[type=checkbox] {
+	display: none
+}
+
+.click-zoom img {
+	transition: transform 0.25s ease;
+	cursor: zoom-in
+}
+
+.click-zoom input[type=checkbox]:checked~img {
+	transform: scale(1.5);
+	max-height: 75vh;
+	width: auto;
+	z-index: 500;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform-origin: center;
+	transition: width 0.25s ease, height 0.25s ease;
+	transform: translate(-50%, -50%);
+	cursor: zoom-out
+}
+
+// usage
+// <div class="click-zoom">
+// <label>
+//   <input type="checkbox">
+//   <img src="https://via.placeholder.com/200">
+// </label>
+// </div>

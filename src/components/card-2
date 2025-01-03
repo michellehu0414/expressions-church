@@ -1,0 +1,55 @@
+// Function to create a card with items
+function createCard(
+    iconName,
+    iconSize,
+    headline,
+    content,
+    containerSelector = '',
+    backgroundColor = '#f9f9f9',
+    contentVisible = true,
+    alignCenter = false) {
+    const cardContainer = document.querySelector(containerSelector);
+  
+    const cardElement = document.createElement('div');
+    cardElement.className = 'card';
+    cardElement.style.backgroundColor = backgroundColor;
+    cardElement.style.textAlign = alignCenter ? 'center' : 'left';
+  
+    const img = document.createElement('img');
+    img.className = `card_icon--${iconSize}`;
+    img.src = `/public/svg/${iconName}`;
+    cardElement.appendChild(img);
+  
+    const p = document.createElement('p');
+    p.style.marginBottom = '16px';
+    p.style.display = contentVisible ? 'block' : 'none';
+  
+    const span = document.createElement('span');
+    span.className = 'card_headline';
+    span.style.display = 'block';
+    span.style.marginBottom = '8px';
+    span.textContent = headline;
+    p.appendChild(span);
+  
+    p.appendChild(document.createTextNode(content));
+    cardElement.appendChild(p);
+  
+    cardContainer.appendChild(cardElement);
+  }
+  
+  // Initial project brief card content
+  createCard(
+    'ic_goal.svg',
+    'small',
+    'Goal',
+    'Gain insights to design a better product and enhance the customer experience.',
+    '.cards-wrap'
+  );
+  createCard(
+    'ic_task.svg',
+    'small',
+    'Objective',
+    'Improve user engagement and retention rates through intuitive design.',
+    '.cards-wrap'
+  );
+  

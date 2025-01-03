@@ -1,0 +1,90 @@
+@use "../../scss/abstracts/all-abstracts" as *;
+
+.test-findings_header {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: center;
+    margin-bottom: 0.25rem;
+
+    p {
+        margin-bottom: 0;
+    }
+}
+
+.test-findings {
+    &_grid {
+        display: grid;
+        grid-template-rows: repeat(2, auto);
+        gap: 1rem;
+        max-width: 80rem;
+        margin: auto;
+        margin-top: 1rem;
+        margin-bottom: 3rem;
+
+        @include breakpoint(med) {
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: 1fr;
+        }
+    }
+
+    &_card {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        padding: 1.5rem;
+        padding-left: 1.5rem;
+        border-radius: 0.25rem;
+        height: fit-content;
+        background-color: $lightest-grey;
+        height: 100%;
+
+        ul {
+            margin: 0;
+            width: 100%;
+        }
+
+        .card_headline {
+            color: $emphasis-blue;
+            font-weight: 500;
+            margin-bottom: 0;
+            font-size: 1.25rem;
+        }
+
+        .subheading {
+            margin-left: 0.25rem;
+        }
+
+        li {
+            font-size: 1.125rem;
+        }
+
+        &.border-top-green {
+            border-top: 0.5rem solid #2b8c64;
+        }
+
+        &.border-top-red {
+            border-top: 0.5rem solid #dc1d26;
+        }
+
+        &.border-top-blue {
+            border-top: 0.5rem solid #1d69dc;
+        }
+
+        @include breakpoint(med) {
+            padding-left: 2.5rem;
+        }
+    }
+
+    &_header {
+        @include flex(row, 0.5rem, center)
+    }
+}
+
+.img-design-validation,
+.img-design-invalidation {
+    width: 1.25rem;
+    height: auto;
+    align-self: center;
+}

@@ -1,0 +1,147 @@
+@use '../../scss/abstracts/all-abstracts' as *;
+
+$content-margin-bottom: 1.5rem;
+
+footer {
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+	padding: 2.25rem 0 2rem 0;
+	background-color: $lightest-grey;
+	justify-content: start;
+
+	@include breakpoint(med) {
+		padding: 3rem 0;
+
+		button {
+			width: fit-content;
+		}
+	}
+
+	@include breakpoint(xl) {
+		padding: 5rem 0;
+	}
+}
+
+.headline {
+	max-width: 21rem;
+	color: #1e1e1e;
+	font-family: Inter;
+	font-size: clamp(2rem, 5vw, 4rem) !important;
+	font-weight: 600;
+	margin-bottom: 0;
+	width: fit-content;
+	letter-spacing: -0.075rem;
+	line-height: 125%;
+
+	@include breakpoint(med) {
+		max-width: 35rem;
+		letter-spacing: -0.125rem;
+	}
+}
+
+.tagline {
+	color: $medium-grey;
+	font-family: "IBM Plex Mono";
+	font-style: normal;
+	line-height: 145%;
+	letter-spacing: 0.04375rem;
+	text-align: left;
+	font-size: 1rem;
+	margin-bottom: $content-margin-bottom;
+}
+
+.copyright-text {
+	color: $dark-grey;
+	font-family: Inter;
+	font-family: "IBM Plex Mono";
+	font-style: normal;
+	font-weight: 400;
+	line-height: 135%;
+	letter-spacing: 0.02rem;
+	margin-bottom: 0;
+	font-size: 1rem;
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	width: 90vw;
+	max-width: $nav-footer-max-width;
+	margin: auto;
+	gap: 1.5rem;
+
+	@include breakpoint(med) {
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+		gap: 2rem;
+	}
+}
+
+.social-links-wrapper {
+	display: flex;
+	flex-direction: row !important;
+	gap: 0.75rem;
+	width: fit-content;
+	align-self: center;
+	margin-bottom: $content-margin-bottom;
+
+	>.header {
+		font-size: 1.25rem !important;
+		font-weight: 500 !important;
+		margin-bottom: 0;
+	}
+
+	.social-link:last-child {
+		padding-right: 0;
+		border: 0;
+	}
+}
+
+.link-heading {
+	font-size: 1.25rem;
+	font-weight: 500;
+	margin-bottom: 0;
+	color: $dark-grey;
+}
+
+.social-link {
+	padding-right: 0.75rem;
+
+	p {
+		width: fit-content;
+		font-weight: 400 !important;
+		text-wrap: nowrap;
+		line-height: 100%;
+	}
+
+	a {
+		color: $teal-accent !important;
+		margin-bottom: 0;
+	}
+
+	@include breakpoint(med) {
+		border-right: 2px solid $teal-accent;
+	}
+}
+
+.email-link-wrapper {
+	display: flex;
+	flex-direction: row;
+	gap: 0.5rem;
+	align-items: center;
+	margin-bottom: $content-margin-bottom !important;
+}
+
+.email-link {
+	@include hover-underline-self($medium-grey);
+}
+
+@include breakpoint(med) {
+	.cta-buttons {
+		display: flex;
+		flex-direction: row;
+		gap: 1rem;
+	}
+}

@@ -1,0 +1,30 @@
+@use "../../scss/abstracts/all-abstracts" as *;
+
+.header-with-icon {
+  display: flex;
+  width: 100%;
+  max-width: $content-max-width;
+  margin: auto; // Center the container
+  margin-bottom: 1.25rem;
+  position: relative;
+  transform: translateX(-2.5rem);
+
+  .headline {
+    width: 100%;
+    text-align: left;
+    padding-left: 2.5rem; // Add space to the left to hang the icon
+    margin-bottom: 0;
+    font-size: 1.25rem;
+    color: $dark-grey;
+  }
+
+  .icon_wrapper {
+    width: 1.5rem; // Correct the scale transformation
+    position: absolute; // Position the icon absolutely
+    left: 0; // Align it to the left of the container
+  }
+
+  .ic-lightbulb {
+    width: 1.5rem;
+  }
+}

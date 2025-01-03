@@ -1,0 +1,86 @@
+@use "../abstracts/all-abstracts" as *;
+
+.sitemap {
+	&_wrapper {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-rows: auto auto;
+		gap: 0.5rem;
+		margin: auto;
+		margin-bottom: 2rem;
+		width: 95%;
+		max-width: $content-max-width;
+		align-items: stretch;
+		justify-content: stretch;
+		color: $black;
+
+		@include breakpoint(lg) {
+			grid-template-columns: repeat(5, 1fr);
+			grid-template-rows: 1fr;
+			width: fit-content;
+			max-width: 95%;
+		}
+
+		ul {
+			margin: 0;
+			width: 100%;
+		}
+
+		li {
+			color: $dark-grey;
+			font-size: 1rem;
+			text-wrap: nowrap;
+			padding-left: 0;
+		}
+
+	}
+
+	&_card {
+		@include flex(column, 0.5rem);
+		width: 100%;
+		margin: auto; // Center the container
+		padding: 1.5rem;
+		border-radius: 1rem;
+		height: 100%;
+		background-color: white;
+		background-color: $lightest-green;
+	}
+
+	&_headline {
+		width: 100%;
+		text-align: left;
+		margin-bottom: 0;
+		color: $primary-green;
+		font-size: 1.35rem;
+		font-weight: 500;
+
+		&::first-letter {
+			text-transform: capitalize;
+		}
+	}
+
+	&_icon {
+		width: 2.5rem;
+		height: 2.5rem;
+		margin-bottom: 0.5rem;
+		fill: $primary-green;
+	}
+
+	.img-sitemap {
+		background-color: #fff;
+		padding: 2rem;
+		margin-top: 1rem;
+		margin-bottom: 1rem;
+		width: 100%;
+	}
+
+	&_list {
+		color: $forest-green;
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem !important;
+		list-style-type: none;
+		margin: 0;
+		width: 100%;
+	}
+}

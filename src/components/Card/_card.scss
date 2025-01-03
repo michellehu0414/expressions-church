@@ -1,0 +1,33 @@
+@use "../../scss/abstracts/all-abstracts" as *;
+
+.card {
+	gap: 2.5rem;
+	max-width: 1032px;
+	width: 95%;
+	margin: 0 auto;
+	margin-bottom: 6rem;
+	border-radius: 1.5rem;
+	height: fit-content;
+	overflow: hidden;
+	padding: 2rem;
+
+	@include breakpoint(lg) {
+		padding: 3rem;
+	}
+
+	&.width-fit-content {
+		width: fit-content;
+	}
+
+
+
+	&.medium {
+		max-width: 1080px;
+	}
+
+	&.small {
+		border-radius: 5px;
+		padding: 1rem;
+		width: calc($content-max-width + 8rem);
+	}
+}

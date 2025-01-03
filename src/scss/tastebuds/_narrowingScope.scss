@@ -1,0 +1,63 @@
+@use "../abstracts/all-abstracts" as *;
+
+.interview-quotes {
+	width: 100%;
+	margin: auto;
+	max-width: $content-max-width;
+
+	>.interview-quotes_img-quotation-mark {
+		margin: 0;
+		margin-bottom: 1rem;
+		max-width: 5rem;
+	}
+
+	.grid-container {
+		display: grid;
+		grid-template-rows: auto;
+		width: 100%;
+		margin: auto;
+	}
+
+	.interview-quotes_grid-item {
+		display: grid;
+		grid-template-columns: 3fr 7fr;
+		column-gap: 1.25rem;
+		gap: 1.5rem;
+		padding: 2rem 0;
+		align-items: center;
+
+		&.quote-flex-col {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+		}
+
+		&:nth-child(n + 2) {
+			border-top: 1px solid $medium-light-grey;
+		}
+
+		>div:first-child {
+			p {
+				color: $black;
+				font-size: 1.5rem;
+				font-weight: 500;
+				line-height: 150%;
+				margin-bottom: 0;
+				margin-top: 0;
+				text-align: left;
+			}
+		}
+
+		&.item-1 {
+			padding-top: 0 !important;
+		}
+
+		&.item-6 {
+			padding-bottom: 0;
+		}
+	}
+
+	.blockquote_content {
+		background-color: transparent;
+	}
+}

@@ -1,0 +1,110 @@
+@use "../abstracts/all-abstracts" as *;
+
+.testing-outcomes-content.grey {
+	align-items: center;
+	background-color: #f6f6f6;
+	border-radius: 5px;
+	flex-direction: row;
+	grid-column-gap: 24px;
+	grid-row-gap: 24px;
+	padding-bottom: 16px;
+	padding-top: 36px;
+}
+
+.testing-outcomes-content.arrow {
+	align-self: center;
+	background-color: var(--transparent);
+	justify-content: center;
+}
+
+.testing-outcomes-content.padding-0 {
+	padding-left: 0;
+	padding-right: 0;
+	padding-top: 0;
+}
+
+.flex-block-40 {
+	align-self: stretch;
+	background-color: #fafafa;
+	border-radius: 15px 5px 5px;
+	flex: 1;
+	flex-direction: column;
+	grid-column-gap: 24px;
+	grid-row-gap: 24px;
+	margin-top: -20px;
+	padding-top: 40px;
+}
+
+.flex-block-40.gap-0 {
+	grid-column-gap: 0;
+	grid-row-gap: 0;
+}
+
+.testing-outcomes-card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+
+	.testing-outcomes-icon-category {
+		width: 1.5rem;
+		height: 1.5rem;
+		z-index: 1;
+		margin: auto;
+
+		@include breakpoint(med) {
+			width: 2.5rem;
+			height: 2.5rem;
+		}
+	}
+
+	.card__content {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		background-color: white;
+		margin-top: -1.5rem;
+		padding: 3.5rem 1rem 2.5rem 1rem;
+		border-radius: 1rem;
+		height: 100%;
+
+		&.validation {
+			border: 3px solid #2b8c64;
+		}
+
+		&.invalidation {
+			border: 3px solid #dc1d26;
+		}
+
+		p {
+			font-size: 1.125rem;
+			color: $black;
+			text-align: center;
+			margin-bottom: 0.25rem;
+		}
+	}
+}
+
+.testing-outcomes-icon {
+	width: 5rem;
+	height: auto;
+	opacity: 0.5;
+	align-self: center;
+	display: none;
+}
+
+.testing-outcomes_grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(3, 1fr);
+	gap: 1rem 0.5rem;
+	margin-top: 0.5rem;
+	margin-bottom: 2rem;
+
+	@include breakpoint(med) {
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-rows: repeat(2, 1fr);
+		max-width: $content-max-width;
+	}
+}

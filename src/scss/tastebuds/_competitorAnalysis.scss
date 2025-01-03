@@ -1,0 +1,96 @@
+@use "../abstracts/all-abstracts" as *;
+
+.competitor-analysis_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 90%;
+  max-width: 1200px;
+  margin-bottom: 2rem;
+
+  @include breakpoint(med) {
+    flex-direction: row;
+  }
+}
+
+.competitor-analysis_grid-container {
+  display: grid;
+  grid-template-columns: 2.25fr 2.25fr 2.25fr;
+  grid-template-rows: 2.5rem 313px auto;
+  /* Define two rows */
+  width: 100%;
+  column-gap: 1rem;
+  row-gap: 1.5rem;
+  align-items: start;
+  justify-content: start;
+  margin-top: 1.5rem;
+  background-color: $lightest-grey;
+  border-radius: 1rem;
+
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.competitor-analysis-app {
+  grid-column: 1 / -1;
+  grid-row: 1 / 2;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  // padding-bottom: 1rem;
+  // border-bottom: 1px solid $medium-light-grey;
+
+  p {
+    font-size: 1.25rem;
+    color: $black;
+    margin: 0;
+    font-weight: 500;
+  }
+}
+
+.competitor-analysis-finding {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 0.5rem;
+
+  @include breakpoint(med) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    gap: 2rem;
+  }
+}
+
+$img-competitor-logo-size: 1.75rem;
+
+.img-competitor-logo {
+  width: $img-competitor-logo-size;
+  border-radius: 5rem;
+  z-index: 2000;
+}
+
+.img-google-maps_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $img-competitor-logo-size;
+  height: $img-competitor-logo-size;
+  border-radius: 5rem;
+  background: white;
+    z-index: 2000;
+}
+
+.img-google-maps {
+  width: 80%;
+  margin: auto;
+    z-index: 2001;
+}
+
+.img-competitor-screen {
+  border-radius: 0.5rem;
+  border: 1.25px solid $light-grey;
+  width: calc(33% - 3.3px)
+}

@@ -1,0 +1,155 @@
+@use "../../scss/abstracts/all-abstracts" as *;
+
+$navbar-mobile-height: 3rem;
+$navbar-desktop-height: 4rem;
+$progress-bar-height: 6px;
+$navbar-logo-size-mobile: 1.5rem;
+
+nav {
+	display: flex;
+	position: fixed;
+	color: $black;
+	width: 100%;
+	align-items: center;
+	height: $navbar-mobile-height;
+	top: 0;
+	z-index: 2000;
+	transition: background-color 0.3s ease, top 0.3s ease;
+}
+
+.navbar {
+	background-color: transparent;
+}
+
+.navbar.scrolled-navbar {
+	padding-top: 0.5rem;
+}
+
+.navbar-wrapper {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin: auto;
+	align-items: center;
+	height: 100%;
+	width: 95%;
+
+	@include breakpoint(med) {
+		width: 90%;
+		max-width: $nav-footer-max-width;
+		gap: 0.5rem;
+		margin-top: 0.5rem;
+	}
+
+	@include breakpoint(xl) {
+		margin-top: 1rem;
+	}
+}
+
+.navbar-logo-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: start;
+	height: 100%;
+	width: 100%;
+
+	a {
+		margin-bottom: 0;
+	}
+}
+
+.navbar-logo-image {
+	height: $navbar-logo-size-mobile;
+	width: $navbar-logo-size-mobile;
+}
+
+.navbar-menu {
+	display: flex;
+	flex-direction: row;
+	list-style: none;
+	position: relative;
+	justify-content: space-between;
+	margin-top: 0;
+	width: 100%;
+	height: 100%;
+	transform: none;
+	gap: 0 !important;
+}
+
+.nav-link-text {
+	color: $dark-grey !important;
+	font-size: 0.889rem !important;
+	transition: color 0.3s ease-in-out, width 0.3s ease-in-out, transform 0.3s ease-in-out;
+	font-weight: 350;
+	margin: auto !important;
+	text-wrap: nowrap;
+	line-height: 100%;
+}
+
+.nav-item {
+	display: flex;
+	height: 100%;
+	list-style-type: none;
+	cursor: pointer;
+
+	@include hover-underline-target('.nav-link-text', $teal-accent, $teal-accent, 1.5px);
+
+	a {
+		display: flex;
+		height: 100%;
+		width: fit-content;
+		padding: 0;
+		margin-bottom: 0;
+		padding: 0 0.5rem;
+	}
+}
+
+.nav-item.active,
+.nav-item.active a {
+	transform: none;
+	cursor: default;
+
+	.nav-link-text {
+		color: $teal-accent !important;
+		transform: none;
+
+		&::before {
+			background-color: transparent;
+			width: 100%;
+		}
+
+		&:hover::before {
+			width: 100%;
+		}
+	}
+}
+
+@include breakpoint(med) {
+	nav {
+		height: $navbar-desktop-height;
+	}
+
+	.navbar-hidden {
+		top: -$navbar-desktop-height;
+	}
+
+	.navbar-logo-image {
+		width: 1.75rem;
+		height: 1.75rem;
+	}
+
+	.navbar-menu {
+		gap: 0;
+		justify-content: flex-start;
+
+		width: fit-content;
+
+		.nav-item:last-child a {
+			padding-right: 0;
+		}
+	}
+
+	.nav-item a {
+		padding: 0 1rem;
+	}
+}

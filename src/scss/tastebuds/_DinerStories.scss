@@ -1,0 +1,32 @@
+@use "../abstracts/all-abstracts" as *;
+
+.diner-stories-grid-container {
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    width: 90vw;
+    max-width: 64rem;
+
+    .card-vertical {
+        margin-bottom: 0;
+    }
+
+    @include breakpoint(med) {
+        grid-template-columns: repeat(4, 1fr);
+        margin: auto;
+    }
+}
+
+.card-vertical.diner-stories-card {
+    padding: 1.5rem !important;
+}
+
+.diner-stories_icon-wrapper {
+    width: 4rem;
+    height: 4rem;
+
+    img {
+        width: 100%;
+    }
+}

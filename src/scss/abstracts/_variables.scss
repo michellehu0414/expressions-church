@@ -1,0 +1,72 @@
+// Brand colors
+$teal-accent: #2Fa89F;
+$teal-highlight: #8eeeed;
+$hot-pink-accent: #E66397;
+$primary-green: #396966;
+$secondary-green: #41958F;
+$forest-green: #3E4F44;
+$medium-green: #92ACA5;
+$subdued-green: #BECEC4;
+$lightest-green: #E5EBE7;
+
+$primary-color: $primary-green;
+
+$boardspace-tag-color: #D6E8FF;
+
+// Colors - greyscale
+$pure-black: #000;
+$black: #1e1e1e;
+$off-black: #4a4a4a;
+$dark-grey: #565656;
+$medium-grey: #757575;
+$medium-light-grey: #dbdbdb;
+$light-grey: #f0f0f0;
+$lightest-grey: #f9f9f9;
+$sub-grey: #cfcfcf;
+$white: #fff;
+$light-medium-grey: #f4f4f4;
+$link-blue: #0281e3;
+
+// Colors
+$teal: #45b5aa;
+$emphasis-blue: #4479df;
+$invalid-red: #dc1d25;
+$light-blue: #e7ecff;
+$emphasis: #e2583e;
+$primary-bg: #ffdc93;
+
+// Containers
+$container-width: 90%;
+$content-mb: 2rem;
+$content-max-width: 45rem;
+$outline-stroke: 1.25px;
+
+// Components
+$nav-footer-max-width: 82rem;
+$progress-bar-height: 6px;
+$wireframe-max-height: 40rem;
+$large-button-active-color: $primary-green;
+
+// Type
+
+$main-font: "Inter";
+$fixed-shadow: -1px -1px 2px rgba(49, 49, 49, 0.05), 1px 1px 2px rgba(0, 0, 0, 0.5), inset -1px -1px 3px rgba(0, 0, 0, 0.05),
+	inset 1px 1px 2px rgba(255, 255, 255, 0.05);
+$border-style: 1px solid #e4ebf3;
+
+// Tags
+$boardspace-tag-color: #5488ca;
+$boardspace-tag-background: #d6e8ff85;
+$tastebuds-tag-background: #ffe9be;
+$tastebuds-tag-color: #cb8700;
+$postup-tag-background: #dcefeb;
+$postup-tag-color: #499888;
+
+$tastebuds-bg-yellow: #F6E7C6;
+
+$wrapper-gap-med: 2rem;
+$wrapper-gap-lg: 3rem;
+$wrapper-gap-xl: 4rem;
+
+$wrapper-grid-lg: 4fr minmax(0, 3fr);
+$wrapper-grid-xl: 4fr minmax(0, 30rem);
