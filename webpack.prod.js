@@ -21,10 +21,9 @@ module.exports = {
         leadership: './src/js/leadership.js',
     },
     output: {
-        filename: 'js/[name].js',
         path: path.resolve(__dirname, 'dist'),
-        clean: true,
-
+        filename: 'js/[name].[contenthash].js', // Example filename format
+        clean: true, // Cleans old files in the output directory
     },
     mode: 'production',
     devtool: false, // Disable source maps unless needed
