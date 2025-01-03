@@ -1,6 +1,7 @@
 @use "./globals.scss" as *;
 @use "abstracts/all-abstracts" as *;
 @use "utilities/all-utilities" as *;
+@use "components/all-components" as *;
 
 $card-max-width: 24rem;
 $button-margin-top-mobile: 2rem;

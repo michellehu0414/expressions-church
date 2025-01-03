@@ -22,7 +22,7 @@ module.exports = {
     },
     output: {
         filename: 'js/[name].[contenthash].js', // Cache-busting with content hash
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'docs'), // Build output to docs folder
         clean: true,
     },
     mode: 'production',
