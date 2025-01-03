@@ -8,6 +8,127 @@ $button-margin-top-mobile: 2rem;
 $button-margin-top-med: 3.5rem;
 $bg-paper: url('https://vrwpaviv.elementor.cloud/wp-content/uploads/2024/12/card-paper-bg.webp') no-repeat center center;
 
+#lead-pastor-bio {
+  display: flex;
+  padding: 5rem 0rem 4rem 0rem;
+  flex-direction: column;
+  gap: 1rem;
+  width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
+
+  .portrait_spolar-family {
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  header {
+    display: block;
+    width: 100%;
+    margin: 0;
+
+    p,
+    h2 {
+      color: white;
+      text-align: left;
+    }
+
+    p {
+      font-size: 1.125rem;
+      font-weight: 500;
+      line-height: 110%;
+      letter-spacing: -0.03375rem;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: 1.9375rem;
+      font-weight: 600;
+      line-height: 120%;
+      letter-spacing: -0.06781rem;
+      text-transform: none;
+      margin-bottom: 1rem !important;
+    }
+  }
+}
+
+.section-wrapper {
+  display: flex;
+  padding: 4rem 0;
+  flex-direction: column;
+  align-items: start;
+  gap: 3rem;
+  width: 100%;
+}
+
+#staff,
+#volunteers {
+  header {
+    display: flex;
+    background: url("https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/chalk-circle-min.webp") no-repeat center center;
+    background-size: 100% 100%;
+    overflow: visible !important;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0;
+
+    h2 {
+      color: #FFF3DB;
+      text-align: center;
+      font-size: 2.375rem;
+      font-weight: 700;
+      line-height: 200%;
+      text-transform: uppercase;
+      margin-bottom: 0;
+    }
+  }
+}
+
+#staff {
+  background: #181818;
+  z-index: -1;
+  position: relative;
+
+  header {
+    padding: 0 4rem;
+  }
+}
+// 
+// #staff-01,
+// #volunteer-01,
+// #volunteer-02,
+// #volunteer-03 {
+//   margin-bottom: 2rem;
+// }
+
+#volunteers {
+  header {
+    padding: 0.5rem 3rem;
+  }
+}
+
+.bio-container {
+  display: flex;
+  max-width: var(--Max-Width---Desktop, 85.05rem);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  width: 90vw;
+  max-width: 85rem;
+  margin: auto;
+
+  .bio-body {
+    width: 90%;
+  }
+}
+
+.img-portrait-polaroid {
+  display: flex;
+  width: 75%;
+  object-fit: cover;
+  margin: 0 auto;
+}
 
 .section_content {
   display: flex;
