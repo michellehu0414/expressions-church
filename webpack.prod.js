@@ -21,9 +21,10 @@ module.exports = {
         leadership: './src/js/leadership.js',
     },
     output: {
-        filename: 'js/[name].[contenthash].js', // Cache-busting with content hash
-        path: path.resolve(__dirname, 'docs'), // Build output to docs folder
+        filename: 'js/[name].js',
+        path: path.resolve(__dirname, 'dist'),
         clean: true,
+
     },
     mode: 'production',
     devtool: false, // Disable source maps unless needed
