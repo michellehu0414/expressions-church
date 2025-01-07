@@ -1,0 +1,112 @@
+@use "../abstracts/variables" as *;
+
+// Buttons
+button {
+    height: 3rem !important;
+    width: fit-content;
+    cursor: pointer;
+    text-wrap: nowrap;
+    border-radius: 3.125rem !important;
+
+    p {
+        color: white;
+        font-weight: 500;
+        margin-bottom: 0 !important;
+        font-size: 1rem !important;
+    }
+}
+
+.primary-button,
+.secondary-button {
+    display: flex;
+    padding: 0 1.5rem;
+    border-radius: 3.125rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.primary-button {
+    border: 2.5px solid #B7D6D9;
+    background: url('https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/button-teal-chalk-bg.webp') no-repeat center center / cover;
+    // background: url('https://vrwpaviv.elementor.cloud/wp-content/uploads/2024/12/primary-button-bg.png') no-repeat center center / cover;
+
+    &:hover {
+        color: white;
+        border: 2.5px solid #00798d;
+        background: linear-gradient(0deg, rgba(153, 231, 236, 0.60) 0%, rgba(153, 231, 236, 0.60) 100%), url('https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/button-teal-chalk-bg.webp') / cover no-repeat center center;
+    }
+
+    &:active {
+        border: 2.5px solid #00798d;
+        background: linear-gradient(0deg,
+                rgba(0, 165, 176, 0.3) 0%,
+                rgba(0, 165, 176, 0.3) 100%),
+            url(https://vrwpaviv.elementor.cloud/wp-content/uploads/2024/12/primary-button-bg-hover-image-only-min.png) 50% / cover no-repeat;
+    }
+
+    &:visited {
+        background: url(https://vrwpaviv.elementor.cloud/wp-content/uploads/2024/12/primary-button-bg.png) 50% / cover no-repeat;
+        color: white;
+    }
+
+    &.black {
+        background: $off-black !important;
+        width: fit-content;
+        height: 3.5rem;
+        padding: 1rem 1.5rem;
+        border: 0;
+        transition: background 0.3s ease-in-out;
+
+        p,
+        span {
+            color: white !important;
+        }
+
+        span {
+            font-size: 1.25rem;
+        }
+
+        &:hover {
+            background: #4DA1AF !important;
+        }
+    }
+
+    &.white {
+        background: transparent;
+        border: transparent;
+        background: white;
+
+        p {
+            color: white !important;
+        }
+
+        a {
+            cursor: pointer;
+            color: white;
+        }
+
+        a:hover {
+            color: white;
+        }
+    }
+}
+
+
+.secondary-button {
+    border: 2px solid white;
+    color: white;
+    background: transparent;
+
+    &:hover {
+        border: 2px solid #00798d;
+        background: #cce2e6;
+        color: #00798d;
+    }
+
+    &:active {
+        border-color: var(--dark-teal);
+        background: var(--teal-background);
+        color: var(--dark-teal);
+    }
+}

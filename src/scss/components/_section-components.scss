@@ -1,0 +1,53 @@
+@use "../abstracts/all-abstracts" as *;
+@use "../utilities/all-utilities" as *;
+
+$section-wrapper-padding-sm: 4rem;
+$section-wrapper-padding-med: 6rem;
+
+.section-wrapper {
+    display: flex;
+    padding: $section-wrapper-padding-sm 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+
+    @include breakpoint(med) {
+        padding: $section-wrapper-padding-med 0;
+    }
+
+    //
+    //   @include breakpoint(lg) {
+    //     padding: 8rem 0;
+    //   }
+}
+
+.section-header {
+    display: inline-block;
+    margin-bottom: 0;
+    position: relative;
+
+    h2 {
+        color: #FFF3DB;
+        text-align: center;
+        font-size: 2.375rem;
+        font-weight: 700;
+        line-height: 100%;
+        text-transform: uppercase;
+        margin: 0 auto; // Removes default margins for better spacing
+
+        @include breakpoint(med) {
+            font-size: 3.5rem;
+            letter-spacing: -1px;
+        }
+
+        @include breakpoint(xl) {
+            font-size: 4.5rem;
+        }
+    }
+
+    @include breakpoint(med) {
+        margin-bottom: 2rem;
+    }
+
+}
