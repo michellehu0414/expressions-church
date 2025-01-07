@@ -13,6 +13,18 @@ $bg-darken: #00000066;
     background-color: $bg-darken;
 }
 
+// To apply a white chalk divider to sections or containers to separate sections
+.white-chalk-divider {
+    display: flex;
+    width: 90vw;
+    margin: auto;
+    height: 0.75rem;
+
+    @include breakpoint(med) {
+        height: unset;
+    }
+}
+
 //
 // :root {
 //     --teal-background: #cce2e6;
