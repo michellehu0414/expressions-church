@@ -2,5 +2,8 @@ node_modules/
 .env
 images/
 src/assets/
-/dist
-/images
+test.css
+dist/
+dist/css/
+dist/css/leadership.c032025a6b9b7eb46f1c.css
+.DS_Store
