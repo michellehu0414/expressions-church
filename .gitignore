@@ -7,9 +7,6 @@ node_modules/
 # Ignore images directory
 images/
 
-# Ignore assets folder in src
-src/assets/
-
 # Ignore specific file
 test.css
 
