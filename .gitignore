@@ -1,7 +1,23 @@
+# Ignore node_modules
 node_modules/
+
+# Ignore environment files
 .env
+
+# Ignore images directory
 images/
+
+# Ignore assets folder in src
 src/assets/
+
+# Ignore specific file
 test.css
+
+# Ignore build artifacts
 dist/
+
+# Ignore macOS system files
 .DS_Store
+
+# Ignore logs folder
+logs/
