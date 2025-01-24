@@ -1,7 +1,10 @@
 @use "abstracts/all-abstracts-expressions" as *;
 @use "utilities/all-utilities" as *;
 
+// Section headline font color.
 $beige: #fff3dc;
+
+
 $off-black: #1e1e1e;
 
 // This variable ensures consistent dark background styling throughout the project.
@@ -11,6 +14,13 @@ $bg-darken: #00000066;
 // The class sets a dark background color and ensures text contrast remains readable.
 .bg-darken {
     background-color: $bg-darken;
+}
+
+.container-max-width {
+    width: 90%;
+    max-width: 100rem;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 // To apply a white chalk divider to sections or containers to separate sections
@@ -47,17 +57,14 @@ body {
     max-width: 100vw;
     overflow-x: hidden;
     z-index: -1;
+    background-image: url('https://vrwpaviv.elementor.cloud/wp-content/uploads/2024/12/bg-texture-scaled.webp');
+    background-position: fixed;
 }
 
 html,
 body {
     margin: 0 auto;
     height: 100%;
-    background-image: url('https://vrwpaviv.elementor.cloud/wp-content/uploads/2024/12/bg-texture-scaled.webp');
-    background-size: cover;
-    background-repeat: repeat;
-    background-position: top left;
-    background-attachment: fixed;
 }
 
 .texture-overlay {
@@ -84,9 +91,42 @@ section {
     width: 100%;
 }
 
-.section_content {
-    width: 95%;
+.section-content {
+    width: 100%;
     margin: auto;
+}
+
+// Typography
+h1,
+h2,
+h3,
+h4 {
+    position: relative;
+    display: inline-block;
+    color: $beige;
+    text-transform: uppercase;
+
+    >span.outlined {
+        font-weight: 800;
+        text-align: center;
+        -webkit-text-stroke-width: 1.25px;
+        -webkit-text-stroke-color: $beige;
+        color: transparent;
+        letter-spacing: 0.08rem;
+    }
+
+    >span.filled {
+        height: fit-content;
+    }
+}
+
+
+.h2-text-wrapper {
+    display: inline-flex;
+    flex-direction: column;
+    align-self: center;
+    text-align: center;
+    width: min-content;
 }
 
 p {
@@ -106,7 +146,6 @@ h1 {
     font-size: 2.375rem;
     font-weight: 500;
     line-height: 120%;
-    /* Adjusted for all devices */
     letter-spacing: 0;
 
     @include breakpoint(med) {
@@ -118,26 +157,87 @@ h1 {
     }
 }
 
-h2 {
-    font-size: 3rem;
-    font-weight: 700;
-    line-height: 110%;
-    letter-spacing: 0.015rem;
-    margin: 0;
-    width: fit-content;
-    max-width: 100%;
+.img-chalk-heading-underline {
+    width: 100%;
+    align-self: stretch;
+    height: 0.75rem;
+    position: relative;
 
-    .outlined {
-        font-size: 3rem;
+    &.scribble {
+        &-01 {
+            height: 1.25rem;
+        }
+
+        &-02 {
+            height: 1.5rem;
+        }
     }
 
     @include breakpoint(med) {
-        font-size: 3.875rem;
-        letter-spacing: 0.1rem;
+        height: 1.25rem;
+
+        &.scribble {
+            &-01 {
+                height: 1.5rem;
+            }
+
+            &-02 {
+                height: 1.75rem;
+            }
+        }
+    }
+
+    @include breakpoint(xl) {
+        height: 1.75rem;
+
+        &.scribble {
+            &-01 {
+                height: 2rem;
+            }
+
+            &-02 {
+                height: 2.25rem;
+            }
+        }
+    }
+}
+
+$h2-font-size-base: 2.75;
+$h2-font-size-med: 3.5;
+$h2-font-size-lg: 4.5;
+$h2-outlined-font-size-calc: 1.015;
+$h2-font-size-scale-calc: calc($h2-font-size-base / $heading-text-gap-base);
+
+h2 {
+    // Ensures the h2's width matches the text content
+    font-size: 2rem; // Adjust font size as needed
+    text-align: center;
+    font-size: $h2-font-size-base * 1rem;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: 0.015rem;
+    margin: 0;
+
+
+    .outlined {
+        font-size: calc($h2-font-size-base * $h2-outlined-font-size-calc);
+    }
+
+    @include breakpoint(med) {
+        font-size: $h2-font-size-med * 1rem;
 
         .outlined {
+            font-size: calc($h2-font-size-med * $h2-outlined-font-size-calc);
+            letter-spacing: 0.1rem;
             -webkit-text-stroke-width: 1.5px;
-            font-size: 4rem;
+        }
+    }
+
+    @include breakpoint(lg) {
+        font-size: $h2-font-size-lg * 1rem;
+
+        .outlined {
+            font-size: calc($h2-font-size-lg * $h2-outlined-font-size-calc);
         }
     }
 }
@@ -163,6 +263,7 @@ h4 {
     letter-spacing: -0.03125rem;
 }
 
+// Lists
 ul {
     padding: 0;
     margin-left: -0.25rem;
@@ -178,166 +279,6 @@ li {
 nav {
     height: 3rem;
 }
-
-
-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-self: center;
-    margin: 0 auto 3rem;
-    text-align: center;
-    width: fit-content;
-    max-width: 95%;
-
-    img {
-        flex: 0 0 auto;
-        opacity: 0.8;
-        z-index: -1000;
-    }
-}
-
-h1,
-h2,
-h3,
-h4 {
-    text-transform: uppercase;
-    max-width: 100%;
-    text-wrap: wrap;
-
-    >span.outlined {
-        font-weight: 800;
-        text-align: center;
-        -webkit-text-stroke-width: 1.25px;
-        -webkit-text-stroke-color: $beige;
-        color: transparent;
-        letter-spacing: 0.08rem;
-    }
-
-    >span.filled {
-        color: $beige;
-        height: fit-content;
-    }
-}
-
-
-
-// Buttons
-button {
-    height: 3.25rem !important;
-    width: fit-content;
-    cursor: pointer;
-    text-wrap: nowrap;
-    border-radius: 3.125rem !important;
-
-    p {
-        color: white;
-        font-weight: 500;
-        margin-bottom: 0 !important;
-        font-size: 1.125rem;
-    }
-}
-
-.primary-button {
-    display: flex;
-    padding: 0 1.5rem;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    border-radius: 0.5rem;
-    border: 2.5px solid #B7D6D9;
-    background: url(https://vrwpaviv.elementor.cloud/wp-content/uploads/2024/12/bg-chalk-teal-1.webp) 50% / cover no-repeat, #336770;
-
-    &:hover {
-        color: white;
-        border: 2.5px solid #00798d;
-        background: linear-gradient(0deg,
-                rgba(0, 240, 255, 0.3) 0%,
-                rgba(0, 240, 255, 0.3) 100%),
-            url(https://vrwpaviv.elementor.cloud/wp-content/uploads/2024/12/primary-button-bg-hover-image-only-min.png) 0% / cover no-repeat;
-    }
-
-    &:active {
-        border: 2.5px solid #00798d;
-        background: linear-gradient(0deg,
-                rgba(0, 165, 176, 0.3) 0%,
-                rgba(0, 165, 176, 0.3) 100%),
-            url(https://vrwpaviv.elementor.cloud/wp-content/uploads/2024/12/primary-button-bg-hover-image-only-min.png) 50% / cover no-repeat;
-    }
-
-    &:visited {
-        background: url(https://vrwpaviv.elementor.cloud/wp-content/uploads/2024/12/primary-button-bg.png) 50% / cover no-repeat;
-        color: white;
-    }
-}
-
-.primary-button.black {
-    background: $off-black !important;
-    width: fit-content;
-    height: 3.5rem;
-    padding: 1rem 1.5rem;
-    border: 0;
-    transition: background 0.3s ease-in-out;
-
-    p,
-    span {
-        color: white !important;
-    }
-
-    span {
-        font-size: 1.25rem;
-    }
-
-    &:hover {
-        background: #4DA1AF !important;
-    }
-}
-
-.primary-button.white {
-    background: transparent;
-    border: transparent;
-    background: #23aab4;
-
-    p {
-        color: white !important;
-    }
-
-    a {
-        cursor: pointer;
-        color: white;
-    }
-
-    a:hover {
-        color: white;
-    }
-}
-
-.secondary-button {
-    display: flex;
-    height: 3.25rem;
-    padding: 1rem 1.5rem;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    background-color: rgba(255, 255, 255, 0.1);
-
-    border-radius: 3.125rem;
-    border: 2px solid white;
-    color: white;
-
-    &:hover {
-        border: 2px solid #00798d;
-        background: #cce2e6;
-        color: #00798d;
-    }
-
-    &:active {
-        border-color: var(--dark-teal);
-        background: var(--teal-background);
-        color: var(--dark-teal);
-    }
-}
-
 
 /*Spacing*/
 .margin-0 {
@@ -395,4 +336,8 @@ button {
 
 .text-nowrap {
     text-wrap: nowrap;
+}
+
+.width-min-content {
+    width: min-content;
 }

@@ -26,21 +26,51 @@
         href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
 </head>
+<!-- <body>
+    <div class="container">
+        <div class="plan-your-visit-form home-page">
+            <iframe src="https://api.leadconnectorhq.com/widget/form/EW953IvRTcpVoE4V5xCx"
+                id="inline-EW953IvRTcpVoE4V5xCx" data-layout="{'id':'INLINE'}"
+                data-trigger-type="alwaysShow" data-trigger-value=""
+                data-activation-type="alwaysActivated" data-activation-value=""
+                data-deactivation-type="neverDeactivate" data-deactivation-value=""
+                data-form-name="PYV Website form"
+                data-layout-iframe-id="inline-EW953IvRTcpVoE4V5xCx"
+                data-form-id="EW953IvRTcpVoE4V5xCx" title="PYV Website form">
+            </iframe>
+            <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+        </div>
+        <div>
+            <p><strong style="font-size: 1.125rem; text-align: var(--text-align);">By completing
+                    this form, you'll:</strong>
+            <ul class="mb-24">
+                <li>Get a personalized welcome guide straight to your inbox.</li>
+                <li>Be greeted by a friendly face to make you feel at home.</li>
+                <li>Save time by pre-registering your little ones for Expressions Kids (if needed).
+                </li>
+                <li>Start a text conversation with our pastor—ask questions or just say hello!</li>
+            </ul>
+            This is completely commitment-free. You can change your mind anytime.</p>
+        </div>
+    </div>
+</body> -->
 
 <body>
-    <section id="banner">
+    <div id="banner">
         <div class="banner-wrapper">
-            <h1>leadership</h1>
+            <h1><span class="outlined">our</span> leadership</h1>
         </div>
-    </section>
-    <section id="lead-pastor-bio">
-        <img class="portrait_spolar-family"
-            src="https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/polaroid_spolars.webp"
-            alt="">
+    </div>
+    <section id="lead-pastor" class="section-wrapper">
+        <div class="image-wrapper">
+            <img class="portrait_spolar-family"
+                src="https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/polaroid_spolars.webp"
+                alt="">
+        </div>
         <div class="text-wrapper">
-            <header>
+            <header class="bio-header">
                 <p>lead pastor</p>
-                <h2>Christopher Spolar</h2>
+                <h3>Christopher Spolar</h3>
             </header>
             <p>Christopher and his wife, Jenna, have always called the San Gabriel Valley home.
                 Growing
@@ -65,56 +95,89 @@
             </p>
         </div>
     </section>
+    <img class="white-chalk-divider"
+        src="https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/white-chalk-divider.webp"
+        alt="">
     <section id="staff" class="section-wrapper">
-        <header>
+        <header class="section-header">
             <h2>Staff</h2>
+            <img class="img-chalk-heading-underline"
+                src="https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/chalk-underline_scribble-01_teal.webp"
+                alt="">
         </header>
-        <div id="staff-01" class="bio-container">
-            <img class="img-portrait-polaroid"
-                src="https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/polaroid_christopher.webp"
-                alt="">
-            <p class="bio-body">SpongeBob SquarePants is a cheerful and optimistic sea sponge who
-                lives in a
-                pineapple under the sea in Bikini Bottom. He works as a fry cook at the Krusty Krab,
-                loves jellyfishing, and values friendship, especially with Patrick Star and Sandy
-                Cheeks. SpongeBob’s boundless enthusiasm and quirky adventures make him a beloved
-                character for all ages.</p>
-        </div>
-        <div id="staff-02" class="bio-container">
-            <img class="img-portrait-polaroid"
-                src="https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/polaroid_christopher.webp"
-                alt="">
-            <p class="bio-body">SpongeBob SquarePants is a cheerful and optimistic sea sponge who
-                lives in a
-                pineapple under the sea in Bikini Bottom. He works as a fry cook at the Krusty Krab,
-                loves jellyfishing, and values friendship, especially with Patrick Star and Sandy
-                Cheeks. SpongeBob’s boundless enthusiasm and quirky adventures make him a beloved
-                character for all ages.</p>
+        <div class="content-wrapper">
+            <div id="staff-01" class="bio">
+                <div class="bio-portrait-wrapper">
+                    <img src="https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/polaroid_christopher.webp"
+                        alt="">
+                </div>
+                <div class="text-wrapper">
+                    <header class="bio-header">
+                        <h3>Spongebob Squarepants</h3>
+                    </header>
+                    <p>SpongeBob SquarePants is a cheerful and optimistic sea sponge
+                        who
+                        lives in a
+                        pineapple under the sea in Bikini Bottom. He works as a fry cook at the
+                        Krusty
+                        Krab,
+                        loves jellyfishing, and values friendship, especially with Patrick Star and
+                        Sandy
+                        Cheeks. SpongeBob’s boundless enthusiasm and quirky adventures make him a
+                        beloved
+                        character for all ages.</p>
+                </div>
+            </div>
+            <div id="staff-02" class="bio">
+                <div class="bio-portrait-wrapper">
+                    <img src="https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/polaroid_christopher.webp"
+                        alt="">
+                </div>
+                <div class="text-wrapper">
+                    <header class="bio-header">
+                        <h3>Patrick Star</h3>
+                    </header>
+                    <p>SpongeBob SquarePants is a cheerful and optimistic sea
+                        sponge
+                        who
+                        lives in a
+                        pineapple under the sea in Bikini Bottom. He works as a fry cook at the
+                        Krusty
+                        Krab,
+                        loves jellyfishing, and values friendship, especially with Patrick Star and
+                        Sandy
+                        Cheeks. SpongeBob’s boundless enthusiasm and quirky adventures make him a
+                        beloved
+                        character for all ages.</p>
+                </div>
+            </div>
         </div>
     </section>
+    <img class="white-chalk-divider"
+        src="https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/white-chalk-divider.webp"
+        alt="">
     <section id="volunteers" class="section-wrapper">
-        <header>
+        <header class="section-header">
             <h2>Volunteers</h2>
+            <div class="headline-decoration scribble-01" aria-hidden="false"></div>
         </header>
-        <div id="volunteer-01" class="bio-container">
-            <img class="img-portrait-polaroid"
-                src="https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/polaroid_christopher.webp"
-                alt="">
-        </div>
-        <div id="volunteer-02" class="bio-container">
-            <img class="img-portrait-polaroid"
-                src="https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/polaroid_christopher.webp"
-                alt="">
-        </div>
-        <div id="volunteer-03" class="bio-container">
-            <img class="img-portrait-polaroid"
-                src="https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/polaroid_christopher.webp"
-                alt="">
-        </div>
-        <div id="volunteer-03" class="bio-container">
-            <img class="img-portrait-polaroid"
-                src="https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/polaroid_christopher.webp"
-                alt="">
+        <div class="content-wrapper">
+            <div id="volunteer-01" class="bio-portrait-wrapper">
+                <img src="https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/polaroid_christopher.webp"
+                    alt="">
+            </div>
+            <div id="volunteer-02" class="bio-portrait-wrapper">
+                <img src="https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/polaroid_christopher.webp"
+                    alt="">
+            </div>
+            <div id="volunteer-03" class="bio-portrait-wrapper">
+                <img src="https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/polaroid_christopher.webp"
+                    alt="">
+            </div>
+            <div id="volunteer-03" class="bio-portrait-wrapper">
+                <img src="https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/polaroid_christopher.webp"
+                    alt="">
+            </div>
         </div>
     </section>
     <script src="leadership.js"></script>
