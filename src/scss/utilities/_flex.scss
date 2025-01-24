@@ -18,22 +18,22 @@
 
 	&-col-reverse {
 		display: flex;
-		flex-direction: column-reverse;
+		flex-direction: column-reverse !important;
 	}
 
 	&-wrap {
 		display: flex;
-		flex-wrap: wrap;
+		flex-wrap: wrap !important;
 	}
 
 	&-wrap-reverse {
 		display: flex;
-		flex-wrap: wrap-reverse;
+		flex-wrap: wrap-reverse !important;
 	}
 
-	&-nowwrap {
+	&-nowrap {
 		display: flex;
-		flex-wrap: nowrap;
+		flex-wrap: nowrap !important;
 	}
 }
 
