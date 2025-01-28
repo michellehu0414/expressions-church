@@ -1,39 +1,39 @@
-@use "../abstracts/variables" as *;
+@use "../abstracts/all-abstracts" as *;
 
 // Buttons
 button {
-    height: 2.5rem !important;
-    width: fit-content;
     cursor: pointer;
-    text-wrap: nowrap;
-    border-radius: 3.125rem !important;
-
-    p {
-        color: white !important;
-        font-weight: 500;
-        margin-bottom: 0 !important;
-        font-size: 1rem !important;
-    }
 }
 
 .button.primary,
 .button.secondary {
     display: flex;
-    padding: 0 1.5rem;
     border-radius: 3.125rem;
     justify-content: center;
     align-items: center;
+    padding: 0 1.5rem;
     gap: 0.5rem;
+    width: fit-content;
+    height: 2.5rem !important;
+    text-wrap: nowrap;
+
+    p {
+        color: white !important;
+        font-weight: 500;
+        margin-bottom: 0 !important;
+    }
+
+    @include breakpoint(med) {
+        height: 3rem !important;
+    }
 }
 
 .button.primary {
-    color: white;
     border: 2px solid #A8D8E0;
     background: url('https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/bg-button-primary-teal.webp') no-repeat center center / cover;
     // background: url('https://vrwpaviv.elementor.cloud/wp-content/uploads/2024/12/primary-button-bg.png') no-repeat center center / cover;
 
     &:hover {
-        color: white;
         border: 2.5px solid #00798d;
         background: linear-gradient(0deg, rgba(153, 231, 236, 0.60) 0%, rgba(153, 231, 236, 0.60) 100%), url('https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/button-teal-chalk-bg.webp') / cover no-repeat center center;
     }
@@ -53,9 +53,6 @@ button {
 
     &.black {
         background: $black !important;
-        width: fit-content;
-        height: 3.5rem;
-        padding: 1rem 1.5rem;
         border: 0;
         transition: background 0.3s ease-in-out;
 
@@ -78,10 +75,6 @@ button {
         border: transparent;
         background: white;
 
-        p {
-            color: white !important;
-        }
-
         a {
             cursor: pointer;
             color: white;
@@ -96,7 +89,6 @@ button {
 
 .button.secondary {
     border: 2px solid white;
-    color: white;
     background: transparent;
 
     &:hover {
