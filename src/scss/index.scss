@@ -4,7 +4,7 @@
 @use "components/buttons" as *;
 @use "components/all-components" as *;
 
-$card-max-width: 18rem;
+$card-max-width: 27.5rem;
 $button-margin-top-mobile: 2rem;
 $button-margin-top-med: 3.5rem;
 $bg-paper: url('https://vrwpaviv.elementor.cloud/wp-content/uploads/2024/12/card-paper-bg.webp') no-repeat center center;
@@ -230,7 +230,7 @@ $bg-paper: url('https://vrwpaviv.elementor.cloud/wp-content/uploads/2024/12/card
   }
 }
 
-$get-involved-card-width: 20rem;
+$get-involved-card-width: 27.5rem;
 
 // Get Involved
 #get-involved {
@@ -262,47 +262,13 @@ $get-involved-card-width: 20rem;
   }
 
   .card {
-    cursor: pointer;
     width: $get-involved-card-width;
-    background: url('https://vrwpaviv.elementor.cloud/wp-content/uploads/2024/12/card-paper-bg.webp') no-repeat center center,
-      white;
     background-size: 100% 100%;
     background-position: center;
     height: 100%;
-    width: 80vw;
+    width: 90vw;
     max-width: $card-max-width;
     transition: transform 0.3s ease-in-out;
-
-    .headline {
-      color: $off-black;
-    }
-
-    @include breakpoint(med) {
-      width: 100%;
-
-      .headline,
-      p {
-        text-align: center;
-      }
-
-      .copy-container {
-        align-items: center;
-      }
-
-      .copy-container,
-      .icon-container img {
-        transition: transform 0.3s ease-in-out;
-      }
-
-      &:hover {
-        transform: scale(1.015);
-
-        button {
-          background: #23aab4 !important;
-        }
-
-      }
-    }
   }
 }
 

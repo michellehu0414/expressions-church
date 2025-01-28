@@ -1,0 +1,64 @@
+@use "../../scss/abstracts/all-abstracts" as *;
+
+.card {
+    overflow: hidden;
+    color: #fff;
+
+    cursor: pointer;
+
+    &.compact {
+        width: 200px;
+
+        .card-content {
+            padding: 8px;
+
+            h2 {
+                font-size: 1rem;
+            }
+        }
+    }
+
+    .card-image img {
+        width: 100%;
+        object-fit: cover;
+        height: 16.8125rem;
+        align-self: stretch;
+        border-radius: 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .card-content {
+        text-align: left;
+
+        h3 {
+            color: #FFF;
+            font-family: Poppins;
+            font-size: 1.75rem;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 135%;
+            /* 2.78438rem */
+            text-transform: none !important;
+            margin-bottom: 0.5rem;
+
+            @include breakpoint(med) {
+                letter-spacing: -0.03094rem;
+                font-size: 2.0625rem;
+            }
+        }
+
+        p {
+            color: #EEE;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 145%;
+            margin-bottom: 1.5rem;
+            /* 1.63125rem */
+        }
+
+        .card-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+    }
+}
