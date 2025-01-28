@@ -34,8 +34,8 @@ button {
     // background: url('https://vrwpaviv.elementor.cloud/wp-content/uploads/2024/12/primary-button-bg.png') no-repeat center center / cover;
 
     &:hover {
-        border: 2.5px solid #00798d;
-        background: linear-gradient(0deg, rgba(153, 231, 236, 0.60) 0%, rgba(153, 231, 236, 0.60) 100%), url('https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/button-teal-chalk-bg.webp') / cover no-repeat center center;
+        border-color: white;
+        background: url("https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/button-white-chalk-bg.webp") center / 110% auto no-repeat;
     }
 
     &:active {
