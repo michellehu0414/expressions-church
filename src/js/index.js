@@ -1,5 +1,15 @@
 import '../scss/index.scss';
 
+import ValuesSection from '../sections/ValuesSection/ValuesSection';
+
+const valuesSectionPlaceholder = document.querySelector('#values-section');
+
+// Render the ValuesSection component
+if (valuesSectionPlaceholder) {
+  valuesSectionPlaceholder.appendChild(ValuesSection());
+}
+
+
 import Card from '../components/Card/Card';
 const fireReliefContainer = document.querySelector('#fire-relief');
 if (fireReliefContainer) {
