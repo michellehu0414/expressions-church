@@ -1,4 +1,4 @@
-import '../scss/pages/home.scss';
+c
 
 import ValuesSection from '../scss/components/ValuesSection/ValuesSection';
 

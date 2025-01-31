@@ -4,27 +4,23 @@ import '../scss/main.scss';
 // For example, "home" will load the "home.js" file from main/assets/js.
 document.addEventListener("DOMContentLoaded", function () {
     // Extract the page slug from the URL
-    let pageSlug = window.location.pathname.split("/").filter(Boolean).pop() || "home"; // Default to "home.js" if no slug
+    let pageSlug = window.location.pathname.split("/").filter(Boolean).pop() || "home"; // Default to "home"
 
-    // Construct the script URL dynamically
+    // Construct the JS file URL dynamically
     const scriptUrl = `https://raw.githubusercontent.com/michellehu0414/expressions-church/main/assets/js/${pageSlug}.js?v=${Date.now()}`;
 
-    // Check if the script is already loaded to prevent duplication
-    if (document.querySelector(`script[src="${scriptUrl}"]`)) return;
-
-    // Create the script element
-    const script = document.createElement("script");
-    script.src = scriptUrl;
-    script.async = true;
-
-    // Handle script loading errors gracefully
-    script.onerror = function () {
-        console.error(`Failed to load script: ${scriptUrl}`);
-    };
-
-    // Append the script to the document body
-    document.body.appendChild(script);
+    // Check if the script is already loaded
+    if (!document.querySelector(`script[src="${scriptUrl}"]`)) {
+        const script = document.createElement("script");
+        script.src = scriptUrl;
+        script.async = true;
+        script.onerror = function () {
+            console.error(`Failed to load script: ${scriptUrl}`);
+        };
+        document.body.appendChild(script);
+    }
 });
+
 
 // Function to fetch an HTML file from the GitHub repository in ./html based on the provided targetId. It then injects the fetched HTML into the element.
 // For example, <div id="home"></div> will fetch "home.html" from the GitHub repository and inject it into the element.
