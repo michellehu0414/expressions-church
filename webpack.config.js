@@ -1,119 +1,70 @@
-const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const glob = require('glob');
-const { PurgeCSSPlugin } = require('purgecss-webpack-plugin');
+const path = require("path");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
-const PATHS = {
-    src: path.join(__dirname, 'src'),
-};
+const glob = require("glob-all");
 
 module.exports = {
-    // Entry points for each page
-    entry: {
-        index: './src/js/index.js',
-        getInvolved: './src/js/get-involved.js',
-        kids: './src/js/kids.js',
-        visit: './src/js/visit.js',
-        give: './src/js/give.js',
-        about: './src/js/about.js',
-        leadership: './src/js/leadership.js',
-    },
+    mode: "development", // ✅ Use "development" for local preview
+    entry: Object.fromEntries(
+        glob.sync("./src/js/*.js").map(file => [
+            path.basename(file, ".js"),
+            path.resolve(__dirname, file)
+        ])
+    ),
     output: {
-        filename: 'js/[name].js', // Output JavaScript files
-        path: path.resolve(__dirname, 'dist'),
-        clean: true, // Clean the output directory before each build
-    },
-    resolve: {
-        extensions: ['.js', '.scss'], // Resolve these extensions automatically
+        path: path.resolve(__dirname, "assets"), // ✅ JS & CSS in assets/
+        filename: "js/[name].js",
+        clean: true,
     },
     module: {
         rules: [
-            // JavaScript processing
             {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                use: 'babel-loader',
-            },
-            // SCSS and CSS processing
-            {
-                test: /\.(scss|css)$/,
+                test: /\.scss$/,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            importLoaders: 1,
-                        },
-                    },
-                    {
-                        loader: 'postcss-loader',
-                        options: {
-                            postcssOptions: {
-                                plugins: [
-                                    require('autoprefixer')(),
-                                ],
-                            },
-                        },
-                    },
-                    {
-                        loader: 'sass-loader',
-                        options: {
-                            implementation: require('sass'),
-                            sassOptions: {
-                                outputStyle: 'expanded', // Expanded for easier debugging
-                            },
-                        },
-                    },
+                    "css-loader",
+                    "postcss-loader",
+                    "sass-loader",
                 ],
             },
-            // Image and video assets
-            {
-                test: /\.(png|jpg|jpeg|gif|svg|mp4)$/,
-                type: 'asset/resource',
-                generator: {
-                    filename: 'assets/[ext]/[name][ext]', // Separate images and videos
-                },
-            },
-        ],
-    },
-    optimization: {
-        minimize: true,
-        minimizer: [
-            '...', // Default minimizer (Terser for JS)
-            new CssMinimizerPlugin(), // Minify CSS files
         ],
     },
     plugins: [
-        // Extract CSS
-        new MiniCssExtractPlugin({
-            filename: 'css/[name].css',
-        }),
-        // Purge unused CSS
-        new PurgeCSSPlugin({
-            paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
-            safelist: {
-                standard: ['keep-this-class', /^dynamic-/], // Safelist any dynamic classes
-            },
-        }),
-        // Copy static assets
         new CopyWebpackPlugin({
             patterns: [
-                { from: 'src/assets/images', to: 'assets/images' },
+                { from: "src/local-preview", to: "local-preview" }, // ✅ Copy src/local-preview → local-preview
+                { from: "src/html", to: "html" }, // ✅ Copy src/html → html
             ],
         }),
-        // Generate HTML for each page
-        ...[
-            { template: './src/index.html', chunks: ['index'], filename: 'index.html' },
-            { template: './src/get-involved.html', chunks: ['getInvolved'], filename: 'get-involved.html' },
-            { template: './src/kids.html', chunks: ['kids'], filename: 'kids.html' },
-            { template: './src/visit.html', chunks: ['visit'], filename: 'visit.html' },
-            { template: './src/give.html', chunks: ['give'], filename: 'give.html' },
-            { template: './src/about.html', chunks: ['about'], filename: 'about.html' },
-            { template: './src/leadership.html', chunks: ['leadership'], filename: 'leadership.html' },
-        ].map(page => new HtmlWebpackPlugin(page)),
+        new MiniCssExtractPlugin({ filename: "css/[name].css" }),
+
+        // ✅ Generate HTML files in both `local-preview/` and `html/`
+        ...glob.sync("./src/*.html").flatMap(file => [
+            new HtmlWebpackPlugin({
+                filename: `local-preview/${path.basename(file)}`,
+                template: file,
+                inject: "body",
+            }),
+            new HtmlWebpackPlugin({
+                filename: `html/${path.basename(file)}`,
+                template: file,
+                inject: "body",
+            }),
+        ]),
     ],
-    devtool: 'source-map', // Include source maps for easier debugging in development
+    devServer: {
+        static: [
+            path.resolve(__dirname, "assets"), // Serve assets/
+            path.resolve(__dirname, "local-preview"), // Serve local-preview/
+            path.resolve(__dirname, "html"), // Serve html/
+        ],
+        hot: true,
+        open: true,
+        watchFiles: ["src/**/*", "src/local-preview/**/*", "src/html/**/*"], // ✅ Watch for changes
+        port: 5888,
+        host: "0.0.0.0",
+        allowedHosts: "all",
+    },
 };

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>visit Preview</title>
+    <link rel="stylesheet" href="../assets/css/visit.css">
+</head>
+
+<body>
+    <header>
+        <h1>visit Preview</h1>
+    </header>
+    <!-- 🔥 Dynamic Content Section -->
+    <div id="content"></div>
+    <script>
+        fetch("../html/")
+            .then(response => response.text())
+            .then(html => {
+                // Use regex to extract all visit-*.html files
+                const matches = [...html.matchAll(/visit-[\w-]+\.html/g)];
+                const blocks = matches.map(m => m[0]);
+
+                // Fetch & insert each block dynamically
+                blocks.forEach(block => {
+                    fetch(`../html/${block}`)
+                        .then(response => response.text())
+                        .then(data => {
+                            const section = document.createElement("div");
+                            section.innerHTML = data;
+                            document.getElementById("content").appendChild(section);
+                        });
+                });
+            });
+    </script>
+    <script src="../assets/js/visit.js"></script>
+</body>
+
+</html>

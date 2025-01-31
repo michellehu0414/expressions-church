@@ -4,9 +4,6 @@ node_modules/
 # Ignore environment files
 .env
 
-# Ignore images directory
-images/
-
 # Ignore specific file
 test.css
 
@@ -18,3 +15,5 @@ dist/
 
 # Ignore logs folder
 logs/
+
+images/unprocessed

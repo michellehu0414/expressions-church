@@ -1,1 +1,1 @@
-import '../scss/visit.scss';
+import '../scss/pages/visit.scss';

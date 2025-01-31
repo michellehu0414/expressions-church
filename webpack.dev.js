@@ -4,20 +4,15 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-    entry: {
-        index: './src/js/index.js',
-        getInvolved: './src/js/get-involved.js',
-        kids: './src/js/kids.js',
-        visit: './src/js/visit.js',
-        give: './src/js/give.js',
-        about: './src/js/about.js',
-        leadership: './src/js/leadership.js',
-    },
+    entry: Object.fromEntries(
+        glob.sync("./src/js/*.js").map(file => [
+            path.basename(file, ".js"),
+            file
+        ])
+    ),
     output: {
-        filename: 'js/[name].js',
-        path: path.resolve(__dirname, 'dist'),
-        clean: true,
-
+        path: path.resolve(__dirname, "assets/js"),
+        filename: "[name].js",
     },
     mode: 'development',
     devtool: 'cheap-module-source-map', // Fast source maps for debugging

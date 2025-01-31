@@ -1,5 +1,6 @@
 @use "../abstracts/breakpoints-mixins" as *;
 @use "../abstracts/variables-expressions" as *;
+@use "sass:map";
 
 $wp-content-uploads-url: 'https://vrwpaviv.elementor.cloud/wp-content/uploads/';
 
@@ -167,17 +168,17 @@ $heading-decorations: (
 .decoration {
     @each $name, $properties in $heading-decorations {
         &.#{$name} {
-            background-image: url(map-get($properties, url));
+            background-image: url(map.get($properties, url));
             background-repeat: no-repeat;
             background-position: center;
-            height: map-get($properties, base);
+            height: map.get($properties, base);
 
             @include breakpoint(med) {
-                height: map-get($properties, med);
+                height: map.get($properties, med);
             }
 
             @include breakpoint(xl) {
-                height: map-get($properties, xl);
+                height: map.get($properties, xl);
             }
         }
     }

@@ -1,1 +1,1 @@
-import '../scss/get-involved.scss';
+import '../scss/pages/get-involved.scss';
