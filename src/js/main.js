@@ -1,5 +1,7 @@
 import '../scss/main.scss';
 
+// Function to dynamically load its respective JavaScript file compiled by Webpack from the GitHub repository based on the page slug.
+// For example, "home" will load the "home.js" file from main/assets/js.
 document.addEventListener("DOMContentLoaded", function () {
     // Extract the page slug from the URL
     let pageSlug = window.location.pathname.split("/").filter(Boolean).pop() || "home"; // Default to "home.js" if no slug
@@ -24,7 +26,11 @@ document.addEventListener("DOMContentLoaded", function () {
     document.body.appendChild(script);
 });
 
-// Function to inject HTML from GitHub based on matching ID
+// Function to fetch an HTML file from the GitHub repository in ./html based on the provided targetId. It then injects the fetched HTML into the element.
+// For example, <div id="home"></div> will fetch "home.html" from the GitHub repository and inject it into the element.
+//  This allows automating the process of updating HTML content locally and not in the Elementor editor so that it can be version controlled and maintained more easily.
+// If the element is not found, it logs a warning. If the fetch fails, it logs an error.
+
 const injectHTMLById = async (targetId) => {
     const fileName = `${targetId}.html`; // Construct the file name based on the ID
     const url = `https://raw.githubusercontent.com/michellehu0414/expressions-church/main/html/${fileName}`; // Construct the GitHub URL
