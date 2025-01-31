@@ -1,6 +1,6 @@
 import '../scss/index.scss';
 
-import ValuesSection from '../sections/ValuesSection/ValuesSection';
+import ValuesSection from '../scss/components/ValuesSection/ValuesSection';
 
 const valuesSectionPlaceholder = document.querySelector('#values-section');
 
