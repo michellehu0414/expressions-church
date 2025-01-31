@@ -1,20 +1,18 @@
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const glob = require("glob");
-const { all } = require("axios");
+const glob = require("glob-all");
 
 module.exports = {
-    mode: "development",
+    mode: "production",  // ✅ Ensure optimized builds
     entry: Object.fromEntries(
         glob.sync("./src/js/*.js").map(file => [
             path.basename(file, ".js"),
-            path.resolve(__dirname, file)  // ✅ Fix path resolution
+            path.resolve(__dirname, file)
         ])
     ),
-
     output: {
-        path: path.resolve(__dirname, "assets/js"),
-        filename: "[name].js",
+        path: path.resolve(__dirname, "assets"),
+        filename: "js/[name].js",
     },
     module: {
         rules: [
@@ -23,13 +21,15 @@ module.exports = {
                 use: [
                     MiniCssExtractPlugin.loader,
                     "css-loader",
+                    "postcss-loader", // ✅ Add PostCSS with PurgeCSS
                     "sass-loader",
                 ],
             },
         ],
     },
     plugins: [
-        new MiniCssExtractPlugin({ filename: "../css/[name].css" }),
+        new MiniCssExtractPlugin({ filename: "css/[name].css" }),
+        
     ],
     devServer: {
         static: [

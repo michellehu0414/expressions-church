@@ -1,38 +1,31 @@
-const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const { PurgeCSSPlugin } = require('purgecss-webpack-plugin');
-const glob = require('glob');
-
-const PATHS = {
-    src: path.join(__dirname, 'src'),
-};
+const path = require("path");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const glob = require("glob-all");
+const PurgeCSSPlugin = require("purgecss-webpack-plugin");
+const { all } = require("axios");
 
 module.exports = {
-    entry: {
-        index: './src/js/index.js',
-        getInvolved: './src/js/get-involved.js',
-        kids: './src/js/kids.js',
-        visit: './src/js/visit.js',
-        give: './src/js/give.js',
-        about: './src/js/about.js',
-        leadership: './src/js/leadership.js',
-    },
+    mode: "production",
+    entry: Object.fromEntries(
+        glob.sync("./src/js/*.js").map(file => [
+            path.basename(file, ".js"),
+            path.resolve(__dirname, file)  // ✅ Fix path resolution
+        ])
+    ),
+
     output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: 'js/[name].[contenthash].js', // Example filename format
-        clean: true, // Cleans old files in the output directory
+        path: path.resolve(__dirname, "assets/js"),
+        filename: "[name].js",
     },
-    mode: 'production',
-    devtool: false, // Disable source maps unless needed
     module: {
         rules: [
             {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                use: 'babel-loader',
+                test: /\.scss$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    "css-loader",
+                    "sass-loader",
+                ],
             },
             {
                 test: /\.(scss|css)$/,
@@ -56,44 +49,25 @@ module.exports = {
                     },
                 ],
             },
-            {
-                test: /\.(png|jpg|jpeg|gif|svg|mp4)$/,
-                type: 'asset/resource',
-                generator: {
-                    filename: 'assets/[ext]/[name][contenthash][ext]',
-                },
-            },
-        ],
-    },
-    optimization: {
-        minimize: true,
-        minimizer: [
-            '...', // Default JS minimizer
-            new CssMinimizerPlugin(), // Minify CSS
         ],
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: 'css/[name].[contenthash].css',
+            filename: "../css/[name].css"
         }),
+        new PurgecssPlugin({
+            paths: glob.sync(path.join(__dirname, 'src/**/*.html'), { nodir: true }),
+            safelist: ['safelist-class'],
+        }),
+        new MiniCssExtractPlugin({ filename: "css/[name].css" }),
         new PurgeCSSPlugin({
-            paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
-            safelist: { standard: ['keep-this-class', /^dynamic-/] },
+            paths: glob.sync([
+                path.join(__dirname, "html/**/*.html"),  // ✅ Scan all HTML files
+                path.join(__dirname, "src/js/**/*.js"),  // ✅ Scan JS files (if needed)
+            ]),
+            safelist: {
+                standard: ["active", "open", "visible"],  // ✅ Keep dynamic classes (modify as needed)
+            },
         }),
-        new CopyWebpackPlugin({
-            patterns: [
-                { from: 'src/assets/images', to: 'assets/images' },
-                // { from: 'src/assets/videos', to: 'assets/videos' },
-            ],
-        }),
-        ...[
-            { template: './src/index.html', chunks: ['index'], filename: 'index.html' },
-            { template: './src/get-involved.html', chunks: ['getInvolved'], filename: 'get-involved.html' },
-            { template: './src/kids.html', chunks: ['kids'], filename: 'kids.html' },
-            { template: './src/visit.html', chunks: ['visit'], filename: 'visit.html' },
-            { template: './src/give.html', chunks: ['give'], filename: 'give.html' },
-            { template: './src/about.html', chunks: ['about'], filename: 'about.html' },
-            { template: './src/leadership.html', chunks: ['leadership'], filename: 'leadership.html' },
-        ].map(page => new HtmlWebpackPlugin(page)),
     ],
 };
