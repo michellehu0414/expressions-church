@@ -5,6 +5,19 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const glob = require('glob');
 const { PurgeCSSPlugin } = require('purgecss-webpack-plugin');
+const fs = require("fs");
+
+const pagesDir = "./src/pages";
+const pages = fs.readdirSync(pagesDir);
+
+const pageFiles = pages.flatMap(page => {
+    const blocks = fs.readdirSync(`${pagesDir}/${page}`).filter(file => file.endsWith(".html"));
+    return blocks.map(block => ({
+        filename: `pages/${page}/${block}`,
+        template: `${pagesDir}/${page}/${block}`
+    }));
+});
+
 
 const PATHS = {
     src: path.join(__dirname, 'src'),
@@ -32,6 +45,16 @@ module.exports = {
     module: {
         rules: [
             // JavaScript processing
+            ...pageFiles.map(({ filename, template }) => new HtmlWebpackPlugin({
+                filename,
+                template,
+                inject: false
+            })),
+            new CopyWebpackPlugin({
+                patterns: [
+                    { from: "src/pages", to: "dist/pages" }  // 🔹 Auto-copy HTML files after build
+                ]
+            }),
             {
                 test: /\.js$/,
                 exclude: /node_modules/,

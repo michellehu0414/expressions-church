@@ -1,18 +1,24 @@
 const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const { PurgeCSSPlugin } = require('purgecss-webpack-plugin');
-const glob = require('glob');
+const fs = require("fs");
 
-const PATHS = {
-    src: path.join(__dirname, 'src'),
-};
+const pagesDir = "./src/pages";
+const pages = fs.readdirSync(pagesDir);
+
+// 🔹 Dynamically generate HTML pages
+const pageFiles = pages.flatMap(page => {
+    const blocks = fs.readdirSync(`${pagesDir}/${page}`).filter(file => file.endsWith(".html"));
+    return blocks.map(block => ({
+        filename: `pages/${page}/${block}`,
+        template: `${pagesDir}/${page}/${block}`
+    }));
+});
 
 module.exports = {
+    target: 'web', // Explicitly target browsers
     entry: {
-        index: './src/js/index.js',
+        index: './src/js/home.js',
         getInvolved: './src/js/get-involved.js',
         kids: './src/js/kids.js',
         visit: './src/js/visit.js',
@@ -21,37 +27,42 @@ module.exports = {
         leadership: './src/js/leadership.js',
     },
     output: {
+        filename: 'js/[name].js',
         path: path.resolve(__dirname, 'dist'),
-        filename: 'js/[name].[contenthash].js', // Example filename format
-        clean: true, // Cleans old files in the output directory
+        clean: true,
     },
-    mode: 'production',
-    devtool: false, // Disable source maps unless needed
+    mode: 'production', // 🚀 Set to production for optimized builds
+    devtool: false, // Disable source maps for smaller bundle
+    resolve: {
+        extensions: ['.js', '.scss'],
+        alias: {
+            '@scss': path.resolve(__dirname, 'src/scss'),
+            '@js': path.resolve(__dirname, 'src/js'),
+            '@assets': path.resolve(__dirname, 'src/assets'),
+        },
+    },
     module: {
         rules: [
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                use: 'babel-loader',
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        cacheDirectory: true, // Speeds up rebuilds
+                    },
+                },
             },
             {
                 test: /\.(scss|css)$/,
                 use: [
-                    MiniCssExtractPlugin.loader,
+                    'style-loader', // Injects styles in dev, better for performance
                     'css-loader',
-                    {
-                        loader: 'postcss-loader',
-                        options: {
-                            postcssOptions: {
-                                plugins: [require('autoprefixer')()],
-                            },
-                        },
-                    },
                     {
                         loader: 'sass-loader',
                         options: {
                             implementation: require('sass'),
-                            sassOptions: { outputStyle: 'compressed' },
+                            sassOptions: { outputStyle: 'compressed' }, // 🚀 Compressed for production
                         },
                     },
                 ],
@@ -60,40 +71,36 @@ module.exports = {
                 test: /\.(png|jpg|jpeg|gif|svg|mp4)$/,
                 type: 'asset/resource',
                 generator: {
-                    filename: 'assets/[ext]/[name][contenthash][ext]',
+                    filename: 'assets/[ext]/[name][ext]',
                 },
             },
         ],
     },
-    optimization: {
-        minimize: true,
-        minimizer: [
-            '...', // Default JS minimizer
-            new CssMinimizerPlugin(), // Minify CSS
-        ],
-    },
     plugins: [
-        new MiniCssExtractPlugin({
-            filename: 'css/[name].[contenthash].css',
-        }),
-        new PurgeCSSPlugin({
-            paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
-            safelist: { standard: ['keep-this-class', /^dynamic-/] },
-        }),
+        // 🔹 Copy all pages dynamically
+        ...pageFiles.map(({ filename, template }) => new HtmlWebpackPlugin({
+            filename,
+            template,
+            inject: false
+        })),
+
+        // 🔹 Copy images & assets
         new CopyWebpackPlugin({
             patterns: [
                 { from: 'src/assets/images', to: 'assets/images' },
-                // { from: 'src/assets/videos', to: 'assets/videos' },
+                { from: "src/pages", to: "dist/pages" } // Copy all HTML blocks to dist
             ],
         }),
+
+        // 🔹 Define static HTML pages (merged to avoid duplication)
         ...[
-            { template: './src/index.html', chunks: ['index'], filename: 'index.html' },
-            { template: './src/get-involved.html', chunks: ['getInvolved'], filename: 'get-involved.html' },
-            { template: './src/kids.html', chunks: ['kids'], filename: 'kids.html' },
-            { template: './src/visit.html', chunks: ['visit'], filename: 'visit.html' },
-            { template: './src/give.html', chunks: ['give'], filename: 'give.html' },
-            { template: './src/about.html', chunks: ['about'], filename: 'about.html' },
-            { template: './src/leadership.html', chunks: ['leadership'], filename: 'leadership.html' },
+            { template: './src/pages/home/home.html', chunks: ['home'], filename: 'home.html' },
+            { template: './src/pages/get-involved/get-involved.html', chunks: ['getInvolved'], filename: 'get-involved.html' },
+            { template: './src/pages/kids/kids.html', chunks: ['kids'], filename: 'kids.html' },
+            { template: './src/pages/plan-your-visit/plan-your-visit.html', chunks: ['planYourVisit'], filename: 'plan-your-visit.html' },
+            { template: './src/pages/give/give.html', chunks: ['give'], filename: 'give.html' },
+            { template: './src/pages/about/about.html', chunks: ['about'], filename: 'about.html' },
+            { template: './src/pages/leadership/leadership.html', chunks: ['leadership'], filename: 'leadership.html' },
         ].map(page => new HtmlWebpackPlugin(page)),
     ],
 };
