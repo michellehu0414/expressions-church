@@ -1,1 +1,1 @@
-import '../scss/kids.scss';
+import '../scss/pages/kids.scss';

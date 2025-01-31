@@ -1,1 +1,1 @@
-import '../scss/leadership.scss';
+import '../scss/pages/leadership.scss';

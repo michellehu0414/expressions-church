@@ -1,0 +1,60 @@
+import '../scss/main.scss';
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Extract the page slug from the URL
+    let pageSlug = window.location.pathname.split("/").filter(Boolean).pop() || "home"; // Default to "home.js" if no slug
+
+    // Construct the script URL dynamically
+    const scriptUrl = `https://raw.githubusercontent.com/michellehu0414/expressions-church/main/assets/js/${pageSlug}.js?v=${Date.now()}`;
+
+    // Check if the script is already loaded to prevent duplication
+    if (document.querySelector(`script[src="${scriptUrl}"]`)) return;
+
+    // Create the script element
+    const script = document.createElement("script");
+    script.src = scriptUrl;
+    script.async = true;
+
+    // Handle script loading errors gracefully
+    script.onerror = function () {
+        console.error(`Failed to load script: ${scriptUrl}`);
+    };
+
+    // Append the script to the document body
+    document.body.appendChild(script);
+});
+
+// Function to inject HTML from GitHub based on matching ID
+const injectHTMLById = async (targetId) => {
+    const fileName = `${targetId}.html`; // Construct the file name based on the ID
+    const url = `https://raw.githubusercontent.com/michellehu0414/expressions-church/main/html/${fileName}`; // Construct the GitHub URL
+
+    try {
+        const response = await fetch(url); // Fetch the HTML file
+        if (response.ok) {
+            const html = await response.text(); // Get the HTML content
+            const targetElement = document.getElementById(targetId); // Find the target element by ID
+
+            if (targetElement) {
+                targetElement.innerHTML = html; // Inject HTML into the target element
+            } else {
+                console.warn(`Element with ID '${targetId}' not found.`);
+            }
+        } else {
+            console.error(`Failed to fetch HTML for ${fileName}: ${response.status}`);
+        }
+    } catch (error) {
+        console.error('Error fetching HTML:', error);
+    }
+};
+
+// Get all elements with an ID, and inject HTML for each one
+const injectAllHTML = () => {
+    const elements = document.querySelectorAll('[id]'); // Find all elements with an ID
+    elements.forEach((element) => {
+        injectHTMLById(element.id); // Call the inject function for each element's ID
+    });
+};
+
+// Call the injectAllHTML function when the page loads
+document.addEventListener('DOMContentLoaded', injectAllHTML);

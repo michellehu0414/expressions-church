@@ -1,1 +1,1 @@
-import '../scss/give.scss';
+import '../scss/pages/give.scss';
