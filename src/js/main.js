@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 const injectHTMLById = async (targetId) => {
     const fileName = `${targetId}.html`; // Construct the file name based on the ID
-    const url = `https://raw.githubusercontent.com/michellehu0414/expressions-church/main/html/${fileName}`; // Construct the GitHub URL
+    const url = `https://raw.githubusercontent.com/michellehu0414/expressions-church/main/assets/html/${fileName}`; // Construct the GitHub URL
 
     try {
         const response = await fetch(url); // Fetch the HTML file
