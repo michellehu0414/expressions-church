@@ -1,5 +1,5 @@
 // Tabs.js
-import './Tabs.scss';
+import './tabs.scss';
 
 export default class Tabs {
   constructor(container) {

@@ -1,20 +1,20 @@
-import './Card.scss';
+import './card.scss';
 
 export default class Card {
-    constructor(container, options = {}) {
-        // Set default values for options
-        this.container = container;
-        this.title = options.title || 'Default Title';
-        this.description = options.description || 'Default Description';
-        this.imgSrc = options.imgSrc || '';
-        this.button1 = options.button1 || { text: 'Button 1', action: null };
-        this.button2 = options.button2 || { text: 'Button 2', action: null };
-        this.extraClasses = options.extraClasses || ''; // For theming or layout variations
+  constructor(container, options = {}) {
+    // Set default values for options
+    this.container = container;
+    this.title = options.title || 'Default Title';
+    this.description = options.description || 'Default Description';
+    this.imgSrc = options.imgSrc || '';
+    this.button1 = options.button1 || { text: 'Button 1', action: null };
+    this.button2 = options.button2 || { text: 'Button 2', action: null };
+    this.extraClasses = options.extraClasses || ''; // For theming or layout variations
 
-        this.render();
-    }
-    render() {
-        this.container.innerHTML = `
+    this.render();
+  }
+  render() {
+    this.container.innerHTML = `
           <div class="card ${this.extraClasses}">
             <div class="card-image">
               <img src="${this.imgSrc}" alt="${this.title}" />
@@ -30,17 +30,17 @@ export default class Card {
           </div>
         `;
 
-        // Attach event listeners only if buttons are rendered
-        const primaryButton = this.container.querySelector('.button.primary');
-        const secondaryButton = this.container.querySelector('.button.secondary');
+    // Attach event listeners only if buttons are rendered
+    const primaryButton = this.container.querySelector('.button.primary');
+    const secondaryButton = this.container.querySelector('.button.secondary');
 
-        if (primaryButton && this.button1.action) {
-            primaryButton.addEventListener('click', this.button1.action);
-        }
-
-        if (secondaryButton && this.button2.action) {
-            secondaryButton.addEventListener('click', this.button2.action);
-        }
+    if (primaryButton && this.button1.action) {
+      primaryButton.addEventListener('click', this.button1.action);
     }
+
+    if (secondaryButton && this.button2.action) {
+      secondaryButton.addEventListener('click', this.button2.action);
+    }
+  }
 
 }

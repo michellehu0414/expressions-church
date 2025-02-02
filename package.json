@@ -1,12 +1,17 @@
 {
-	"precommit": "./add-imports.sh",
+	"name": "expressions-church",
+	"version": "1.0.0",
+	"homepage": "https://michellehu0414.github.io/expressions-church",
 	"scripts": {
-		"start": "webpack serve --config webpack.config.js --mode development --open",
-		"dev": "webpack serve --config webpack.config.js --mode development --open",
-		"build": "webpack --config webpack.config.js --mode production",
-		"clean": "rimraf node_modules/.cache dist",
+		"start": "webpack serve --config webpack.dev.js --mode development --open",
+		"dev": "webpack serve --config webpack.dev.js",
+		"build": "webpack --config webpack.prod.js",
+		"clean": "rimraf node_modules/.cache assets",
+		"clean-install": "rimraf node_modules package-lock.json && npm install",
+		"lint": "eslint .",
 		"prepare": "husky install",
-		"test": "npm run build"
+		"test": "npm run build",
+		"analyze": "webpack --config webpack.prod.js --mode production --env analyze"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.25.8",
@@ -31,10 +36,10 @@
 		"postcss-preset-env": "^10.0.5",
 		"purgecss": "^7.0.2",
 		"purgecss-webpack-plugin": "^7.0.2",
+		"raw-loader": "^4.0.2",
 		"rimraf": "^6.0.1",
 		"sass": "^1.83.4",
 		"sass-loader": "^16.0.4",
-		"sassdoc": "^2.7.4",
 		"style-loader": "^4.0.0",
 		"terser-webpack-plugin": "^5.3.10",
 		"webpack": "^5.97.1",
@@ -45,7 +50,6 @@
 		"webpack-plugin": "^1.0.5"
 	},
 	"dependencies": {
-		"animate.css": "^4.1.1",
 		"axios": "^1.7.9",
 		"dotenv": "^16.4.7",
 		"form-data": "^4.0.1",
@@ -54,6 +58,5 @@
 		"sharp": "^0.33.5",
 		"swiper": "^11.1.4",
 		"uuid": "^10.0.0"
-	},
-	"homepage": "https://michellehu0414.github.io/expressions-church"
+	}
 }

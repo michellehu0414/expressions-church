@@ -1,0 +1,15 @@
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>home Preview</title></head><body><header><h1>home Preview</h1></header><div id="values-section"></div><script>// Fetch the HTML from the file
+        fetch("../html/values-section.html")
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok: " + response.statusText);
+                }
+                return response.text();
+            })
+            .then(html => {
+                // Insert the fetched HTML into the element with ID "values-section"
+                document.getElementById("values-section").innerHTML = html;
+            })
+            .catch(error => {
+                console.error("There was a problem fetching the HTML:", error);
+            });</script><script src="../js/home.js"></script><script src="../js/main.js"></script><script defer="defer" src="../js/global.js"></script><script defer="defer" src="../js/about.js"></script><script defer="defer" src="../js/community.js"></script><script defer="defer" src="../js/events.js"></script><script defer="defer" src="../js/fire-relief.js"></script><script defer="defer" src="../js/get-involved.js"></script><script defer="defer" src="../js/give.js"></script><script defer="defer" src="../js/home.js"></script><script defer="defer" src="../js/kids.js"></script><script defer="defer" src="../js/leadership.js"></script><script defer="defer" src="../js/serve-sgv.js"></script><script defer="defer" src="../js/teachings.js"></script><script defer="defer" src="../js/visit.js"></script></body></html>

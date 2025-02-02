@@ -1,1 +1,0 @@
-import '../scss/pages/fire-relief.scss';

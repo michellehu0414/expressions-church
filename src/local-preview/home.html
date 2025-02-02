@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>home Preview</title>
-    <link rel="stylesheet" href="../assets/css/home.css">
 </head>
 
 <body>
@@ -13,8 +12,25 @@
         <h1>home Preview</h1>
     </header>
     <!-- 🔥 Dynamic Content Section -->
-    <div id="content"></div>
+    <div id="values-section"></div>
     <script>
+        // Fetch the HTML from the file
+        fetch("../html/values-section.html")
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok: " + response.statusText);
+                }
+                return response.text();
+            })
+            .then(html => {
+                // Insert the fetched HTML into the element with ID "values-section"
+                document.getElementById("values-section").innerHTML = html;
+            })
+            .catch(error => {
+                console.error("There was a problem fetching the HTML:", error);
+            });
+    </script>
+    <!-- <script>
         fetch("../html/")
             .then(response => response.text())
             .then(html => {
@@ -33,8 +49,9 @@
                         });
                 });
             });
-    </script>
-    <script src="../assets/js/home.js"></script>
+    </script> -->
+    <script src="../js/home.js"></script>
+    <script src="../js/main.js"></script>
 </body>
 
 </html>

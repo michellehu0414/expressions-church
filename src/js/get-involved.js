@@ -1,1 +1,0 @@
-import '../scss/pages/get-involved.scss';

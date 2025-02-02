@@ -1,1 +1,0 @@
-import '../scss/pages/kids.scss';
