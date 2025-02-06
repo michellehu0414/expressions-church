@@ -1,0 +1,30 @@
+// utilities/_dimensions.scss
+.width-100 {
+	width: 100%;
+}
+
+.height-auto {
+	height: auto;
+}
+
+.width-auto {
+	width: auto;
+}
+
+.img-100 {
+	width: 100%;
+}
+
+.mw-1024 {
+	max-width: 64rem !important;
+	margin: auto;
+}
+
+.mw-1088 {
+	max-width: 68rem !important;
+	margin: auto;
+}
+
+.width-fit-content {
+	width: fit-content;
+}

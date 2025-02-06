@@ -1,0 +1,117 @@
+@use "../abstracts/all-abstracts" as *;
+
+/* Heading and paragraph base styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+	padding: 0;
+
+	&::first-letter {
+		text-transform: capitalize;
+	}
+}
+
+p {
+	font-size: 1rem;
+	color: $dark-grey;
+	line-height: 150%;
+	margin-bottom: 1.5rem;
+
+	@include breakpoint(med) {
+		font-size: 1.125rem;
+	}
+
+	@include breakpoint(lg) {
+		font-size: 1.2rem;
+		line-height: 155%;
+	}
+}
+
+// Major Third typescale 1.250
+h1 {
+	font-size: 2.441rem;
+	font-weight: 550;
+	color: $black;
+	line-height: 120%;
+	letter-spacing: -0.04rem;
+	margin-bottom: 1.5rem;
+}
+
+h2 {
+	font-size: 1.953rem;
+	font-weight: 550;
+	color: $black;
+	color: #1e1e1e;
+	line-height: 125%;
+	margin-bottom: 1rem;
+}
+
+h3 {
+	font-size: 1.562rem;
+	font-weight: 500;
+	color: $primary-green;
+	letter-spacing: 0;
+	line-height: 130%;
+	margin-bottom: 1.25rem;
+}
+
+h4 {
+	font-size: 1.25rem;
+	font-weight: 500;
+	color: $black;
+	letter-spacing: 0;
+	line-height: 130%;
+	margin-bottom: 1.25rem;
+}
+
+h5 {
+	font-size: 1.152rem;
+	font-weight: 500;
+	color: $secondary-green;
+	letter-spacing: 0;
+	line-height: 140%;
+	margin-bottom: 0.5rem;
+}
+
+// Typescale 1.250 Major Third
+
+@include breakpoint(med) {
+	h1 {
+		font-size: 3.157rem;
+		letter-spacing: -0.04rem;
+		margin-bottom: 2.5rem;
+	}
+
+	h2 {
+		font-size: 3.157rem;
+		letter-spacing: -0.02rem;
+		margin-bottom: 2rem;
+	}
+
+	h3 {
+		font-size: 2.369rem;
+		margin-bottom: 1.5rem;
+		font-weight: 550;
+	}
+
+	h4 {
+		font-size: 1.777rem;
+		margin-bottom: 1.25rem;
+	}
+
+	//
+	// 	h5 {
+	// 		font-size: 1.350rem;
+	// 	}
+}
+
+//
+// @include breakpoint(lg) {
+// 	p {
+// 		font-size: 1.25rem;
+// 	}
+// }

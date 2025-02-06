@@ -1,0 +1,23 @@
+@forward "animation";
+@forward "borders";
+@forward "breakpoints";
+@forward "colors";
+@forward "dimensions";
+@forward "display";
+@forward "dividers";
+@forward "flex-items";
+@forward "flex";
+@forward "grid";
+@forward "spacing";
+@forward "svg-icons";
+@forward "text";
+
+.link-underlined {
+    line-height: 100%;
+    text-decoration: underline;
+    transition: opacity 0.3s ease-in-out;
+
+    &:hover {
+        opacity: 0.7;
+    }
+}
