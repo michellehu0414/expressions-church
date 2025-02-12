@@ -13,6 +13,26 @@ module.exports = {
         filename: 'js/[name].bundle.js',
         path: path.resolve(__dirname, 'dist'),
     },
+    resolve: {
+        alias: {
+            // ✅ General Paths
+            "@src": path.resolve(__dirname, "src"),
+
+            // ✅ SCSS Aliases
+            "@scss": path.resolve(__dirname, "src/scss"),
+            "@abstracts": path.resolve(__dirname, "src/scss/abstracts"),
+            "@base": path.resolve(__dirname, "src/scss/base"),
+            "@utilities": path.resolve(__dirname, "src/scss/utilities"),
+            "@widgets": path.resolve(__dirname, "src/scss/elementor-widgets"),
+
+            // ✅ JavaScript Aliases
+            "@js": path.resolve(__dirname, "src/js"),
+            "@components": path.resolve(__dirname, "src/components"),
+
+            //  Usage in Javascript: import "@scss/main"; or import "@abstracts/variables";
+            //  Usage in SCSS: @use "@abstracts/variables"; or @forward "@abstracts/variables";
+        }
+    },
     module: {
         rules: [
             {
@@ -32,7 +52,18 @@ module.exports = {
                             },
                         },
                     },
-                    'sass-loader',
+                    {
+                        loader: "sass-loader",
+                        options: {
+                            sassOptions: {
+                                includePaths: [
+                                    path.resolve(__dirname, "src/scss")
+                                    //  Usage in SCSS ONLY: @use "abstracts/variables"; or @use "variables"; (Same functionality)
+                                ],
+                            }
+                        }
+                    },
+
                 ],
             },
             {
