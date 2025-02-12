@@ -1,9 +1,10 @@
-@use "../../abstracts/all-abstracts" as *;
-@use "../../utilities/all-utilities" as *;
+@use "@abstracts/all-abstracts" as *;
+@use "@utilities//all-utilities" as *;
 @use "../../components/all-components";
 
-@forward "./get-involved";
-@forward "./intro";
+@forward "get-involved";
+@forward "intro";
+
 
 .section-content {
     display: flex;

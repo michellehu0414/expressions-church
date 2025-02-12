@@ -1,7 +1,7 @@
-@use "./abstracts/all-abstracts" as *;
-@use "./utilities/all-utilities" as *;
-@use "./pages/leadership/all-leadership";
-@use "./main";
+@use "@abstracts/all-abstracts" as *;
+@use "@utilities//all-utilities" as *;
+@use "pages/leadership/all-leadership";
+@use "main";
 
 
 $card-max-width: 16rem;

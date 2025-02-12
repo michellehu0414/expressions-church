@@ -1,5 +1,5 @@
-@use "../abstracts/all-abstracts" as *;
-@use "../utilities/all-utilities" as *;
+@use "@abstracts/all-abstracts" as *;
+@use "@utilities//all-utilities" as *;
 
 .section-wrapper {
     display: flex;

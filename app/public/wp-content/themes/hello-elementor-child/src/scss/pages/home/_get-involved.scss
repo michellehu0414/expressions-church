@@ -1,4 +1,4 @@
-@use "../../abstracts/all-abstracts" as *;
+@use "@abstracts/all-abstracts" as *;
 
 // Get Involved
 #get-involved {
@@ -38,8 +38,6 @@
         transition: transform 0.3s ease-in-out;
     }
 }
-
-@use "../abstracts/all-abstracts" as *;
 
 .scroll-container {
     width: 100%;
