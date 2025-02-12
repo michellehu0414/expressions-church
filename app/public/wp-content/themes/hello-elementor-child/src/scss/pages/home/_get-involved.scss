@@ -1,0 +1,172 @@
+@use "../../abstracts/all-abstracts" as *;
+
+// Get Involved
+#get-involved {
+    .section-content {
+        overflow: visible;
+        width: 100%;
+        max-width: 80rem;
+    }
+
+    .item-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, auto);
+        gap: 2rem;
+        margin-bottom: $button-margin-top-mobile;
+
+        @include breakpoint(med) {
+            gap: 1rem;
+            grid-template-rows: repeat(2, 1fr);
+            grid-template-columns: repeat(2, 1fr);
+            margin-bottom: $button-margin-top-med;
+        }
+
+        @include breakpoint(lg) {
+            grid-template-rows: auto;
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+
+    .card {
+        width: $get-involved-card-width;
+        background-size: 100% 100%;
+        background-position: center;
+        height: 100%;
+        width: 90vw;
+        max-width: $card-max-width;
+        transition: transform 0.3s ease-in-out;
+    }
+}
+
+@use "../abstracts/all-abstracts" as *;
+
+.scroll-container {
+    width: 100%;
+    scroll-padding: 0;
+    overflow: scroll;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+}
+
+$card-items-alignment: center;
+$card-text-alignment: center;
+
+
+.card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    align-items: $card-items-alignment;
+    // text-align: center;
+    border-radius: 0.125rem;
+    align-self: stretch;
+    max-width: calc(100vw * 0.85);
+    scroll-snap-align: center;
+
+    position: relative;
+    text-decoration: none !important;
+
+    .icon-container {
+        display: flex;
+        background: rgba(79, 196, 208, 0.33);
+        height: fit-content;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        aspect-ratio: 3 / 2;
+        // border-radius: 100rem;
+        // margin-top: 2rem;
+
+        img {
+            height: auto;
+            width: 100%;
+            object-fit: contain;
+        }
+
+        @include breakpoint(med) {
+            height: 10rem;
+        }
+    }
+
+    @include breakpoint(med) {
+        // gap: 2.5rem;
+        justify-self: stretch;
+        align-self: stretch;
+        align-items: center;
+
+        .icon {
+            display: flex;
+            height: 8rem;
+            overflow: hidden;
+            width: fit-content;
+        }
+    }
+
+    .copy-container {
+        display: flex;
+        flex-direction: column;
+        align-items: $card-items-alignment;
+        justify-content: space-between;
+        gap: 1.5rem;
+        padding: 2rem 1.5rem 2.5rem;
+        flex-grow: 1;
+        text-align: $card-text-alignment;
+
+        >div {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+
+            p {
+                display: flex;
+                flex-grow: 1;
+                font-size: 1rem;
+                color: $off-black;
+            }
+        }
+
+    }
+
+    .headline {
+        font-size: 1.5rem;
+        font-weight: 600;
+        line-height: 135%;
+        letter-spacing: -0.025rem;
+        // color: $off-black;
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+        text-transform: none;
+    }
+}
+
+.item-container {
+    display: grid;
+    // grid-template-columns: repeat(4, auto);
+    // grid-template-rows: 1fr;
+    grid-gap: 1rem;
+    grid-auto-flow: column;
+    align-items: stretch;
+    overflow: visible;
+    align-self: flex-start;
+    margin: 0 auto;
+    width: fit-content;
+
+    .scroll-item-card {
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+    }
+
+    @include breakpoint(med) {
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include breakpoint(xl) {
+        grid-template-rows: auto;
+        grid-template-columns: repeat(4, 1fr);
+        padding: 0 !important;
+    }
+}
