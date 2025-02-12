@@ -11,9 +11,9 @@ ol {
 	text-align: left;
 	list-style-position: outside;
 	margin-left: - calc($list-bullet-text-spacing);
+	padding: 0;
 
 	li {
-		color: $off-black;
 		line-height: 150%;
 		text-align: left;
 		font-weight: normal;

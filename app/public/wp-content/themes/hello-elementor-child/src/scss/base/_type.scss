@@ -1,5 +1,13 @@
 @use "../abstracts/all-abstracts" as *;
 
+.h2-text-wrapper {
+	display: inline-flex;
+	flex-direction: column;
+	align-self: center;
+	text-align: center;
+	width: min-content;
+}
+
 /* Heading and paragraph base styles */
 h1,
 h2,
@@ -7,6 +15,7 @@ h3,
 h4,
 h5,
 h6 {
+	font-family: 'Poppins', sans-serif;
 	margin: 0;
 	padding: 0;
 
@@ -15,103 +24,115 @@ h6 {
 	}
 }
 
+h1,
+h2 {
+	position: relative;
+	display: inline-block;
+	color: $beige;
+	text-transform: uppercase;
+
+	>span.outlined {
+		font-weight: 800;
+		text-align: center;
+		-webkit-text-stroke-width: 1.25px;
+		-webkit-text-stroke-color: $beige;
+		color: transparent;
+		letter-spacing: 0.08rem;
+	}
+
+	>span.filled {
+		height: fit-content;
+	}
+}
+
 p {
+	font-family: 'Poppins', sans-serif;
+	color: white;
 	font-size: 1rem;
-	color: $dark-grey;
-	line-height: 150%;
-	margin-bottom: 1.5rem;
+	font-weight: 400;
+	line-height: 155%;
+	margin: 0;
+	margin-bottom: 1rem;
 
 	@include breakpoint(med) {
 		font-size: 1.125rem;
-	}
-
-	@include breakpoint(lg) {
-		font-size: 1.2rem;
-		line-height: 155%;
 	}
 }
 
 // Major Third typescale 1.250
 h1 {
-	font-size: 2.441rem;
-	font-weight: 550;
-	color: $black;
+	font-size: 1.875rem;
+	font-size: 2.375rem;
+	font-weight: 500;
 	line-height: 120%;
-	letter-spacing: -0.04rem;
-	margin-bottom: 1.5rem;
+	letter-spacing: 0;
+
+	@include breakpoint(med) {
+		font-size: 2.375rem;
+		font-weight: 600;
+		line-height: 110%;
+		letter-spacing: -0.07125rem;
+		font-size: 3.375rem;
+	}
 }
 
+$h2-font-size-base: 2.75;
+$h2-font-size-med: 3.5;
+$h2-font-size-lg: 4.5;
+$h2-outlined-font-size-calc: 1.015;
+$h2-font-size-scale-calc: calc($h2-font-size-base / $heading-text-gap-base);
+
 h2 {
-	font-size: 1.953rem;
-	font-weight: 550;
-	color: $black;
-	color: #1e1e1e;
-	line-height: 125%;
-	margin-bottom: 1rem;
+	// Ensures the h2's width matches the text content
+	font-size: 2rem; // Adjust font size as needed
+	text-align: center;
+	font-size: $h2-font-size-base * 1rem;
+	font-weight: 700;
+	line-height: 100%;
+	letter-spacing: 0.015rem;
+	margin: 0;
+
+
+	.outlined {
+		font-size: calc($h2-font-size-base * $h2-outlined-font-size-calc);
+	}
+
+	@include breakpoint(med) {
+		font-size: $h2-font-size-med * 1rem;
+
+		.outlined {
+			font-size: calc($h2-font-size-med * $h2-outlined-font-size-calc);
+			letter-spacing: 0.1rem;
+			-webkit-text-stroke-width: 1.5px;
+		}
+	}
+
+	@include breakpoint(lg) {
+		font-size: $h2-font-size-lg * 1rem;
+
+		.outlined {
+			font-size: calc($h2-font-size-lg * $h2-outlined-font-size-calc);
+		}
+	}
 }
 
 h3 {
-	font-size: 1.562rem;
-	font-weight: 500;
-	color: $primary-green;
-	letter-spacing: 0;
-	line-height: 130%;
-	margin-bottom: 1.25rem;
+	font-size: 1.75rem;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 135%;
+
+	@include breakpoint(med) {
+		font-size: 2.0625rem;
+		letter-spacing: 0.04125rem;
+	}
 }
 
 h4 {
-	font-size: 1.25rem;
-	font-weight: 500;
-	color: $black;
-	letter-spacing: 0;
-	line-height: 130%;
-	margin-bottom: 1.25rem;
+	font-size: 1.35rem;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 135%;
+	/* 2.10938rem */
+	letter-spacing: -0.03125rem;
 }
-
-h5 {
-	font-size: 1.152rem;
-	font-weight: 500;
-	color: $secondary-green;
-	letter-spacing: 0;
-	line-height: 140%;
-	margin-bottom: 0.5rem;
-}
-
-// Typescale 1.250 Major Third
-
-@include breakpoint(med) {
-	h1 {
-		font-size: 3.157rem;
-		letter-spacing: -0.04rem;
-		margin-bottom: 2.5rem;
-	}
-
-	h2 {
-		font-size: 3.157rem;
-		letter-spacing: -0.02rem;
-		margin-bottom: 2rem;
-	}
-
-	h3 {
-		font-size: 2.369rem;
-		margin-bottom: 1.5rem;
-		font-weight: 550;
-	}
-
-	h4 {
-		font-size: 1.777rem;
-		margin-bottom: 1.25rem;
-	}
-
-	//
-	// 	h5 {
-	// 		font-size: 1.350rem;
-	// 	}
-}
-
-//
-// @include breakpoint(lg) {
-// 	p {
-// 		font-size: 1.25rem;
-// 	}
-// }
