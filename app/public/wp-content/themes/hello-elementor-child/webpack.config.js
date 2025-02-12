@@ -1,46 +1,62 @@
+// filepath: /Users/michelle/Documents/04_Clients/01_Expressions-Church/03_Local Site/expressions-church-local/app/public/wp-content/themes/hello-elementor-child/webpack.config.js
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const autoprefixer = require('autoprefixer'); // Import autoprefixer
-const cssnano = require('cssnano'); // Import cssnano for CSS minification
 
 module.exports = {
-    mode: 'development', // Change to 'production' for live site
-    entry: './src/js/main.js', // Main JavaScript entry file
+    mode: 'development', // Change to 'development' for development mode
+    entry: {
+        main: './src/js/main.js', // Main JavaScript entry file
+        customElementorWidgetsStyles: './src/scss/custom-elementor-widgets-styles.scss', // New CSS entry file
+        home: './src/js/home.js', // JavaScript file for home page
+        leadership: './src/js/leadership.js', // JavaScript file for leadership page
+        // Add other entries for each page
+    },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js', // Bundled JS output
+        filename: '[name].bundle.js', // Output filename pattern
     },
     module: {
         rules: [
             {
                 test: /\.scss$/,
                 use: [
-                    MiniCssExtractPlugin.loader, // Extract CSS to separate file
-                    'css-loader', // Loads CSS
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
                     {
-                        loader: 'postcss-loader', // Autoprefixes CSS
+                        loader: 'postcss-loader',
                         options: {
                             postcssOptions: {
                                 plugins: [
-                                    autoprefixer(), // Add vendor prefixes
-                                    cssnano() // Minify CSS
-                                ]
-                            }
-                        }
+                                    require('cssnano')({
+                                        preset: 'default',
+                                    }),
+                                ],
+                            },
+                        },
                     },
-                    'sass-loader' // Compiles SCSS to CSS
-                ]
-            }
-        ]
+                    'sass-loader',
+                ],
+            },
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env'],
+                    },
+                },
+            },
+        ],
     },
     plugins: [
-        new CleanWebpackPlugin(), // Cleans output directory on build
-        new MiniCssExtractPlugin({ filename: 'style.css' }), // Outputs compiled CSS
+        new CleanWebpackPlugin(),
+        new MiniCssExtractPlugin({ filename: '[name].style.css' }),
     ],
     devServer: {
         static: path.resolve(__dirname, 'dist'),
         hot: true,
-        port: 3000
-    }
+        port: 3000,
+    },
 };
