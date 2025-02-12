@@ -1,17 +1,18 @@
-const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const path = require("path");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
-    mode: 'production',
+    mode: "production",
     entry: {
-        main: './src/scss/main.scss',
-        home: './src/scss/home.scss',
-        leadership: './src/scss/leadership.scss',
+        main: "./src/js/main.js", // ✅ SCSS should be imported in JS, NOT directly in entry
+        home: "./src/js/home.js",
+        leadership: "./src/js/leadership.js",
     },
     output: {
-        filename: 'js/[name].bundle.js',
-        path: path.resolve(__dirname, 'dist'),
+        filename: "js/[name].bundle.js",
+        path: path.resolve(__dirname, "dist"),
+        publicPath: "auto", // ✅ Prevents Webpack path resolution issues
     },
     resolve: {
         alias: {
@@ -28,51 +29,50 @@ module.exports = {
             // ✅ JavaScript Aliases
             "@js": path.resolve(__dirname, "src/js"),
             "@components": path.resolve(__dirname, "src/components"),
-
-            //  Usage in Javascript: import "@scss/main"; or import "@abstracts/variables";
-            //  Usage in SCSS: @use "@abstracts/variables"; or @forward "@abstracts/variables";
-        }
+        },
     },
     module: {
         rules: [
             {
                 test: /\.scss$/,
                 use: [
-                    MiniCssExtractPlugin.loader,
-                    'css-loader',
+                    MiniCssExtractPlugin.loader, // ✅ Extracts CSS in production
                     {
-                        loader: 'postcss-loader',
+                        loader: "css-loader",
+                        options: { sourceMap: true }, // ✅ Enables source maps for debugging
+                    },
+                    {
+                        loader: "postcss-loader",
                         options: {
                             postcssOptions: {
                                 plugins: [
-                                    require('cssnano')({
-                                        preset: 'default',
-                                    }),
+                                    require("cssnano")({ preset: "default" }),
                                 ],
                             },
+                            sourceMap: true, // ✅ Enables source maps
                         },
                     },
                     {
                         loader: "sass-loader",
                         options: {
+                            sourceMap: true, // ✅ Enables source maps
                             sassOptions: {
-                                includePaths: [
-                                    path.resolve(__dirname, "src/scss")
-                                    //  Usage in SCSS ONLY: @use "abstracts/variables"; or @use "variables"; (Same functionality)
-                                ],
-                            }
-                        }
+                                includePaths: [path.resolve(__dirname, "src/scss"),
+                                path.resolve(__dirname, 'src/scss/abstracts'),
+                                path.resolve(__dirname, 'src/scss/utilities'),
+                                ], // ✅ Works with @use "@abstracts/variables";
+                            },
+                        },
                     },
-
                 ],
             },
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: {
-                    loader: 'babel-loader',
+                    loader: "babel-loader",
                     options: {
-                        presets: ['@babel/preset-env'],
+                        presets: ["@babel/preset-env"],
                     },
                 },
             },
@@ -80,6 +80,6 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin(),
-        new MiniCssExtractPlugin({ filename: 'css/[name].min.css' }), // Output minified CSS files to css folder
+        new MiniCssExtractPlugin({ filename: "css/[name].min.css" }), // ✅ Output minified CSS files in `css/`
     ],
 };
