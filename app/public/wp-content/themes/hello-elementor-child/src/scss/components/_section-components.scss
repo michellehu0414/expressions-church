@@ -1,9 +1,6 @@
 @use "../abstracts/all-abstracts" as *;
 @use "../utilities/all-utilities" as *;
 
-$section-wrapper-padding-sm: 4rem;
-$section-wrapper-padding-med: 6rem;
-
 .section-wrapper {
     display: flex;
     padding: $section-wrapper-padding-sm 0;
