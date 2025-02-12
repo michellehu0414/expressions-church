@@ -6,7 +6,7 @@ module.exports = {
     mode: 'development',
     entry: {
         main: './src/js/main.js',
-        customElementorWidgetsStyles: './src/scss/custom-elementor-widgets-styles.scss',
+        customElementorWidgetsStyles: './src/scss/elementor-widgets-styles.scss',
         home: './src/js/home.js',
         leadership: './src/js/leadership.js',
     },

@@ -7,7 +7,7 @@ module.exports = {
     mode: 'development', // Change to 'development' for development mode
     entry: {
         main: './src/js/main.js', // Main JavaScript entry file
-        customElementorWidgetsStyles: './src/scss/custom-elementor-widgets-styles.scss', // New CSS entry file
+        customElementorWidgetsStyles: './src/scss/elementor-widgets-styles.scss', // New CSS entry file
         home: './src/js/home.js', // JavaScript file for home page
         leadership: './src/js/leadership.js', // JavaScript file for leadership page
         // Add other entries for each page
