@@ -1,2 +1,2 @@
-import '../scss/home.scss';
+import '@scss/home.scss';
 import './main';
