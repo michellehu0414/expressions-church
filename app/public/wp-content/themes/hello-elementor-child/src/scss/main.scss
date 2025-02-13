@@ -5,14 +5,6 @@
 @use 'elementor-widgets/all-elementor-widgets';
 // feat: update SCSS imports to use aliases to simplify import statements
 
-
-.container-max-width {
-    width: 90%;
-    max-width: 100rem;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 // To apply a white chalk divider to sections or containers to separate sections
 .white-chalk-divider {
     display: flex;
@@ -83,8 +75,4 @@
             }
         }
     }
-}
-
-.width-min-content {
-    width: min-content;
 }
