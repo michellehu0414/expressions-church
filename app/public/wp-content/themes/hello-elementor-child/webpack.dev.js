@@ -1,6 +1,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
     mode: 'development',
@@ -69,13 +70,28 @@ module.exports = {
             },
         ],
     },
+    optimization: {
+        minimize: false, // Disable minification in development
+        minimizer: [new TerserPlugin({
+            terserOptions: {
+                compress: false, // Disable compression in development
+                mangle: false, // Disable mangling in development
+            },
+            parallel: true, // Enable parallel processing
+            cache: true, // Enable caching
+        })],
+    },
     plugins: [
-        new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({ filename: 'css/[name].min.css' }),
+        new webpack.HotModuleReplacementPlugin(), // Enable HMR
+        new FriendlyErrorsWebpackPlugin(), // Friendly error messages
     ],
     devServer: {
         static: path.resolve(__dirname, 'dist'),
         hot: true,
         port: 3000,
+        open: true, // Automatically open the browser
+        quiet: true, // Reduce the amount of output
     },
+    devtool: 'eval-source-map', // Faster source maps for development
 };
