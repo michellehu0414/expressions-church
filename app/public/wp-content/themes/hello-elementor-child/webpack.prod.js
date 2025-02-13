@@ -6,8 +6,8 @@ module.exports = {
     mode: 'production',
     entry: {
         main: "./src/js/main.js",
-        home: "./src/js/home.js",
-        leadership: "./src/js/leadership.js",
+        home: "./src/pages/home/index.js",
+        leadership: "./src/pages/leadership/index.js",
         "elementor-widgets-styles": "./src/scss/elementor-widgets-styles.scss",
     },
     output: {
