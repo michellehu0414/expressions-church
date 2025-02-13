@@ -100,4 +100,10 @@ module.exports = {
         new MiniCssExtractPlugin({ filename: 'css/[name].[contenthash].min.css' }), // Add content hash for cache busting
     ],
     devtool: 'source-map', // Enable source maps in production
+    cache: {
+        type: 'filesystem', // Enable filesystem caching
+        buildDependencies: {
+            config: [__filename], // Cache invalidation based on config file changes
+        },
+    },
 };
