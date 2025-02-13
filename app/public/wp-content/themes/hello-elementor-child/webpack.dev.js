@@ -91,15 +91,12 @@ module.exports = {
                 mangle: false, // Disable mangling in development
             },
             parallel: true, // Enable parallel processing
-            cache: true, // Enable caching
         })],
     },
     plugins: [
         new MiniCssExtractPlugin({ filename: 'css/[name].min.css' }),
         new webpack.HotModuleReplacementPlugin(), // Enable HMR
-        new FriendlyErrorsWebpackPlugin(), // Friendly error messages
     ],
-    devtool: 'source-map',
     cache: {
         type: 'filesystem', // Enables filesystem caching
         buildDependencies: {
