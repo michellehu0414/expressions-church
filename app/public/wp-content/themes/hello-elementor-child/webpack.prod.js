@@ -5,9 +5,10 @@ const TerserPlugin = require('terser-webpack-plugin');
 module.exports = {
     mode: 'production',
     entry: {
-        main: './src/scss/main.scss',
-        home: './src/scss/home.scss',
-        leadership: './src/scss/leadership.scss',
+        main: "./src/js/main.js",
+        home: "./src/js/home.js",
+        leadership: "./src/js/leadership.js",
+        "elementor-widgets-styles": "./src/scss/elementor-widgets-styles.scss",
     },
     output: {
         filename: 'js/[name].[contenthash].bundle.js', // Add content hash for cache busting
