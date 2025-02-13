@@ -1,15 +1,5 @@
-@use "abstracts/all-abstracts" as *;
-@use "utilities/all-utilities" as *;
-@use "base/all-base";
-@use "components/all-components";
-@use 'elementor-widgets/all-elementor-widgets';
-// feat: update SCSS imports to use aliases to simplify import statements
-
-//
-// :root {
-//     --teal-background: #cce2e6;
-//     --dark-teal: #005563;
-//     --off-black: $off-black;
-// }
-
-// Typography
+@forward "abstracts/all-abstracts";
+@forward "utilities/all-utilities";
+@forward "base/all-base";
+@forward "components/all-components";
+@forward 'elementor-widgets/all-elementor-widgets';
