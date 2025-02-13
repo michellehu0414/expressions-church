@@ -86,6 +86,13 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(), // Enable HMR
         new FriendlyErrorsWebpackPlugin(), // Friendly error messages
     ],
+    devtool: 'source-map',
+    cache: {
+        type: 'filesystem', // Enables filesystem caching
+        buildDependencies: {
+            config: [__filename], // Cache invalidation based on config file changes
+        },
+    },
     devServer: {
         static: path.resolve(__dirname, 'dist'),
         hot: true,
