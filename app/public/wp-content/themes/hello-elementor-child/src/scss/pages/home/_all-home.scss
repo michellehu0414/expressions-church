@@ -1,6 +1,6 @@
 @use "@abstracts/all-abstracts" as *;
 @use "@utilities//all-utilities" as *;
-@use "../../components/all-components";
+@use "@scss/components/all-components";
 
 @forward "get-involved";
 @forward "intro";
