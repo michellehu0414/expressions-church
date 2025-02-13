@@ -1,4 +1,5 @@
 @use "@abstracts/variables" as *;
+@use "@abstracts/breakpoints-mixins" as *;
 
 hr {
   box-sizing: content-box;
@@ -17,5 +18,17 @@ hr {
 
   &.solid-grey {
     background-color: $light-grey;
+  }
+}
+
+// To apply a white chalk divider to sections or containers to separate sections
+.white-chalk-divider {
+  display: flex;
+  width: 90vw;
+  margin: auto;
+  height: 0.75rem;
+
+  @include breakpoint(med) {
+    height: unset;
   }
 }
