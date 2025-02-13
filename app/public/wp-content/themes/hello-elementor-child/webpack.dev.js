@@ -44,6 +44,19 @@ module.exports = {
                         options: { sourceMap: true }, // ✅ Enables source maps for debugging
                     },
                     {
+                        loader: "postcss-loader",
+                        options: {
+                            sourceMap: true, // ✅ Enables source maps
+                            postcssOptions: {
+                                plugins: [
+                                    require('cssnano')({
+                                        preset: 'default',
+                                    }),
+                                ],
+                            },
+                        },
+                    },
+                    {
                         loader: "sass-loader",
                         options: {
                             sourceMap: true, // ✅ Enables source maps
