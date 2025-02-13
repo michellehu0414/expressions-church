@@ -6,13 +6,31 @@ module.exports = {
     mode: 'development',
     entry: {
         main: './src/js/main.js',
-        customElementorWidgetsStyles: './src/scss/elementor-widgets-styles.scss',
         home: './src/js/home.js',
         leadership: './src/js/leadership.js',
+        "elementor-widgets-styles": "./src/scss/elementor-widgets-styles.scss",
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: '[name].bundle.js',
+        filename: 'js/[name].bundle.js',
+        publicPath: "auto",
+    },
+    resolve: {
+        alias: {
+            // ✅ General Paths
+            "@src": path.resolve(__dirname, "src"),
+
+            // ✅ SCSS Aliases
+            "@scss": path.resolve(__dirname, "src/scss"),
+            "@abstracts": path.resolve(__dirname, "src/scss/abstracts"),
+            "@base": path.resolve(__dirname, "src/scss/base"),
+            "@utilities": path.resolve(__dirname, "src/scss/utilities"),
+            "@widgets": path.resolve(__dirname, "src/scss/elementor-widgets"),
+
+            // ✅ JavaScript Aliases
+            "@js": path.resolve(__dirname, "src/js"),
+            "@components": path.resolve(__dirname, "src/components"),
+        },
     },
     module: {
         rules: [
@@ -20,8 +38,23 @@ module.exports = {
                 test: /\.scss$/,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    'css-loader',
-                    'sass-loader',
+                    {
+                        loader: "css-loader",
+                        options: { sourceMap: true }, // ✅ Enables source maps for debugging
+                    },
+                    {
+                        loader: "sass-loader",
+                        options: {
+                            sourceMap: true, // ✅ Enables source maps
+                            sassOptions: {
+                                includePaths: [
+                                    path.resolve(__dirname, "src/scss"),
+                                    path.resolve(__dirname, 'src/scss/abstracts'),
+                                    path.resolve(__dirname, 'src/scss/utilities'),
+                                ], // ✅ Works with @use "@abstracts/variables";
+                            },
+                        },
+                    },
                 ],
             },
             {
