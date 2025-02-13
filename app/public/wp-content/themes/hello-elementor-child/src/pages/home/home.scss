@@ -1,8 +1,4 @@
-@use "@abstracts/all-abstracts" as *;
-@use "@utilities/all-utilities" as *;
-
-@forward "get-involved";
-@forward "intro";
+@use "@scss/main" as *;
 
 /*Vertical cards*/
 .vertical-card {
