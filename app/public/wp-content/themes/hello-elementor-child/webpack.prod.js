@@ -1,6 +1,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
     mode: 'production',
@@ -95,6 +96,7 @@ module.exports = {
         },
     },
     plugins: [
+        new CleanWebpackPlugin(), // Clean the output directory before each build
         new MiniCssExtractPlugin({ filename: 'css/[name].[contenthash].min.css' }), // Add content hash for cache busting
     ],
     devtool: 'source-map', // Enable source maps in production
