@@ -1,7 +1,6 @@
 # 🔹 Ignore WordPress Core Files
 app/public/wp-admin/
 app/public/wp-includes/
-app/public/wp-config.php
 app/public/wp-cron.php
 app/public/wp-*.php
 
@@ -63,3 +62,5 @@ conf/
 # 🔹 Ignore Environment Files (If Used)
 .env
 .env.local
+.htaccess.bk
+.htaccess
