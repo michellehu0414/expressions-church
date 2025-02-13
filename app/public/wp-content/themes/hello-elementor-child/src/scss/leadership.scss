@@ -1,13 +1,8 @@
-@use "@abstracts/all-abstracts" as *;
-@use "@utilities/all-utilities" as *;
-@use "pages/leadership/all-leadership";
-@use "main";
-
+@use "@scss/main" as *;
 
 $card-max-width: 16rem;
 $button-margin-top-mobile: 2rem;
 $button-margin-top-med: 3.5rem;
-$bg-paper: url('https://vrwpaviv.elementor.cloud/wp-content/uploads/2024/12/card-paper-bg.webp') no-repeat center center;
 
 .bio-header {
     display: block;
