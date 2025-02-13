@@ -18,17 +18,17 @@ module.exports = {
     },
     resolve: {
         alias: {
-            // ✅ General Paths
+            // General Paths
             "@src": path.resolve(__dirname, "src"),
 
-            // ✅ SCSS Aliases
+            // SCSS Aliases
             "@scss": path.resolve(__dirname, "src/scss"),
             "@abstracts": path.resolve(__dirname, "src/scss/abstracts"),
             "@base": path.resolve(__dirname, "src/scss/base"),
             "@utilities": path.resolve(__dirname, "src/scss/utilities"),
             "@widgets": path.resolve(__dirname, "src/scss/elementor-widgets"),
 
-            // ✅ JavaScript Aliases
+            // JavaScript Aliases
             "@js": path.resolve(__dirname, "src/js"),
             "@components": path.resolve(__dirname, "src/components"),
         },
