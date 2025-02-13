@@ -113,4 +113,10 @@
 	&white {
 		background-color: white !important;
 	}
+
+	// To apply a darkened background to sections or containers
+	// The class sets a dark background color and ensures text contrast remains readable.
+	&darken {
+		background-color: $bg-darken;
+	}
 }

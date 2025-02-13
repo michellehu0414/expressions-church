@@ -3,17 +3,6 @@
 @use "base/all-base";
 @use "components/all-components";
 @use 'elementor-widgets/all-elementor-widgets';
-
-// Section headline font color.
-
-// This variable ensures consistent dark background styling throughout the project.
-
-// To apply a darkened background to sections or containers
-// The class sets a dark background color and ensures text contrast remains readable.
-
-.bg-darken {
-    background-color: $bg-darken;
-}
 // feat: update SCSS imports to use aliases to simplify import statements
 
 .texture-overlay {
