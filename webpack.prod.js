@@ -2,6 +2,22 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const { PurgeCSSPlugin } = require('purgecss-webpack-plugin');
+const HtmlMinimizerPlugin = require('html-minimizer-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const { DefinePlugin } = require('webpack');
+const glob = require('glob');
+
+const PATHS = {
+    src: path.join(__dirname, 'src')
+};
+
+const htmlPages = [
+    { template: 'index.html', chunks: ['index'] },
+    // Add other HTML pages here
+];
 
 module.exports = {
     mode: 'production',
@@ -9,7 +25,7 @@ module.exports = {
         main: "./src/js/main.js",
         home: "./src/pages/home/index.js",
         leadership: "./src/pages/leadership/index.js",
-        "elementor-widgets-styles": "./src/scss/elementor-widgets-styles.scss",
+        "elementorWidgetStyles": "./src/scss/elementor-widgets-styles.scss",
     },
     output: {
         filename: 'js/[name].[contenthash].bundle.js', // Add content hash for cache busting
@@ -88,17 +104,52 @@ module.exports = {
                     },
                 },
             },
+            {
+                test: /\.(png|jpe?g|gif|svg)$/i,
+                type: 'asset/resource',
+                generator: {
+                    filename: 'images/[name][ext]'
+                },
+                use: [
+                    {
+                        loader: 'image-webpack-loader',
+                        options: {
+                            mozjpeg: {
+                                progressive: true,
+                                quality: 65,
+                            },
+                            optipng: {
+                                enabled: true,
+                            },
+                            pngquant: {
+                                quality: [0.65, 0.90],
+                                speed: 4,
+                            },
+                            gifsicle: {
+                                interlaced: false,
+                            },
+                            webp: {
+                                quality: 75,
+                            },
+                        },
+                    },
+                ],
+            },
         ],
     },
     optimization: {
         minimize: true,
-        minimizer: [new TerserPlugin({
-            terserOptions: {
-                compress: {
-                    drop_console: true, // Remove console logs in production
+        minimizer: [
+            new TerserPlugin({
+                terserOptions: {
+                    compress: {
+                        drop_console: true, // Remove console logs in production
+                    },
                 },
-            },
-        })],
+            }),
+            new CssMinimizerPlugin(), // Minify CSS
+            new HtmlMinimizerPlugin(), // Minify HTML
+        ],
         splitChunks: {
             chunks: 'all',
         },
@@ -106,6 +157,27 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(), // Clean the output directory before each build
         new MiniCssExtractPlugin({ filename: 'css/[name].[contenthash].min.css' }), // Add content hash for cache busting
+        new PurgeCSSPlugin({
+            paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
+            safelist: {
+                standard: ['keep-this-class', /^dynamic-/]
+            },
+        }),
+        ...htmlPages.map(page => new HtmlWebpackPlugin({
+            template: `./src/${page.template}`,
+            filename: page.template,
+            chunks: page.chunks
+        })),
+        new CopyWebpackPlugin({
+            patterns: [
+                { from: 'src/assets', to: 'assets' }
+            ]
+        }),
+        new DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify('production')
+        }),
+        // Uncomment the following line if you want to analyze the bundle size
+        // new BundleAnalyzerPlugin(),
     ],
     devtool: 'source-map', // Enable source maps in production
     cache: {
