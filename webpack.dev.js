@@ -2,6 +2,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const webpack = require('webpack');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
     mode: 'development',
@@ -89,6 +90,37 @@ module.exports = {
                     },
                 },
             },
+            {
+                test: /\.(png|jpe?g|gif|svg)$/i,
+                type: 'asset/resource',
+                generator: {
+                    filename: 'images/[name][ext]'
+                },
+                use: [
+                    {
+                        loader: 'image-webpack-loader',
+                        options: {
+                            mozjpeg: {
+                                progressive: true,
+                                quality: 65,
+                            },
+                            optipng: {
+                                enabled: true,
+                            },
+                            pngquant: {
+                                quality: [0.65, 0.90],
+                                speed: 4,
+                            },
+                            gifsicle: {
+                                interlaced: false,
+                            },
+                            webp: {
+                                quality: 75,
+                            },
+                        },
+                    },
+                ],
+            },
         ],
     },
     optimization: {
@@ -104,6 +136,10 @@ module.exports = {
     plugins: [
         new MiniCssExtractPlugin({ filename: 'css/[name].min.css' }),
         new webpack.HotModuleReplacementPlugin(), // Enable HMR
+        new ESLintPlugin({
+            extensions: ['js'],
+            exclude: 'node_modules',
+        }),
     ],
     cache: {
         type: 'filesystem', // Enables filesystem caching
