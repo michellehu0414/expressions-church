@@ -28,7 +28,7 @@ module.exports = {
         "elementorWidgetStyles": "./src/scss/elementor-widgets-styles.scss",
     },
     output: {
-        filename: 'js/[name].[contenthash].bundle.js', // Add content hash for cache busting
+        filename: 'js/[name].bundle.js',
         path: path.resolve(__dirname, 'dist'),
         publicPath: '/',
         clean: true,
