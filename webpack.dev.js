@@ -149,10 +149,13 @@ module.exports = {
     },
     devServer: {
         static: path.resolve(__dirname, 'dist'),
+        host: '0.0.0.0',
+        open: true,
         hot: true,
-        port: 3000,
-        open: true, // Automatically open the browser
-        quiet: true, // Reduce the amount of output
+        watchFiles: ['src/**/*'],
+        port: 5688,
+        allowedHosts: 'all',
+        quiet: true,
     },
     devtool: 'eval-source-map', // Faster source maps for development
 };
