@@ -1,0 +1,63 @@
+@use "@scss/main" as *;
+
+$card-items-alignment: center;
+$card-text-alignment: center;
+
+.card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    align-items: $card-items-alignment;
+    border-radius: 0.125rem;
+    align-self: stretch;
+    max-width: calc(100vw * 0.90);
+    scroll-snap-align: center;
+
+    position: relative;
+    text-decoration: none !important;
+
+    .card-image {
+        width: 100%;
+    }
+
+    .card-content {
+        display: flex;
+        flex-direction: column;
+        align-items: $card-items-alignment;
+        justify-content: space-between;
+        gap: 1.5rem;
+        padding: 2rem 1.5rem 2.5rem;
+        flex-grow: 1;
+        text-align: $card-text-alignment;
+
+        >div {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+    }
+
+    .card-headline {
+        font-size: 1.5rem;
+        font-weight: 600;
+        line-height: 135%;
+        letter-spacing: -0.025rem;
+        // color: $off-black;
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+        text-transform: none;
+    }
+
+    .card-body {
+        display: flex;
+        flex-grow: 1;
+        font-size: 1rem;
+        color: $off-black;
+    }
+
+    .card-buttons {
+        display: flex;
+        gap: 1rem;
+    }
+}
