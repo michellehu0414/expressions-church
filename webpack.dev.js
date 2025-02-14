@@ -155,7 +155,6 @@ module.exports = {
         watchFiles: ['src/**/*'],
         port: 5688,
         allowedHosts: 'all',
-        quiet: true,
     },
     devtool: 'eval-source-map', // Faster source maps for development
 };
