@@ -7,29 +7,51 @@ if (!defined('ABSPATH')) {
 // ========================
 // ✅ Enqueue Styles & Scripts (Prioritizing Webpack CSS)
 // ========================
-function enqueue_custom_assets()
+// function enqueue_custom_assets()
+// {
+//     // ✅ Load main.css (compiled from all-base.scss)
+//     wp_enqueue_style('main-style', get_stylesheet_directory_uri() . '/dist/css/main.min.css', [], null);
+//
+//     // ✅ Page-specific styles & scripts using Page IDs
+//     $page_assets = [
+//         237 => ['css' => 'home.min.css', 'js' => 'home.bundle.js'], // Home 2 (ID 237)
+//         'Leadership' => ['css' => 'leadership.min.css', 'js' => 'leadership.bundle.js'], // Leadership (use slug)
+//     ];
+//
+//     foreach ($page_assets as $page_key => $assets) {
+//         if (is_page($page_key)) { // ✅ Works for both ID (237) and slug ('leadership')
+//             if (!empty($assets['css'])) {
+//                 wp_enqueue_style('page-' . $page_key . '-style', get_stylesheet_directory_uri() . '/dist/css/' . $assets['css'], ['main-style'], null);
+//             }
+//             if (!empty($assets['js'])) {
+//                 wp_enqueue_script('page-' . $page_key . '-script', get_stylesheet_directory_uri() . '/dist/js/' . $assets['js'], [], null, true);
+//             }
+//         }
+//     }
+// }
+// add_action('wp_enqueue_scripts', 'enqueue_custom_assets', 99);
+function custom_enqueue_styles()
 {
-    // ✅ Load main.css (compiled from all-base.scss)
-    wp_enqueue_style('main-style', get_stylesheet_directory_uri() . '/dist/css/main.min.css', [], null);
+    wp_enqueue_style('custom-style', get_template_directory_uri() . '/dist/css/main.min.css', array(), null);
 
-    // ✅ Page-specific styles & scripts
-    $page_assets = [
-        'Home' => ['css' => 'home.min.css', 'js' => 'home.bundle.js'],
-        'Leadership' => ['css' => 'leadership.min.css', 'js' => 'leadership.bundle.js'],
-    ];
-
-    foreach ($page_assets as $page_slug => $assets) {
-        if (is_page($page_slug)) {
-            if (!empty($assets['css'])) {
-                wp_enqueue_style($page_slug . '-style', get_stylesheet_directory_uri() . '/dist/css/' . $assets['css'], ['main-style'], null);
-            }
-            if (!empty($assets['js'])) {
-                wp_enqueue_script($page_slug . '-script', get_stylesheet_directory_uri() . '/dist/js/' . $assets['js'], [], null, true);
-            }
-        }
+    if (is_page('home-2')) {
+        // Enqueue the custom stylesheet (replace 'your-style.css' with the actual stylesheet name)
+        wp_enqueue_style('home-2-style', get_template_directory_uri() . 'dist/css/home.min.css', array(), null, 'all');
     }
 }
-add_action('wp_enqueue_scripts', 'enqueue_custom_assets', 99);
+add_action('wp_enqueue_scripts', 'custom_enqueue_styles');
+
+function custom_enqueue_scripts()
+{
+    if (is_page('home-2')) {
+        wp_enqueue_script('home-bundle-script', get_template_directory_uri() . 'dist/js/home.bundle.js', array(), null, true);
+
+    }
+}
+add_action('wp_enqueue_scripts', 'enqueue_script_for_specific_page');
+
+
+
 
 // ========================
 // ✅ Prevent Elementor from Loading Page-Specific CSS (post-6.css, etc.)
@@ -79,31 +101,31 @@ add_filter('hello_elementor_enqueue_style', '__return_false');
 // ========================
 // ✅ Custom Head Injections Per Page (Meta & Scripts)
 // ========================
-function custom_head_injection()
-{
-    $head_content = [
-        'Home' => [
-            'meta' => '<meta name="robots" content="noindex, nofollow">',
-            'script' => '<script>console.log("Home page loaded");</script>',
-        ],
-        'Leadership' => [
-            'meta' => '<meta name="robots" content="index, follow">',
-            'script' => '<script>console.log("Leadership page loaded");</script>',
-        ],
-    ];
-
-    foreach ($head_content as $page_slug => $content) {
-        if (is_page($page_slug)) {
-            if (!empty($content['meta'])) {
-                echo $content['meta'] . "\n";
-            }
-            if (!empty($content['script']) && defined('WP_DEBUG') && WP_DEBUG) {
-                echo $content['script'] . "\n";
-            }
-        }
-    }
-}
-add_action('wp_head', 'custom_head_injection');
+// function custom_head_injection()
+// {
+//     $head_content = [
+//         'Home 2' => [
+//             'meta' => '<meta name="robots" content="noindex, nofollow">',
+//             'script' => '<script>console.log("Home page loaded");</script>',
+//         ],
+//         'Leadership' => [
+//             'meta' => '<meta name="robots" content="index, follow">',
+//             'script' => '<script>console.log("Leadership page loaded");</script>',
+//         ],
+//     ];
+//
+//     foreach ($head_content as $page_slug => $content) {
+//         if (is_page($page_slug)) {
+//             if (!empty($content['meta'])) {
+//                 echo $content['meta'] . "\n";
+//             }
+//             if (!empty($content['script']) && defined('WP_DEBUG') && WP_DEBUG) {
+//                 echo $content['script'] . "\n";
+//             }
+//         }
+//     }
+// }
+// add_action('wp_head', 'custom_head_injection');
 
 // ========================
 // ✅ Dequeue Global Styles Inline CSS
