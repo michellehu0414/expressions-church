@@ -1,7 +1,6 @@
 import './intro.scss';
 
 document.getElementById("intro").innerHTML = `
-<section id="intro" class="section-wraper">
     <div class="section-content">
         <p class="large-text">
             We believe Jesus can transform us from the inside out—
@@ -31,5 +30,4 @@ document.getElementById("intro").innerHTML = `
             </p>
         </div>
     </div>
-</section>
 `;
