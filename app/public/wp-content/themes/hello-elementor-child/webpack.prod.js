@@ -27,6 +27,7 @@ module.exports = {
             "@base": path.resolve(__dirname, "src/scss/base"),
             "@utilities": path.resolve(__dirname, "src/scss/utilities"),
             "@widgets": path.resolve(__dirname, "src/scss/elementor-widgets"),
+            "@fonts": path.resolve(__dirname, "src/assets/fonts"),
 
             // JavaScript Aliases
             "@js": path.resolve(__dirname, "src/js"),
@@ -35,6 +36,13 @@ module.exports = {
     },
     module: {
         rules: [
+            {
+                test: /\.(woff|woff2)$/,
+                type: 'asset/resource',
+                generator: {
+                    filename: 'fonts/[name][ext]'
+                }
+            },
             {
                 test: /\.scss$/,
                 use: [
