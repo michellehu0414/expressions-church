@@ -45,6 +45,12 @@ jobs:
       - name: Build Webpack Assets
         run: npm run build
 
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "./dist"
+          name: "artifact-${{ github.run_id }}-${{ github.run_number }}"
+
   deploy:
     needs: build
     environment:
