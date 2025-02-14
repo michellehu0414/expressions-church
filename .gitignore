@@ -8,9 +8,6 @@
 # 🔹 Ignore Node.js Dependencies
 node_modules/
 
-# 🔹 Ignore Webpack Output (`dist/` should not be committed)
-dist/
-
 # 🔹 Ignore OS and System Files
 .DS_Store
 Thumbs.db
