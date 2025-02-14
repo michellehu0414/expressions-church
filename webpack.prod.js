@@ -31,6 +31,7 @@ module.exports = {
         filename: 'js/[name].[contenthash].bundle.js', // Add content hash for cache busting
         path: path.resolve(__dirname, 'dist'),
         publicPath: '/',
+        clean: true,
     },
     resolve: {
         alias: {
