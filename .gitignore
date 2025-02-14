@@ -43,3 +43,5 @@ conf/
 .env.local
 .htaccess.bk
 .htaccess
+
+dist/
