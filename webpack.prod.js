@@ -60,26 +60,16 @@ module.exports = {
                 }
             },
             {
-                test: /\.scss$/,
+                test: /\.(scss|css)$/,
                 use: [
                     MiniCssExtractPlugin.loader,
                     'css-loader',
                     {
-                        loader: 'postcss-loader',
-                        options: {
-                            postcssOptions: {
-                                plugins: [
-                                    require('cssnano')({
-                                        preset: 'default',
-                                    }),
-                                ],
-                            },
-                        },
-                    },
-                    {
                         loader: "sass-loader",
                         options: {
+                            implementation: require('sass'),
                             sassOptions: {
+                                outputStyle: 'compressed',
                                 includePaths: [
                                     path.resolve(__dirname, "src/scss"),
                                     path.resolve(__dirname, "src/scss/abstracts"),
@@ -150,13 +140,13 @@ module.exports = {
             new CssMinimizerPlugin(), // Minify CSS
             new HtmlMinimizerPlugin(), // Minify HTML
         ],
-        splitChunks: {
-            chunks: 'all',
-        },
     },
     plugins: [
         new CleanWebpackPlugin(), // Clean the output directory before each build
-        new MiniCssExtractPlugin({ filename: 'css/[name].[contenthash].min.css' }), // Add content hash for cache busting
+        new MiniCssExtractPlugin({
+            filename: 'css/[name].css',
+            // chunkFilename: '[id].css',
+        }),
         new PurgeCSSPlugin({
             paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
             safelist: {
