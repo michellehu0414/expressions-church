@@ -17,9 +17,6 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [16, 18]
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v3
@@ -29,15 +26,15 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 18
 
       - name: Cache Node Modules
         uses: actions/cache@v3
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}-${{ matrix.node-version }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}-18
           restore-keys: |
-            ${{ runner.os }}-node-${{ matrix.node-version }}
+            ${{ runner.os }}-node-18
 
       - name: Install Dependencies
         run: npm install
