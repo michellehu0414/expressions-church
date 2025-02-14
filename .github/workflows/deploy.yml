@@ -45,11 +45,15 @@ jobs:
       - name: Build Webpack Assets
         run: npm run build
 
+      - name: Set Upload Time
+        id: upload_time
+        run: echo "::set-output name=timestamp::$(date +%s)"
+
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: "./dist"
-          name: "artifact-${{ github.run_id }}-${{ github.run_number }}-${{ github.sha }}"
+          name: "artifact-${{ github.run_id }}-${{ github.run_number }}-${{ github.sha }}-${{ steps.upload_time.outputs.timestamp }}"
 
   deploy:
     needs: build
