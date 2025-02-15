@@ -16,6 +16,7 @@ const PATHS = {
 
 const htmlPages = [
     { template: 'index.html', chunks: ['index'] },
+    { template: 'home.html', chunks: ['home'] },
     // Add other HTML pages here
 ];
 
