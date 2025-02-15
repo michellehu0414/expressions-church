@@ -26,6 +26,7 @@ module.exports = {
         home: "./src/pages/home/index.js",
         leadership: "./src/pages/leadership/index.js",
         "elementorWidgetStyles": "./src/scss/elementor-widgets-styles.scss",
+        "styles": "./src/scss/styles.scss",
     },
     output: {
         filename: 'js/[name].min.js', // Add content hash for cache busting
@@ -57,7 +58,7 @@ module.exports = {
                 test: /\.(woff|woff2)$/,
                 type: 'asset/resource',
                 generator: {
-                    filename: 'fonts/[name][ext]'
+                    filename: 'assets/fonts/[name][ext]'
                 }
             },
             {
@@ -148,6 +149,9 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin(), // Clean the output directory before each build
+        new MiniCssExtractPlugin({
+            filename: 'css/[name].css', // Non-minified CSS
+        }),
         new MiniCssExtractPlugin({
             filename: 'css/[name].min.css', // Add content hash for cache busting
         }),

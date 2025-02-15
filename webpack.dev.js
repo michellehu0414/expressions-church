@@ -1,6 +1,5 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
 const webpack = require('webpack');
 const ESLintPlugin = require('eslint-webpack-plugin');
 
@@ -10,12 +9,13 @@ module.exports = {
         main: './src/js/main.js',
         home: './src/pages/home/index.js',
         leadership: './src/pages/leadership/index.js',
+        "styles": "./src/scss/styles.scss",
         "elementor-widgets-styles": "./src/scss/elementor-widgets-styles.scss",
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'js/[name].bundle.js',
-        publicPath: "auto",
+        publicPath: "/",
     },
     resolve: {
         alias: {
@@ -41,7 +41,7 @@ module.exports = {
                 test: /\.(woff|woff2)$/,
                 type: 'asset/resource',
                 generator: {
-                    filename: 'fonts/[name][ext]'
+                    filename: 'assets/fonts/[name][ext]'
                 }
             },
             {
@@ -125,16 +125,9 @@ module.exports = {
     },
     optimization: {
         minimize: false, // Disable minification in development
-        minimizer: [new TerserPlugin({
-            terserOptions: {
-                compress: false, // Disable compression in development
-                mangle: false, // Disable mangling in development
-            },
-            parallel: true, // Enable parallel processing
-        })],
     },
     plugins: [
-        new MiniCssExtractPlugin({ filename: 'css/[name].min.css' }),
+        new MiniCssExtractPlugin({ filename: 'css/[name].css' }), // Non-minified CSS for development
         new webpack.HotModuleReplacementPlugin(), // Enable HMR
         new ESLintPlugin({
             extensions: ['js'],
@@ -148,7 +141,7 @@ module.exports = {
         },
     },
     devServer: {
-        static: path.resolve(__dirname, 'dist'),
+        static: path.join(__dirname, 'dist'),
         host: '0.0.0.0',
         open: true,
         hot: true,
