@@ -49,3 +49,6 @@ runtime.min.js
 runtime.min.js.map
 *.min.js.map
 dist/assets/fonts/
+
+dist/home.html
+dist/index.html
