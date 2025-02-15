@@ -28,7 +28,7 @@ module.exports = {
         "elementorWidgetStyles": "./src/scss/elementor-widgets-styles.scss",
     },
     output: {
-        filename: 'js/[name].bundle.js',
+        filename: 'js/[name].min.js', // Add content hash for cache busting
         path: path.resolve(__dirname, 'dist'),
         publicPath: '/',
         clean: true,
@@ -141,12 +141,15 @@ module.exports = {
             new CssMinimizerPlugin(), // Minify CSS
             new HtmlMinimizerPlugin(), // Minify HTML
         ],
+        splitChunks: {
+            chunks: 'all',
+        },
+        runtimeChunk: 'single',
     },
     plugins: [
         new CleanWebpackPlugin(), // Clean the output directory before each build
         new MiniCssExtractPlugin({
-            filename: 'css/[name].css',
-            // chunkFilename: '[id].css',
+            filename: 'css/[name].min.css', // Add content hash for cache busting
         }),
         new PurgeCSSPlugin({
             paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
