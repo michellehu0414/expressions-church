@@ -48,3 +48,4 @@ conf/
 runtime.min.js
 runtime.min.js.map
 *.min.js.map
+dist/assets/fonts/
