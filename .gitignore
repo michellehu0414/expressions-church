@@ -43,3 +43,8 @@ conf/
 .env.local
 .htaccess.bk
 .htaccess
+*.css.map
+*.min.css.map
+runtime.min.js
+runtime.min.js.map
+*.min.js.map
