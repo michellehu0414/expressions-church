@@ -2,28 +2,31 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const HtmlMinimizerPlugin = require('html-minimizer-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const { DefinePlugin } = require('webpack');
-const { PurgeCSSPlugin } = require('purgecss-webpack-plugin'); // ✅ Correct import
-
+const { PurgeCSSPlugin } = require('purgecss-webpack-plugin');
 const glob = require('glob');
 
 const PATHS = {
     src: path.join(__dirname, 'src'),
 };
 
+// ✅ Dynamically generate entry points for all pages
+const entryPoints = {
+    main: "./src/js/main.js",
+    "elementorWidgetStyles": "./src/scss/elementor-widgets-styles.scss",
+    "globalStyles": "./src/scss/styles.scss", // ✅ Shared global styles
+};
+
+// ✅ Add every page's index.js as an entry point
+const pages = ['home', 'leadership'];
+pages.forEach(page => {
+    entryPoints[page] = `./src/pages/${page}/index.js`;
+});
+
 module.exports = {
     mode: 'production',
-    entry: {
-        main: "./src/js/main.js",
-        home: "./src/pages/home/index.js",
-        leadership: "./src/pages/leadership/index.js",
-        "elementorWidgetStyles": "./src/scss/elementor-widgets-styles.scss",
-        "globalStyles": "./src/scss/styles.scss", // ✅ Shared global styles
-    },
+    entry: entryPoints,
     output: {
         filename: 'js/[name].min.js',
         path: path.resolve(__dirname, 'dist'),
@@ -38,7 +41,6 @@ module.exports = {
             "@components": path.resolve(__dirname, "src/components"),
             "@abstracts": path.resolve(__dirname, "src/scss/abstracts"),
             "@utilities": path.resolve(__dirname, "src/scss/utilities"),
-            "@fonts": path.resolve(__dirname, "src/assets/fonts"),
         }
     },
     module: {
@@ -64,6 +66,7 @@ module.exports = {
                         }
                     },
                 ],
+                sideEffects: true, // ✅ Prevents unused styles from being removed
             },
             {
                 test: /\.js$/,
@@ -83,10 +86,11 @@ module.exports = {
     },
     optimization: {
         minimize: true,
+        usedExports: false, // ✅ Prevents tree-shaking of unused imports
+        sideEffects: false, // ✅ Ensures styles aren't removed
         minimizer: [
             new TerserPlugin({ parallel: true, terserOptions: { compress: { drop_console: true } } }),
             new CssMinimizerPlugin({ parallel: true }),
-            new HtmlMinimizerPlugin(),
         ],
         splitChunks: {
             chunks: 'all',
@@ -111,17 +115,10 @@ module.exports = {
         new MiniCssExtractPlugin({ filename: 'css/[name].min.css' }),
         new PurgeCSSPlugin({
             paths: glob.sync(`${PATHS.src}/**/*.{html,js,php}`, { nodir: true }),
-            // safelist: {
-            //     standard: ['elementor-section', 'elementor-column', 'elementor-widget', 'text-center', 'mb-8', 'mb-16', 'mt-4', 'px-6'],
-            //     deep: [/^elementor-/],
-            // },
+            safelist: {
+                deep: [/elementor-/], // ✅ Ensures Elementor dynamic classes are kept
+            },
         }),
-        ...['index.html', 'home.html'].map(page => new HtmlWebpackPlugin({
-            template: `./src/${page}`,
-            filename: page,
-            minify: { removeComments: true, collapseWhitespace: true },
-        })),
-        new CopyWebpackPlugin({ patterns: [{ from: 'src/assets', to: 'assets' }] }),
         new DefinePlugin({ 'process.env.NODE_ENV': JSON.stringify('production') }),
     ],
     devtool: 'source-map',
