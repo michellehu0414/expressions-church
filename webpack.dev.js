@@ -1,7 +1,8 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
-const ESLintPlugin = require('eslint-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
     mode: 'development',
@@ -9,17 +10,16 @@ module.exports = {
         main: './src/js/main.js',
         home: './src/pages/home/index.js',
         leadership: './src/pages/leadership/index.js',
-        "styles": "./src/scss/styles.scss",
         "elementor-widgets-styles": "./src/scss/elementor-widgets-styles.scss",
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'js/[name].bundle.js',
-        publicPath: "/",
+        filename: 'js/[name].min.js',
+        publicPath: "/", // Ensure this matches the production configuration
     },
     resolve: {
         alias: {
-            // General Paths
+            // General Paths3
             "@src": path.resolve(__dirname, "src"),
 
             // SCSS Aliases
@@ -68,13 +68,13 @@ module.exports = {
                     {
                         loader: "sass-loader",
                         options: {
-                            sourceMap: true, // ✅ Enables source maps
+                            sourceMap: true,
                             sassOptions: {
                                 includePaths: [
                                     path.resolve(__dirname, "src/scss"),
                                     path.resolve(__dirname, 'src/scss/abstracts'),
                                     path.resolve(__dirname, 'src/scss/utilities'),
-                                ], // ✅ Works with @use "@abstracts/variables";
+                                ],
                             },
                         },
                     },
@@ -124,15 +124,21 @@ module.exports = {
         ],
     },
     optimization: {
-        minimize: false, // Disable minification in development
+        minimize: false,
     },
     plugins: [
         new MiniCssExtractPlugin({ filename: 'css/[name].css' }), // Non-minified CSS for development
-        new webpack.HotModuleReplacementPlugin(), // Enable HMR
-        new ESLintPlugin({
-            extensions: ['js'],
-            exclude: 'node_modules',
-        }),
+        new webpack.HotModuleReplacementPlugin(),
+        // Enable HMR
+        // new ESLintPlugin({
+        //     extensions: ['js'],
+        //     exclude: 'node_modules',
+        // }),
+        ...['index.html', 'home.html'].map(page => new HtmlWebpackPlugin({
+            template: `./src/${page}`,
+            filename: page,
+            minify: false,
+        })),
     ],
     cache: {
         type: 'filesystem', // Enables filesystem caching
@@ -141,13 +147,16 @@ module.exports = {
         },
     },
     devServer: {
-        static: path.join(__dirname, 'dist'),
+        static: {
+            directory: path.join(__dirname, 'dist'),
+        },
         host: '0.0.0.0',
         open: true,
         hot: true,
         watchFiles: ['src/**/*'],
         port: 5688,
         allowedHosts: 'all',
+        liveReload: true,
     },
-    devtool: 'eval-source-map', // Faster source maps for development
+    devtool: 'eval-source-map',
 };
