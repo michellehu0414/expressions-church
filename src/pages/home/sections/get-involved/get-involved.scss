@@ -4,6 +4,10 @@ $get-involved-card-width: 27.5rem;
 
 // Get Involved
 #get-involved {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+
     .section-content {
         overflow: visible;
         width: 100%;
