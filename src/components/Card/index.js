@@ -1,8 +1,7 @@
 import "./Card.scss";
 
-export const createCard = ({ id, imageSrc, altText, headline, bodyText, primaryButtonText, secondaryButtonText }) => {
-    return `
-      <div id="${id}" class="card">
+export const createCard = ({ imageSrc, altText, headline, bodyText, primaryButtonText, secondaryButtonText }) => {
+  return `
         <img src="${imageSrc}" alt="${altText}" class="card-image">
         <div class="card-content">
           <h3 class="card-headline">${headline}</h3>
@@ -12,6 +11,5 @@ export const createCard = ({ id, imageSrc, altText, headline, bodyText, primaryB
             <button class="button secondary">${secondaryButtonText}</button>
           </div>
         </div>
-      </div>
     `;
 };

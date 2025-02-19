@@ -1,4 +1,5 @@
-@use "@abstracts/all-abstracts" as *;
+@use "@abstracts/breakpoints-mixins" as *;
+@use "@abstracts/variables" as *;
 
 // Buttons
 button {
@@ -16,6 +17,9 @@ button {
     width: fit-content;
     height: 2.5rem !important;
     text-wrap: nowrap;
+    color: white !important;
+    font-weight: 500;
+    margin-bottom: 0 !important;
 
     p {
         color: white !important;

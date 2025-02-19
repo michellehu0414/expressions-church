@@ -1,0 +1,42 @@
+@use "@abstracts/breakpoints-mixins" as *;
+
+.scroll-container {
+    width: 100%;
+    scroll-padding: 0;
+    overflow: scroll;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+}
+
+$card-items-alignment: center;
+$card-text-alignment: center;
+
+.item-container {
+    display: grid;
+    // grid-template-columns: repeat(4, auto);
+    // grid-template-rows: 1fr;
+    grid-gap: 1rem;
+    grid-auto-flow: column;
+    align-items: stretch;
+    overflow: visible;
+    align-self: flex-start;
+    margin: 0 auto;
+    width: fit-content;
+
+    .scroll-item-card {
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+    }
+
+    @include breakpoint(med) {
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include breakpoint(xl) {
+        grid-template-rows: auto;
+        grid-template-columns: repeat(4, 1fr);
+        padding: 0 !important;
+    }
+}
