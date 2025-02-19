@@ -4,21 +4,16 @@ const TerserPlugin = require('terser-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const { PurgeCSSPlugin } = require('purgecss-webpack-plugin');
 const HtmlMinimizerPlugin = require('html-minimizer-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const { DefinePlugin } = require('webpack');
+const { PurgeCSSPlugin } = require('purgecss-webpack-plugin'); // ✅ Correct import
+
 const glob = require('glob');
 
 const PATHS = {
-    src: path.join(__dirname, 'src')
+    src: path.join(__dirname, 'src'),
 };
-
-const htmlPages = [
-    { template: 'index.html', chunks: ['index'] },
-    { template: 'home.html', chunks: ['home'] },
-    // Add other HTML pages here
-];
 
 module.exports = {
     mode: 'production',
@@ -27,62 +22,45 @@ module.exports = {
         home: "./src/pages/home/index.js",
         leadership: "./src/pages/leadership/index.js",
         "elementorWidgetStyles": "./src/scss/elementor-widgets-styles.scss",
-        "styles": "./src/scss/styles.scss",
+        "globalStyles": "./src/scss/styles.scss", // ✅ Shared global styles
     },
     output: {
-        filename: 'js/[name].min.js', // Add content hash for cache busting
+        filename: 'js/[name].min.js',
         path: path.resolve(__dirname, 'dist'),
         publicPath: '/',
         clean: true,
     },
     resolve: {
         alias: {
-            // General Paths
             "@src": path.resolve(__dirname, "src"),
-
-            // SCSS Aliases
-            "@scss": path.resolve(__dirname, "src/scss"),
-            "@abstracts": path.resolve(__dirname, "src/scss/abstracts"),
-            "@base": path.resolve(__dirname, "src/scss/base"),
-            "@utilities": path.resolve(__dirname, "src/scss/utilities"),
-            "@widgets": path.resolve(__dirname, "src/scss/elementor-widgets"),
-            "@fonts": path.resolve(__dirname, "src/assets/fonts"),
-
-            // JavaScript Aliases
             "@js": path.resolve(__dirname, "src/js"),
+            "@scss": path.resolve(__dirname, "src/scss"),
             "@components": path.resolve(__dirname, "src/components"),
+            "@abstracts": path.resolve(__dirname, "src/scss/abstracts"),
+            "@utilities": path.resolve(__dirname, "src/scss/utilities"),
+            "@fonts": path.resolve(__dirname, "src/assets/fonts"),
         }
     },
     module: {
         rules: [
             {
-                test: /\.(woff|woff2)$/,
+                test: /\.(woff|woff2|eot|ttf|otf)$/,
                 type: 'asset/resource',
-                generator: {
-                    filename: 'assets/fonts/[name][ext]'
-                }
+                generator: { filename: 'assets/fonts/[name][ext]' }
             },
             {
                 test: /\.(scss|css)$/,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    'css-loader',
+                    {
+                        loader: 'css-loader',
+                        options: { importLoaders: 1, modules: false },
+                    },
                     {
                         loader: "sass-loader",
                         options: {
                             implementation: require('sass'),
-                            sassOptions: {
-                                outputStyle: 'compressed',
-                                includePaths: [
-                                    path.resolve(__dirname, "src/scss"),
-                                    path.resolve(__dirname, "src/scss/abstracts"),
-                                    path.resolve(__dirname, "src/scss/base"),
-                                    path.resolve(__dirname, "src/scss/components"),
-                                    path.resolve(__dirname, "src/scss/pages"),
-                                    path.resolve(__dirname, "src/scss/utilities"),
-                                    path.resolve(__dirname, "src/scss/elementor-widgets"),
-                                ]
-                            }
+                            sassOptions: { outputStyle: 'compressed' },
                         }
                     },
                 ],
@@ -92,97 +70,60 @@ module.exports = {
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
-                    options: {
-                        presets: ['@babel/preset-env'],
-                    },
+                    options: { presets: ['@babel/preset-env'], cacheDirectory: true },
                 },
             },
             {
-                test: /\.(png|jpe?g|gif|svg)$/i,
+                test: /\.(png|jpe?g|gif|svg|webp|avif)$/i,
                 type: 'asset/resource',
-                generator: {
-                    filename: 'images/[name][ext]'
-                },
-                use: [
-                    {
-                        loader: 'image-webpack-loader',
-                        options: {
-                            mozjpeg: {
-                                progressive: true,
-                                quality: 65,
-                            },
-                            optipng: {
-                                enabled: true,
-                            },
-                            pngquant: {
-                                quality: [0.65, 0.90],
-                                speed: 4,
-                            },
-                            gifsicle: {
-                                interlaced: false,
-                            },
-                            webp: {
-                                quality: 75,
-                            },
-                        },
-                    },
-                ],
+                generator: { filename: 'images/[name][ext]' },
+                use: [{ loader: 'image-webpack-loader', options: { mozjpeg: { progressive: true, quality: 65 } } }],
             },
         ],
     },
     optimization: {
         minimize: true,
         minimizer: [
-            new TerserPlugin({
-                terserOptions: {
-                    compress: {
-                        drop_console: true, // Remove console logs in production
-                    },
-                },
-            }),
-            new CssMinimizerPlugin(), // Minify CSS
-            new HtmlMinimizerPlugin(), // Minify HTML
+            new TerserPlugin({ parallel: true, terserOptions: { compress: { drop_console: true } } }),
+            new CssMinimizerPlugin({ parallel: true }),
+            new HtmlMinimizerPlugin(),
         ],
         splitChunks: {
             chunks: 'all',
-        },
-        runtimeChunk: 'single',
+            cacheGroups: {
+                globalCoreStyles: {
+                    name: 'globalCoreStyles',
+                    test: /[\\/]scss[\\/](abstracts|base|utilities)[\\/]/,
+                    chunks: 'all',
+                    enforce: true,
+                },
+                elementorStyles: {
+                    name: 'elementorStyles',
+                    test: /[\\/]scss[\\/]elementor-widgets[\\/]/,
+                    chunks: 'all',
+                    enforce: true,
+                },
+            }
+        }
     },
     plugins: [
-        new CleanWebpackPlugin(), // Clean the output directory before each build
-        new MiniCssExtractPlugin({
-            filename: 'css/[name].css', // Non-minified CSS
-        }),
-        new MiniCssExtractPlugin({
-            filename: 'css/[name].min.css', // Add content hash for cache busting
-        }),
+        new CleanWebpackPlugin(),
+        new MiniCssExtractPlugin({ filename: 'css/[name].min.css' }),
         new PurgeCSSPlugin({
-            paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
-            safelist: {
-                standard: ['keep-this-class', /^dynamic-/]
-            },
+            paths: glob.sync(`${PATHS.src}/**/*.{html,js,php}`, { nodir: true }),
+            // safelist: {
+            //     standard: ['elementor-section', 'elementor-column', 'elementor-widget', 'text-center', 'mb-8', 'mb-16', 'mt-4', 'px-6'],
+            //     deep: [/^elementor-/],
+            // },
         }),
-        ...htmlPages.map(page => new HtmlWebpackPlugin({
-            template: `./src/${page.template}`,
-            filename: page.template,
-            chunks: page.chunks
+        ...['index.html', 'home.html'].map(page => new HtmlWebpackPlugin({
+            template: `./src/${page}`,
+            filename: page,
+            minify: { removeComments: true, collapseWhitespace: true },
         })),
-        new CopyWebpackPlugin({
-            patterns: [
-                { from: 'src/assets', to: 'assets' }
-            ]
-        }),
-        new DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('production')
-        }),
-        // Uncomment the following line if you want to analyze the bundle size
-        // new BundleAnalyzerPlugin(),
+        new CopyWebpackPlugin({ patterns: [{ from: 'src/assets', to: 'assets' }] }),
+        new DefinePlugin({ 'process.env.NODE_ENV': JSON.stringify('production') }),
     ],
-    devtool: 'source-map', // Enable source maps in production
-    cache: {
-        type: 'filesystem', // Enable filesystem caching
-        buildDependencies: {
-            config: [__filename], // Cache invalidation based on config file changes
-        },
-    },
+    devtool: 'source-map',
+    cache: { type: 'filesystem', buildDependencies: { config: [__filename] } },
 };
