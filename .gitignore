@@ -52,3 +52,6 @@ dist/assets/fonts/
 
 dist/home.html
 dist/index.html
+
+dist/*.hot-update.*
+dist/js/globalStyles.min.js
