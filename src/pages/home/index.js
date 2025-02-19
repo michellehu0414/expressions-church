@@ -1,10 +1,15 @@
-import './home.scss';
-
+import './home.scss'; // ✅ Ensures styles are compiled
 import '@js/main';
-import '@components/globalComponents';
-
-import './sections/intro';
+import '@components/globalComponents'; // ✅ Will always be compiled
 import './sections/get-involved';
 
-// Usage - Importing the file
-// import './src/templates/innerHTML/innerHTML.js';\
+import { renderIntro } from './sections/intro';
+
+document.addEventListener('DOMContentLoaded', () => {
+    renderIntro(); // ✅ Render the intro section when the DOM is fully loaded
+});
+
+// ✅ Ensure Webpack sees these modules as necessary
+if (document.readyState !== 'loading') {
+    console.log("Home page scripts loaded");
+}
