@@ -22,9 +22,6 @@ html {
 body {
 	font-family: 'Poppins', sans-serif;
 	color: white;
-	width: 100%;
-	max-width: 100vw;
-	overflow-x: hidden;
 	z-index: -1;
 	background-image: url('https://vrwpaviv.elementor.cloud/wp-content/uploads/2024/12/bg-texture-scaled.webp');
 	background-position: fixed;
@@ -41,6 +38,8 @@ body {
 	margin: 0;
 	padding: 0;
 	overflow-x: hidden;
+	width: 100%;
+	max-width: 100vw;
 	/* Prevent horizontal overflow */
 }
 

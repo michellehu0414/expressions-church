@@ -55,3 +55,9 @@ dist/index.html
 
 dist/*.hot-update.*
 dist/js/globalStyles.min.js
+
+# Ignore all files in the images/ directory
+images/*/*
+
+# Do not ignore directories within images/
+!images/*/.gitkeep
