@@ -53,3 +53,9 @@ dist/assets/fonts/
 dist/*.hot-update.*
 dist/js/globalStyles.min.js
 test.js
+
+wp-image-optimizer/compressed/*
+wp-image-optimizer/local/*
+wp-image-optimizer/originals/*
+wp-image-optimizer/queue/*
+wp-image-optimizer/webp/*
