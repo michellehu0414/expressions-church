@@ -7,7 +7,7 @@ import { serveTeamsData } from "@data/serveTeamsData"; // ✅ Import data
 
 const TeamsAccordionSection = () => {
   return (
-    <PaperBackgroundContainer
+    <PaperBackgroundContainer className="teamsContainer"
       headline="Our Teams"  // ✅ Displays a title      // ✅ Shows a divider
       content={
         <AccordionList items={serveTeamsData} />
