@@ -71,15 +71,14 @@ h1 {
 	}
 }
 
-$h2-font-size-base: 2.75;
-$h2-font-size-med: 3.5;
+$h2-font-size-base: 3;
+$h2-font-size-med: 3.75;
 $h2-font-size-lg: 4.5;
 $h2-outlined-font-size-calc: 1.015;
 $h2-font-size-scale-calc: calc($h2-font-size-base / $heading-text-gap-base);
 
 h2 {
 	// Ensures the h2's width matches the text content
-	font-size: 2rem; // Adjust font size as needed
 	font-size: $h2-font-size-base * 1rem;
 	font-weight: 700;
 	line-height: 100%;
