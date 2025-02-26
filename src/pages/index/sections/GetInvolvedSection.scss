@@ -1,14 +1,22 @@
 @use "abstracts/all-abstracts" as *;
 @use "../../../components/ChalkDivider/ChalkDivider" as *;
 
+.getInvolvedSection {
+
+    .sectionContent>.whiteChalkDivider {
+        margin: 1.5rem 0 !important;
+        background: none;
+    }
+}
+
 .card {
     width: 100% !important;
     margin-bottom: 2.5rem;
 }
 
-.get-involved-section {
-    .sectionContent>.whiteChalkDivider {
-        margin: 3rem 0 !important;
+.serve {
+    p {
+        margin-bottom: 1.5rem;
     }
 }
 
