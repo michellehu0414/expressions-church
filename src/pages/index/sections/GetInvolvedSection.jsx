@@ -7,7 +7,7 @@ import transformStyles from "@scss/utilities/_transform.scss";
 
 const GetInvolvedSection = () => {
   return (
-    <section className="">
+    <section className="get-involved-section">
       <h2><span className="outlined">Get</span> Involved</h2>
       <div className="sectionContent">
         <GetInvolvedCards id="serve-sgv-card" />
