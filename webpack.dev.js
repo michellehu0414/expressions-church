@@ -12,13 +12,16 @@ module.exports = merge(common, {
         static: {
             directory: "./dist",
         },
-        host: "0.0.0.0",
+        host: "0.0.0.0", // Allow connections from any IP address
         open: true,
         hot: true,
         port: 5688,
         allowedHosts: "all",
         watchFiles: ["./src/**/*"],
         liveReload: true,
+        server: {
+            type: 'http', // Use 'http' to disable HTTPS for local development
+        },
     },
     plugins: [new webpack.HotModuleReplacementPlugin()],
 });
