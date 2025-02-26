@@ -2,7 +2,7 @@
 @use "utilities/all-utilities" as *;
 
 .sectionWrapper {
-    padding: $sectionWrapper-padding-base auto;
+    padding: $sectionWrapper-padding-base 0;
     width: 100%;
 
     @include breakpoint(med) {
