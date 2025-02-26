@@ -17,8 +17,8 @@ export const serveTeamsData = [
         content: "Through instruments or vocals, you help people experience Jesus' love through worship.",
     },
     {
-        title: "Kids (Background check required)",
-        content: "Help kids learn more about Jesus, the Bible, and faith as a teacher or helper.",
+        title: "Expressions Kids",
+        content: "Help kids learn more about Jesus, the Bible, and faith as a teacher or helper. (Background check required*)",
     },
     {
         title: "Hospitality",
