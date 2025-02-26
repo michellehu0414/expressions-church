@@ -34,9 +34,9 @@ const Button = ({
 
   // ✅ Default: Render a Normal <button>
   return (
-    <Button className={buttonClass} onClick={onClick} disabled={disabled} {...props}>
+    <button className={buttonClass} onClick={onClick} disabled={disabled} {...props}>
       {children}
-    </Button>
+    </button>
   );
 };
 
