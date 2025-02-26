@@ -6,10 +6,11 @@ const PaperBackgroundContainer = ({
   headline,
   showDivider = true,
   content,
+  className = '',
 }) => {
   return (
     <section
-      className={styles.container}
+      className={`${containerStyles.container} ${className}`}
     >
       {/* Headline */}
       {headline && <h3 className={styles.containerHeadline}>{headline}</h3>}
