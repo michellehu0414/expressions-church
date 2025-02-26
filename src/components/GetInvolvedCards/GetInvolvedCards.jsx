@@ -1,6 +1,7 @@
 // GetInvolvedCards
 import React from "react";
 import Card from "@components/Card/Card";
+import './GetInvolvedCards.scss';
 
 const cardData = {
     "partner-card": {
