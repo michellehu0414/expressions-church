@@ -54,8 +54,16 @@ dist/*.hot-update.*
 dist/js/globalStyles.min.js
 test.js
 
-wp-image-optimizer/compressed/*
-wp-image-optimizer/local/*
+wp-image-optimizer/local/compressed/*
+wp-image-optimizer/local/originals/*
+wp-image-optimizer/local/webp/*
+wp-image-optimizer/local/input/*
 wp-image-optimizer/originals/*
-wp-image-optimizer/queue/*
 wp-image-optimizer/webp/*
+wp-image-optimizer/input/*
+wp-image-optimizer/output/*
+wp-image-optimizer/uploaded/*
+
+
+assets/images/fire-relief-distribution/compressed/*
+assets/images/fire-relief-distribution/originals/*
