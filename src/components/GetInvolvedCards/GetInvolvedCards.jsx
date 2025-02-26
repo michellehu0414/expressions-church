@@ -28,7 +28,7 @@ const cardData = {
         secondaryButtonLink: "/firerelief",
     },
     "give-card": {
-        image: "https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/diverse-community-gathering-circle.webp",
+        image: "https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/02/fire-relief-drive-thru-volunteers.webp",
         altText: "Image 2",
         headline: "Give",
         bodyText: "We are a brand new church. Along with many families, we lost our building to the Eaton Fire. Help us rebuild and uplift SGV.",
@@ -49,7 +49,7 @@ const cardData = {
         secondaryButtonText: "Sign Up",
     },
     "serve-card": {
-        image: "https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/diverse-community-gathering-circle.webp",
+        image: "https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/02/sunday-school-teacher-instructing-kids.webp",
         altText: "text",
         headline: "Serve with a Team",
         bodyText: "God has given all of us a gift from his great variety of spiritual gifts. Use them well to serve one another. We have 9 teams in total.",
@@ -58,7 +58,7 @@ const cardData = {
         secondaryButtonText: "Get Started",
     },
     "serve-sgv-card": {
-        image: "https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/02/three-fire-relief-volunteers-outdoor.webp",
+        image: "https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/02/fire-relief-happy-volunteers-donation-boxes.webp",
         altText: "text",
         headline: "Serve SGV",
         bodyText: "Join our community efforts and support our SGV neighbors.",
@@ -78,7 +78,7 @@ const cardData = {
         primaryButtonExternal: "true",
     },
     "baptism-card": {
-        image: "https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/diverse-community-gathering-circle.webp",
+        image: "https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/baptism.webp",
         altText: "text",
         headline: "Get Baptized",
         bodyText: "We’d love to pray for you. Share your request with us—you may choose to remain anonymous.",
@@ -89,7 +89,7 @@ const cardData = {
         secondaryButtonLink: "/baptism",
     },
     "newcomer-connect-card": {
-        image: "https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/diverse-community-gathering-circle.webp",
+        image: "https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/02/three-church-members-talking.webp",
         altText: "text",
         headline: "Attend Newcomer Connect",
         bodyText: "Meet other newcomers and get to know us at our Newcomer Connect after Sunday service at a local coffee shop.",
