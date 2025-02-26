@@ -1,5 +1,5 @@
 import React from "react";
-import * as styles from "./PaperBackgroundContainer.modules.scss";
+import * as containerStyles from "./PaperBackgroundContainer.modules.scss";
 import ChalkDivider from "@components/ChalkDivider/ChalkDivider";
 
 const PaperBackgroundContainer = ({
@@ -13,10 +13,10 @@ const PaperBackgroundContainer = ({
       className={`${containerStyles.container} ${className}`}
     >
       {/* Headline */}
-      {headline && <h3 className={styles.containerHeadline}>{headline}</h3>}
+      {headline && <h3 className={containerStyles.containerHeadline}>{headline}</h3>}
 
       {/* Divider */}
-      {showDivider && <ChalkDivider variant="black" />}
+      {showDivider && <ChalkDivider variant="black" height={0.35} />}
 
       {/* Dynamic Content */}
       <div>{content}</div>

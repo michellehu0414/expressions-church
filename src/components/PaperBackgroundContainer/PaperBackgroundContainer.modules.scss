@@ -1,15 +1,20 @@
 @use "@abstracts/all-abstracts" as *;
 
 .container {
-    @include flex(column, center, center);
     padding: 1.5rem;
     border-radius: 0.5rem;
-    box-shadow: 0 0 1rem rgba($color: $black, $alpha: 0.1);
     background: $paperBackgroundImage;
-    ;
+    height: fit-content;
 }
 
 .containerHeadline {
     margin-bottom: 0.25rem;
     color: #222222;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.chalkDivider {
+    height: 0.375rem !important;
 }
