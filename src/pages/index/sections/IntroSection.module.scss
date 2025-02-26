@@ -1,22 +1,27 @@
+@use "@abstracts/variables" as *;
+
 .introSection {
     width: 100%;
-    margin-bottom: 3rem;
 }
-
 
 .largeText {
     color: white;
-    font-family: Poppins;
-    font-size: 2.875rem;
+    font-size: 2.5rem;
     font-style: normal;
     font-weight: 600;
     line-height: 110%;
-    /* 3.01875rem */
     letter-spacing: -0.02875rem;
+    text-align: left;
 }
 
-.christopherHugWrapper .cardBGPaper {
-    transform: translateY(-6.5rem);
+#weBelieve {
+    margin-bottom: 4.5rem;
+}
+
+.christopherHugWrapper {
+    #cardBGPaper {
+        transform: translateY(-6.5rem);
+    }
 }
 
 .imgChristopherHug {
@@ -32,5 +37,21 @@
     width: 24rem;
     margin-left: auto;
     transform: translateY(-1rem);
-    margin-bottom: 5rem;
+    margin-bottom: 3rem;
+}
+
+.taglineWrapper {
+    background: $paperBackgroundImage;
+    padding: 1.5rem;
+    margin-top: 3rem;
+
+    .largeText {
+        text-align: left;
+        color: $off-black;
+        margin-bottom: 0.5rem;
+
+        span {
+            color: #148396;
+        }
+    }
 }
