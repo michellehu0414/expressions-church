@@ -1,0 +1,64 @@
+@use "@abstracts/breakpoints-mixins" as *;
+@use "@abstracts/variables" as *;
+
+$accordion-margin-right: 1.5rem;
+$accordion-content-color: #222222;
+$accordion-border: 2px solid $accordion-content-color;
+
+.accordion {
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border-bottom: $accordion-border;
+    padding: 0.5rem 0;
+
+    .first-accordion {
+        border-top: $accordion-border;
+    }
+}
+
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    background-color: transparent;
+    cursor: pointer;
+    gap: $accordion-margin-right;
+    width: 100%;
+
+    h3 {
+        font-size: 1.125rem;
+        color: $accordion-content-color !important;
+        margin-bottom: 0;
+        text-align: left;
+    }
+}
+
+.accordion-icon {
+    font-size: 1.5rem;
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    color: $accordion-content-color !important;
+
+    p {
+        color: $accordion-content-color !important;
+        font-size: 1.125rem;
+        font-weight: 500;
+    }
+
+    @include breakpoint(med) {
+        margin-right: 1.5rem;
+
+        p {
+            font-size: 1.5rem;
+        }
+    }
+}
+
+.accordion-content.open {
+    max-height: 200px;
+    /* Adjust based on your content */
+    padding: 1rem;
+}

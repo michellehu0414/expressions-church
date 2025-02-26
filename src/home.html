@@ -13,7 +13,8 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="css/home.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/globals.css">
 </head>
 
 <body>
@@ -21,8 +22,77 @@
         <h1>Welcome to Expressions Church GitHub Repo</h1>
     </header>
     <div id="intro"></div>
-    <div id="get-involved"></div>
+    <section id="get-involved">
+        <h2><span class="outlined">Get</span> Involved</h2>
+        <div class="sectionContent">
+            <div id="partner-card" class="card"></div>
+            <div class="white-chalk-divider"></div>
+            <div id="fire-relief-card" class="card"></div>
+            <div class="white-chalk-divider"></div>
+            <div id="give-card" class="card"></div>
+            <div class="white-chalk-divider"></div>
+            <div id="find-community-card" class="card"></div>
+            <div class="white-chalk-divider"></div>
+            <div id="serve-card" class="card"></div>
+            <div class="scroll-container" id="scroll-container-1">
+                <div class="scroll-items-wrapper">
+                    <div class="scroll-item-card">
+                        <img src="https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/02/sunday-school-teacher-instructing-kids.webp"
+                            alt="Another class">
+                    </div>
+                    <div class="scroll-item-card">
+                        <img src="https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/02/sunday-school-teacher-instructing-kids.webp"
+                            alt="Another class">
+                    </div>
+                </div>
+            </div>
+            <div class="content-max-width">
+                <h3>Got questions? Let's chat!</h3>
+                <p>Not sure which team to join? Want to learn more?
+                    Submit an Interest Form anyway! We can talk and discern how you can contribute
+                    your
+                    God-given
+                    gifts or talents.</p>
+                <button class="primary button mt-24">Submit interest form</button>
+            </div>
+            <div class="white-chalk-divider"></div>
+            <div id="serve-sgv-card" class="card"></div>
+            <div class="white-chalk-divider"></div>
+            <div id="prayer-request-card" class="card"></div>
+            <div class="white-chalk-divider"></div>
+            <div id="baptism-card" class="card"></div>
+            <div class="white-chalk-divider"></div>
+            <div id="newcomer-connect-card" class="card"></div>
+        </div>
+    </section>
+    <hr class="white-chalk-divider">
+    <section id="events">
+        <h2 class="width-100"><span class="outlined">Upcoming</span> <br>Events</h2>
+        <div id="subsplash-embed-events" class="container-max-width">
+            <script id="subsplash-embed-qtbc9rz"
+                type="text/javascript"> var target = document.getElementById("subsplash-embed-qtbc9rz"); var script = document.createElement("script"); script.type = "text/javascript"; script.onload = function () { subsplashEmbed("+dwm2/lb/ca/+qtbc9rz?embed", "https://subsplash.com/", "subsplash-embed-qtbc9rz"); }; script.src = "https://dashboard.static.subsplash.com/production/web-client/external/embed-1.1.0.js"; target.parentElement.insertBefore(script, target); </script>
+        </div>
+    </section>
     <script src="js/home.bundle.js"></script>
+    <script>const iframe = document.getElementById("subsplash-embed-qtbc9rz");
+
+        iframe.onload = function () {
+            const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+            // Create a new <style> element
+            const style = iframeDoc.createElement("style");
+            style.innerHTML = `
+            body {
+              background-color: #f8f8f8 !important;
+              color: #333 !important;
+              font-family: Arial, sans-serif !important;
+            }
+          `;
+
+            // Append the <style> element to the iframe's <head>
+            iframeDoc.head.appendChild(style);
+        };
+    </script>
 </body>
 
 </html>

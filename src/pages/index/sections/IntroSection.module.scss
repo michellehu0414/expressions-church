@@ -1,0 +1,36 @@
+.introSection {
+    width: 100%;
+    margin-bottom: 3rem;
+}
+
+
+.largeText {
+    color: white;
+    font-family: Poppins;
+    font-size: 2.875rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 110%;
+    /* 3.01875rem */
+    letter-spacing: -0.02875rem;
+}
+
+.christopherHugWrapper .cardBGPaper {
+    transform: translateY(-6.5rem);
+}
+
+.imgChristopherHug {
+    object-fit: contain;
+    width: 24rem;
+    margin-left: 15%;
+    z-index: -1;
+    position: relative;
+}
+
+.imgLaundryLove {
+    object-fit: contain;
+    width: 24rem;
+    margin-left: auto;
+    transform: translateY(-1rem);
+    margin-bottom: 5rem;
+}

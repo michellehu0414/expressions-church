@@ -1,0 +1,129 @@
+@use "abstracts/all-abstracts" as *;
+@use "../../../components/ChalkDivider/ChalkDivider" as *;
+
+.card {
+    width: 100% !important;
+    margin-bottom: 2.5rem;
+}
+
+.chalkDivider {
+    margin: 2.5rem 0 !important;
+}
+
+//
+//     .item-container {
+//         display: grid;
+//         grid-template-rows: 1fr;
+//         grid-template-columns: repeat(4, auto);
+//         gap: 0.5rem;
+//         width: fit-content;
+//         margin-bottom: $button-margin-top-mobile;
+//         max-width: none;
+//
+//         scroll-padding: 0;
+//         overflow: scroll !important;
+//         scroll-snap-type: x mandatory;
+//         scrollbar-width: none;
+//
+//         @include breakpoint(med) {
+//             gap: 1rem;
+//             grid-template-rows: repeat(2, 1fr);
+//             grid-template-columns: repeat(2, 1fr);
+//             margin-bottom: $button-margin-top-med;
+//         }
+//
+//         @include breakpoint(lg) {
+//             grid-template-rows: auto;
+//             grid-template-columns: repeat(4, 1fr);
+//         }
+//
+//         .scroll-item-card {
+//             width: 80vw;
+//             border-radius: 0.5rem;
+//
+//             img {
+//                 width: 100%;
+//             }
+//         }
+//     }
+//
+//     .card {
+//         width: $get-involved-card-width;
+//         background-size: 100% 100%;
+//         background-position: center;
+//         height: 100%;
+//         width: 90%;
+//         max-width: $card-max-width;
+//         transition: transform 0.3s ease-in-out;
+//     }
+//
+//     .scroll-container {
+//         width: 100%;
+//         overflow-x: auto; // Enable horizontal scrolling
+//         scroll-snap-type: x mandatory;
+//         scrollbar-width: none; // Hide scrollbar on Firefox
+//         -ms-overflow-style: none; // Hide scrollbar on IE/Edge
+//         display: flex;
+//         justify-content: center;
+//         align-items: center;
+//         padding: 1rem 0;
+//
+//         &::-webkit-scrollbar {
+//             display: none; // Hide scrollbar on Chrome/Safari
+//         }
+//     }
+//
+//     .scroll-items-wrapper {
+//         display: flex;
+//         gap: 1rem;
+//         width: fit-content;
+//     }
+//
+
+.scroll-item-card {
+    width: 80vw;
+    border-radius: 0.5rem;
+
+    img {
+        width: 100%;
+    }
+}
+
+//
+// .scroll-container {
+//     width: 100%;
+//     scroll-padding: 0;
+//     overflow: scroll;
+//     scroll-snap-type: x mandatory;
+//     scrollbar-width: none;
+// }
+//
+// .item-container {
+//     display: grid;
+//     // grid-template-columns: repeat(4, auto);
+//     // grid-template-rows: 1fr;
+//     grid-gap: 1rem;
+//     grid-auto-flow: column;
+//     align-items: stretch;
+//     overflow: visible;
+//     align-self: flex-start;
+//     margin: 0 auto;
+//     width: fit-content;
+//
+//     .scroll-item-card {
+//         padding: 0;
+//         margin: 0;
+//         list-style-type: none;
+//     }
+//
+//     @include breakpoint(med) {
+//         grid-template-rows: repeat(2, 1fr);
+//         grid-template-columns: repeat(2, 1fr);
+//     }
+//
+//     @include breakpoint(xl) {
+//         grid-template-rows: auto;
+//         grid-template-columns: repeat(4, 1fr);
+//         padding: 0 !important;
+//     }
+// }

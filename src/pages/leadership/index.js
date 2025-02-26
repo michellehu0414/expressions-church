@@ -1,1 +1,0 @@
-import './leadership.scss';

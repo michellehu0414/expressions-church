@@ -1,18 +1,31 @@
 {
-	"name": "wp-content",
+	"name": "expressions-church-theme",
 	"version": "1.0.0",
-	"main": "js/src/main.js",
+	"main": "src/main.jsx",
 	"scripts": {
 		"dev": "webpack serve --config webpack.dev.js",
-		"build": "webpack --config webpack.prod.js"
+		"build": "webpack --config webpack.prod.js",
+		"watch:sass": "npx sass --watch src/scss:dist/css --load-path=src/scss",
+		"watch": "npm-run-all --parallel watch:sass dev",
+		"clean": "rm -rf dist && npm run build"
 	},
 	"keywords": [],
-	"author": "",
+	"author": "Michelle Hu",
 	"license": "ISC",
 	"description": "",
+	"dependencies": {
+		"axios": "^1.7.9",
+		"cssnano": "^7.0.6",
+		"form-data": "^4.0.2",
+		"react": "^19.0.0",
+		"react-dom": "^19.0.0",
+		"react-router-dom": "^7.2.0",
+		"sharp": "^0.33.5"
+	},
 	"devDependencies": {
-		"@babel/core": "^7.26.8",
-		"@babel/preset-env": "^7.26.8",
+		"@babel/core": "^7.26.9",
+		"@babel/preset-env": "^7.26.9",
+		"@babel/preset-react": "^7.26.3",
 		"@fullhuman/postcss-purgecss": "^7.0.2",
 		"autoprefixer": "^10.4.20",
 		"babel-loader": "^9.2.1",
@@ -25,17 +38,17 @@
 		"html-minimizer-webpack-plugin": "^5.0.0",
 		"html-webpack-plugin": "^5.6.3",
 		"mini-css-extract-plugin": "^2.9.2",
+		"node-sass": "^9.0.0",
+		"npm-run-all": "^4.1.5",
 		"postcss-loader": "^8.1.1",
 		"purgecss-webpack-plugin": "^7.0.2",
-		"sass": "^1.84.0",
-		"sass-loader": "^16.0.4",
+		"sass": "^1.85.0",
+		"sass-loader": "^10.5.2",
+		"style-loader": "^4.0.0",
 		"terser-webpack-plugin": "^5.3.11",
-		"webpack": "^5.97.1",
+		"webpack": "^5.98.0",
 		"webpack-bundle-analyzer": "^4.10.2",
 		"webpack-cli": "^6.0.1",
 		"webpack-dev-server": "^5.2.0"
-	},
-	"dependencies": {
-		"cssnano": "^7.0.6"
 	}
 }

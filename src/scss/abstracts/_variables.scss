@@ -27,13 +27,12 @@ $primary-bg: #ffdc93;
 // Containers
 $container-width: 90%;
 $content-mb: 2rem;
-$content-max-width: 45rem;
+$content-max-width: 85rem;
 $outline-stroke: 1.25px;
 
 // Components
-$nav-footer-max-width: 82rem;
+$nav-footer-max-width: $content-max-width;
 $progress-bar-height: 6px;
-$wireframe-max-height: 40rem;
 
 // Type
 $heading-text-gap-base: 0.5rem;
@@ -44,8 +43,13 @@ $main-font: 'Poppins', sans-serif;
 $card-max-width: 27.5rem;
 $button-margin-top-mobile: 2rem;
 $button-margin-top-med: 3.5rem;
-$bg-paper: url('https://vrwpaviv.elementor.cloud/wp-content/uploads/2024/12/card-paper-bg.webp') no-repeat center center;
+$paperBackgroundImage: url('https://vrwpaviv.elementor.cloud/wp-content/uploads/2024/12/card-paper-bg.webp') no-repeat center center;
 
-$section-wrapper-padding-sm: 4rem;
-$section-wrapper-padding-med: 6rem;
+$sectionWrapper-padding-base: 2.5rem;
+$sectionWrapper-padding-med: 3rem;
+$sectionWrapper-padding-lg: 3.5rem;
+
 $get-involved-card-width: 27.5rem;
+
+// Cards
+$card-content-alignment: left;

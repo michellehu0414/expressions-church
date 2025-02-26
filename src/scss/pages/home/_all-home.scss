@@ -1,5 +1,5 @@
-@use "@abstracts/all-abstracts" as *;
-@use "@utilities/all-utilities" as *;
+@use "abstracts/all-abstracts" as *;
+@use "utilities/all-utilities" as *;
 
 @forward "get-involved";
 @forward "intro";
@@ -13,8 +13,8 @@
     justify-content: start;
 }
 
-.card-bg-paper {
-    background: $bg-paper;
+.card-paperBackgroundImage {
+    background: $paperBackgroundImage;
     display: flex;
     padding: 1.25rem;
     flex-direction: column;

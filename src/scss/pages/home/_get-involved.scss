@@ -1,31 +1,19 @@
-@use "@abstracts/all-abstracts" as *;
+@use "abstracts/all-abstracts" as *;
 
 // Get Involved
 #get-involved {
-    .section-content {
+    .sectionContent {
         overflow: visible;
         width: 100%;
         max-width: 80rem;
     }
 
-    .item-container {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(4, auto);
-        gap: 2rem;
-        margin-bottom: $button-margin-top-mobile;
+    .scroll-container {
+        margin-bottom: 2rem !important;
+    }
 
-        @include breakpoint(med) {
-            gap: 1rem;
-            grid-template-rows: repeat(2, 1fr);
-            grid-template-columns: repeat(2, 1fr);
-            margin-bottom: $button-margin-top-med;
-        }
-
-        @include breakpoint(lg) {
-            grid-template-rows: auto;
-            grid-template-columns: repeat(4, 1fr);
-        }
+    div>.scroll-buttons {
+        margin-top: 2rem !important;
     }
 
     .card {
@@ -37,14 +25,6 @@
         max-width: $card-max-width;
         transition: transform 0.3s ease-in-out;
     }
-}
-
-.scroll-container {
-    width: 100%;
-    scroll-padding: 0;
-    overflow: scroll;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
 }
 
 $card-items-alignment: center;
@@ -139,32 +119,25 @@ $card-text-alignment: center;
     }
 }
 
-.item-container {
-    display: grid;
-    // grid-template-columns: repeat(4, auto);
-    // grid-template-rows: 1fr;
-    grid-gap: 1rem;
-    grid-auto-flow: column;
-    align-items: stretch;
-    overflow: visible;
-    align-self: flex-start;
-    margin: 0 auto;
-    width: fit-content;
+#subsplash-embed-events {
+    display: flex;
+    width: 90%;
+    margin: auto;
+    padding: 1rem;
+    background-color: white;
+}
 
-    .scroll-item-card {
-        padding: 0;
-        margin: 0;
-        list-style-type: none;
+#subsplash-embed-qtbc9rz {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+
+    iframe {
+        width: 90% !important;
     }
 
-    @include breakpoint(med) {
-        grid-template-rows: repeat(2, 1fr);
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    @include breakpoint(xl) {
-        grid-template-rows: auto;
-        grid-template-columns: repeat(4, 1fr);
-        padding: 0 !important;
+    .ember-application,
+    body {
+        background-color: transparent !important;
     }
 }
