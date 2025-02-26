@@ -15,7 +15,7 @@ const PaperBackgroundContainer = ({
       {headline && <h3 className={styles.containerHeadline}>{headline}</h3>}
 
       {/* Divider */}
-      {showDivider && <ChalkDivider variant="black" />}
+      {showDivider && <ChalkDivider variant="black" className={styles.chalkDivider} />}
 
       {/* Dynamic Content */}
       <div>{content}</div>
