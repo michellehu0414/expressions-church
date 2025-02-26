@@ -14,21 +14,23 @@ if (!wordpressUrl || !wordpressUsername || !wordpressAppPassword) {
     process.exit(1);
 }
 
-const inputFolder = 'queue'; // Folder with original images
-const webpFolder = 'webp'; // Folder for WebP images
-const compressedFolder = 'compressed'; // Folder for processed images
-const originalsFolder = 'originals'; // Folder for original images
+const inputFolder = './wp-image-optimizer/input';
+const webpFolder = './wp-image-optimizer/output/webp';
+const compressedFolder = './wp-image-optimizer/output/compressed';
+const originalsFolder = './wp-image-optimizer/output/originals';
 
-const MAX_FILE_SIZE = 800 * 1024; // 800KB
+const MAX_FILE_SIZE = 1000 * 1024; // 1000KB
+const MIN_JPEG_QUALITY = 25;
+const MIN_WEBP_QUALITY = 25;
 
 // Ensure necessary folders exist
-[webpFolder, compressedFolder, originalsFolder].forEach(folder => {
+[inputFolder, webpFolder, compressedFolder, originalsFolder].forEach(folder => {
     if (!fs.existsSync(folder)) fs.mkdirSync(folder, { recursive: true });
 });
 
 const supportedFormats = ['.png', '.jpg', '.jpeg', '.webp'];
 
-// ** Optimize File Moving (Async) **
+// ** Move File **
 const moveFile = async (source, destination) => {
     try {
         await fs.promises.rename(source, destination);
@@ -38,51 +40,114 @@ const moveFile = async (source, destination) => {
     }
 };
 
-// ** Generic Compression Function (PNG/JPG) **
-const compressImage = async (inputPath, outputPath) => {
-    let quality = 90;
-    let compressionLevel = 6;
+// ** Compress PNG and JPEG (Preserving PNG Transparency) **
+const compressImage = async (inputPath, outputPath, ext) => {
+    let quality = 95;
     let fileSize;
 
-    do {
-        await sharp(inputPath)
-            .rotate()
-            .resize({ width: 800 })
-            .toFormat('jpeg', { quality, mozjpeg: true }) // Use mozjpeg for best compression
-            .toFile(outputPath);
+    try {
+        if (ext === '.png') {
+            // Preserve transparency for PNGs
+            await sharp(inputPath)
+                .rotate()
+                .resize({ width: 1000 })
+                .png({ compressionLevel: 6, adaptiveFiltering: true })
+                .toFile(outputPath);
+        } else {
+            // Standard JPEG compression
+            do {
+                await sharp(inputPath)
+                    .rotate()
+                    .resize({ width: 1000 })
+                    .jpeg({ quality, mozjpeg: true })
+                    .toFile(outputPath);
 
-        fileSize = (await fs.promises.stat(outputPath)).size;
+                fileSize = (await fs.promises.stat(outputPath)).size;
 
-        if (fileSize > MAX_FILE_SIZE) {
-            quality -= 5;
-            compressionLevel += 1;
+                if (fileSize > MAX_FILE_SIZE) {
+                    quality -= 2;
+                    console.log(`⚠️ Reducing JPEG quality to: ${quality}`);
+                }
+            } while (fileSize > MAX_FILE_SIZE && quality > MIN_JPEG_QUALITY);
         }
-    } while (fileSize > MAX_FILE_SIZE && quality > 50);
 
-    console.log(`✅ Compressed Image saved (${(fileSize / 1024).toFixed(2)} KB): ${outputPath}`);
+        console.log(`✅ Compressed image saved: ${outputPath}`);
+    } catch (err) {
+        console.error(`❌ Compression failed for ${inputPath}:`, err.message);
+    }
 };
 
-// ** Convert to WebP **
-const convertToWebP = async (inputPath, outputPath) => {
-    let quality = 80;
+// ** Convert Image to WebP (Preserving PNG Transparency) **
+const convertToWebP = async (inputPath, outputPath, ext) => {
+    let quality = 95;
     let fileSize;
 
-    do {
-        await sharp(inputPath)
-            .webp({ quality })
-            .toFile(outputPath);
+    try {
+        do {
+            await sharp(inputPath)
+                .webp({ quality, lossless: ext === '.png' }) // Lossless WebP for PNGs
+                .toFile(outputPath);
 
-        fileSize = (await fs.promises.stat(outputPath)).size;
+            fileSize = (await fs.promises.stat(outputPath)).size;
 
-        if (fileSize > MAX_FILE_SIZE) {
-            quality -= 5;
-        }
-    } while (fileSize > MAX_FILE_SIZE && quality > 50);
+            if (fileSize > MAX_FILE_SIZE) {
+                quality -= 2;
+                console.log(`⚠️ Reducing WebP quality to: ${quality}`);
+            }
+        } while (fileSize > MAX_FILE_SIZE && quality > MIN_WEBP_QUALITY);
 
-    console.log(`✅ WebP saved (${(fileSize / 1024).toFixed(2)} KB): ${outputPath}`);
+        console.log(`✅ WebP saved: ${outputPath}`);
+    } catch (err) {
+        console.error(`❌ WebP conversion failed for ${inputPath}:`, err.message);
+    }
 };
 
-// ** Upload Image to WordPress (Encourage OAuth or API Key instead of Basic Auth) **
+// ** Process Images (Fixing Transparency Issues) **
+const processImages = async () => {
+    try {
+        console.log(`📂 Checking contents of '${inputFolder}'`);
+        const allFiles = fs.readdirSync(inputFolder);
+        console.log(`📂 Found files: ${allFiles.join(', ')}`);
+
+        const files = allFiles.filter(file =>
+            supportedFormats.includes(path.extname(file).toLowerCase())
+        );
+
+        if (files.length === 0) {
+            console.log("📂 No valid images found.");
+            return;
+        }
+
+        console.log(`📂 Processing: ${files.join(', ')}`);
+
+        await Promise.all(files.map(async (file) => {
+            try {
+                const ext = path.extname(file).toLowerCase();
+                const baseName = path.basename(file, ext);
+                const inputPath = path.join(inputFolder, file);
+                const compressedPath = path.join(compressedFolder, `${baseName}${ext}`);
+                const webpPath = path.join(webpFolder, `${baseName}.webp`);
+                const originalPath = path.join(originalsFolder, file);
+
+                console.log(`🔄 Processing: ${file}`);
+
+                // Preserve PNG transparency instead of converting to JPEG
+                await compressImage(inputPath, compressedPath, ext);
+                await convertToWebP(compressedPath, webpPath, ext);
+                await uploadToWordPress(webpPath, `${baseName}.webp`);
+                await moveFile(inputPath, originalPath);
+                console.log(`📦 Moved original image to: ${originalPath}`);
+            } catch (err) {
+                console.error(`❌ Error processing ${file}:`, err.message);
+            }
+        }));
+
+        console.log("🎉 Image processing complete!");
+    } catch (err) {
+        console.error("❌ General error:", err.message);
+    }
+};
+
 const uploadToWordPress = async (filePath, fileName) => {
     try {
         const fileStream = fs.createReadStream(filePath);
@@ -104,47 +169,6 @@ const uploadToWordPress = async (filePath, fileName) => {
         if (err.response?.data) {
             console.error("🛑 API Response:", err.response.data);
         }
-    }
-};
-
-// ** Process Images in Parallel **
-const processImages = async () => {
-    try {
-        const files = fs.readdirSync(inputFolder).filter(file =>
-            supportedFormats.includes(path.extname(file).toLowerCase())
-        );
-
-        if (files.length === 0) {
-            console.log("📂 No images to process.");
-            return;
-        }
-
-        await Promise.all(files.map(async (file) => {
-            const ext = path.extname(file).toLowerCase();
-            const baseName = path.basename(file, ext);
-            const inputPath = path.join(inputFolder, file);
-            const compressedPath = path.join(compressedFolder, `${baseName}.jpg`);
-            const webpPath = path.join(webpFolder, `${baseName}.webp`);
-            const originalPath = path.join(originalsFolder, file);
-
-            console.log(`🔄 Processing: ${file}`);
-
-            if (ext === '.png' || ext === '.jpg' || ext === '.jpeg') {
-                await compressImage(inputPath, compressedPath);
-                await convertToWebP(compressedPath, webpPath);
-            } else if (ext === '.webp') {
-                // Skip compression for WebP, just move it to output folder
-                await moveFile(inputPath, webpPath);
-            }
-
-            await uploadToWordPress(webpPath, `${baseName}.webp`);
-            await moveFile(inputPath, originalPath);
-            console.log(`📦 Moved original image to: ${originalPath}`);
-        }));
-
-        console.log("🎉 Image processing complete!");
-    } catch (err) {
-        console.error("❌ Error processing images:", err.message);
     }
 };
 
