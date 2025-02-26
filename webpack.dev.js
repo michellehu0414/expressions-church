@@ -14,7 +14,6 @@ module.exports = merge(common, {
         },
         host: "0.0.0.0", // Allow connections from any IP address
         open: true,
-        hot: true,
         port: 5688,
         allowedHosts: "all",
         watchFiles: ["./src/**/*"],
