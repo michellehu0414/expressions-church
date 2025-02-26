@@ -16,7 +16,7 @@ const cardData = {
         secondaryButtonLink: "/about",
     },
     "fire-relief-card": {
-        image: "https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/02/fire-relief-light.webp",
+        image: "https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/02/wildfire-red-night-sky.webp",
         altText: "Fire relief",
         headline: "Fire Relief",
         bodyText: "Families affected by the Los Angeles fires—including us—need immediate support. There are many ways you can help rebuild SGV.",
@@ -57,7 +57,7 @@ const cardData = {
         secondaryButtonText: "Get Started",
     },
     "serve-sgv-card": {
-        image: "https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/diverse-community-gathering-circle.webp",
+        image: "https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/02/three-fire-relief-volunteers-outdoor.webp",
         altText: "text",
         headline: "Serve SGV",
         bodyText: "Join our community efforts and support our SGV neighbors.",
