@@ -6,11 +6,11 @@ const PaperBackgroundContainer = ({
   headline,
   showDivider = true,
   content,
+  className
 }) => {
   return (
     <section
-      className={styles.container}
-    >
+      className={`${styles.container} ${className}`}>
       {/* Headline */}
       {headline && <h3 className={styles.containerHeadline}>{headline}</h3>}
 
@@ -19,7 +19,7 @@ const PaperBackgroundContainer = ({
 
       {/* Dynamic Content */}
       <div>{content}</div>
-    </section>
+    </section >
   );
 };
 
