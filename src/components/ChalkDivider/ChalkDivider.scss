@@ -10,6 +10,7 @@
     background-size: 100% !important;
     background-position: center !important;
     overflow: hidden !important;
+    width: 100%;
 
     @include breakpoint(med) {
         height: 1.5rem;
@@ -17,7 +18,9 @@
 }
 
 .blackChalkDivider {
-    background-image: url('https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/02/chalk-divider-black.webp');
+    background: url('https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/02/black-chalk-line-divider.webp');
+    background-size: 105% 100%;
+    overflow: hidden;
 }
 
 .whiteChalkDivider {
