@@ -52,10 +52,10 @@ const GetInvolvedSection = () => {
                             </a>
                         </div>
                     </div>
-                    <button className="addToCalendarButton bg-white primaryButton">
+                    <button className="addToCalendarButton bgWhite primaryButton">
                         <span className="addToCalendarText">Add to Calendar</span></button>
-                    <button className="bg-white getDirectionsButton primaryButton">Get Directions</button>
-                    <button className="bg-white getDirectionsButton primaryButton">Plan your first visit</button>
+                    <button className="bgWhite primaryButton">Get Directions</button>
+                    <button className="bgWhite primaryButton">Plan your first visit</button>
                 </div>
             </div>
         </section >
