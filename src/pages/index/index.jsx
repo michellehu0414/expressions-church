@@ -6,6 +6,7 @@ import IntroSection from "./sections/IntroSection";
 import GetInvolvedSection from "./sections/GetInvolvedSection";
 import SundayServiceSection from "./sections/SundayServiceSection";
 import SubsplashEventsEmbed from "../../components/SubsplashEventsEmbed"; "@components/SubsplashEventsEmbed";
+import "./sections/EventsSection";
 
 const injectSection = (Component, elementId) => {
   const element = document.getElementById(elementId);
