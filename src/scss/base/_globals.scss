@@ -109,16 +109,23 @@ pre {
 
 a {
 	display: inline;
-	background-color: transparent; // Removes background color
-	text-decoration: none; // Removes underline
-	color: $primary-teal; // Link colors inherit from parent
+	background-color: transparent;
+	color: white; // Link colors inherit from parent
 	margin-top: 0;
-	margin-bottom: 1rem;
 	font-size: 1rem;
 	line-height: 100%;
 	align-items: center;
 	padding: 0.25rem 0;
-	transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, color 0.3s ease-in-out;
+
+	p {
+		color: white;
+		margin-bottom: 0 !important;
+	}
+
+	&:hover,
+	p:hover {
+		color: $link-blue;
+	}
 
 	gap: 0.25rem;
 
@@ -134,6 +141,11 @@ a {
 		font-weight: 400;
 		@include hover-underline-self($primary-teal);
 	}
+}
+
+a,
+a p {
+	transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 
