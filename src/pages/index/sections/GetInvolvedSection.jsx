@@ -29,7 +29,6 @@ const GetInvolvedSection = () => {
         <GetInvolvedCards id="partner-card" />
         <ChalkDivider variant="white" />
         <GetInvolvedCards id="newcomer-connect-card" />
-        <ChalkDivider variant="white" />
       </div>
     </section >
   );
