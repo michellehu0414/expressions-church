@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './PageHeader.scss';
-// import Button from '../Button/Button';
+import * as styles from './PageHeader.module.scss';
+import Button from '@components/Button/Button';
 
 const PageHeader = ({
   backgroundImage,
@@ -24,16 +24,14 @@ const PageHeader = ({
         <span className={styles.outlined}>{titleOutlinedText}</span> {titleFilledText}
       </h1>
       <div className={styles.buttonContainer}>
-        <div className="buttonContainer">
-          {showPrimaryButton && (
-            <button href={primaryButtonLink} class="primaryButton bg-black">{primaryButtonText}</button>
-          )}
-          {showSecondaryButton && (
-            <button href={secondaryButtonLink} class="secondaryButton white">{secondaryButtonText}</button>
-          )}
-        </div>
+        {showPrimaryButton && (
+          <Button to={primaryButtonLink} variant="primary" className="bgBlack">{primaryButtonText}</Button>
+        )}
+        {showSecondaryButton && (
+          <Button to={secondaryButtonLink} variant="secondary" className="bgWhite">{secondaryButtonText}</Button>
+        )}
       </div>
-    </header>
+    </header >
   );
 };
 
@@ -45,7 +43,7 @@ export default PageHeader;
 //
 // const App = () => (
 //   <div>
-<PageHeader
+{/* <PageHeader
   backgroundImage="path/to/image.jpg"
   titleOutlinedText="Welcome"
   titleFilledText="to our site"
@@ -55,7 +53,7 @@ export default PageHeader;
   secondaryButtonLink="/learn-more"
   showPrimaryButton={true}
   showSecondaryButton={true}
-/>
+/> */}
 //   </div>
 // );
 //
