@@ -26,13 +26,19 @@ module.exports = {
     resolve: {
         alias: {
             "@src": path.resolve(__dirname, "src"),
+
+            "@assets": path.resolve(__dirname, "src/assets"),
+            "@fonts": path.resolve(__dirname, "src/assets/fonts"),
+            "@images": path.resolve(__dirname, "src/assets/images"),
+            "@svg": path.resolve(__dirname, "src/assets/svg"),
+
             "@scss": path.resolve(__dirname, "src/scss"),
             "@abstracts": path.resolve(__dirname, "src/scss/abstracts"),
             "@base": path.resolve(__dirname, "src/scss/base"),
             "@utilities": path.resolve(__dirname, "src/scss/utilities"),
             "@widgets": path.resolve(__dirname, "src/scss/elementorWidgets"),
-            "@fonts": path.resolve(__dirname, "src/assets/fonts"),
             "@js": path.resolve(__dirname, "src/js"),
+
             "@components": path.resolve(__dirname, "src/components"),
             "@pages": path.resolve(__dirname, "src/pages"),
             "@utils": path.resolve(__dirname, "src/utils"),
