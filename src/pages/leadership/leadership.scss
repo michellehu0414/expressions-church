@@ -1,6 +1,6 @@
-@use '@abstracts/variables' as *;
-@use '@abstracts/breakpoints-mixins' as *;
-@use './leadership-variables' as *;
+@use 'abstracts/variables' as *;
+@use 'abstracts/breakpoints-mixins' as *;
+@use 'leadership-variables' as *;
 
 .bio-header {
     display: block;
@@ -40,7 +40,6 @@
 
 #lead-pastor {
     display: flex;
-    padding-top: calc($sectionWrapper-padding-sm + 2rem);
     flex-direction: column;
     gap: 1rem;
     width: 90vw;
