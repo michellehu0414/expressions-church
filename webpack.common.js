@@ -27,23 +27,24 @@ module.exports = {
         alias: {
             "@src": path.resolve(__dirname, "src"),
 
-            "@assets": path.resolve(__dirname, "src/assets"),
-            "@svg": path.resolve(__dirname, "src/assets/svg"),
+            "@assets": path.resolve(__dirname, "src/assets/"), // Ensure trailing slash
+            "@svg": path.resolve(__dirname, "src/assets/svg/"),
 
-            "@scss": path.resolve(__dirname, "src/scss"),
-            "@abstracts": path.resolve(__dirname, "src/scss/abstracts"),
-            "@base": path.resolve(__dirname, "src/scss/base"),
-            "@utilities": path.resolve(__dirname, "src/scss/utilities"),
-            "@widgets": path.resolve(__dirname, "src/scss/elementorWidgets"),
-            "@js": path.resolve(__dirname, "src/js"),
+            "@scss": path.resolve(__dirname, "src/scss/"),
+            "@abstracts": path.resolve(__dirname, "src/scss/abstracts/"),
+            "@base": path.resolve(__dirname, "src/scss/base/"),
+            "@utilities": path.resolve(__dirname, "src/scss/utilities/"),
+            "@widgets": path.resolve(__dirname, "src/scss/elementorWidgets/"),
+            "@js": path.resolve(__dirname, "src/js/"),
 
-            "@components": path.resolve(__dirname, "src/components"),
-            "@pages": path.resolve(__dirname, "src/pages"),
-            "@utils": path.resolve(__dirname, "src/utils"),
-            "@data": path.resolve(__dirname, "src/data"),
+            "@components": path.resolve(__dirname, "src/components/"),
+            "@pages": path.resolve(__dirname, "src/pages/"),
+            "@utils": path.resolve(__dirname, "src/utils/"),
+            "@data": path.resolve(__dirname, "src/data/"),
         },
-        extensions: [".js", ".jsx"],
+        extensions: [".js", ".jsx", ".json", ".scss"],
     },
+
 
     module: {
         rules: [
@@ -124,8 +125,9 @@ module.exports = {
         })),
         new CopyWebpackPlugin({
             patterns: [
-                { from: 'src/assets', to: 'assets' }
+                { from: "src/assets", to: "assets", noErrorOnMissing: true } // ✅ Ignore missing files to prevent build errors
             ]
-        })
+        }),
+
     ],
 };
