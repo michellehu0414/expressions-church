@@ -102,11 +102,31 @@ module.exports = {
                 use: ["babel-loader"],
             },
             {
-                test: /\.(png|jpeg|gif|svg)$/i,
-                type: "asset",
-                generator: {
-                    filename: "assets/images/[name][ext]",
+                test: /\.(png|jpg|jpeg|gif|svg)$/i,
+                type: 'asset',
+                parser: {
+                    dataUrlCondition: {
+                        maxSize: 8192, // Inline images smaller than 8kb
+                    },
                 },
+                generator: {
+                    filename: 'assets/images/[name].[hash:6][ext]',
+                },
+            },
+            {
+                test: /\.svg$/,
+                use: [
+                    {
+                        loader: 'svgo-loader',
+                        options: {
+                            plugins: [
+                                { removeTitle: false }, // Keep <title> for accessibility
+                                { removeViewBox: false }, // Ensure viewBox isn't removed
+                                { prefixIds: true }, // Prefix ID attributes to avoid clashes
+                            ],
+                        },
+                    },
+                ],
             },
         ],
     },
@@ -125,13 +145,5 @@ module.exports = {
                 { from: path.resolve(__dirname, 'src/assets/svg'), to: 'assets/svg' },
             ]
         }),
-        new CopyWebpackPlugin({
-            patterns: [
-                { from: path.resolve(__dirname, 'src/assets/images'), to: 'assets/images' },
-                { from: path.resolve(__dirname, 'src/assets/svg'), to: 'assets/svg' },
-                { from: path.resolve(__dirname, 'src/assets/videos'), to: 'assets/videos' }
-            ]
-        })
-
     ],
 };
