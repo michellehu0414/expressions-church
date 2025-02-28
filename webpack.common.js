@@ -97,16 +97,17 @@ module.exports = {
                 use: ["babel-loader"],
             },
             {
-                test: /\.(png|jpg|jpeg|gif|svg)$/i,
-                type: 'asset',
-                parser: {
-                    dataUrlCondition: {
-                        maxSize: 8192,
+                test: /\.(png|jpe?g|gif|svg)$/i,
+                type: 'asset/resource',
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[path][name].[ext]',
+                            outputPath: 'images',
+                        },
                     },
-                },
-                generator: {
-                    filename: 'assets/images/[name].[hash:6][ext]',
-                },
+                ]
             },
             {
                 test: /\.svg$/,
@@ -140,5 +141,6 @@ module.exports = {
                 { from: path.resolve(__dirname, 'src/assets/svg'), to: 'assets/svg' },
             ]
         }),
+
     ],
 };
