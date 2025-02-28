@@ -1,7 +1,6 @@
 import React from "react";
-import "../Button/Button.scss";
-// import Button from "../Button/Button"; // Import Button component
-import * as styles from "./Card.module.scss"; // Import styles
+import Button from "@components/Button/Button";
+import * as styles from "./Card.module.scss"; // Import styles"
 
 const Card = ({
   image,
@@ -10,6 +9,7 @@ const Card = ({
   bodyText,
   primaryButtonText,
   primaryButtonLink,
+  className,
   // primaryButtonExternal = false, // Defaults to internal
   secondaryButtonText,
   secondaryButtonLink,
@@ -18,9 +18,10 @@ const Card = ({
   showSecondaryButton = false, // New prop to toggle secondary button
 }) => {
   return (
-    <div className={styles.card}> {/* Apply styles */}
-      <img
-        src={image || "https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/diverse-community-gathering-circle.webp"}
+    <div className={`${styles.card} ${className}`} > {/* Apply styles */}
+      < img
+        src={image || "https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/diverse-community-gathering-circle.webp"
+        }
         alt={altText || "Default image"}
         className={styles.cardImage}
         loading="lazy"
@@ -30,10 +31,10 @@ const Card = ({
         <p className={styles.cardBody}>{bodyText}</p>
         <div className={styles.buttonContainer}>
           {showPrimaryButton && (
-            <button href={primaryButtonLink} class="primaryButton">{primaryButtonText}</button>
+            <Button to={primaryButtonLink} variant="primary">{primaryButtonText}</Button>
           )}
           {showSecondaryButton && (
-            <button href={secondaryButtonLink} class="secondaryButton">{secondaryButtonText}</button>
+            <Button to="{secondaryButtonLink}" variant="secondary">{secondaryButtonText}</Button>
           )}
         </div>
         {/* <div className={styles.buttonContainer}>
