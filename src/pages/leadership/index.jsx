@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./leadership.scss";
-import PageHeader from "@components/PageHeader/PageHeader";
+import PageBanner from "@components/PageBanner/PageBanner";
 
-const PageHeaderSection = () => {
+const PageBannerSection = () => {
     return (
-        <PageHeader
+        <PageBanner
             backgroundImage="path/to/image.jpg"
             titleOutlinedText="Welcome"
             titleFilledText="to our site"
@@ -30,4 +30,4 @@ const injectComponent = (Component, elementId) => {
 // Inject each section where its placeholder div exists
 // injectSection(IntroSection, "intro-section");
 
-injectComponent(PageHeaderSection, "page-header");
+injectComponent(PageBannerSection, "page-header");

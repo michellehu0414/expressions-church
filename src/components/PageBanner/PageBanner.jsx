@@ -1,8 +1,8 @@
 import React from 'react';
-import * as styles from './PageHeader.module.scss';
+import * as styles from './PageBanner.module.scss';
 import Button from '@components/Button/Button';
 
-const PageHeader = ({
+const PageBanner = ({
   backgroundImage,
   titleOutlinedText,
   titleFilledText,
@@ -35,15 +35,15 @@ const PageHeader = ({
   );
 };
 
-export default PageHeader;
+export default PageBanner;
 // Usage example
 // import React from 'react';
 // import ReactDOM from 'react-dom';
-// import PageHeader from './PageHeader';
+// import PageBanner from './PageBanner';
 //
 // const App = () => (
 //   <div>
-{/* <PageHeader
+{/* <PageBanner
   backgroundImage="path/to/image.jpg"
   titleOutlinedText="Welcome"
   titleFilledText="to our site"

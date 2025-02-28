@@ -3,9 +3,9 @@ import React, { useState, useEffect } from "react";
 import * as styles from "./SundayServiceSection.module.scss";
 import "./IntroSection.module.scss";
 import "@scss/utilities/_all-utilities.scss";
-import calendarIcon from "/src/assets/svg/icon-calendar.svg";
-import locationIcon from "/src/assets/svg/icon-location.svg";
-import pastorWelcomeFamily from "/src/assets/images/pastor-christopher-welcome-family.jpg";
+import calendarIcon from "../../../assets/svg/icon-calendar.svg";
+import locationIcon from "../../../assets/svg/icon-location.svg";
+import pastorWelcomeFamily from "../../../assets/images/pastor-christopher-welcome-family.jpg";
 import AddSundayServiceToCalendar from "@components/AddToCalendar/AddToCalendar";
 import MapsEmbedButton from "@components/MapsEmbedButton/MapsEmbedButton";
 
