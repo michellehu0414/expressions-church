@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import calendarIcon from "/assets/svg/icon-calendar-black.svg";
+import calendarIcon from "@svg/icon-calendar-black.svg";
 import "./AddToCalendar.scss";
 
 const AddToCalendar = ({ event }) => {
