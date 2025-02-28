@@ -113,12 +113,23 @@ h2 {
 
 h3 {
 	color: #FFFCF6;
-	font-size: 1.5625rem;
+	font-size: 2.25rem;
 	font-style: normal;
 	font-weight: 500;
 	line-height: 135%;
 	letter-spacing: -0.01rem;
-	margin-bottom: 0.5rem;
+	margin-bottom: 1rem;
+
+	&.large {
+		color: white;
+		font-size: 2.5rem;
+		font-style: normal;
+		font-weight: 500;
+		line-height: 110%;
+		letter-spacing: -0.02875rem;
+		text-align: left;
+		text-transform: none;
+	}
 
 	@include breakpoint(med) {
 		font-size: 2.0625rem;
