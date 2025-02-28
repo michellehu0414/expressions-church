@@ -2,10 +2,9 @@ import React from "react";
 import "./SundayServiceSection.scss";
 import "./IntroSection.module.scss";
 import "@scss/utilities/_all-utilities.scss";
-import locationMap from "/wp-image-optimizer/output/originals/expressions-church-location-map.png";
-import calendarIcon from "/assets/svg/icon-calendar.svg";
-import locationIcon from "/assets/svg/icon-location.svg";
-import pastorWelcomeFamily from "/wp-image-optimizer/local/compressed/pastor-christopher-welcome-family.jpg";
+import calendarIcon from "@svg/icon-calendar.svg";
+import locationIcon from "@svg/icon-location.svg";
+import pastorWelcomeFamily from "@images/pastor-christopher-welcome-family.jpg";
 import AddToCalendar from "@components/AddToCalendar/AddToCalendar";
 // import smilingWomanChild from "https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/02/fire-relief-smiling-woman-child.webp";
 
