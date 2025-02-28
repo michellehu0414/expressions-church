@@ -22,17 +22,14 @@ module.exports = {
     resolve: {
         alias: {
             "@src": path.resolve(__dirname, "src"),
-
-            "@assets": path.resolve(__dirname, "src/assets/"), // Ensure trailing slash
+            "@assets": path.resolve(__dirname, "src/assets/"),
             "@svg": path.resolve(__dirname, "src/assets/svg/"),
-
             "@scss": path.resolve(__dirname, "src/scss/"),
             "@abstracts": path.resolve(__dirname, "src/scss/abstracts/"),
             "@base": path.resolve(__dirname, "src/scss/base/"),
             "@utilities": path.resolve(__dirname, "src/scss/utilities/"),
             "@widgets": path.resolve(__dirname, "src/scss/elementorWidgets/"),
             "@js": path.resolve(__dirname, "src/js/"),
-
             "@components": path.resolve(__dirname, "src/components/"),
             "@pages": path.resolve(__dirname, "src/pages/"),
             "@utils": path.resolve(__dirname, "src/utils/"),
@@ -40,8 +37,6 @@ module.exports = {
         },
         extensions: [".js", ".jsx", ".json", ".scss"],
     },
-
-
     module: {
         rules: [
             {
@@ -52,7 +47,7 @@ module.exports = {
                 },
             },
             {
-                test: /\.module\.scss$/, // CSS Modules (Scoped Styles)
+                test: /\.module\.scss$/,
                 use: [
                     MiniCssExtractPlugin.loader,
                     {
@@ -61,8 +56,8 @@ module.exports = {
                             modules: {
                                 localIdentName:
                                     process.env.NODE_ENV === "production"
-                                        ? "[hash:base64:5]" // Short hashed names in production
-                                        : "[path][name]__[local]", // Readable class names in development
+                                        ? "[hash:base64:5]"
+                                        : "[path][name]__[local]",
                             },
                         },
                     },
@@ -71,7 +66,7 @@ module.exports = {
                         loader: "sass-loader",
                         options: {
                             sassOptions: {
-                                includePaths: [path.resolve(__dirname, "src/scss")], // ✅ Allows SCSS to use aliases
+                                includePaths: [path.resolve(__dirname, "src/scss")],
                                 outputStyle: "expanded",
                             },
                         },
@@ -79,17 +74,17 @@ module.exports = {
                 ],
             },
             {
-                test: /\.scss$/, // Global Styles (Not Scoped)
+                test: /\.scss$/,
                 exclude: /\.module\.scss$/,
                 use: [
-                    MiniCssExtractPlugin.loader, // Extract CSS as separate files
+                    MiniCssExtractPlugin.loader,
                     "css-loader",
                     "postcss-loader",
                     {
                         loader: "sass-loader",
                         options: {
                             sassOptions: {
-                                includePaths: [path.resolve(__dirname, "src/scss")], // ✅ Allows SCSS to use aliases
+                                includePaths: [path.resolve(__dirname, "src/scss")],
                                 outputStyle: "expanded",
                             },
                         },
@@ -106,7 +101,7 @@ module.exports = {
                 type: 'asset',
                 parser: {
                     dataUrlCondition: {
-                        maxSize: 8192, // Inline images smaller than 8kb
+                        maxSize: 8192,
                     },
                 },
                 generator: {
@@ -120,9 +115,9 @@ module.exports = {
                         loader: 'svgo-loader',
                         options: {
                             plugins: [
-                                { removeTitle: false }, // Keep <title> for accessibility
-                                { removeViewBox: false }, // Ensure viewBox isn't removed
-                                { prefixIds: true }, // Prefix ID attributes to avoid clashes
+                                { name: 'removeTitle', active: false },
+                                { name: 'removeViewBox', active: false },
+                                { name: 'prefixIds', active: true },
                             ],
                         },
                     },
@@ -132,7 +127,7 @@ module.exports = {
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: "css/[name].css", // Extracted CSS files per page
+            filename: "css/[name].css",
         }),
         ...htmlPages.map(page => new HtmlWebpackPlugin({
             template: `./src/${page.template}`,

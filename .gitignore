@@ -63,3 +63,5 @@ wp-image-optimizer/output/*
 wp-image-optimizer/uploaded/*
 
 assets/
+!src/assets/images/
+!src/assets/images/*
