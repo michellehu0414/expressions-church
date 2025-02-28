@@ -1,11 +1,16 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-//
-// const htmlPages = [
-//     { template: 'index.html', chunks: ['index'], filename: 'index.html' },
-//     { template: 'leadership.html', chunks: ['leadership'], filename: 'leadership.html' },
-// ]
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+
+const PATHS = {
+    src: path.join(__dirname, 'src')
+};
+
+const htmlPages = [
+    { template: '/index.html', chunks: ['index'], filename: 'index.html' },
+    { template: '/leadership.html', chunks: ['leadership'], filename: 'leadership.html' },
+];
 
 module.exports = {
     entry: {
@@ -105,10 +110,15 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: "css/[name].css", // Extracted CSS files per page
         }),
-        ...['index', 'leadership'].map(page => new HtmlWebpackPlugin({
-            template: `./src/${page}.html`,
-            chunks: [page],
-            filename: `${page}.html`
+        ...htmlPages.map(page => new HtmlWebpackPlugin({
+            template: `./src/${page.template}`,
+            filename: page.filename,
+            chunks: page.chunks,
         })),
+        new CopyWebpackPlugin({
+            patterns: [
+                { from: 'src/assets', to: 'assets' }
+            ]
+        })
     ],
 };
