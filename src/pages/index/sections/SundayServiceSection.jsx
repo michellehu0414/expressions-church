@@ -31,7 +31,6 @@ const GetInvolvedSection = () => {
             <div className="sectionContent">
                 <img src={pastorWelcomeFamily} alt="" className="pastorWelcomeFamily" />
                 <h2 className="largeText">Join us this Sunday @ 10AM. Come as you are.</h2>
-                {/* <img className="width-100 mb-16" src={smilingWomanChild} alt="Smiling woman and child" /> */}
                 <p className="sundayServiceIntroText">We’d love to see you this Sunday. Whether it’s your first time at church or you’re looking for a new church home, we welcome you.</p>
                 <div className="service-details">
                     <h2 className="largeText">Service Info</h2>
