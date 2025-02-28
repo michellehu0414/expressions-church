@@ -48,10 +48,8 @@ conf/
 runtime.min.js
 runtime.min.js.map
 *.min.js.map
-dist/assets/fonts/
 
-dist/*.hot-update.*
-dist/js/globalStyles.min.js
+dist/
 test.js
 
 wp-image-optimizer/local/compressed/*
@@ -65,5 +63,4 @@ wp-image-optimizer/output/*
 wp-image-optimizer/uploaded/*
 
 
-assets/images/fire-relief-distribution/compressed/*
-assets/images/fire-relief-distribution/originals/*
+assets/
