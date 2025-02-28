@@ -64,7 +64,10 @@ module.exports = {
                         loader: "css-loader",
                         options: {
                             modules: {
-                                localIdentName: "[name]__[local]--[hash:base64:5]", // Unique class names
+                                localIdentName:
+                                    process.env.NODE_ENV === "production"
+                                        ? "[hash:base64:5]" // Short hashed names in production
+                                        : "[path][name]__[local]", // Readable class names in development
                             },
                         },
                     },
