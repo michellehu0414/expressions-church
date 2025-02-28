@@ -4,8 +4,8 @@
 $button-border-width: 2px;
 $button-bg-transition: 0.3s ease-in-out;
 
-.primaryButton,
-.secondaryButton {
+.primary,
+.secondary {
     display: flex;
     border-radius: 3.125rem;
     border-width: $button-border-width;
@@ -29,7 +29,7 @@ $button-bg-transition: 0.3s ease-in-out;
     }
 }
 
-.primaryButton {
+.primary {
     border-color: #A0D4DD;
     background: url("https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/bg-button-primary-teal.webp") center / 150% auto no-repeat;
     // background: url('https://vrwpaviv.elementor.cloud/wp-content/uploads/2024/12/primary-button-bg.png') no-repeat center center / cover;
@@ -62,7 +62,7 @@ a {
 }
 
 
-.secondaryButton {
+.secondary {
     border-color: white !important;
     background: transparent;
 

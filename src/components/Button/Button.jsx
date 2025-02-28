@@ -1,47 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import "./Button.scss";
+import * as styles from "./Button.module.scss";
 
-const Button = ({
-  children,
-  variant = "primary",
-  to, // Internal link
-  href, // External link
-  onClick,
-  disabled = false,
-  className = "",
-  ...props
-}) => {
-  const buttonClass = `${[variant]} ${className}`;
+const Button = ({ href, children, variant = "default", className = "", ...props }) => {
+  const buttonClass = `${styles[variant] || ""} ${className}`.trim();
 
-  // ✅ Use <Link> for Internal Navigation (React Router)
-  if (to) {
-    return (
-      <Link to={to} className={buttonClass} {...props}>
-        {children}
-      </Link>
-    );
-  }
-
-  // ✅ Use <a> for External Links
-  if (href) {
-    return (
-      <a href={href} className={buttonClass} target="_blank" rel="noopener noreferrer" {...props}>
-        {children}
-      </a>
-    );
-  }
-
-  // ✅ Default: Render a Normal <button>
   return (
-    <button className={buttonClass} onClick={onClick} disabled={disabled} {...props}>
+    <a href={href} className={buttonClass} {...props}>
       {children}
-    </button>
+    </a>
   );
 };
 
 export default Button;
 
-// Usage example ----------------------------------------------------------
-//<Button href="https://example.com">Visit Example</Button>
-//<Button to="/about">Go to About Page</Button>
+// how to use
+// <Button href="https://www.google.com" variant="primary">Click me</Button>
