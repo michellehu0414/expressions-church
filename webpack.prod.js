@@ -17,16 +17,11 @@ module.exports = merge(common, {
                 },
             }),],
         splitChunks: {
-            chunks: "all", 
+            chunks: "all",
         },
     },
     plugins: [
         new CleanWebpackPlugin(), // Clean dist/ directory before each build
-        new CopyWebpackPlugin({
-            patterns: [
-                { from: 'src/assets', to: 'assets' }
-            ]
-        })
     ],
     devtool: false, // Correctly disable source maps
 });

@@ -97,17 +97,11 @@ module.exports = {
                 use: ["babel-loader"],
             },
             {
-                test: /\.(png|jpe?g|gif|svg)$/i,
+                test: /\.(png|jpg|jpeg|gif|svg)$/i,
                 type: 'asset/resource',
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            name: '[path][name].[ext]',
-                            outputPath: 'images',
-                        },
-                    },
-                ]
+                generator: {
+                    filename: 'asssets/images/[name][ext]'
+                }
             },
             {
                 test: /\.svg$/,
@@ -137,8 +131,11 @@ module.exports = {
         })),
         new CopyWebpackPlugin({
             patterns: [
-                { from: path.resolve(__dirname, 'src/assets/images'), to: 'assets/images' },
-                { from: path.resolve(__dirname, 'src/assets/svg'), to: 'assets/svg' },
+                {
+                    from: 'src/assets/images',
+                    from: 'src/assets/svg'
+                },
+
             ]
         }),
 
