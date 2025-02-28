@@ -110,9 +110,10 @@ const cardData = {
     },
 };
 
-const GetInvolvedCards = ({ id }) => {
+const GetInvolvedCards = ({ id, className = "" }) => {
     if (!cardData[id]) return null; // If the ID is not found, return nothing
-    return <Card {...cardData[id]} />;
+    return <Card {...cardData[id]} className={`${className} ${cardData[id].className || ""}`} />;
 };
+
 
 export default GetInvolvedCards;
