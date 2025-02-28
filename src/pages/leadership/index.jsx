@@ -3,7 +3,6 @@ import ReactDOM from "react-dom/client";
 import "./leadership.scss";
 import PageHeader from "@components/PageHeader/PageHeader";
 
-
 const PageHeaderSection = () => {
     return (
         <PageHeader
