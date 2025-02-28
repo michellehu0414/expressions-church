@@ -1,5 +1,5 @@
 import React from "react";
-import * as styles from "./PaperBackgroundContainer.modules.scss";
+import * as styles from "./PaperBackgroundContainer.module.scss";
 import ChalkDivider from "@components/ChalkDivider/ChalkDivider";
 
 const PaperBackgroundContainer = ({
