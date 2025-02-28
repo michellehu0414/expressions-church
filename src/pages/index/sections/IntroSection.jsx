@@ -10,7 +10,7 @@ const IntroSection = () => {
     return (
         <section className={styles.introSection}>
             <div className="sectionContent">
-                <p id={styles.weBelieve} className={styles.largeText}>
+                <p id={styles.weBelieve} className={styles.bigType}>
                     We believe Jesus can transform us from the inside out—
                 </p>
                 <div className={styles.christopherHugWrapper}>
@@ -23,17 +23,17 @@ const IntroSection = () => {
                             God is by how we love others.</p>
                     </div>
                 </div>
-                <p className={styles.largeText}>
+                <p className={styles.bigType}>
                     Our vision ?
                 </p>
                 <img className={styles.imgLaundryLove}
                     src="https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/laundry-love.webp"
                     alt="" />
-                <p class={styles.largeText}>To express God’s love in the SGV.</p>
+                <p class={styles.bigType}>To express God’s love in the SGV.</p>
                 <div className={styles.taglineWrapper}>
-                    <p className={styles.largeText}><span>Experience</span> life with him.</p>
-                    <p className={styles.largeText}><span>Explore</span> faith in Jesus.</p>
-                    <p className={styles.largeText}> <span>Express</span> love like him.</p>
+                    <p className={styles.bigType}><span>Experience</span> life with him.</p>
+                    <p className={styles.bigType}><span>Explore</span> faith in Jesus.</p>
+                    <p className={styles.bigType}> <span>Express</span> love like him.</p>
                 </div>
             </div>
         </section >
