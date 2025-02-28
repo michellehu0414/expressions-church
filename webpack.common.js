@@ -28,8 +28,6 @@ module.exports = {
             "@src": path.resolve(__dirname, "src"),
 
             "@assets": path.resolve(__dirname, "src/assets"),
-            "@fonts": path.resolve(__dirname, "src/assets/fonts"),
-            "@images": path.resolve(__dirname, "src/assets/images"),
             "@svg": path.resolve(__dirname, "src/assets/svg"),
 
             "@scss": path.resolve(__dirname, "src/scss"),
