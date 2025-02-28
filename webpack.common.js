@@ -100,7 +100,7 @@ module.exports = {
                 test: /\.(png|jpg|jpeg|gif|svg)$/i,
                 type: 'asset/resource',
                 generator: {
-                    filename: 'asssets/images/[name][ext]'
+                    filename: 'assets/images/[name][ext]'
                 }
             },
             {
