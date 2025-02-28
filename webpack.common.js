@@ -3,10 +3,6 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
-const PATHS = {
-    src: path.join(__dirname, 'src')
-};
-
 const htmlPages = [
     { template: '/index.html', chunks: ['index'], filename: 'index.html' },
     { template: '/leadership.html', chunks: ['leadership'], filename: 'leadership.html' },
@@ -106,8 +102,8 @@ module.exports = {
                 use: ["babel-loader"],
             },
             {
-                test: /\.(png|jpe?g|gif|svg)$/i,
-                type: "asset/resource",
+                test: /\.(png|jpeg|gif|svg)$/i,
+                type: "asset",
                 generator: {
                     filename: "assets/images/[name][ext]",
                 },
@@ -125,9 +121,17 @@ module.exports = {
         })),
         new CopyWebpackPlugin({
             patterns: [
-                { from: "src/assets", to: "assets", noErrorOnMissing: true } // ✅ Ignore missing files to prevent build errors
+                { from: path.resolve(__dirname, 'src/assets/images'), to: 'assets/images' },
+                { from: path.resolve(__dirname, 'src/assets/svg'), to: 'assets/svg' },
             ]
         }),
+        new CopyWebpackPlugin({
+            patterns: [
+                { from: path.resolve(__dirname, 'src/assets/images'), to: 'assets/images' },
+                { from: path.resolve(__dirname, 'src/assets/svg'), to: 'assets/svg' },
+                { from: path.resolve(__dirname, 'src/assets/videos'), to: 'assets/videos' }
+            ]
+        })
 
     ],
 };

@@ -1,8 +1,8 @@
 import React from 'react';
 import './PYVSection.scss';
 import "@scss/utilities/_all-utilities.scss";
-import churchMembersCutout from "../../assets/images/church-members-mixed-cutouts.png";
-import Button from "@components/Button/Button";
+import churchMembersCutout from "@assets/images/church-members-mixed-cutouts.png";
+// import Button from "@components/Button/Button";
 
 const PYVSection = () => {
     return (
