@@ -133,9 +133,12 @@ module.exports = {
             patterns: [
                 {
                     from: 'src/assets/images',
-                    from: 'src/assets/svg'
+                    to: 'assets/images'
                 },
-
+                {
+                    from: 'src/assets/svg',
+                    to: 'assets/svg'
+                },
             ]
         }),
 

@@ -37,15 +37,23 @@ jobs:
           node-version: "18"
       - name: Install dependencies
         run: npm install
-      - name: Build project
+      - name: Build project with Webpack
         run: npm run build
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
           path: "./dist"
+      - name: Commit and Push Updated `dist/` Folder
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add dist
+          git commit -m "Auto-update dist/ folder"
+          git push origin main
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
