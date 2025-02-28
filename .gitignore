@@ -49,7 +49,6 @@ runtime.min.js
 runtime.min.js.map
 *.min.js.map
 
-dist/
 test.js
 
 wp-image-optimizer/local/compressed/*
