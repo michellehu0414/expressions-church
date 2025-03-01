@@ -6,15 +6,15 @@ import PageBanner from "@components/PageBanner/PageBanner";
 const PageBannerSection = () => {
     return (
         <PageBanner
-            backgroundImage="path/to/image.jpg"
-            titleOutlinedText="Welcome"
-            titleFilledText="to our site"
+            backgroundImage="https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/expressions-exterior-expanded-scaled.webp"
+            titleOutlinedText="our"
+            titleFilledText="leadership"
             primaryButtonText="Get Started"
             primaryButtonLink="/get-started"
             secondaryButtonText="Learn More"
             secondaryButtonLink="/learn-more"
             showPrimaryButton={true}
-            showSecondaryButton={true}
+            showSecondaryButton={false} 
         />
     );
 };
@@ -30,4 +30,4 @@ const injectComponent = (Component, elementId) => {
 // Inject each section where its placeholder div exists
 // injectSection(IntroSection, "intro-section");
 
-injectComponent(PageBannerSection, "page-header");
+injectComponent(PageBannerSection, "page-banner");
