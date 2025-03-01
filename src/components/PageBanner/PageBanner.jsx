@@ -19,8 +19,8 @@ const PageBanner = ({
   };
 
   return (
-    <header className={styles.pageHeader} style={inlineStyle}>
-      <h1 className={styles.pageTitle}>
+    <header className={styles.bannerWrapper} style={inlineStyle}>
+      <h1 className={styles.title}>
         <span className={styles.outlined}>{titleOutlinedText}</span> {titleFilledText}
       </h1>
       <div className={styles.buttonContainer}>
