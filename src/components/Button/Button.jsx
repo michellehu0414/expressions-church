@@ -1,8 +1,8 @@
 import React from "react";
-import * as styles from "./Button.module.scss";
+import "./Button.scss";
 
 const Button = ({ href, children, variant = "default", className = "", ...props }) => {
-  const buttonClass = `${styles[variant] || ""} ${className}`.trim();
+  const buttonClass = `${variant || ""} ${className}`.trim();
 
   return (
     <a href={href} className={buttonClass} {...props}>
