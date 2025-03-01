@@ -1,0 +1,90 @@
+@use "abstracts/variables" as *;
+
+.churchMembersCutout {
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.buttonWrapper {
+    display: flex;
+    flex-direction: row;
+    padding: 0.25rem;
+    gap: 12px;
+    align-items: center;
+    align-self: stretch;
+    border: 1.5px solid white;
+    border-radius: 5rem;
+    margin-bottom: 2rem;
+
+
+    button {
+        display: flex !important;
+        flex: 1 0 0 !important;
+    }
+}
+
+.buttonwrapper {
+    display: none;
+    flex-direction: column;
+    padding: 0.25rem;
+    gap: 0.5rem;
+    align-items: center;
+    align-self: stretch;
+    margin-bottom: 1rem;
+
+    button {
+        display: flex !important;
+        flex: 1 0 0 !important;
+    }
+}
+
+.pyvContainer {
+    padding: 1.5rem;
+    align-self: stretch;
+    border-radius: 0.5rem;
+    margin-top: 2rem;
+
+    p {
+        color: $paper-bg-text-color;
+    }
+
+    .intro {
+        p:first-child {
+            // font-weight: 500;
+            margin-bottom: 0.25rem !important;
+        }
+    }
+}
+
+.chalkDivider {
+    height: 0.5rem !important;
+}
+
+.pyvIncentivesWrapper {
+    display: flex;
+    // align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+
+    p {
+        margin: 0;
+    }
+
+    .headline {
+        color: #0A7E92;
+        font-size: 1.125rem;
+        font-weight: 600;
+        letter-spacing: -0.01125rem;
+    }
+
+    >.icon {
+        width: 2rem;
+        height: 2rem;
+    }
+}
+
+.pyvIncentivesHeadline {
+    color: $paper-bg-text-color;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
