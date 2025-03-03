@@ -1,0 +1,7 @@
+@use 'abstracts/variables' as *;
+@use 'abstracts/breakpoints-mixins' as *;
+
+.subsplash-embed-container {
+    background: $paperBackgroundImage;
+    padding: 1.5rem;
+}
