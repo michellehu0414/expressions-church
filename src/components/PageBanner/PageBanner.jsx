@@ -19,7 +19,7 @@ const PageBanner = ({
   };
 
   return (
-    <header className={styles.bannerWrapper} style={inlineStyle}>
+    <div className={styles.bannerWrapper} style={inlineStyle}>
       <h1 className={styles.title}>
         <span className={styles.outlined}>{titleOutlinedText}</span> {titleFilledText}
       </h1>
@@ -31,7 +31,7 @@ const PageBanner = ({
           <Button to={secondaryButtonLink} variant="secondary" className="bgWhite">{secondaryButtonText}</Button>
         )}
       </div>
-    </header >
+    </div >
   );
 };
 
