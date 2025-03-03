@@ -5,6 +5,17 @@
     margin-bottom: 1.5rem;
 }
 
+#_builder-form,
+.fields-container {
+    padding: 0 !important;
+}
+
+.pyvFormEmbed {
+    width: 100%;
+    width: 100%;
+    border: none;
+}
+
 .buttonWrapper {
     display: flex;
     flex-direction: row;
@@ -39,7 +50,7 @@
 }
 
 .pyvContainer {
-    padding: 1.5rem;
+    padding: 0 1.5rem 1.5rem;
     align-self: stretch;
     border-radius: 0.5rem;
     margin-top: 2rem;

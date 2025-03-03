@@ -26,14 +26,33 @@ const PYVSection = () => {
                     <Button variant="secondary" className="bgBlack flex width-100">Not yet</Button>
                 </div>
                 <h3 className="bigType">We're so excited to meet you!</h3>
+                <p>Submit the form below to let us know you're coming so we can plan for your visit.</p>
                 <div className={`${styles.pyvContainer} bg-paper`} >
                     <div className={styles.intro}>
-                        <p>Submit the form below to let us know you're coming so we can plan for your visit.</p>
+                        <iframe
+                            src="https://api.leadconnectorhq.com/widget/form/NlvmkQ3xO5uUJWEo6rzK"
+                            className={styles.pyvFormEmbed}
+                            id="inline-NlvmkQ3xO5uUJWEo6rzK"
+                            data-layout="{'id':'INLINE'}"
+                            data-trigger-type="alwaysShow"
+                            data-trigger-value=""
+                            data-activation-type="alwaysActivated"
+                            data-activation-value=""
+                            data-deactivation-type="neverDeactivate"
+                            data-deactivation-value=""
+                            data-form-name="PYV Form (New Website)"
+                            data-height="1307"
+                            data-layout-iframe-id="inline-NlvmkQ3xO5uUJWEo6rzK"
+                            data-form-id="NlvmkQ3xO5uUJWEo6rzK"
+                            title="PYV Form (New Website)"
+                        >
+                        </iframe>
+
 
                     </div>
                     <div className={styles.pyvIncentivesWrapper}>
                         <img src={bookIcon} alt="" className={styles.icon} />
-                        <p>Learn more</p>
+                        <p>Do I need to submit a form?</p>
                     </div>
                     <div className={styles.intro}>
                         <p>We know visiting a new church can feel like a big step, but it doesn't have to be. That's why we've made it simple, welcoming, and most importantly—<em>personal</em>.</p>
@@ -53,7 +72,7 @@ const PYVSection = () => {
                                 <p>This will save you time, trust.</p>
                             </div>
                         </div>
-                        <div className={styles.pyvIncentivesWrapper}>
+                        <div className={`${styles.pyvIncentivesWrapper} mb-0`}>
                             <img src={chatIcon} alt="" className={styles.icon} />
                             <div>
                                 <p className={styles.headline}>Get a personalized guide.</p>
