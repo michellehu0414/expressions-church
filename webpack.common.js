@@ -6,13 +6,18 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const htmlPages = [
     { template: '/index.html', chunks: ['index'], filename: 'index.html' },
     { template: '/leadership.html', chunks: ['leadership'], filename: 'leadership.html' },
+    { template: '/plan-your-visit.html', chunks: ['plan-your-visit'], filename: 'plan-your-visit.html' },
+    { template: '/events.html', chunks: ['events'], filename: 'events.html' },
 ];
 
 module.exports = {
     entry: {
         index: "./src/pages/index/index.jsx",
         leadership: "./src/pages/leadership/index.jsx",
+        events: "./src/pages/events/index.jsx",
+        planYourVisit: "./src/pages/plan-your-visit/index.jsx",
         main: "./src/main.jsx",
+        "globalsStyles": "./src/scss/globals.scss",
     },
     output: {
         filename: "js/[name].bundle.js",
