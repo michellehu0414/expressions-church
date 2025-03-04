@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import * as styles from "./events.module.scss";
+import "./events.scss";
 import PageBanner from "@components/PageBanner/PageBanner";
 import '@components/SubsplashEventsEmbed/SubsplashEventsEmbed.scss';
 
