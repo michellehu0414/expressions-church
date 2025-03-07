@@ -24,4 +24,7 @@ module.exports = merge(common, {
         new CleanWebpackPlugin(), // Clean dist/ directory before each build
     ],
     devtool: false, // Correctly disable source maps
+    stats: {
+        errorDetails: true,
+    }
 });
