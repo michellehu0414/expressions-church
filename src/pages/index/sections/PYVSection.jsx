@@ -21,10 +21,44 @@ const PYVSection = () => {
             </h2>
             <div className="sectionContent">
                 <img src={churchMembersCutout} alt="" className={styles.churchMembersCutout} />
+                <p>
+                    Find out what to expect, like where to park, where to check in, . And if you're ready, let us know you're coming to get a personalized welcome guide and a chance to chat with Pastor Christopher before your visit!</p>
+                <div>
+                    <div className={styles.pyvIncentivesWrapper}>
+                        <img src={bookIcon} alt="" className={styles.icon} />
+                        <p className={styles.headline}>Find out exactly what to expect.</p>
+                    </div>
+                    <div className={styles.pyvIncentivesWrapper}>
+                        <img src={bookIcon} alt="" className={styles.icon} />
+                        <p className={styles.headline}>Get a welcome guide.</p>
+                    </div>
+                    <div className={styles.pyvIncentivesWrapper}>
+                        <img src={userIcon} alt="" className={styles.icon} />
+                        <div>
+                            <p className={styles.headline}>Got little ones? Register them!</p>
+                        </div>
+                    </div>
+                    <div className={`${styles.pyvIncentivesWrapper} mb-0`}>
+                        <img src={chatIcon} alt="" className={styles.icon} />
+                        <div>
+                            <p className={styles.headline}>Get a text from Pastor Christopher!</p>
+                            <p>Ask questions or just say hello!</p>
+                        </div>
+                    </div>
+                </div>
                 <div className={styles.buttonWrapper}>
                     <Button variant="primary" className="bgWhite flex width-100">Yes!</Button>
                     <Button variant="secondary" className="bgBlack flex width-100">Not yet</Button>
                 </div>
+                <div className="flex-col gap-8">
+                    <Button variant="primary" className="bgWhite flex width-100">Yes, let's plan it!</Button>
+                    <Button variant="primary" className="bgWhite flex width-100">I'll do it later!</Button>
+
+                    <p>Not ready yet? That's totally fine!</p>
+                    <Button variant="secondary" className="bgBlack flex width-100">No, I'm not.</Button>
+                    <Button variant="secondary" className="bgBlack flex width-100">No, but I'm interested.</Button>
+                </div>
+                <div className={styles.textPYVFormLink}><a href="">Send me a link—I'll do it later!</a></div>
                 <h3 className="bigType">We're so excited to meet you!</h3>
                 <p>Submit the form below to let us know you're coming so we can plan for your visit.</p>
                 <div className={`${styles.pyvContainer} bg-paper`} >
@@ -59,30 +93,10 @@ const PYVSection = () => {
 
                     </div>
                     <ChalkDivider variant="black" className={styles.chalkDivider} />
-                    <div>
-                        <p className={styles.pyvIncentivesHeadline}>Complete this form to...</p>
-                        <div className={styles.pyvIncentivesWrapper}>
-                            <img src={bookIcon} alt="" className={styles.icon} />
-                            <p className={styles.headline}>Get a personalized guide.</p>
-                        </div>
-                        <div className={styles.pyvIncentivesWrapper}>
-                            <img src={userIcon} alt="" className={styles.icon} />
-                            <div>
-                                <p className={styles.headline}>Got little ones? Pre-Register</p>
-                                <p>This will save you time, trust.</p>
-                            </div>
-                        </div>
-                        <div className={`${styles.pyvIncentivesWrapper} mb-0`}>
-                            <img src={chatIcon} alt="" className={styles.icon} />
-                            <div>
-                                <p className={styles.headline}>Get a personalized guide.</p>
-                                <p>Ask questions or just say hello!</p>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
-        </section>
+        </section >
     );
 };
 export default PYVSection;
