@@ -15,7 +15,7 @@ module.exports = {
         index: "./src/pages/index/index.jsx",
         leadership: "./src/pages/leadership/index.jsx",
         events: "./src/pages/events/index.jsx",
-        planYourVisit: "./src/pages/plan-your-visit/index.jsx",
+        pyv: "./src/pages/plan-your-visit/index.jsx",
         main: "./src/main.jsx",
         "globalsStyles": "./src/scss/globals.scss",
     },
