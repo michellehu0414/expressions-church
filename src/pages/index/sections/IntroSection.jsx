@@ -18,7 +18,7 @@ const IntroSection = () => {
                         src="https://vrwpaviv.elementor.cloud/wp-content/uploads/2024/12/expressions-cutout-hug.png"
                         alt="" />
                     <div id={styles.cardBGPaper} className="bg-paper pd-16">
-                        <p class="black mb-0">People can’t see God, but they can see his church, and we show that we know
+                        <p className="black mb-0">People can’t see God, but they can see his church, and we show that we know
                             who
                             God is by how we love others.</p>
                     </div>
@@ -29,7 +29,7 @@ const IntroSection = () => {
                 <img className={styles.imgLaundryLove}
                     src="https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/laundry-love.webp"
                     alt="" />
-                <p class={styles.bigType}>To express God’s love in the SGV.</p>
+                <p className={styles.bigType}>To express God’s love in the SGV.</p>
                 <div className={styles.taglineWrapper}>
                     <p className={styles.bigType}><span>Experience</span> life with him.</p>
                     <p className={styles.bigType}><span>Explore</span> faith in Jesus.</p>
