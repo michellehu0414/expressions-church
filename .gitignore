@@ -21,7 +21,6 @@ debug.log
 wflogs/
 
 # 🔹 Ignore Package Lock Files
-package-lock.json
 composer.lock
 
 # 🔹 Ignore Webpack Debug Files
