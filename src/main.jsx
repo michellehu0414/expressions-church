@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import '@scss/globals.scss';
 
 // import GetInvolvedCards from "@components/GetInvolvedCards/GetInvolvedCards";
