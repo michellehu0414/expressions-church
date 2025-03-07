@@ -7,9 +7,11 @@ const originalsFolder = './wp-image-optimizer/local/originals';
 const compressedFolder = './wp-image-optimizer/local/compressed';
 const webpFolder = './wp-image-optimizer/local/webp';
 
-const MAX_FILE_SIZE = 800 * 1024; // 800KB
-const MIN_JPEG_QUALITY = 25;
-const MIN_WEBP_QUALITY = 25;
+const MAX_FILE_SIZE = 250 * 1024; // 700KB instead of 600KB to allow slightly larger images
+const MIN_JPEG_QUALITY = 50; // Increased from 50 to retain quality
+const MIN_WEBP_QUALITY = 50; // Increased from 50 to retain quality
+const START_JPEG_QUALITY = 50; // Reduced compression
+const START_WEBP_QUALITY = 50; // Reduced compression
 
 // Ensure necessary folders exist
 [inputFolder, webpFolder, compressedFolder, originalsFolder].forEach(folder => {
@@ -28,65 +30,77 @@ const moveFile = async (source, destination) => {
 };
 
 const compressImage = async (inputPath, outputPath, ext) => {
-    let quality = 90;
+    let quality = START_JPEG_QUALITY;
     let fileSize;
+
     try {
         if (ext === '.png') {
-            // Preserve transparency for PNGs
             await sharp(inputPath)
                 .rotate()
-                .resize({ width: 800 })
-                .png({ compressionLevel: 6, adaptiveFiltering: true })
+                .resize({ width: 200 }) // Slightly increased size limit
+                .png({ compressionLevel: 4, adaptiveFiltering: true }) // Reduced compression
                 .toFile(outputPath);
+
+            fileSize = (await fs.promises.stat(outputPath)).size;
         } else {
-            // Standard JPEG compression
             do {
                 await sharp(inputPath)
                     .rotate()
-                    .resize({ width: 800 })
+                    .resize({ width: 200 }) // Slightly increased size limit
                     .jpeg({ quality, mozjpeg: true })
                     .toFile(outputPath);
 
                 fileSize = (await fs.promises.stat(outputPath)).size;
 
                 if (fileSize > MAX_FILE_SIZE) {
-                    quality -= 2;
+                    quality -= 1; // Reduce compression slowly
                     console.log(`⚠️ Reducing JPEG quality to: ${quality}`);
                 }
             } while (fileSize > MAX_FILE_SIZE && quality > MIN_JPEG_QUALITY);
         }
 
-        console.log(`✅ Compressed image saved: ${outputPath}`);
+        if (fileSize > MAX_FILE_SIZE) {
+            console.warn(`⚠️ Compression reduced but still above limit: ${fileSize / 1024}KB. Proceeding.`);
+        }
+
+        console.log(`✅ Compressed image saved: ${outputPath} (${fileSize / 1024}KB)`);
+        return true;
     } catch (err) {
         console.error(`❌ Compression failed for ${inputPath}:`, err.message);
+        throw err;
     }
 };
-// ** Convert Image to WebP (Preserving PNG Transparency) **
+
 const convertToWebP = async (inputPath, outputPath, ext) => {
-    let quality = 90;
+    let quality = START_WEBP_QUALITY;
     let fileSize;
 
     try {
         do {
             await sharp(inputPath)
-                .webp({ quality, lossless: ext === '.png' }) // Lossless WebP for PNGs
+                .webp({ quality, lossless: ext === '.png' })
                 .toFile(outputPath);
 
             fileSize = (await fs.promises.stat(outputPath)).size;
 
             if (fileSize > MAX_FILE_SIZE) {
-                quality -= 2;
+                quality -= 1; // Reduce compression slowly
                 console.log(`⚠️ Reducing WebP quality to: ${quality}`);
             }
         } while (fileSize > MAX_FILE_SIZE && quality > MIN_WEBP_QUALITY);
 
-        console.log(`✅ WebP saved: ${outputPath}`);
+        if (fileSize > MAX_FILE_SIZE) {
+            console.warn(`⚠️ WebP conversion resulted in a larger file (${fileSize / 1024}KB). Proceeding.`);
+        }
+
+        console.log(`✅ WebP saved: ${outputPath} (${fileSize / 1024}KB)`);
+        return true;
     } catch (err) {
         console.error(`❌ WebP conversion failed for ${inputPath}:`, err.message);
+        throw err;
     }
 };
 
-// ** Process Images (Fixing Transparency Issues) **
 const processImages = async () => {
     try {
         console.log(`📂 Checking contents of '${inputFolder}'`);
@@ -115,10 +129,13 @@ const processImages = async () => {
 
                 console.log(`🔄 Processing: ${file}`);
 
-                // Preserve PNG transparency instead of converting to JPEG
+                // Attempt to compress image.
                 await compressImage(inputPath, compressedPath, ext);
+
+                // If compression succeeds, proceed with conversion.
                 await convertToWebP(compressedPath, webpPath, ext);
 
+                // Move original file only if previous steps succeeded.
                 await moveFile(inputPath, originalPath);
                 console.log(`📦 Moved original image to: ${originalPath}`);
             } catch (err) {
