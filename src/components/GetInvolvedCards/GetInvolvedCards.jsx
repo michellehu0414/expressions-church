@@ -42,10 +42,10 @@ const cardData = {
         image: "https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/diverse-community-gathering-circle.webp",
         altText: "text",
         headline: "Find your Community",
-        bodyText: "Our community groups and gatherings....",
-        primaryButtonText: "Explore Community",
+        bodyText: "Attend our Small Groups to connect with others and dive deeper into dscripture with other like minded individuals.",
+        primaryButtonText: "Register for Small Groups",
         primaryButtonLink: "/community",
-        showSecondaryButton: true,
+        showSecondaryButton: false,
         secondaryButtonText: "Sign Up",
     },
     "serve-card": {
