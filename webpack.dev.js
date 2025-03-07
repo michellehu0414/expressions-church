@@ -12,6 +12,9 @@ module.exports = merge(common, {
         static: {
             directory: "./dist",
         },
+        client: {
+            overlay: false
+        },
         host: "0.0.0.0", // Allow connections from any IP address
         open: true,
         port: 5688,
@@ -22,5 +25,6 @@ module.exports = merge(common, {
             type: 'http', // Use 'http' to disable HTTPS for local development
         },
     },
-    plugins: [new webpack.HotModuleReplacementPlugin()],
+    plugins: [
+        new webpack.HotModuleReplacementPlugin()],
 });
