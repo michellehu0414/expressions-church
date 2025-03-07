@@ -24,23 +24,26 @@
   <section id="sunday-service-section" class="sectionWrapper"></section>
   <section id="events-section" class="sectionWrapper">
     <h2 class="width-100"><span class="outlined">Upcoming</span> <br>Events</h2>
-    <div class="sectionContent">
-      <div id="subsplash-events-embed"></div>
-      <div class="eventsButtonWrapper">
-        <button id="seeAllEventsButton" class="primaryButton align-self-left">See All
-          Events</button>
+    <div class="subsplash-embed-events-container sectionContent">
+      <div>
+        <script id="subsplash-embed-qtbc9rz"
+          type="text/javascript"> var target = document.getElementById("subsplash-embed-qtbc9rz"); var script = document.createElement("script"); script.type = "text/javascript"; script.onload = function () { subsplashEmbed("+dwm2/lb/ca/+qtbc9rz?embed", "https://subsplash.com/", "subsplash-embed-qtbc9rz"); }; script.src = "https://dashboard.static.subsplash.com/production/web-client/external/embed-1.1.0.js"; target.parentElement.insertBefore(script, target); </script>
       </div>
+    </div>
+    <div class="eventsButtonWrapper">
+      <button id="seeAllEventsButton" class="primary ">See All
+        Events</button>
     </div>
   </section>
   <section id="pyv-section" class="sectionWrapper"></section>
-  <!-- <script>const iframe = document.getElementById("subsplash-embed-qtbc9rz");
+  <script>const iframe = document.getElementById("subsplash-embed-qtbc9rz");
 
-        iframe.onload = function () {
-            const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+    iframe.onload = function () {
+      const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
 
-            // Create a new <style> element
-            const style = iframeDoc.createElement("style");
-            style.innerHTML = `
+      // Create a new <style> element
+      const style = iframeDoc.createElement("style");
+      style.innerHTML = `
             body {
               background-color: #f8f8f8 !important;
               color: #333 !important;
@@ -48,10 +51,10 @@
             }
           `;
 
-            // Append the <style> element to the iframe's <head>
-            iframeDoc.head.appendChild(style);
-        };
-    </script> -->
+      // Append the <style> element to the iframe's <head>
+      iframeDoc.head.appendChild(style);
+    };
+  </script>
   <!-- <div className={styles.buttonContainer}>
         {/* Primary Button */}
         {primaryButtonText && primaryButtonLink && (
