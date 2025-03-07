@@ -17,10 +17,9 @@ module.exports = {
         events: "./src/pages/events/index.jsx",
         pyv: "./src/pages/plan-your-visit/index.jsx",
         main: "./src/main.jsx",
-        "globalsStyles": "./src/scss/globals.scss",
     },
     output: {
-        filename: "js/[name].bundle.js",
+        filename: "js/[name].min.js",
         path: path.resolve(__dirname, "dist"),
         clean: true,
     },
@@ -70,6 +69,7 @@ module.exports = {
                     {
                         loader: "sass-loader",
                         options: {
+                            implementation: require("sass"), // Use Dart Sass
                             sassOptions: {
                                 includePaths: [path.resolve(__dirname, "src/scss")],
                                 outputStyle: "expanded",
@@ -88,6 +88,7 @@ module.exports = {
                     {
                         loader: "sass-loader",
                         options: {
+                            implementation: require("sass"), // Use Dart Sass
                             sassOptions: {
                                 includePaths: [path.resolve(__dirname, "src/scss")],
                                 outputStyle: "expanded",
@@ -99,14 +100,46 @@ module.exports = {
             {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
-                use: ["babel-loader"],
+                use: [
+                    'thread-loader',
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            cacheDirectory: true,
+                        },
+                    },
+                ],
             },
             {
                 test: /\.(png|jpg|jpeg|gif|svg)$/i,
                 type: 'asset/resource',
                 generator: {
                     filename: 'assets/images/[name][ext]'
-                }
+                },
+                use: [
+                    {
+                        loader: 'image-webpack-loader', // Optimize images
+                        options: {
+                            mozjpeg: {
+                                progressive: true,
+                                quality: 65
+                            },
+                            optipng: {
+                                enabled: false,
+                            },
+                            pngquant: {
+                                quality: [0.65, 0.90],
+                                speed: 4
+                            },
+                            gifsicle: {
+                                interlaced: false,
+                            },
+                            webp: {
+                                quality: 75
+                            }
+                        }
+                    }
+                ]
             },
             {
                 test: /\.svg$/,
@@ -127,7 +160,7 @@ module.exports = {
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: "css/[name].css",
+            filename: "css/[name].min.css",
         }),
         ...htmlPages.map(page => new HtmlWebpackPlugin({
             template: `./src/${page.template}`,
