@@ -6,6 +6,7 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer'); // Add Bundle Analyzer
+const CompressionPlugin = require('compression-webpack-plugin');
 
 const htmlPages = [
     { template: '/index.html', chunks: ['index'], filename: 'index.html' },
@@ -52,7 +53,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(woff|woff2)$/,
+                test: /\.(woff|woff2|eot|ttf|otf)$/i,
                 type: "asset/resource",
                 generator: {
                     filename: "assets/fonts/[name][ext]",
@@ -189,6 +190,15 @@ module.exports = {
             analyzerMode: 'static',
             openAnalyzer: false,
         }),
+        new CompressionPlugin({
+            test: /\.(woff|woff2|eot|ttf|otf)$/,
+            filename: '[path][base].br',
+            algorithm: 'brotliCompress',
+            compressionOptions: { level: 11 },
+            threshold: 10240, // Only compress files larger than 10KB
+            minRatio: 0.8,
+        })
+
     ],
     devtool: false, // Correctly disable source maps
     stats: {

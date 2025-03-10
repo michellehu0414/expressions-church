@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const webpack = require("webpack");
+const CompressionPlugin = require('compression-webpack-plugin');
 
 const htmlPages = [
     { template: '/index.html', chunks: ['index'], filename: 'index.html' },
@@ -46,7 +47,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(woff|woff2)$/,
+                test: /\.(woff|woff2|eot|ttf|otf)$/i,
                 type: "asset/resource",
                 generator: {
                     filename: "assets/fonts/[name][ext]",
@@ -140,7 +141,7 @@ module.exports = {
             directory: "dist",
         },
         client: {
-        overlay: false
+            overlay: false
         },
         host: "0.0.0.0", // Allow connections from any IP address
         open: true,
@@ -172,6 +173,11 @@ module.exports = {
                     to: 'assets/svg'
                 },
             ]
+        }),
+        new CompressionPlugin({
+            test: /\.(woff|woff2|eot|ttf|otf)$/,
+            filename: '[path][base].gz',
+            algorithm: 'gzip',
         }),
     ],
 };
