@@ -3,8 +3,6 @@ $list-bullet-text-spacing: 0.25rem;
 
 ul,
 ol {
-	display: flex;
-	flex-direction: column;
 	align-self: center;
 	margin-bottom: 0;
 	gap: 0.5rem;
@@ -15,6 +13,7 @@ ol {
 
 	li {
 		line-height: 150%;
+		margin-bottom: 0.5rem;
 		text-align: left;
 		font-weight: normal;
 		padding-left: $list-bullet-text-spacing;
@@ -30,6 +29,10 @@ ol {
 		@include breakpoint(lg) {
 			font-size: 1.25rem;
 		}
+	}
+
+	li:last-child {
+		margin-bottom: 0;
 	}
 
 	&.gap--medium {
