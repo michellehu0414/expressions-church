@@ -31,6 +31,36 @@ defined('CHLD_THM_CFG_IGNORE_PARENT') or define('CHLD_THM_CFG_IGNORE_PARENT', tr
 
 // END ENQUEUE PARENT ACTION
 
+function enqueue_react_app()
+{
+    wp_enqueue_script('react-app', get_template_directory_uri() . '/dist/js/main.min.js', [], '1.0', true);
+}
+add_action('wp_enqueue_scripts', 'enqueue_react_app');
+
+function react_shortcode()
+{
+    return '<div id="react-root"></div>';
+}
+add_shortcode('react_component', 'react_shortcode');
+add_filter('acf/rest_api/field_settings/show_in_rest', '__return_true');
+
+// Enqueue project assets from React/Webpack modular structure
+function enqueue_react_assets() {
+    wp_enqueue_script(
+        'react-main',
+        get_template_directory_uri() . '/dist/js/main.min.js',
+        array(),
+        '1.0',
+        true
+    );
+    wp_enqueue_style(
+        'react-styles',
+        get_template_directory_uri() . '/dist/css/main.min.css'
+    );
+}
+add_action('wp_enqueue_scripts', 'enqueue_react_assets');
+
+
 // function hello_elementor_child_enqueue_scripts()
 // {
 //     // Ensure WordPress functions are available

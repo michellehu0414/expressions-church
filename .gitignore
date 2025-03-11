@@ -61,3 +61,6 @@ wp-image-optimizer/output/*
 wp-image-optimizer/uploaded/*
 
 images/
+dist/report.html
+test.css
+test.html
