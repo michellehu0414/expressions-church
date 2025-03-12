@@ -1,7 +1,7 @@
 @use "abstracts/all-abstracts" as *;
 @use "utilities/all-utilities" as *;
 
-.bannerWrapper {
+.page-header-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -14,9 +14,15 @@
         url("https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/expressions-exterior-expanded-scaled.webp") no-repeat center bottom / cover;
 
     aspect-ratio: 2.35;
+    width: 100%;
+
+    @include breakpoint(med) {
+        height: 60vh;
+        max-height: 28rem;
+    }
 }
 
-.title {
+.page-header-title {
     color: white;
     text-align: center;
     text-shadow: 4px 4px 0px #161616;
@@ -48,14 +54,9 @@
         font-size: 5.875rem;
         text-shadow: 6px 4px 0px #161616;
     }
-
-    @include breakpoint(med) {
-        height: 60vh;
-        max-height: 33rem;
-    }
 }
 
-.buttonContainer {
+.page-header-buttons {
     display: flex;
     flex-direction: column;
     gap: 1rem;

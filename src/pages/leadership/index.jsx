@@ -1,11 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./leadership.scss";
-import PageBanner from "@components/PageBanner/PageBanner";
+import PageHeader from "@components/PageHeader/PageHeader";
+import MailchimpSignupEmbed from "@components/MailchimpSignupEmbed/MailchimpSignupEmbed";
 
-const PageBannerSection = () => {
+const PageHeaderSection = () => {
     return (
-        <PageBanner
+        <PageHeader
             backgroundImage="https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/expressions-exterior-expanded-scaled.webp"
             titleOutlinedText="our"
             titleFilledText="leadership"
@@ -13,8 +14,8 @@ const PageBannerSection = () => {
             primaryButtonLink="/get-started"
             secondaryButtonText="Learn More"
             secondaryButtonLink="/learn-more"
-            showPrimaryButton={true}
-            showSecondaryButton={false} 
+            showPrimaryButton={false}
+            showSecondaryButton={false}
         />
     );
 };
@@ -30,4 +31,9 @@ const injectComponent = (Component, elementId) => {
 // Inject each section where its placeholder div exists
 // injectSection(IntroSection, "intro-section");
 
-injectComponent(PageBannerSection, "page-banner");
+injectComponent(PageHeaderSection, "page-header");
+injectComponent(MailchimpSignupEmbed, "mailchimp-signup-embed");
+
+document.addEventListener("DOMContentLoaded", function () {
+    console.log("My script is running!");
+});

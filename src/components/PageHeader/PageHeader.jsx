@@ -1,8 +1,8 @@
 import React from 'react';
-import * as styles from './PageBanner.module.scss';
+import "./PageHeader.scss";
 import Button from '@components/Button/Button';
 
-const PageBanner = ({
+const PageHeader = ({
   backgroundImage,
   titleOutlinedText,
   titleFilledText,
@@ -19,11 +19,11 @@ const PageBanner = ({
   };
 
   return (
-    <div className={styles.bannerWrapper} style={inlineStyle}>
-      <h1 className={styles.title}>
-        <span className={styles.outlined}>{titleOutlinedText}</span> {titleFilledText}
+    <div className="page-header-wrapper" style={inlineStyle}>
+      <h1 className="page-header-title">
+        <span className="outlined">{titleOutlinedText}</span> {titleFilledText}
       </h1>
-      <div className={styles.buttonContainer}>
+      <div className="page-header-buttons">
         {showPrimaryButton && (
           <Button to={primaryButtonLink} variant="primary" className="bgBlack">{primaryButtonText}</Button>
         )}
@@ -31,19 +31,19 @@ const PageBanner = ({
           <Button to={secondaryButtonLink} variant="secondary" className="bgWhite">{secondaryButtonText}</Button>
         )}
       </div>
-    </div >
+    </div>
   );
 };
 
-export default PageBanner;
+export default PageHeader;
 // Usage example
 // import React from 'react';
 // import ReactDOM from 'react-dom';
-// import PageBanner from './PageBanner';
+// import PageHeader from './PageHeader';
 //
 // const App = () => (
 //   <div>
-{/* <PageBanner
+{/* <PageHeader
   backgroundImage="path/to/image.jpg"
   titleOutlinedText="Welcome"
   titleFilledText="to our site"

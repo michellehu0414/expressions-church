@@ -1,10 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import '@scss/globals.scss';
+import PageHeader from "@components/PageHeader/PageHeader";
 
 // import GetInvolvedCards from "@components/GetInvolvedCards/GetInvolvedCards";
 //
-// // Centralized component mapping
+// //  bCentralized component mapping
 // const components = {
 //     "serve-sgv-card": <GetInvolvedCards id="serve-sgv-card" />,
 //     "partner-card": <GetInvolvedCards id="partner-card" />,
