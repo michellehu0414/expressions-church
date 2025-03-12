@@ -29,7 +29,7 @@ module.exports = {
     },
     output: {
         filename: "js/[name].min.js",
-        path: path.resolve(__dirname, "dist"),
+        path: path.resolve(__dirname, "public"),
         clean: true,
     },
     resolve: {
@@ -165,7 +165,7 @@ module.exports = {
         },
     },
     plugins: [
-        new CleanWebpackPlugin(), // Clean dist/ directory before each build
+        new CleanWebpackPlugin(), // Clean public/ directory before each build
         new MiniCssExtractPlugin({
             filename: "css/[name].min.css",
         }),

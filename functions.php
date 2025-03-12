@@ -31,12 +31,7 @@ defined('CHLD_THM_CFG_IGNORE_PARENT') or define('CHLD_THM_CFG_IGNORE_PARENT', tr
 
 // END ENQUEUE PARENT ACTION
 
-function enqueue_react_app()
-{
-    wp_enqueue_script('react-app', get_template_directory_uri() . '/dist/js/main.min.js', [], '1.0', true);
-}
-add_action('wp_enqueue_scripts', 'enqueue_react_app');
-
+// Add shortcode for React components
 function react_shortcode()
 {
     return '<div id="react-root"></div>';
@@ -44,22 +39,45 @@ function react_shortcode()
 add_shortcode('react_component', 'react_shortcode');
 add_filter('acf/rest_api/field_settings/show_in_rest', '__return_true');
 
-// Enqueue project assets from React/Webpack modular structure
-function enqueue_react_assets() {
-    wp_enqueue_script(
-        'react-main',
-        get_template_directory_uri() . '/dist/js/main.min.js',
-        array(),
-        '1.0',
-        true
-    );
-    wp_enqueue_style(
-        'react-styles',
-        get_template_directory_uri() . '/dist/css/main.min.css'
-    );
-}
-add_action('wp_enqueue_scripts', 'enqueue_react_assets');
+// Enqueue page-specific Webpack assets
+function enqueue_page_specific_scripts()
+{
+    $theme_dir = get_stylesheet_directory_uri(); // Child theme directory
 
+    if (is_page('home')) {
+        wp_enqueue_script('home-webpack-script', $theme_dir . '/public/js/index.min.js', [], null, true);
+        wp_enqueue_style('home-webpack-script', $theme_dir . '/public/css/index.min.css', [], null, true);
+    }
+    if (is_page('leadership')) {
+        wp_enqueue_script('leadership-webpack-script', $theme_dir . '/public/js/leadership.min.js', [], null, true);
+    }
+    if (is_page('events')) {
+        wp_enqueue_script('events-webpack-script', $theme_dir . '/public/js/events.min.js', [], null, true);
+    }
+}
+add_action('wp_enqueue_scripts', 'enqueue_page_specific_scripts');
+
+function enqueue_child_theme_styles()
+{
+    $theme_dir = get_stylesheet_directory_uri(); // Child theme directory
+
+    wp_enqueue_style('child-theme-styles', $theme_dir . '/public/css/main.min.css', [], null, true);
+}
+add_action('wp_enqueue_scripts', 'enqueue_child_theme_styles');
+
+/**
+ * Proper way to enqueue scripts and styles.
+ */
+function hello_elementor_child_global_scripts()
+{
+    $parent_style = 'hello-elementor'; // Parent theme handle
+    wp_enqueue_style($parent_style, get_template_directory_uri() . '/style.css');
+    wp_enqueue_style('hello-elementor-child-global-style', get_stylesheet_directory_uri() . '/public/css/main.min.css', [$parent_style],
+        wp_get_theme()->get('Version'));
+
+    wp_enqueue_script('hello-elementor-child-global-script', get_template_directory_uri() . '/public/js/main.min.js', [], false, true);
+}
+add_action('wp_enqueue_scripts', 'hello_elementor_child_global_scripts');
 
 // function hello_elementor_child_enqueue_scripts()
 // {
@@ -68,19 +86,19 @@ add_action('wp_enqueue_scripts', 'enqueue_react_assets');
 //
 //         if (is_front_page() || is_page('home')) { // Home page check
 //             wp_enqueue_script('home-scripts',
-//                 get_stylesheet_directory_uri() . '/dist/js/index.min.js',
-//                 [], filemtime(get_stylesheet_directory() . '/dist/js/index.min.js'), true);
+//                 get_stylesheet_directory_uri() . '/public/js/index.min.js',
+//                 [], filemtime(get_stylesheet_directory() . '/public/js/index.min.js'), true);
 //         } elseif (is_page('leadership')) {
 //             wp_enqueue_script('leadership-scripts',
-//                 get_stylesheet_directory_uri() . '/dist/js/leadership.min.js',
-//                 [], filemtime(get_stylesheet_directory() . '/dist/js/leadership.min.js'), true);
+//                 get_stylesheet_directory_uri() . '/public/js/leadership.min.js',
+//                 [], filemtime(get_stylesheet_directory() . '/public/js/leadership.min.js'), true);
 //         }
 //     }
 //
 //     // Register and enqueue global script
 //     wp_register_script('global_script',
-//         get_stylesheet_directory_uri() . '/dist/js/main.min.js',
-//         [], filemtime(get_stylesheet_directory() . '/dist/js/main.min.js'), true);
+//         get_stylesheet_directory_uri() . '/public/js/main.min.js',
+//         [], filemtime(get_stylesheet_directory() . '/public/js/main.min.js'), true);
 //     wp_enqueue_script('global_script');
 // }
 // add_action('wp_enqueue_scripts', 'hello_elementor_child_enqueue_scripts');
@@ -90,8 +108,8 @@ add_action('wp_enqueue_scripts', 'enqueue_react_assets');
 //
 //     // Enqueue child theme styles
 //     wp_register_style('hello-elementor-child-style',
-//         get_stylesheet_directory_uri() . '/dist/css/main.min.css',
-//         [], filemtime(get_stylesheet_directory() . '/dist/css/main.min.css'), true);
+//         get_stylesheet_directory_uri() . '/public/css/main.min.css',
+//         [], filemtime(get_stylesheet_directory() . '/public/css/main.min.css'), true);
 //     wp_enqueue_style('hello-elementor-child-style');
 // }
 // add_action('wp_enqueue_scripts', 'hello_elementor_child_enqueue_styles');
