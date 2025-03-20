@@ -1,4 +1,4 @@
-@use "abstracts/variables" as *;
+@use "@scss/abstracts/variables" as *;
 
 .churchMembersCutout {
     width: 100%;
@@ -73,7 +73,7 @@
     }
 }
 
-.chalkDivider {
+.chalk-divider {
     height: 0.5rem !important;
 }
 

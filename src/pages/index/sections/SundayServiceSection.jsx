@@ -26,7 +26,7 @@ const SundayServiceSection = () => {
     };
 
     return (
-        <section>
+        <div className="section">
             <div className="sectionContent">
                 <h2><span className="outlined">sunday</span> service</h2>
             </div>
@@ -51,7 +51,7 @@ const SundayServiceSection = () => {
                     </div>
                 </div>
             </div>
-        </section >
+        </div>
     );
 };
 

@@ -8,7 +8,7 @@ import "@scss/utilities/_all-utilities.scss";
 import bookIcon from "@assets/svg/icon-book.svg";
 import userIcon from "@assets/svg/icon-user.svg";
 import chatIcon from "@assets/svg/icon-chat-bubble.svg";
-import ChalkDivider from "@components/ChalkDivider/ChalkDivider";
+import ChalkDivider from "@components/ChalkDivider/-ChalkDivider";
 // import Button from "@components/Button/Button";
 
 const PYVSection = () => {
@@ -47,12 +47,12 @@ const PYVSection = () => {
                     </div>
                 </div>
                 <div className={styles.buttonWrapper}>
-                    <Button variant="primary" className="bgWhite flex width-100">Yes!</Button>
+                    <Button variant="primary" className="btn-bg-white flex width-100">Yes!</Button>
                     <Button variant="secondary" className="bgBlack flex width-100">Not yet</Button>
                 </div>
                 <div className="flex-col gap-8">
-                    <Button variant="primary" className="bgWhite flex width-100">Yes, let's plan it!</Button>
-                    <Button variant="primary" className="bgWhite flex width-100">I'll do it later!</Button>
+                    <Button variant="primary" className="btn-bg-white flex width-100">Yes, let's plan it!</Button>
+                    <Button variant="primary" className="btn-bg-white flex width-100">I'll do it later!</Button>
 
                     <p>Not ready yet? That's totally fine!</p>
                     <Button variant="secondary" className="bgBlack flex width-100">No, I'm not.</Button>
@@ -92,7 +92,7 @@ const PYVSection = () => {
                         <p>We know visiting a new church can feel like a big step, but it doesn't have to be. That's why we've made it simple, welcoming, and most importantly—<em>personal</em>.</p>
 
                     </div>
-                    <ChalkDivider variant="black" className={styles.chalkDivider} />
+                    <-chalk-divider variant="black" className={styles.chalk - divider} />
 
                 </div>
             </div>

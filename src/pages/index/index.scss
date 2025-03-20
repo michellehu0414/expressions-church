@@ -1,5 +1,6 @@
-@use 'abstracts/variables' as *;
-@use 'abstracts/breakpoints-mixins' as *;
+@use '@scss/abstracts/variables' as *;
+@use '@scss/abstracts/breakpoints-mixins' as *;
+@use './sections/all-sections';
 
 .route-app__wrap--embed {
     padding: 1rem !important;
