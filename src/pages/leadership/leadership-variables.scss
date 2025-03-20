@@ -1,0 +1,8 @@
+$bio-gap-sm: 2rem;
+$bio-gap-xl: 3rem;
+$bio-portrait-width-sm: 12rem;
+$bio-portrait-width-xl: 14rem;
+$bio-text-width-med: 50%;
+$bio-translate-sm: calc(($bio-portrait-width-sm + $bio-gap-sm) / 2);
+$bio-translate-xl: calc(($bio-portrait-width-xl + $bio-gap-xl) / 2);
+$bio-staff-02-translateY: 2rem;

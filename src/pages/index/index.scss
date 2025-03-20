@@ -1,0 +1,87 @@
+@use 'abstracts/variables' as *;
+@use 'abstracts/breakpoints-mixins' as *;
+
+.route-app__wrap--embed {
+    padding: 1rem !important;
+}
+
+/*Vertical cards*/
+.vertical-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: start;
+}
+
+.card-paperBackgroundImage {
+    background: $paperBackgroundImage;
+    display: flex;
+    padding: 1.25rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    width: 80vw;
+    margin: auto;
+
+    p {
+        color: #4F4F4F;
+        font-family: Poppins;
+        font-size: 1.125rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 140%;
+        /* 1.575rem */
+    }
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, auto);
+    gap: 4rem;
+
+    @include breakpoint(med) {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, auto);
+        gap: 2rem;
+    }
+
+    @include breakpoint(lg) {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: 1fr;
+    }
+}
+
+.text-nowrap {
+    text-wrap: nowrap;
+}
+
+#values .item-container,
+#get-involved .item-container,
+#community-groups .grid-container {
+    margin-bottom: $button-margin-top-mobile;
+
+    @include breakpoint(med) {
+        margin-bottom: $button-margin-top-med;
+    }
+}
+
+.item-container {
+    display: grid;
+    grid-gap: 1rem;
+    grid-auto-flow: column;
+    align-items: stretch;
+    overflow: visible;
+    align-self: flex-start;
+    margin: 0 auto;
+    width: fit-content;
+    max-width: 95vw;
+    // padding-left: 7.5vw;
+    // padding-right: 7.5vw;
+}
+
+#seeAllEventsButton {
+    margin: auto !important;
+    margin-top: 2rem !important;
+}

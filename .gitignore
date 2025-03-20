@@ -61,5 +61,7 @@ wp-image-optimizer/output/*
 wp-image-optimizer/uploaded/*
 
 images/
-dist/
+test.css
+test.html
 public/
+dist/

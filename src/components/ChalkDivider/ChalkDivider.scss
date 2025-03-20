@@ -1,0 +1,28 @@
+@use "abstracts/breakpoints-mixins" as *;
+
+.chalkDivider {
+    display: flex;
+    height: 0.5rem;
+    margin: auto;
+    max-width: 100% !important;
+    background-color: transparent;
+    background-repeat: no-repeat !important;
+    background-size: 100% !important;
+    background-position: center !important;
+    overflow: hidden !important;
+
+    @include breakpoint(med) {
+        height: 1.5rem;
+    }
+}
+
+.blackChalkDivider {
+    background-image: url('https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/02/chalk-divider-black.webp');
+}
+
+.whiteChalkDivider {
+    background: url('https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/chalk-underline_single-02_white.webp');
+    background-size: 105% 100%;
+    border-radius: 1rem;
+    overflow: hidden;
+}

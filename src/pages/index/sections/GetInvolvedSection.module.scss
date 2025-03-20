@@ -1,0 +1,24 @@
+@use "abstracts/all-abstracts" as *;
+
+.card {
+    margin-bottom: 3rem !important;
+}
+
+#serve-sgv-card {
+    margin-bottom: 2rem !important;
+}
+
+.whiteChalkDivider {
+    display: none !important;
+    margin: 1.5rem 0 !important;
+    background: none !important;
+}
+
+.scroll-item-card {
+    width: 80vw;
+    border-radius: 0.5rem;
+
+    img {
+        width: 100%;
+    }
+}
