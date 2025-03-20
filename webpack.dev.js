@@ -23,7 +23,7 @@ module.exports = {
     },
     output: {
         filename: "js/[name].min.js",
-        path: path.resolve(__dirname, "dist"),
+        path: path.resolve(__dirname, "public"),
         clean: true,
     },
     resolve: {
@@ -138,7 +138,7 @@ module.exports = {
     devtool: "eval-source-map",
     devServer: {
         static: {
-            directory: "dist",
+            directory: "public",
         },
         client: {
             overlay: false

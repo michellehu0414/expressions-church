@@ -4,6 +4,14 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
+// Add shortcode for React components
+function react_shortcode()
+{
+    return '<div id="react-root"></div>';
+}
+add_shortcode('react_component', 'react_shortcode');
+add_filter('acf/rest_api/field_settings/show_in_rest', '__return_true');
+
 // BEGIN ENQUEUE PARENT ACTION
 // AUTO GENERATED - Do not modify or remove comment markers above or below:
 
@@ -22,46 +30,62 @@ add_filter('locale_stylesheet_uri', 'chld_thm_cfg_locale_css');
 if (! function_exists('child_theme_configurator_css')):
     function child_theme_configurator_css()
 {
-        wp_enqueue_style('chld_thm_cfg_separate', trailingslashit(get_stylesheet_directory_uri()) . 'ctc-style.css', []);
+        wp_enqueue_style('chld_thm_cfg_child', trailingslashit(get_stylesheet_directory_uri()) . 'style.css', []);
     }
 endif;
 add_action('wp_enqueue_scripts', 'child_theme_configurator_css', 10);
 
-defined('CHLD_THM_CFG_IGNORE_PARENT') or define('CHLD_THM_CFG_IGNORE_PARENT', true);
-
 // END ENQUEUE PARENT ACTION
+function hello_elementor_child_enqueue_scripts()
+{
+    wp_enqueue_style(
+        'hello-elementor-child-style',
+        get_stylesheet_directory_uri() . '/public/css/main.min.css',
+        [],
+        wp_get_theme()->get('Version'),
+        'all'
+    );
 
-// function hello_elementor_child_enqueue_scripts()
-// {
-//     // Ensure WordPress functions are available
-//     if (! is_admin()) {
-//
-//         if (is_front_page() || is_page('home')) { // Home page check
-//             wp_enqueue_script('home-scripts',
-//                 get_stylesheet_directory_uri() . '/dist/js/index.min.js',
-//                 [], filemtime(get_stylesheet_directory() . '/dist/js/index.min.js'), true);
-//         } elseif (is_page('leadership')) {
-//             wp_enqueue_script('leadership-scripts',
-//                 get_stylesheet_directory_uri() . '/dist/js/leadership.min.js',
-//                 [], filemtime(get_stylesheet_directory() . '/dist/js/leadership.min.js'), true);
-//         }
-//     }
-//
-//     // Register and enqueue global script
-//     wp_register_script('global_script',
-//         get_stylesheet_directory_uri() . '/dist/js/main.min.js',
-//         [], filemtime(get_stylesheet_directory() . '/dist/js/main.min.js'), true);
-//     wp_enqueue_script('global_script');
-// }
-// add_action('wp_enqueue_scripts', 'hello_elementor_child_enqueue_scripts');
-//
-// function hello_elementor_child_enqueue_styles()
-// {
-//
-//     // Enqueue child theme styles
-//     wp_register_style('hello-elementor-child-style',
-//         get_stylesheet_directory_uri() . '/dist/css/main.min.css',
-//         [], filemtime(get_stylesheet_directory() . '/dist/css/main.min.css'), true);
-//     wp_enqueue_style('hello-elementor-child-style');
-// }
-// add_action('wp_enqueue_scripts', 'hello_elementor_child_enqueue_styles');
+    wp_enqueue_script(
+        'hello-elementor-child-theme-script',
+        get_stylesheet_directory_uri() . '/public/js/main.min.js',
+        ['jquery'],
+        wp_get_theme()->get('Version'),
+        true
+    );
+
+    // Load styles and scripts for Home page
+    if (is_page('home')) {
+        wp_enqueue_script(
+            'home-page-script',
+            get_stylesheet_directory_uri() . '/public/js/index.min.js',
+            ['jquery'],
+            wp_get_theme()->get('Version'),
+            true
+        );
+        wp_enqueue_style(
+            'hello-elementor-child-home-page-style',
+            get_stylesheet_directory_uri() . '/public/css/index.min.css',
+            [],
+            wp_get_theme()->get('Version'),
+            'all'
+        );
+    }
+
+    // Load styles and scripts for Leadership page
+    if (is_page(['leadership', '147'])) {
+        wp_enqueue_script(
+            'leadership-page-script',
+            get_stylesheet_directory_uri() . '/public/js/leadership.min.js',
+            ['jquery'],
+            wp_get_theme()->get('Version'),
+            true
+        );
+        wp_enqueue_style(
+            'leadership-page-style',
+            get_theme_file_uri('/public/css/leadership.min.css'),
+            [],
+        );
+    }
+}
+add_action('wp_enqueue_scripts', 'hello_elementor_child_enqueue_scripts', 20);

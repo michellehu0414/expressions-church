@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./events.scss";
-import PageBanner from "@components/PageBanner/PageBanner";
+import PageHeader from "@components/PageHeader/PageHeader";
 
-const PageBannerSection = () => {
+const PageHeaderSection = () => {
     return (
-        <PageBanner
+        <PageHeader
             backgroundImage="https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/expressions-exterior-expanded-scaled.webp"
             titleOutlinedText="upcoming"
             titleFilledText="events"
@@ -27,7 +27,7 @@ const injectComponent = (Component, elementId) => {
     }
 };
 
-injectComponent(PageBannerSection, "page-banner");
+injectComponent(PageHeaderSection, "page-header");
 
 
 // Inject each section where its placeholder div exists
