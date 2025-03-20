@@ -1,5 +1,5 @@
-@use "abstracts/all-abstracts" as *;
-@use "utilities/all-utilities" as *;
+@use "@scss/abstracts/all-abstracts" as *;
+@use "@scss/utilities/all-utilities" as *;
 
 @forward "get-involved";
 @forward "intro";

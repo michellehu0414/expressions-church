@@ -1,5 +1,5 @@
-@use "abstracts/variables" as *;
-@use "abstracts/breakpoints-mixins" as *;
+@use "@scss/abstracts/variables" as *;
+@use "@scss/abstracts/breakpoints-mixins" as *;
 
 hr {
   box-sizing: content-box;
@@ -23,32 +23,35 @@ hr {
 
 // To apply a white chalk divider to sections or containers to separate sections
 
-.chalkDivider {
-  display: flex;
+.chalk-divider {
   height: 0.5rem;
   margin: auto;
-  max-width: 100% !important;
-  background-color: transparent;
-  background-repeat: no-repeat !important;
-  background-size: 100% !important;
-  background-position: center !important;
-  overflow: hidden !important;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
   width: 100%;
 
+  .section-divider {
+    width: min($max-content-width, $content-max-width);
+  }
+
   @include breakpoint(med) {
-    height: 1.5rem;
+    height: 0.75rem;
+  }
+
+  @include breakpoint(lg) {
+    height: 1rem;
   }
 }
 
-.whiteChalkDivider {
+
+.black-chalk-divider {
+  background-image: url('https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/02/black-chalk-line-divider.webp');
+}
+
+.white-chalk-divider {
   background: url('https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/chalk-underline_single-02_white.webp');
   background-size: 105% 100%;
   border-radius: 1rem;
-  overflow: hidden;
-}
-
-.blackChalkDivider {
-  background: url('https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/02/black-chalk-line-divider.webp');
-  background-size: 105% 100%;
   overflow: hidden;
 }

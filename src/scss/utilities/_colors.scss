@@ -1,4 +1,4 @@
-@use "abstracts/variables" as *;
+@use "@scss/abstracts/variables" as *;
 
 // Brand colors
 .primary-teal {
@@ -17,6 +17,10 @@
 
 .pure-black {
 	color: black !important;
+}
+
+.paper-ink-black {
+	color: $paper-ink-black !important;
 }
 
 .black {

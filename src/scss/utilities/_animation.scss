@@ -1,5 +1,5 @@
-@use "abstracts/variables" as *;
-@use "abstracts/animation-mixins" as *;
+@use "@scss/abstracts/variables" as *;
+@use "@scss/abstracts/animation-mixins" as *;
 
 .hover-underline-self {
     @include hover-underline-self($primary-teal);
