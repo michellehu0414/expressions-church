@@ -61,3 +61,4 @@ wp-image-optimizer/output/*
 wp-image-optimizer/uploaded/*
 
 images/
+/dist/
