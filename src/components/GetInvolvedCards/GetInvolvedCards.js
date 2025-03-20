@@ -1,9 +1,4 @@
-// GetInvolvedCards
-import React from "react";
-import Card from "@components/Card/Card";
-import './GetInvolvedCards.scss';
-
-const cardData = {
+export const cardData = {
     "partner-card": {
         image: "https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/diverse-community-gathering-circle.webp",
         altText: "Image 1",
@@ -11,7 +6,7 @@ const cardData = {
         bodyText: "Support our mission by partnering with us.",
         primaryButtonText: "Become a Partner",
         primaryButtonLink: "www.example.com",
-        primaryButtonExternal: true, // Defaults to internal
+
         showSecondaryButton: true,
         secondaryButtonText: "Learn more",
         secondaryButtonLink: "/about",
@@ -49,24 +44,24 @@ const cardData = {
         secondaryButtonText: "Sign Up",
     },
     "serve-card": {
-        image: "https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/02/sunday-school-teacher-instructing-kids.webp",
+        image: "https://vrwpaviv.elementor.cloud/sunday-school-teacher-instructing-kids/",
         altText: "text",
         headline: "Serve with a Team",
-        bodyText: "God has given all of us a gift from his great variety of spiritual gifts. Use them well to serve one another. We have 9 teams in total.",
-        primaryButtonText: "Get started",
+        bodyText: "God has given all of us a gift from his great variety of spiritual gifts. We offer 9 different teams for people to join.",
+        primaryButtonText: "Get Started",
         primaryButtonLink: "/serve",
-        secondaryButtonText: "Learn more",
-        // showPrimaryButton: false,
-        showSecondaryButton: true,
+        secondaryButtonText: "Learn more about Teams",
+        showPrimaryButton: false,
+        showSecondaryButton: false,
     },
     "serve-sgv-card": {
-        image: "https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/02/fire-relief-happy-volunteers-donation-boxes.webp",
+        image: "https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/03/expressions-church-los-angeless-fire-relief-volunteers-packing-supplies.webp",
         altText: "text",
         headline: "Serve SGV",
         bodyText: "Join our community efforts and support our SGV neighbors.",
         primaryButtonText: "Sign up now",
         primaryButtonLink: "www.example.com",
-        primaryButtonExternal: true,
+
         secondaryButtonText: "Learn more",
         secondaryButtonLink: "/serve-sgv",
     },
@@ -77,7 +72,7 @@ const cardData = {
         bodyText: "We’d love to pray for you. Share your request with us—you may choose to remain anonymous.",
         primaryButtonText: "Request Prayer",
         primaryButtonLink: "www.example.com",
-        primaryButtonExternal: true,
+
     },
     "baptism-card": {
         image: "https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/baptism.webp",
@@ -86,7 +81,7 @@ const cardData = {
         bodyText: "We’d love to pray for you. Share your request with us—you may choose to remain anonymous.",
         primaryButtonText: "Get Started",
         primaryButtonLink: "www.example.com",
-        primaryButtonExternal: true,
+
         secondaryButtonText: "Learn more",
         secondaryButtonLink: "/baptism",
     },
@@ -94,10 +89,10 @@ const cardData = {
         image: "https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/02/three-church-members-talking.webp",
         altText: "text",
         headline: "Attend Newcomer Connect",
-        bodyText: "Meet other newcomers and get to know us at our Newcomer Connect after Sunday service at a local coffee shop.",
+        bodyText: "New to Expressions? Meet other newcomers and get to know us at our Newcomer Connect after Sunday service at a local coffee shop.",
         primaryButtonText: "Plan your visit",
         primaryButtonLink: "www.example.com",
-        primaryButtonExternal: true,
+
     },
     "subscribe-newsletter-card": {
         image: "https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/diverse-community-gathering-circle.webp",
@@ -106,14 +101,6 @@ const cardData = {
         bodyText: "Subscribe to our newsletter to stay up to date with our latest news and events.",
         primaryButtonText: "Subscribe",
         primaryButtonLink: "www.example.com",
-        primaryButtonExternal: true,
+
     },
 };
-
-const GetInvolvedCards = ({ id, className = "" }) => {
-    if (!cardData[id]) return null; // If the ID is not found, return nothing
-    return <Card {...cardData[id]} className={`${className} ${cardData[id].className || ""}`} />;
-};
-
-
-export default GetInvolvedCards;
