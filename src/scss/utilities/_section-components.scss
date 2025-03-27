@@ -18,6 +18,18 @@
     //   }
 }
 
+.page-intro {
+    margin: auto;
+    margin-top: 2rem;
+    @extend %section-content-width;
+}
+
+.page-intro__text {
+    font-size: 1.125rem;
+    margin-bottom: 0;
+    text-align: center;
+}
+
 .section-content {
     margin: 0 auto;
     width: min($max-content-width, $content-max-width);
