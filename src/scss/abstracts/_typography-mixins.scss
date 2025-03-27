@@ -1,0 +1,45 @@
+// Usage
+//   @include font-size('sm');
+
+// .example-class {
+//   @include font-size('sm');
+// }
+@use 'sass:map';
+@import './variables';
+@import './typography-map';
+
+@mixin font-size($label) {
+  $scale: map.get($font-scale, $label);
+
+  @if $scale == null {
+    @error "Unknown font size label `#{$label}`. Use one of: #{map.keys($font-scale)}.";
+  }
+
+  font-size: map.get($scale, 'mobile-sm');
+
+  @each $bp, $size in $scale {
+    @if $bp != 'mobile-sm' {
+      @include breakpoint($bp) {
+        font-size: $size;
+      }
+    }
+  }
+}
+
+
+// Usage
+// .font-sm {
+//   @include font-size('sm');
+// }
+//
+// .font-base {
+//   @include font-size('base');
+// }
+//
+// .font-md {
+//   @include font-size('md');
+// }
+//
+// .font-lg {
+//   @include font-size('lg');
+// }
