@@ -1,4 +1,3 @@
-
 import "@scss/globals.scss";
 import "@components/_global-components.scss";
 
