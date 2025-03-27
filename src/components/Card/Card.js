@@ -2,7 +2,7 @@ import "./Card.scss"; // ✅ Webpack handles SCSS
 import "@components/Button/Button.scss";
 
 export function createCard({
-    image = "https://via.placeholder.com/300",
+    image = "/assets/images/expressions-church-pasadena-fire-relief-serve-team.webp",
     altText = "Default image",
     headline = "Default Headline",
     bodyText = "Default body text.",
@@ -12,7 +12,9 @@ export function createCard({
     secondaryButtonLink = "#",
     showPrimaryButton = true,
     showSecondaryButton = false,
-}) {
+} = {}) {
+    // function body...
+
     const card = document.createElement("div");
     card.classList.add("card");
 
@@ -25,20 +27,22 @@ export function createCard({
 
     const buttonsContainer = card.querySelector(".buttons-wrapper");
 
-    if (showPrimaryButton && primaryButtonText) {
-        const primaryBtn = document.createElement("a");
-        primaryBtn.href = primaryButtonLink;
-        primaryBtn.classList.add("btn-primary");
-        primaryBtn.textContent = primaryButtonText;
-        buttonsContainer.appendChild(primaryBtn);
-    }
+    if (buttonsContainer) {
+        if (showPrimaryButton && primaryButtonText) {
+            const primaryBtn = document.createElement("a");
+            primaryBtn.href = primaryButtonLink;
+            primaryBtn.classList.add("btn-primary");
+            primaryBtn.textContent = primaryButtonText;
+            buttonsContainer.appendChild(primaryBtn);
+        }
 
-    if (showSecondaryButton && secondaryButtonText) {
-        const secondaryBtn = document.createElement("a");
-        secondaryBtn.href = secondaryButtonLink;
-        secondaryBtn.classList.add("btn-secondary");
-        secondaryBtn.textContent = secondaryButtonText;
-        buttonsContainer.appendChild(secondaryBtn);
+        if (showSecondaryButton && secondaryButtonText) {
+            const secondaryBtn = document.createElement("a");
+            secondaryBtn.href = secondaryButtonLink;
+            secondaryBtn.classList.add("btn-secondary");
+            secondaryBtn.textContent = secondaryButtonText;
+            buttonsContainer.appendChild(secondaryBtn);
+        }
     }
 
     return card;

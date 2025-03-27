@@ -1,6 +1,6 @@
 import "./Accordion.scss";
 
-export function createAccordion({ title, content }) {
+export function createAccordion({ title = "Default Title", content = "" } = {}) {
     const accordion = document.createElement("div");
     accordion.classList.add("accordion");
 
@@ -27,7 +27,7 @@ export function createAccordion({ title, content }) {
     // Toggle Functionality
     header.addEventListener("click", () => {
         const isOpen = header.getAttribute("aria-expanded") === "true";
-        header.setAttribute("aria-expanded", !isOpen);
+        header.setAttribute("aria-expanded", (!isOpen).toString());
         contentContainer.classList.toggle("open", !isOpen);
         icon.textContent = isOpen ? "+" : "-";
     });

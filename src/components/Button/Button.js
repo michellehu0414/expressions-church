@@ -1,4 +1,4 @@
-import "./Button.scss"; // ✅ Ensure SCSS is bundled via Webpack
+import "./Button.scss";
 
 export function createButton({ href = "#", text = "Click me", variant = "default", className = "btn-primary" }) {
   const button = document.createElement("a");
