@@ -226,7 +226,26 @@
                     iframeDoc.head.appendChild(style);
                 };
             </script>
-
+            <!-- <div className={styles.buttonContainer}>
+                {/* Primary Button */}
+                {primaryButtonText && primaryButtonLink && (
+                  <Button
+                    {...(primaryButtonExternal ? { href: primaryButtonLink } : { to: primaryButtonLink })}
+                    variant="primary"
+                  >
+                    {primaryButtonText}
+                  </Button>
+                )}
+                {/* Secondary Button */}
+                {secondaryButtonText && secondaryButtonLink && (
+                  <Button
+                    {...(secondaryButtonExternal ? { href: secondaryButtonLink } : { to: secondaryButtonLink })}
+                    variant="secondary"
+                  >
+                    {secondaryButtonText}
+                  </Button>
+                )}
+              </div> -->
             <script src="https://link.msgsndr.com/js/form_embed.js"></script>
             <script type="application/ld+json">
                 {

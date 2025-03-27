@@ -1,8 +1,10 @@
 import "./index.scss";
-import "@src/main.js";
+import "@scss/globals.scss";
+import "@components/_global-components.scss";
 
-import { injectIntroSection } from "./sections/Intro";
+import { createAccordion } from "@components/Accordion/Accordion";
 import { serveTeamsData } from "@components/ServeTeams/ServeTeams";
+import { injectIntroSection } from "./sections/Intro";
 import { injectSundayServiceSection } from "./sections/SundayService";
 import { injectPlanYourVisitCTA } from "@components/PlanYourVisitCTA";
 

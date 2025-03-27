@@ -1,0 +1,110 @@
+@use '@scss/abstracts/variables' as *;
+@use '@scss/abstracts/breakpoints-mixins' as *;
+@use './leadership-variables' as *;
+
+.leadership {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: var(--Max-Width---Desktop, 85rem);
+    margin: auto;
+    gap: 4rem;
+
+    &__header {
+        text-align: center;
+
+        h2 {
+            font-size: 2rem;
+            text-transform: uppercase;
+        }
+    }
+
+    &__section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        width: 100%;
+
+        @include breakpoint(lg) {
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 3rem;
+        }
+    }
+}
+
+/* Leader Profile */
+.leader-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: $bio-gap-sm;
+    width: 100%;
+    max-width: 40rem;
+
+    @include breakpoint(lg) {
+        flex-direction: row;
+        text-align: left;
+    }
+
+    @include breakpoint(xl) {
+        gap: $bio-gap-xl;
+    }
+
+    &--reverse {
+        @include breakpoint(lg) {
+            flex-direction: row-reverse;
+        }
+    }
+
+    &__image {
+        width: $leadership-profile-image-max-width-base;
+        display: flex;
+        justify-content: center;
+
+        img {
+            object-fit: cover;
+            width: 100%;
+        }
+
+        @include breakpoint(xl) {
+            width: $leadership-profile-image-max-width-med;
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        max-width: 34rem;
+
+        @include breakpoint(med) {
+            width: $leadership-profile-image-max-width-med;
+        }
+    }
+
+    &__header {
+        width: 100%;
+        margin-bottom: 1rem;
+
+        p,
+        h3 {
+            color: white;
+            text-align: left;
+            font-weight: 500;
+        }
+
+        p {
+            font-size: 1.125rem;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        h3 {
+            font-size: 1.65rem;
+            margin-bottom: 0.75rem;
+        }
+    }
+}

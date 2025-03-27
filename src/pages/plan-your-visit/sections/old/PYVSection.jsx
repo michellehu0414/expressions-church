@@ -1,7 +1,7 @@
 import React from 'react';
 import * as styles from './PYVSection.module.scss';
 import "@scss/utilities/_all-utilities.scss";
-import churchMembersCutout from "@assets/images/church-members-mixed-cutouts.png";
+import churchMembersCutout from "@assets/images/expressions-church-members-cutout.webp";
 import Button from "@components/Button/Button";
 import "@scss/utilities/_all-utilities.scss";
 

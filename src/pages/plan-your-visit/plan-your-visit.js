@@ -1,10 +1,11 @@
-import "./index.scss";
-import "@src/main.js";
+import "./plan-your-visit.scss";
+import "@scss/globals.scss";
+import "@components/_global-components.scss";
 
-import { injectIntroSection } from "./sections/Intro";
+import { createAccordion } from "@components/Accordion/Accordion";
+import { injectPlanYourVisitCTA } from "./sections/PYVSection";
 import { serveTeamsData } from "@components/ServeTeams/ServeTeams";
-import { injectSundayServiceSection } from "./sections/SundayService";
-import { injectPlanYourVisitCTA } from "@components/PlanYourVisitCTA";
+// import { injectIntroSection } from "./sections/Intro";
 
 
 document.addEventListener("DOMContentLoaded", () => {
