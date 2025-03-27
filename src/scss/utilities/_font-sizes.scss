@@ -1,9 +1,9 @@
 // Font Size Utilities for paragraphs
 // -------------------------
 @use 'sass:map';
-@import '../abstracts/variables';
-@import '../abstracts/typography-map';
-@import '../mixins/typography';
+@import '@scss/abstracts/variables';
+@import '@scss/abstracts/typography-map';
+@import '@scss/typography-mixins';
 
 // Generate utility classes with same scaling
 @each $label, $scale in $font-scale {
