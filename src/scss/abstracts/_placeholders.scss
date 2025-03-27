@@ -539,3 +539,8 @@
     gap: 1rem;
   }
 }
+
+%section-content-width {
+  width: $content-max-width !important;
+  max-width: $max-content-width !important;
+}
