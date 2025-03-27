@@ -10,7 +10,8 @@
 		"watch": "npm-run-all --parallel watch:sass dev",
 		"clean": "rm -rf public && npm run build",
 		"wipe": "rm -rf node_modules && rm -rf package-lock.json",
-		"update": "npx npm-check-updates -u && npm install"
+		"update": "npx npm-check-updates -u && npm install",
+		"clean:cache": "npm cache clean --force && rm -rf node_modules package-lock.json && npm install"
 	},
 	"keywords": [],
 	"author": "Michelle Hu",
@@ -30,6 +31,7 @@
 		"css-loader": "^7.1.2",
 		"cssnano": "^7.0.6",
 		"form-data": "^4.0.2",
+		"inquirer": "^8.2.6",
 		"npm": "^11.2.0",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0",
@@ -52,6 +54,7 @@
 		"css-minimizer-webpack-plugin": "^7.0.2",
 		"eslint-webpack-plugin": "^5.0.0",
 		"file-loader": "^6.2.0",
+		"glob-all": "^3.3.1",
 		"html-loader": "^5.1.0",
 		"html-minimizer-webpack-plugin": "^5.0.1",
 		"html-webpack-plugin": "^5.6.3",
@@ -60,6 +63,7 @@
 		"postcss-loader": "^8.1.1",
 		"purgecss-webpack-plugin": "^7.0.2",
 		"raw-loader": "^4.0.2",
+		"rename-output-webpack-plugin": "^1.0.1",
 		"svgo-loader": "^4.0.0",
 		"terser-webpack-plugin": "^5.3.14",
 		"thread-loader": "^4.0.4",
