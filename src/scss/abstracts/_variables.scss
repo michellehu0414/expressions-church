@@ -16,6 +16,7 @@ $sub-grey: #cfcfcf;
 $white: #fff;
 $light-medium-grey: #f4f4f4;
 $link-blue: #65b1eb;
+$paper-ink-black: #222222;
 
 // Colors
 $emphasis-blue: #4479df;
@@ -25,9 +26,12 @@ $emphasis: #e2583e;
 $primary-bg: #ffdc93;
 
 // Containers
-$container-width: 90%;
 $content-mb: 2rem;
-$content-max-width: 85rem;
+
+// Max width for contenton all pages
+$max-content-width: 85rem; // Maximum width of content
+$content-padding: 5%; // Padding to prevent full width
+$content-max-width: 90%; // Maximum percentage widt
 $outline-stroke: 1.25px;
 
 // Components
@@ -45,13 +49,17 @@ $button-margin-top-mobile: 2rem;
 $button-margin-top-med: 3.5rem;
 $paperBackgroundImage: url('https://vrwpaviv.elementor.cloud/wp-content/uploads/2024/12/card-paper-bg.webp') no-repeat center center;
 
-$sectionWrapper-padding-base: 2.5rem;
-$sectionWrapper-padding-med: 3rem;
-$sectionWrapper-padding-lg: 3.5rem;
-$sectionMarginVertical: 4rem;
+$section-padding-base: 2.5rem;
+$section-padding-med: 4rem;
+$section-padding-lg: 6rem;
+$section-margin-vertical: 4rem;
 
 $get-involved-card-width: 27.5rem;
 
 // Cards
 $card-content-alignment: left;
 $paper-bg-text-color: #222222;
+
+// Fonts
+$paragraph-font-size-base: 1rem;
+$paragraph-font-size-med: 1.125rem;

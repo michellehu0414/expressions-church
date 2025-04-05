@@ -1,147 +1,123 @@
-const fs = require('fs');
-const sharp = require('sharp');
-const path = require('path');
+const fs = require("fs");
+const sharp = require("sharp");
+const path = require("path");
+const config = require("./config");
 
-const inputFolder = './wp-image-optimizer/local/input';
-const originalsFolder = './wp-image-optimizer/local/originals';
-const compressedFolder = './wp-image-optimizer/local/compressed';
-const webpFolder = './wp-image-optimizer/local/webp';
+/* 🔧 Ensure necessary folders exist */
+const ensureFoldersExist = (folders) => {
+    folders.forEach((folder) => fs.existsSync(folder) || fs.mkdirSync(folder, { recursive: true }));
+};
 
-const MAX_FILE_SIZE = 250 * 1024; // 700KB instead of 600KB to allow slightly larger images
-const MIN_JPEG_QUALITY = 50; // Increased from 50 to retain quality
-const MIN_WEBP_QUALITY = 50; // Increased from 50 to retain quality
-const START_JPEG_QUALITY = 50; // Reduced compression
-const START_WEBP_QUALITY = 50; // Reduced compression
-
-// Ensure necessary folders exist
-[inputFolder, webpFolder, compressedFolder, originalsFolder].forEach(folder => {
-    if (!fs.existsSync(folder)) fs.mkdirSync(folder, { recursive: true });
-});
-
-const supportedFormats = ['.png', '.jpg', '.jpeg', '.webp'];
-
-const moveFile = async (source, destination) => {
+/* 🔧 Process image with specified settings */
+const processImageWithSettings = async (inputPath, outputPath, settings) => {
     try {
-        await fs.promises.rename(source, destination);
-        console.log(`📦 Moved: ${path.basename(source)} to ${destination}`);
+        await sharp(inputPath)
+            .rotate()
+            .toFormat(settings.format, settings.options)
+            .toFile(outputPath);
+        return (await fs.promises.stat(outputPath)).size;
     } catch (err) {
-        console.error(`❌ Error moving file ${source} to ${destination}:`, err.message);
+        throw new Error(`Failed to process image: ${err.message}`);
     }
 };
 
+/* 🔧 Compress images (JPEG/PNG) */
 const compressImage = async (inputPath, outputPath, ext) => {
-    let quality = START_JPEG_QUALITY;
+    let quality = config.START_QUALITY;
     let fileSize;
 
     try {
-        if (ext === '.png') {
-            await sharp(inputPath)
-                .rotate()
-                .resize({ width: 200 }) // Slightly increased size limit
-                .png({ compressionLevel: 4, adaptiveFiltering: true }) // Reduced compression
-                .toFile(outputPath);
+        const processImage = async () => {
+            const settings = ext === ".png"
+                ? { format: "png", options: { compressionLevel: config.PNG_COMPRESSION_LEVEL } }
+                : { format: "jpeg", options: { quality, mozjpeg: config.USE_MOZJPEG } };
 
-            fileSize = (await fs.promises.stat(outputPath)).size;
-        } else {
-            do {
-                await sharp(inputPath)
-                    .rotate()
-                    .resize({ width: 200 }) // Slightly increased size limit
-                    .jpeg({ quality, mozjpeg: true })
-                    .toFile(outputPath);
+            return await processImageWithSettings(inputPath, outputPath, settings);
+        };
 
-                fileSize = (await fs.promises.stat(outputPath)).size;
+        fileSize = await processImage();
 
-                if (fileSize > MAX_FILE_SIZE) {
-                    quality -= 1; // Reduce compression slowly
-                    console.log(`⚠️ Reducing JPEG quality to: ${quality}`);
-                }
-            } while (fileSize > MAX_FILE_SIZE && quality > MIN_JPEG_QUALITY);
+        while (fileSize > config.MAX_FILE_SIZE && quality > config.MIN_QUALITY && ext !== ".png") {
+            quality -= config.QUALITY_STEP;
+            console.log(`⚠️ Reducing JPEG quality to: ${quality}`);
+            fileSize = await processImage();
         }
 
-        if (fileSize > MAX_FILE_SIZE) {
-            console.warn(`⚠️ Compression reduced but still above limit: ${fileSize / 1024}KB. Proceeding.`);
-        }
-
-        console.log(`✅ Compressed image saved: ${outputPath} (${fileSize / 1024}KB)`);
+        console.log(`✅ Compressed: ${outputPath} (${(fileSize / 1024).toFixed(2)}KB)`);
         return true;
     } catch (err) {
-        console.error(`❌ Compression failed for ${inputPath}:`, err.message);
-        throw err;
+        console.error(`❌ Compression failed: ${inputPath}:`, err.message);
+        return false;
     }
 };
 
+/* 🔧 Convert images to WebP */
 const convertToWebP = async (inputPath, outputPath, ext) => {
-    let quality = START_WEBP_QUALITY;
+    let quality = config.START_QUALITY;
     let fileSize;
 
     try {
-        do {
-            await sharp(inputPath)
-                .webp({ quality, lossless: ext === '.png' })
-                .toFile(outputPath);
+        const processWebP = async () => {
+            const settings = {
+                format: "webp",
+                options: { quality, lossless: config.WEBP_LOSSLESS_FOR_PNG && ext === ".png" }
+            };
 
-            fileSize = (await fs.promises.stat(outputPath)).size;
+            return await processImageWithSettings(inputPath, outputPath, settings);
+        };
 
-            if (fileSize > MAX_FILE_SIZE) {
-                quality -= 1; // Reduce compression slowly
-                console.log(`⚠️ Reducing WebP quality to: ${quality}`);
-            }
-        } while (fileSize > MAX_FILE_SIZE && quality > MIN_WEBP_QUALITY);
+        fileSize = await processWebP();
 
-        if (fileSize > MAX_FILE_SIZE) {
-            console.warn(`⚠️ WebP conversion resulted in a larger file (${fileSize / 1024}KB). Proceeding.`);
+        while (fileSize > config.MAX_FILE_SIZE && quality > config.MIN_QUALITY && ext !== ".png") {
+            quality -= config.QUALITY_STEP;
+            console.log(`⚠️ Reducing WebP quality to: ${quality}`);
+            fileSize = await processWebP();
         }
 
-        console.log(`✅ WebP saved: ${outputPath} (${fileSize / 1024}KB)`);
+        console.log(`✅ WebP saved: ${outputPath} (${(fileSize / 1024).toFixed(2)}KB)`);
         return true;
     } catch (err) {
-        console.error(`❌ WebP conversion failed for ${inputPath}:`, err.message);
-        throw err;
+        console.error(`❌ WebP conversion failed: ${inputPath}:`, err.message);
+        return false;
     }
 };
 
-const processImages = async () => {
+/* 🔧 Process each image */
+const processImage = async (file) => {
     try {
-        console.log(`📂 Checking contents of '${inputFolder}'`);
-        const allFiles = fs.readdirSync(inputFolder);
-        console.log(`📂 Found files: ${allFiles.join(', ')}`);
+        const ext = path.extname(file).toLowerCase();
+        const baseName = path.basename(file, ext);
+        const inputPath = path.join(config.INPUT_FOLDER, file);
+        const compressedPath = path.join(config.COMPRESSED_FOLDER, `${baseName}${ext}`);
+        const webpPath = path.join(config.WEBP_FOLDER, `${baseName}.webp`);
 
-        const files = allFiles.filter(file =>
-            supportedFormats.includes(path.extname(file).toLowerCase())
-        );
+        console.log(`🔄 Processing: ${file}`);
+
+        await compressImage(inputPath, compressedPath, ext);
+        await convertToWebP(compressedPath, webpPath, ext);
+
+        console.log(`✅ Completed processing: ${file}`);
+    } catch (err) {
+        console.error(`❌ Error processing ${file}:`, err.message);
+    }
+};
+
+/* 🔧 Process all images */
+const processImages = async () => {
+    ensureFoldersExist([config.INPUT_FOLDER, config.WEBP_FOLDER, config.COMPRESSED_FOLDER, config.ORIGINALS_FOLDER]);
+
+    try {
+        const allFiles = fs.readdirSync(config.INPUT_FOLDER);
+        const files = allFiles.filter((file) => config.SUPPORTED_FORMATS.includes(path.extname(file).toLowerCase()));
 
         if (files.length === 0) {
             console.log("📂 No valid images found.");
             return;
         }
 
-        console.log(`📂 Processing: ${files.join(', ')}`);
+        console.log(`📂 Processing ${files.length} images...`);
 
-        await Promise.all(files.map(async (file) => {
-            try {
-                const ext = path.extname(file).toLowerCase();
-                const baseName = path.basename(file, ext);
-                const inputPath = path.join(inputFolder, file);
-                const compressedPath = path.join(compressedFolder, `${baseName}${ext}`);
-                const webpPath = path.join(webpFolder, `${baseName}.webp`);
-                const originalPath = path.join(originalsFolder, file);
-
-                console.log(`🔄 Processing: ${file}`);
-
-                // Attempt to compress image.
-                await compressImage(inputPath, compressedPath, ext);
-
-                // If compression succeeds, proceed with conversion.
-                await convertToWebP(compressedPath, webpPath, ext);
-
-                // Move original file only if previous steps succeeded.
-                await moveFile(inputPath, originalPath);
-                console.log(`📦 Moved original image to: ${originalPath}`);
-            } catch (err) {
-                console.error(`❌ Error processing ${file}:`, err.message);
-            }
-        }));
+        await Promise.all(files.map(processImage));
 
         console.log("🎉 Image processing complete!");
     } catch (err) {

@@ -1,0 +1,57 @@
+@use "@scss/abstracts/variables" as *;
+
+#intro-section {
+    width: 100%;
+
+    .big-type {
+        color: white;
+        font-size: 2.5rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 110%;
+        letter-spacing: -0.02875rem;
+        text-align: left;
+    }
+
+    .we-believe {
+        margin-bottom: 2.5rem;
+    }
+
+    .img-christopher-hug-wrapper {
+        .bg-paper {
+            transform: translateY(-6.5rem);
+        }
+
+        >img {
+            object-fit: contain;
+            width: 24rem;
+            margin-left: 15%;
+            z-index: -1;
+            position: relative;
+        }
+    }
+
+    .img-laundry-love {
+        object-fit: contain;
+        width: 24rem;
+        margin-left: auto;
+        transform: translateY(-1rem);
+        margin-bottom: 3rem;
+    }
+
+    .tagline-wrapper {
+        background: $paperBackgroundImage;
+        padding: 1rem;
+        margin-top: 3rem;
+
+        .big-type {
+            text-align: left;
+            color: $off-black;
+            margin-bottom: 0.5rem;
+
+            span {
+                color: #148396;
+            }
+        }
+    }
+}

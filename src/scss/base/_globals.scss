@@ -1,4 +1,4 @@
-@use "abstracts/all-abstracts" as *;
+@use "@scss/abstracts/all-abstracts" as *;
 
 html {
 	background-color: $black;
@@ -22,7 +22,7 @@ body {
 	font-family: 'Poppins', sans-serif;
 	color: white;
 	z-index: -1;
-	background-image: url('https://vrwpaviv.elementor.cloud/wp-content/uploads/2024/12/bg-texture-scaled.webp');
+	// background-image: url('https://vrwpaviv.elementor.cloud/wp-content/uploads/2024/12/bg-texture-scaled.webp');
 	height: 100%;
 }
 

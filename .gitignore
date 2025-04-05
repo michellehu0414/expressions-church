@@ -60,7 +60,6 @@ wp-image-optimizer/input/*
 wp-image-optimizer/output/*
 wp-image-optimizer/uploaded/*
 
-images/
 test.css
 test.html
 public/

@@ -1,19 +1,15 @@
-@use "abstracts/all-abstracts" as *;
+@use "@scss/abstracts/all-abstracts" as *;
 
-.sectionWrapper {
-    padding: $sectionWrapper-padding-base 0;
+.section {
+    padding: $section-padding-base 0;
     width: 100%;
 
     @include breakpoint(med) {
-        padding: $sectionWrapper-padding-med auto;
+        padding: $section-padding-med 0;
     }
 
     @include breakpoint(lg) {
-        padding: $sectionWrapper-padding-lg auto;
-    }
-
-    @include breakpoint(med) {
-        padding: $sectionWrapper-padding-med 0;
+        padding: $section-padding-lg 0;
     }
 
     //
@@ -22,10 +18,21 @@
     //   }
 }
 
-.sectionContent {
+.page-intro {
+    margin: auto;
+    margin-top: 2rem;
+    @extend %section-content-width;
+}
+
+.page-intro__text {
+    font-size: 1.125rem;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.section-content {
     margin: 0 auto;
-    width: $container-width;
-    max-width: $content-max-width;
+    width: min($max-content-width, $content-max-width);
 }
 
 .section-header {

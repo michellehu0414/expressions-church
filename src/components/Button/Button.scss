@@ -1,11 +1,11 @@
-@use "abstracts/breakpoints-mixins" as *;
-@use "abstracts/variables" as *;
+@use "@scss/abstracts/breakpoints-mixins" as *;
+@use "@scss/abstracts/variables" as *;
 
 $button-border-width: 2px;
 $button-bg-transition: 0.3s ease-in-out;
 
-.primary,
-.secondary {
+.btn-primary,
+.btn-secondary {
     display: flex;
     border-radius: 3.125rem;
     border-width: $button-border-width;
@@ -13,24 +13,44 @@ $button-bg-transition: 0.3s ease-in-out;
 
     justify-content: center;
     align-items: center;
-    padding: 0 1rem;
+    padding: 0 1.25rem;
     gap: 0.5rem;
     width: fit-content;
-    height: 2.5rem !important;
+    height: 3rem !important;
     text-wrap: nowrap;
     color: white !important;
     font-weight: 500;
     margin-bottom: 0 !important;
     transition: $button-bg-transition;
+    font-size: 1.125rem;
 
     @include breakpoint(med) {
         height: 3rem !important;
         padding: 0 1.5rem;
     }
+
+    &.btn-bg-white {
+        background: url('https://vrwpaviv.elementor.cloud/wp-content/uploads/2024/12/primary-button-bg-min.png') no-repeat center center / cover;
+        background-color: rgba(255, 255, 255, 0.85);
+        color: $black !important;
+        border: 0;
+    }
+
+    &.btn-bg-black {
+        background: $off-black !important;
+        border: 0;
+        background-image: url('https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/02/bg-button-black-chalk.webp');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+
+        &:hover {
+            background-color: white !important;
+        }
+    }
 }
 
-.primary {
-    border-color: #A0D4DD;
+.btn-primary {
+    border: #A0D4DD solid $button-border-width;
     background: url("https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/01/bg-button-primary-teal.webp") center / 150% auto no-repeat;
     // background: url('https://vrwpaviv.elementor.cloud/wp-content/uploads/2024/12/primary-button-bg.png') no-repeat center center / cover;
 
@@ -62,7 +82,7 @@ a {
 }
 
 
-.secondary {
+.btn-secondary {
     border-color: white !important;
     background: transparent;
 
@@ -79,20 +99,8 @@ a {
     }
 }
 
-.bgWhite {
-    border: 0;
-    background: white !important;
-    color: $black !important;
-}
-
-.bgBlack {
-    background: $off-black !important;
-    border: 0;
-    background-image: url('https://vrwpaviv.elementor.cloud/wp-content/uploads/2025/02/bg-button-black-chalk.webp');
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-
-    &:hover {
-        background-color: white !important;
-    }
+// Ensure that the button text is not underlined when the button is a link
+a.btn-primary,
+a.btn-secondary {
+    text-decoration: none;
 }
