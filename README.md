@@ -4,7 +4,7 @@
 A custom WordPress site using Elementor, SCSS, and Webpack.
 
 ## 🛠 Tech Stack
-- WordPress + Elementor
+- WordPress
 - SCSS + Webpack
 - GitHub Actions (CI/CD)
 - LocalWP for local development
