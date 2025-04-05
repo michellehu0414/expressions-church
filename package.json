@@ -64,6 +64,7 @@
 		"purgecss-webpack-plugin": "^7.0.2",
 		"raw-loader": "^4.0.2",
 		"rename-output-webpack-plugin": "^1.0.1",
+		"svg-inline-loader": "^0.8.2",
 		"svgo-loader": "^4.0.0",
 		"terser-webpack-plugin": "^5.3.14",
 		"thread-loader": "^4.0.4",
