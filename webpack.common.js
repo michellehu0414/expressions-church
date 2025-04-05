@@ -14,6 +14,7 @@ const pages = [
     { name: "index", title: "Home" },
     { name: "small-groups", title: "Small Groups" },
     { name: "leadership", title: "Leadership" },
+    { name: "easter", title: "Easter" },
     { name: "plan-your-visit", title: "Plan Your Visit" },
     { name: "events", title: "Events" },
     { name: "fire-relief", title: "Fire Relief" },
@@ -23,6 +24,7 @@ module.exports = {
     entry: {
         index: "./src/pages/index/index.js",
         leadership: "./src/pages/leadership/leadership.js",
+        easter: "./src/pages/easter/easter.js",
         "small-groups": "./src/pages/small-groups/small-groups.js",
         "fire-relief": "./src/pages/fire-relief/fire-relief.js",
         "plan-your-visit": "./src/pages/plan-your-visit/plan-your-visit.js",
