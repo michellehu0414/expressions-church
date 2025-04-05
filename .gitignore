@@ -62,7 +62,6 @@ wp-image-optimizer/uploaded/*
 
 test.css
 test.html
-public/
 dist/
 /psd/
 src/assets/svg/content.png
