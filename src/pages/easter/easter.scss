@@ -1,0 +1,148 @@
+@use "@scss/abstracts/all-abstracts" as *;
+
+.hero {
+	background: url("@assets/images/easter/bg-gradient-01.webp") center/cover no-repeat;
+	color: white;
+	width: 100%;
+	text-align: center;
+
+	&__overlay {
+		padding: 40px;
+		display: inline-block;
+	}
+
+	&__title {
+		font-size: 2.5rem;
+		margin-bottom: 10px;
+
+		color: white;
+		text-align: center;
+		text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.7);
+		font-family: Poppins;
+		font-size: 3.375rem;
+		font-style: normal;
+		font-weight: 700;
+		line-height: 100%;
+		/* 3.7125rem */
+		text-transform: uppercase;
+		margin-bottom: 1.5rem;
+
+		.outlined {
+			color: rgba(0, 0, 0, 0.2);
+			text-align: center;
+			-webkit-text-stroke-width: 2px;
+			-webkit-text-stroke-color: white;
+			letter-spacing: 0.16875rem;
+			text-transform: uppercase;
+			text-shadow: none;
+		}
+
+		@include breakpoint(med) {
+			font-size: 4.564rem;
+			text-shadow: 4px 3px 0px #161616;
+		}
+
+		@include breakpoint(xl) {
+			font-size: 5.875rem;
+			text-shadow: 6px 4px 0px #161616;
+		}
+	}
+
+	&__subtitle {
+		font-size: 1.2rem;
+		margin-bottom: 20px;
+	}
+
+	&__buttons {
+		@include flex(column, 0.5rem, center, center);
+		width: 100%;
+
+		button {
+			width: 100%;
+		}
+	}
+}
+
+.expect {
+	padding: 1rem;
+	text-align: center;
+//
+// 	&__title {
+// 		font-size: 2rem;
+// 		margin-bottom: 20px;
+// 	}
+
+	&__grid {
+		display: grid;
+		grid-template-columns: repeat(5, 1fr);
+		grid-template-rows: repeat(2, 1fr);
+		justify-content: center;
+		gap: 1rem;
+	}
+
+	&__item {
+		padding: 0.5rem 1.25rem;
+		border-radius: 0.25rem;
+		background: $paperBackgroundImage;
+		width: 100%;
+
+		p {
+			font-size: 1.25rem;
+			color: $paper-bg-text-color;
+			margin-bottom: 0;
+			font-weight: 500;
+		}
+	}
+}
+
+.rsvp {
+	padding: 60px 20px;
+	background: $paperBackgroundImage;
+	text-align: center;
+
+	&__title {
+		font-size: 2rem;
+		margin-bottom: 20px;
+	}
+
+	&__form {
+		display: flex;
+		flex-direction: column;
+		max-width: 400px;
+		margin: 0 auto;
+
+		input,
+		label,
+		button {
+			margin-bottom: 15px;
+			padding: 12px;
+			font-size: 1rem;
+			border: 1px solid #ccc;
+			border-radius: 6px;
+		}
+
+		button {
+			background: #5ffbf1;
+			color: #000;
+			border: none;
+			cursor: pointer;
+		}
+	}
+}
+
+.scripture {
+	padding: 60px 20px;
+	text-align: center;
+
+	blockquote {
+		font-size: 1.5rem;
+		font-style: italic;
+		color: #555;
+	}
+
+	&__cta {
+		margin-top: 20px;
+		font-size: 1.2rem;
+		color: #444;
+	}
+}

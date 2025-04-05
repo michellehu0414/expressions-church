@@ -64,4 +64,7 @@ test.css
 test.html
 public/
 dist/
-psd/
+/psd/
+src/assets/svg/content.png
+src/assets/svg/fire-relief-progress.png
+src/assets/svg/wrapper.png

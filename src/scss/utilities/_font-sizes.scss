@@ -1,21 +1,21 @@
 // Font Size Utilities for paragraphs
 // -------------------------
-@use 'sass:map';
-@import '@scss/abstracts/variables';
-@import '@scss/abstracts/typography-map';
-@import '@scss/typography-mixins';
+@use "sass:map";
+@use "@scss/abstracts/variables" as *;
+@use "@scss/abstracts/typography-map-mixins" as *;
+@use "@scss/abstracts/breakpoints-mixins" as *;
 
 // Generate utility classes with same scaling
 @each $label, $scale in $font-scale {
-  .font-#{$label} {
-    font-size: map.get($scale, 'mobile-sm');
+	.font-#{$label} {
+		font-size: map.get($scale, "mobile-sm");
 
-    @each $bp, $size in $scale {
-      @if $bp != 'mobile-sm' {
-        @include breakpoint($bp) {
-          font-size: $size;
-        }
-      }
-    }
-  }
+		@each $bp, $size in $scale {
+			@if $bp != "mobile-sm" {
+				@include breakpoint($bp) {
+					font-size: $size;
+				}
+			}
+		}
+	}
 }
