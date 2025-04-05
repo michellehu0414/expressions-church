@@ -1,596 +1,739 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Expressions Church</title>
-    <meta name="designer" content="Michelle Hu" />
-    <meta
-      name="description"
-      content="Expressions Church is a community dedicated to spreading love of Jesus."
-    />
-    <meta
-      name="keywords"
-      content="church, community, faith, love, positivity"
-    />
-    <meta name="author" content="Expressions Church Team" />
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="css/fire-relief.min.css" />
-    <!-- <link rel="stylesheet" href="css/main.min.css" /> -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  </head>
-  <body>
-    <img class="texture-overlay" alt="" aria-hidden="true" />
-    <main>
-      <header
-        style="background-position: bottom"
-        class="page-header"
-        data-bg-image="assets/images/los-angeles-eaton-fire-red-night-sky.webp"
-        data-title-outlined="Fire"
-        data-title-filled="Relief"
-        data-bible-verse="The Lord is good, a refuge in times of trouble. He cares for those who trust him."
-        data-bible-verse-ref="Nahum 1:7"
-        data-primary-btn-text="Donate to Fire Relief"
-        data-primary-btn-link="/give"
-        data-secondary-btn-text="Get Help Now"
-        data-secondary-btn-link="/about"
-        data-third-btn-text="See how you can help"
-        data-third-btn-link="/about"
-        data-fourth-btn-text=""
-        data-fourth-btn-link="/about"
-        data-show-primary-button="true"
-        data-show-secondary-button="false"
-        data-show-third-button="true"
-        data-show-fourth-button="false"
-      ></header>
-      <section class="section">
-        <div class="pd-16 section-content">
-          <svg
-            width="80"
-            height="80"
-            viewBox="0 0 80 80"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <g clip-path="url(#clip0_3505_48409)">
-              <mask
-                id="mask0_3505_48409"
-                style="mask-type: luminance"
-                maskUnits="userSpaceOnUse"
-                x="0"
-                y="22"
-                width="48"
-                height="57"
-              >
-                <path d="M0 22.2893H47.2743V78.4065H0V22.2893Z" fill="white" />
-              </mask>
-              <g mask="url(#mask0_3505_48409)">
-                <path
-                  d="M32.037 23.676C30.1901 23.1909 28.511 23.9434 27.5907 26.1075C26.9501 26.6298 23.1692 35.2116 10.7319 41.0945C8.92845 41.9526 6.34771 43.3518 4.70598 45.5097C3.67159 46.8677 3.50674 48.0633 3.69656 49.2124C3.78295 49.7354 3.52084 50.265 3.06242 50.5312C1.29525 51.5571 0.149273 53.5432 0.321824 55.6461C0.464854 57.4433 1.50959 59.0415 2.43617 60.5837C3.35653 62.1508 4.68733 62.9717 6.49696 62.9033C6.76827 62.8941 7.40681 62.8543 8.1008 62.7135C8.54318 62.6237 9.00517 62.793 9.28795 63.1448C10.8733 65.1174 13.0853 65.6133 15.7876 65.1545L29.6055 61.6844C37.8204 60.534 41.6697 62.07 42.6025 62.07C43.7965 62.07 44.8599 61.417 45.6124 60.2044C45.6124 60.1982 45.6186 60.192 45.6186 60.1857C47.8822 56.3364 46.7131 47.0519 42.7766 37.5996C39.5305 29.8014 35.5132 24.5963 32.037 23.676ZM36.9327 45.8342C37.0272 45.9764 36.9618 46.1719 36.7997 46.2254C35.4694 46.6649 34.164 47.2362 32.9002 47.9311C32.7706 48.0024 32.6072 47.9481 32.5482 47.8125C31.4529 45.2934 30.6268 42.9511 29.8616 39.9633C29.8267 39.8269 29.9118 39.6888 30.0489 39.6567C31.5281 39.3101 32.9544 38.822 34.3113 38.1965C34.4808 38.1184 34.6764 38.243 34.6804 38.4296C34.7304 40.7694 35.576 43.7927 36.9327 45.8342ZM44.0701 59.2592C42.9508 61.0564 41.3712 59.8997 41.5951 59.9992C38.5203 58.5988 35.1833 53.246 33.5217 49.941C33.4623 49.823 33.5055 49.6815 33.6227 49.6205C35.535 48.6257 40.8115 46.9649 40.8115 46.9649C42.4637 44.5612 40.2716 36.6601 37.5767 35.1676C37.3614 35.0484 37.1068 35.0651 36.88 35.1606C35.6592 35.6746 31.5562 37.3779 29.6329 37.8759C29.4979 37.9108 29.3645 37.8237 29.3356 37.6872C29.1743 36.9236 28.9933 36.0666 28.7971 34.4467C28.3929 31.0824 28.3183 24.559 31.5768 25.4234C33.7409 25.9955 37.5343 29.7143 41.11 38.2961C44.7791 47.1017 46.0228 55.9197 44.0701 59.2592Z"
-                  fill="white"
-                />
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M20.208 66.7154C20.0951 66.4354 20.2569 66.1219 20.5498 66.0483L28.791 63.9787C29.0128 63.923 29.2441 64.0247 29.3521 64.2263C30.322 66.0366 31.5202 68.3867 32.4148 70.5149C32.8252 71.4912 33.074 72.3556 33.1735 73.1764C33.6834 77.1315 30.4311 78.9536 27.0792 77.2061C24.2328 75.7204 21.824 70.7227 20.208 66.7154Z"
-                  fill="white"
-                />
-              </g>
-              <mask
-                id="mask1_3505_48409"
-                style="mask-type: luminance"
-                maskUnits="userSpaceOnUse"
-                x="39"
-                y="1"
-                width="41"
-                height="36"
-              >
-                <path
-                  d="M39.3203 1.59351H80.0028V36.617H39.3203V1.59351Z"
-                  fill="white"
-                />
-              </mask>
-              <g mask="url(#mask1_3505_48409)">
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M42.7801 11.0145C48.1095 2.5882 61.8341 -0.41541 71.0813 4.16153C77.0636 7.12161 79.8372 11.4809 79.1034 16.7605C78.4877 21.7603 76.8957 25.1682 73.774 28.1531C69.7629 31.9714 63.1587 33.9925 54.863 31.8905C51.7972 34.1977 49.2662 35.6342 46.9093 36.3991C45.9206 36.7225 45.0313 35.7088 45.4604 34.7636C46.2502 33.0099 46.7912 31.0448 47.0835 28.9056C45.4853 28.0288 44.2229 27.0338 43.2403 25.8771C39.9693 22.0278 39.7703 15.778 42.7801 11.0145ZM71.9351 26.4905C74.5963 23.9419 75.9654 21.0021 76.4989 16.6516C77.0975 12.3486 74.8393 8.9109 69.7954 6.40969C61.6102 2.36152 49.5724 5.15908 45.0382 12.3189C42.5666 16.2367 42.6911 21.3458 45.3405 24.4516C46.2354 25.5007 47.4327 26.4016 49.0034 27.2017C49.3234 27.3677 49.5131 27.7115 49.4716 28.0671C49.276 29.8006 48.9203 31.4352 48.4126 32.9498C48.343 33.1576 48.5509 33.3523 48.7494 33.2594C50.4212 32.4773 52.2536 31.3125 54.391 29.6733C54.5985 29.5133 54.8771 29.4599 55.1378 29.5251C62.7007 31.5581 68.5092 29.7504 71.9351 26.4905Z"
-                  fill="white"
-                />
-              </g>
-              <path
-                d="M57.9232 11.3997C58.9043 11.5351 60.3879 13.6261 60.7372 13.6743C61.0865 13.7225 63.1754 12.1243 64.4121 12.2952C66.2516 12.5494 66.7278 12.8997 67.4583 13.8634C68.7545 15.5735 68.1532 17.8666 66.2124 20.0478C64.2716 22.229 61.2323 24.9189 59.7223 24.7105C58.2123 24.5021 55.5743 21.3435 54.1488 18.6977C52.7233 16.0519 53.5402 13.4074 54.7003 12.3369C55.8605 11.2663 56.942 11.2642 57.9232 11.3997Z"
-                fill="white"
-              />
-            </g>
-            <defs>
-              <clipPath id="clip0_3505_48409">
-                <rect width="80" height="80" fill="white" />
-              </clipPath>
-            </defs>
-          </svg>
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>Expressions Church</title>
+		<meta
+			name="designer"
+			content="Michelle Hu"
+		/>
+		<meta
+			name="title"
+			content="Fire Relief - Expressions Church"
+		/>
+		<meta
+			name="description"
+			content="Expressions Church is a community dedicated to spreading love of Jesus."
+		/>
+		<meta
+			name="keywords"
+			content="church, community, faith, love, positivity"
+		/>
+		<meta
+			name="author"
+			content="Expressions Church Team"
+		/>
+		<link
+			rel="icon"
+			href="favicon.ico"
+			type="image/x-icon"
+		/>
+		<link
+			rel="stylesheet"
+			href="css/fire-relief.min.css"
+		/>
+		<!-- <link rel="stylesheet" href="css/main.min.css" /> -->
+		<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+	</head>
+	<body>
+		<img
+			class="texture-overlay"
+			alt=""
+			aria-hidden="true"
+		/>
+		<main>
+			<header
+				style="background-position: bottom"
+				class="page-header hide"
+				data-bg-image="assets/images/fire-relief/los-angeles-eaton-fire-red-night-sky.webp"
+				data-title-outlined="Fire"
+				data-title-filled="Relief"
+				data-bible-verse="The Lord is good, a refuge in times of trouble. He cares for those who trust him."
+				data-bible-verse-ref="Nahum 1:7"
+				data-primary-btn-text="Donate to Fire Relief"
+				data-primary-btn-link="/give"
+				data-secondary-btn-text="Get Help Now"
+				data-secondary-btn-link="/about"
+				data-third-btn-text="See how you can help"
+				data-third-btn-link="/about"
+				data-fourth-btn-text=""
+				data-fourth-btn-link="/about"
+				data-show-primary-button="true"
+				data-show-secondary-button="false"
+				data-show-third-button="true"
+				data-show-fourth-button="false"
+			></header>
+			<iframe
+				src="https://expressions-church.notion.site/ebd/1c1a71ac62a480ca8d35d46efc10eb2c"
+				width="100%"
+				height="600"
+				frameborder="0"
+				allowfullscreen
+			/>
+			<section>
+				<div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
+					<p class="text-sm text-yellow-900 font-medium">FEMA Disaster #: 4856 (California Wildfires)</p>
+					<p class="mt-1 text-sm text-yellow-800">
+						You may be eligible for housing support, repairs, lost belongings, or disaster-related medical
+						and legal costs.
+					</p>
+				</div>
 
-          <p>Do you or someone you know need help? We can help!</p>
-          <a href="/intake-form">
-            <p>
-              Apply for Assistance!
-              <span>
-                <img src="assets/svg/ic-megaphone.svg" alt="" />
-              </span>
-            </p>
-          </a>
-        </div>
-      </section>
-      <section class="py-16 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-7xl mx-auto text-center mb-12">
-          <h2 class="text-3xl font-extrabold text-gray-900">
-            Committed to the Renewal of Dena
-          </h2>
-          <p class="mt-4 text-lg text-gray-600">
-            From emergency housing to spiritual care, we’re helping families
-            rebuild—one need at a time.
-          </p>
-        </div>
-        <div class="grid gap-8 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
-          <!-- Card 1 -->
-          <div class="rounded-lg p-6 flex flex-col items-center text-center">
-            <img
-              src="/path-to/emergency-housing.png"
-              alt="Emergency Housing"
-              class="h-24 mb-4"
-            />
-            <h3 class="text-xl font-semibold text-gray-800">
-              Emergency Housing
-            </h3>
-            <p class="text-gray-600 mt-2">
-              Helping displaced families find safe, temporary homes after the
-              fire.
-            </p>
-          </div>
-          <!-- Card 2 -->
-          <div class="rounded-lg p-6 flex flex-col items-center text-center">
-            <img
-              src="/path-to/gift-cards-groceries.png"
-              alt="Groceries & Gift Cards"
-              class="h-24 mb-4"
-            />
-            <h3 class="text-xl font-semibold text-gray-800">
-              Groceries & Gift Cards
-            </h3>
-            <p class="text-gray-600 mt-2">
-              Providing families with flexible, immediate resources they can use
-              right away.
-            </p>
-          </div>
-          <!-- Card 3 -->
-          <div class="rounded-lg p-6 flex flex-col items-center text-center">
-            <img
-              src="/path-to/cleanup.png"
-              alt="Debris Clean-Up"
-              class="h-24 mb-4"
-            />
-            <h3 class="text-xl font-semibold text-gray-800">
-              Debris & Ash Clean-Up
-            </h3>
-            <p class="text-gray-600 mt-2">
-              Offering clean-up support and ash-sifting to recover meaningful
-              items.
-            </p>
-          </div>
-          <!-- Card 4 -->
-          <div class="rounded-lg p-6 flex flex-col items-center text-center">
-            <img
-              src="/path-to/furniture.png"
-              alt="Furniture Replacement"
-              class="h-24 mb-4"
-            />
-            <h3 class="text-xl font-semibold text-gray-800">
-              Furniture Replacement
-            </h3>
-            <p class="text-gray-600 mt-2">
-              Replacing essentials like beds, chairs, and other home
-              furnishings.
-            </p>
-          </div>
-          <!-- Card 5 -->
-          <div class="rounded-lg p-6 flex flex-col items-center text-center">
-            <img
-              src="/path-to/prayer.png"
-              alt="Prayer & Pastoral Care"
-              class="h-24 mb-4"
-            />
-            <h3 class="text-xl font-semibold text-gray-800">
-              Prayer & Pastoral Care
-            </h3>
-            <p class="text-gray-600 mt-2">
-              Providing spiritual encouragement and guidance through pastoral
-              support.
-            </p>
-          </div>
-        </div>
-        <!-- CTA Button -->
-        <div class="mt-12 text-center">
-          <a
-            href="https://your-jotform-link.com"
-            class="inline-block px-6 py-3 text-white bg-indigo-600 hover:bg-indigo-700 font-medium rounded-md shadow"
-            >Request Support</a
-          >
-        </div>
-      </section>
-      <header class="hero">
-        <div class="hero-content">
-          <h1>The Need Is Great. Our God Is Greater.</h1>
-          <p>
-            Over 14,000 acres destroyed. Hundreds of families displaced. But
-            hope remains — and it’s rising through the hands of the Church.
-          </p>
-          <blockquote>
-            “The Lord is good, a refuge in times of trouble. He cares for those
-            who trust him.” — Nahum 1:7
-          </blockquote>
-          <div class="hero-ctas">
-            <a href="#donate" class="btn primary">Donate to Fire Relief</a>
-            <a href="#volunteer" class="btn secondary">Volunteer to Serve</a>
-            <a href="#help" class="btn outline">Get Help Now</a>
-          </div>
-        </div>
-      </header>
-      <section class="bg-red-50 text-center py-20 px-4">
-        <div class="max-w-4xl mx-auto">
-          <h1 class="text-4xl font-bold text-red-700 mb-4">
-            The Need Is Great. Our God Is Greater.
-          </h1>
-          <p class="text-lg text-gray-700 mb-6">
-            Over 14,000 acres destroyed. Hundreds of families displaced. But
-            hope remains — and it’s rising through the hands of the Church.
-          </p>
-          <p class="italic text-sm text-gray-600 mb-8">
-            “The Lord is good, a refuge in times of trouble. He cares for those
-            who trust him.” — Nahum 1:7
-          </p>
-          <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="#donate"
-              class="bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded"
-              >Donate to Fire Relief</a
-            >
-            <a
-              href="#volunteer"
-              class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-3 px-6 rounded"
-              >Volunteer to Serve</a
-            >
-            <a
-              href="#help"
-              class="border border-gray-400 text-gray-800 py-3 px-6 rounded"
-              >Get Help Now</a
-            >
-          </div>
-        </div>
-      </section>
-      <section class="py-16 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-7xl mx-auto">
-          <h2 class="text-3xl font-extrabold text-gray-900 mb-8 text-center">
-            Committed to the Renewal of Dena
-          </h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Card 1 -->
-            <div class="border border-gray-200 rounded-lg p-6 shadow-sm">
-              <h3 class="text-lg font-semibold text-gray-800 mb-2">
-                🏠 Emergency Housing
-              </h3>
-              <p class="text-sm text-gray-600">
-                Providing temporary stays for displaced families.
-              </p>
-            </div>
-            <!-- Card 2 -->
-            <div class="border border-gray-200 rounded-lg p-6 shadow-sm">
-              <h3 class="text-lg font-semibold text-gray-800 mb-2">
-                🛒 Gift Cards & Groceries
-              </h3>
-              <p class="text-sm text-gray-600">
-                Supporting families with urgent daily expenses.
-              </p>
-            </div>
-            <!-- Card 3 -->
-            <div class="border border-gray-200 rounded-lg p-6 shadow-sm">
-              <h3 class="text-lg font-semibold text-gray-800 mb-2">
-                🧹 Debris & Ash Sifting
-              </h3>
-              <p class="text-sm text-gray-600">
-                Helping recover valuable items and clear homes.
-              </p>
-            </div>
-            <!-- Card 4 -->
-            <div class="border border-gray-200 rounded-lg p-6 shadow-sm">
-              <h3 class="text-lg font-semibold text-gray-800 mb-2">
-                🛋️ Furniture Replacement
-              </h3>
-              <p class="text-sm text-gray-600">
-                Replacing essentials lost in the fire.
-              </p>
-            </div>
-            <!-- Card 5 -->
-            <div class="border border-gray-200 rounded-lg p-6 shadow-sm">
-              <h3 class="text-lg font-semibold text-gray-800 mb-2">
-                🙏 Prayer & Pastoral Care
-              </h3>
-              <p class="text-sm text-gray-600">
-                Spiritual care and emotional support from pastors.
-              </p>
-            </div>
-          </div>
-          <div class="mt-10 text-center">
-            <a
-              href="https://your-jotform-url.com"
-              class="inline-block px-6 py-3 bg-yellow-500 text-white font-semibold rounded-md shadow hover:bg-yellow-600 transition"
-            >
-              Request Support
-            </a>
-            <p class="text-sm text-gray-600 mt-2">
-              Impacted by the fires? We’re with you. Click above to apply for
-              help.
-            </p>
-          </div>
-        </div>
-      </section>
-      <section class="py-16 px-4" id="help">
-        <div class="max-w-5xl mx-auto text-center">
-          <h2 class="text-3xl font-bold text-gray-800 mb-10">
-            Committed to the Renewal of Dena
-          </h2>
-          <div
-            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 text-left"
-          >
-            <div class="bg-gray-100 p-6 rounded shadow-sm">
-              🏠 Emergency housing assistance
-            </div>
-            <div class="bg-gray-100 p-6 rounded shadow-sm">
-              🛒 Gift cards + groceries
-            </div>
-            <div class="bg-gray-100 p-6 rounded shadow-sm">
-              🧹 Debris clean-up + ash-sifting
-            </div>
-            <div class="bg-gray-100 p-6 rounded shadow-sm">
-              🛋️ Furniture + essentials
-            </div>
-            <div class="bg-gray-100 p-6 rounded shadow-sm">
-              🙏 Prayer + pastoral care
-            </div>
-          </div>
-          <p class="mt-10 text-gray-600">
-            Impacted by the fires? We’re with you.
-          </p>
-          <a
-            href="https://your-jotform-link.com"
-            class="mt-2 inline-block text-blue-600 underline"
-            >Click here to apply for help</a
-          >
-        </div>
-      </section>
-      <section class="py-16 px-4" id="volunteer">
-        <div class="max-w-5xl mx-auto text-center">
-          <h2 class="text-3xl font-bold text-gray-800 mb-12">
-            Every One of Us Can Be Part of the Response
-          </h2>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
-            <div>
-              <h3 class="text-xl font-semibold text-gray-700 mb-2">🙏 Pray</h3>
-              <p>Download our prayer guide and pray through the needs.</p>
-              <div class="mt-2">
-                <a href="#" class="text-blue-600 underline">Download Guide</a> |
-                <a href="#" class="text-blue-600 underline">Submit a Prayer</a>
-              </div>
-            </div>
-            <div>
-              <h3 class="text-xl font-semibold text-gray-700 mb-2">🎁 Give</h3>
-              <p>Support families and help us rebuild our church.</p>
-              <a
-                href="#donate"
-                class="text-blue-600 underline mt-2 inline-block"
-                >Give Now</a
-              >
-            </div>
-            <div>
-              <h3 class="text-xl font-semibold text-gray-700 mb-2">🙌 Serve</h3>
-              <p>Want to join us on the ground?</p>
-              <a
-                href="https://volunteer-signup-form.com"
-                class="text-blue-600 underline mt-2 inline-block"
-                >Volunteer Sign-Up</a
-              >
-            </div>
-            <div>
-              <h3 class="text-xl font-semibold text-gray-700 mb-2">🏡 Host</h3>
-              <p>Willing to open your home to displaced families?</p>
-              <a
-                href="https://host-signup-form.com"
-                class="text-blue-600 underline mt-2 inline-block"
-                >Become a Host</a
-              >
-            </div>
-            <div>
-              <h3 class="text-xl font-semibold text-gray-700 mb-2">
-                🤝 Partner
-              </h3>
-              <p>Church or org? Let’s collaborate on meeting needs.</p>
-              <a
-                href="https://partner-signup-form.com"
-                class="text-blue-600 underline mt-2 inline-block"
-                >Become a Partner</a
-              >
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="py-16 px-4">
-        <div class="max-w-4xl mx-auto text-center">
-          <h2 class="text-3xl font-bold text-gray-800 mb-6">
-            How the Fire Impacted Expressions Church
-          </h2>
-          <p class="text-gray-700 mb-6">
-            We’re a new church plant renting space from Church of Christ
-            Pasadena — and the entire building burned down. As we help rebuild
-            our community, we also need your help rebuilding the church.
-          </p>
-          <ul
-            class="text-left text-gray-600 list-disc list-inside max-w-md mx-auto"
-          >
-            <li>Audio and video equipment</li>
-            <li>Laptops, printers, office supplies</li>
-            <li>Furniture, toys, ministry materials</li>
-            <li>Signage and banners</li>
-          </ul>
-          <a
-            href="#donate"
-            class="mt-6 inline-block bg-red-600 text-white py-3 px-6 rounded font-semibold hover:bg-red-700"
-            >Help Us Rebuild</a
-          >
-        </div>
-      </section>
-      <section class="bg-blue-50 py-16 px-4">
-        <div class="max-w-4xl mx-auto text-center">
-          <h2 class="text-3xl font-bold text-blue-800 mb-6">
-            Helpful Resources for Those Affected
-          </h2>
-          <ul
-            class="text-left text-gray-700 list-disc list-inside max-w-md mx-auto space-y-2"
-          >
-            <li>📞 Call 211 for shelter + health services</li>
-            <li>🏠 FEMA application for homeowners/renters</li>
-            <li>💻 Free WiFi/showers at Planet Fitness</li>
-            <li>🛏 Airbnb emergency housing support</li>
-            <li>
-              📚 Victory Bible Church:
-              <a href="#" class="text-blue-600 underline">resource hub</a>
-            </li>
-          </ul>
-        </div>
-      </section>
-      <section class="py-16 px-4">
-        <div class="max-w-3xl mx-auto">
-          <h2 class="text-3xl font-bold text-gray-800 text-center mb-8">
-            Frequently Asked Questions
-          </h2>
-          <details class="mb-4 border-b pb-2">
-            <summary class="cursor-pointer font-semibold text-gray-700">
-              Where does my donation go?
-            </summary>
-            <p class="mt-2 text-gray-600">
-              100% of donations go to supporting families affected by the fire
-              and restoring lost church resources.
-            </p>
-          </details>
-          <details class="mb-4 border-b pb-2">
-            <summary class="cursor-pointer font-semibold text-gray-700">
-              Is my donation tax deductible?
-            </summary>
-            <p class="mt-2 text-gray-600">
-              Yes, all donations are tax deductible through Expressions Church,
-              a registered 501(c)(3).
-            </p>
-          </details>
-          <details class="mb-4 border-b pb-2">
-            <summary class="cursor-pointer font-semibold text-gray-700">
-              Can I donate by check?
-            </summary>
-            <p class="mt-2 text-gray-600">
-              Yes. Please mail checks to P.O. Box 133, 10 W. Bay State St.,
-              Alhambra, CA 91082
-            </p>
-          </details>
-          <details class="mb-4 border-b pb-2">
-            <summary class="cursor-pointer font-semibold text-gray-700">
-              What’s the difference between Fire Relief and General Giving?
-            </summary>
-            <p class="mt-2 text-gray-600">
-              Fire Relief funds go directly toward those impacted by the Eaton
-              Fire. General Giving supports church operations and ministry.
-            </p>
-          </details>
-        </div>
-      </section>
-      <footer class="bg-gray-900 text-gray-200 py-12 px-4">
-        <div class="max-w-4xl mx-auto text-center space-y-4">
-          <p>Need help or want to connect? Reach out to us:</p>
-          <form class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
-            <input
-              type="text"
-              placeholder="Name"
-              class="px-4 py-2 rounded bg-gray-800 border border-gray-700 text-white"
-            />
-            <input
-              type="email"
-              placeholder="Email"
-              class="px-4 py-2 rounded bg-gray-800 border border-gray-700 text-white"
-            />
-            <input
-              type="text"
-              placeholder="Message"
-              class="px-4 py-2 rounded bg-gray-800 border border-gray-700 text-white sm:col-span-3"
-            />
-            <button
-              type="submit"
-              class="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded sm:col-span-3"
-            >
-              Send Message
-            </button>
-          </form>
-          <p class="mt-4">
-            Email: info@expressions.church | Phone: (626) 538-7443
-          </p>
-          <p>Meeting: 2540 E. Orange Grove Blvd, Pasadena, CA</p>
-          <p>Mailing: P.O. Box 133, 10 W. Bay State St., Alhambra, CA 91082</p>
-          <div class="flex justify-center space-x-4 mt-4">
-            <a href="#" aria-label="Instagram"
-              ><img src="/icons/instagram.svg" class="w-6"
-            /></a>
-            <a href="#" aria-label="YouTube"
-              ><img src="/icons/youtube.svg" class="w-6"
-            /></a>
-          </div>
-        </div>
-      </footer>
-    </main>
-    <script src="js/fire-relief.min.js"></script>
-    <script src="js/main.min.js"></script>
-  </body>
-  <footer class="bg-gray-900 text-gray-200 py-12 px-4">
-    <div class="max-w-4xl mx-auto text-center space-y-4">
-      <p>Need help or want to connect? Reach out to us:</p>
-      <form class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
-        <input
-          type="text"
-          placeholder="Name"
-          class="px-4 py-2 rounded bg-gray-800 border border-gray-700 text-white"
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          class="px-4 py-2 rounded bg-gray-800 border border-gray-700 text-white"
-        />
-        <input
-          type="text"
-          placeholder="Message"
-          class="px-4 py-2 rounded bg-gray-800 border border-gray-700 text-white sm:col-span-3"
-        />
-        <button
-          type="submit"
-          class="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded sm:col-span-3"
-        >
-          Send Message
-        </button>
-      </form>
-      <p class="mt-4">Email: info@expressions.church | Phone: (626) 538-7443</p>
-      <p>Meeting: 2540 E. Orange Grove Blvd, Pasadena, CA</p>
-      <p>Mailing: P.O. Box 133, 10 W. Bay State St., Alhambra, CA 91082</p>
-      <div class="flex justify-center space-x-4 mt-4">
-        <a href="#" aria-label="Instagram"
-          ><img src="/icons/instagram.svg" class="w-6"
-        /></a>
-        <a href="#" aria-label="YouTube"
-          ><img src="/icons/youtube.svg" class="w-6"
-        /></a>
-      </div>
-    </div>
-  </footer>
+				<h3 class="text-xl font-semibold text-gray-800 mb-2">Who Can Apply</h3>
+				<ul class="list-disc pl-6 text-gray-700 mb-6">
+					<li>Homeowners or renters with damaged primary residences</li>
+					<li>Evacuated individuals needing temporary housing</li>
+					<li>Anyone facing losses tied to fire-related impact</li>
+				</ul>
+
+				<h3 class="text-xl font-semibold text-gray-800 mb-2">What FEMA May Provide</h3>
+				<ul class="list-disc pl-6 text-gray-700 mb-6">
+					<li>Rental assistance for temporary housing</li>
+					<li>Repair grants for uninsured home damage</li>
+					<li>Replacement of clothing, furniture, personal items</li>
+					<li>Funeral, medical, and dental aid</li>
+					<li>Disaster Unemployment & Legal Services</li>
+				</ul>
+
+				<h3 class="text-xl font-semibold text-gray-800 mb-2">How to Apply</h3>
+				<ol class="list-decimal pl-6 text-gray-700 mb-6">
+					<li>
+						Visit
+						<a
+							href="https://www.fema.gov/disaster/4856#help-families"
+							target="_blank"
+							class="text-indigo-600 hover:underline font-medium"
+							>fema.gov/disaster/4856</a
+						>
+					</li>
+					<li>
+						Click “Apply for Assistance” or go to
+						<a
+							href="https://disasterassistance.gov"
+							class="text-indigo-600 hover:underline font-medium"
+							>DisasterAssistance.gov</a
+						>
+					</li>
+					<li>Call 📞 <span class="font-medium">800-621-3362</span> (TTY: 800-462-7585)</li>
+					<li>
+						Visit the Disaster Recovery Center:<br />
+						<span class="block font-medium">540 W. Woodbury Road, Altadena, CA 91001</span><br />
+						Open daily 9:00 AM – 8:00 PM
+					</li>
+				</ol>
+
+				<div class="bg-blue-50 border-l-4 border-blue-400 p-4 mb-6">
+					<p class="text-sm text-blue-800">
+						<span class="font-medium">Note for GoFundMe Users:</span> To stay eligible for FEMA aid, avoid
+						describing donations as “disaster expenses.” Instead say things like:
+					</p>
+					<ul class="list-disc pl-6 mt-2 text-sm text-blue-700">
+						<li>“We’re raising support to recover and care for our family.”</li>
+						<li>“These funds help us meet needs not covered by other aid.”</li>
+					</ul>
+				</div>
+
+				<p class="text-gray-700 mb-8">
+					Need help applying or navigating FEMA? <span class="font-semibold">We’re here for you.</span> Reach
+					out and we’ll guide you through the process.
+				</p>
+
+				<div class="flex flex-wrap gap-4">
+					<a
+						href="https://www.fema.gov/disaster/4856#help-families"
+						target="_blank"
+						class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-md font-semibold"
+						>Apply Through FEMA</a
+					>
+					<a
+						href="https://www.fema.gov/assistance/individual/program"
+						target="_blank"
+						class="bg-gray-100 hover:bg-gray-200 text-gray-900 px-6 py-3 rounded-md font-semibold"
+						>Program Details</a
+					>
+				</div>
+			</section>
+			<section class="section hide">
+				<div class="pd-16 section-content">
+					<img
+						src="assets/svg/ic-megaphone.svg"
+						alt=""
+					/>
+					<p>Do you or someone you know need help? We can help!</p>
+					<a href="/intake-form">
+						<p>
+							Apply for Assistance!
+							<span>
+								<img
+									src="assets/svg/ic-megaphone.svg"
+									alt=""
+								/>
+							</span>
+						</p>
+					</a>
+				</div>
+			</section>
+			<div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-8 rounded-md">
+				<p class="text-sm text-yellow-900 font-medium">FEMA Disaster #: 4856 — California Wildfires</p>
+				<p class="mt-1 text-sm text-yellow-800">
+					You may be eligible for support with housing, personal property loss, repairs, and more.
+				</p>
+			</div>
+
+			<h3 class="text-2xl font-semibold text-gray-800 mb-2">Who Can Apply</h3>
+			<ul class="list-disc pl-6 text-gray-700 mb-8 space-y-1">
+				<li>Homeowners or renters with fire-damaged residences</li>
+				<li>People displaced and needing temporary housing</li>
+				<li>Anyone with disaster-related expenses or losses</li>
+			</ul>
+
+			<h3 class="text-2xl font-semibold text-gray-800 mb-2">FEMA May Help With</h3>
+			<ul class="list-disc pl-6 text-gray-700 mb-8 space-y-1">
+				<li>Rental assistance or temporary shelter costs</li>
+				<li>Repair grants for uninsured damage</li>
+				<li>Replacement of furniture, clothing, essentials</li>
+				<li>Funeral, medical, dental and counseling costs</li>
+				<li>Unemployment, legal, or transportation services</li>
+			</ul>
+
+			<h3 class="text-2xl font-semibold text-gray-800 mb-2">How to Apply</h3>
+			<ol class="list-decimal pl-6 text-gray-700 mb-8 space-y-2">
+				<li>
+					Visit
+					<a
+						href="https://www.fema.gov/disaster/4856#help-families"
+						class="text-indigo-600 font-medium hover:underline"
+						>fema.gov/disaster/4856</a
+					>
+				</li>
+				<li>
+					Click “Apply for Assistance” or go to
+					<a
+						href="https://disasterassistance.gov"
+						class="text-indigo-600 font-medium hover:underline"
+						>DisasterAssistance.gov</a
+					>
+				</li>
+				<li>Call <span class="font-medium">800-621-3362</span> (TTY: 800-462-7585)</li>
+				<li>
+					Visit a local recovery center:<br />
+					<span class="block font-medium">540 W. Woodbury Rd, Altadena, CA</span> — Open daily 9am–8pm
+				</li>
+			</ol>
+
+			<div class="bg-blue-50 border-l-4 border-blue-400 p-4 mb-8 rounded-md">
+				<p class="text-sm text-blue-800">
+					<span class="font-medium">Note on Fundraising:</span> If you’re also using GoFundMe or a donation
+					campaign, avoid listing specific “disaster” costs. Instead, say:
+				</p>
+				<ul class="list-disc pl-6 mt-2 text-sm text-blue-700 space-y-1">
+					<li>“We’re raising support to recover and care for our family.”</li>
+					<li>“These funds help us meet needs not covered by other aid.”</li>
+				</ul>
+			</div>
+
+			<p class="text-gray-700 text-lg mb-10">
+				Have questions or need help applying?
+				<span class="font-semibold text-indigo-700">We’re here for you.</span> Our team can walk with you
+				through the FEMA process.
+			</p>
+
+			<div class="flex flex-wrap gap-4">
+				<a
+					href="https://www.fema.gov/disaster/4856#help-families"
+					target="_blank"
+					class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-md text-base font-semibold shadow-md transition"
+					>Apply Through FEMA</a
+				>
+				<a
+					href="https://www.fema.gov/assistance/individual/program"
+					target="_blank"
+					class="inline-block bg-gray-100 hover:bg-gray-200 text-gray-900 px-6 py-3 rounded-md text-base font-semibold transition"
+					>Explore FEMA Programs</a
+				>
+			</div>
+
+			<section class="intro-section">
+				<div class="wildfire-artwork-svg-wrapper">
+					<div id="wildfire-svg-container"></div>
+				</div>
+				<div class="intro-section__content-wrapper">
+					<div class="intro-section__text-wrapper">
+						<h2 class="intro-section__headline">Eaton Fire</h2>
+						<p class="intro-section__body">
+							In January, wildfires rapidly tore across the San Gabriel Valley and the greater L.A. area,
+							burning through land, homes, and businesses. The air quality was at a hazardous
+							level, 70,000 people were under evacuation orders, and electric companies had shut off power
+							in many neighborhoods. 
+						</p>
+					</div>
+				</div>
+				<div class="intro-section__stats-wrapper">
+					<div class="stat">
+						<p class="stat__number">14,000+</p>
+						<p class="stat__label">
+							acres <br />
+							destroyed
+						</p>
+					</div>
+					<div class="chalk-line-divider"></div>
+					<div class="stat">
+						<p class="stat__number">7,000</p>
+						<p class="stat__label">
+							structures <br />
+							damaged
+						</p>
+					</div>
+					<div class="chalk-line-divider"></div>
+					<div class="stat">
+						<p class="stat__number">105,000</p>
+						<p class="stat__label">
+							people <br />
+							displaced
+						</p>
+					</div>
+				</div>
+			</section>
+
+			<section class="py-16 px-4 sm:px-6 lg:px-8">
+				<div class="max-w-7xl mx-auto text-center mb-12">
+					<h2 class="text-3xl font-extrabold text-gray-900">Committed to the Renewal of Dena</h2>
+					<p class="mt-4 text-lg text-gray-600">
+						From emergency housing to spiritual care, we’re helping families rebuild—one need at a time.
+					</p>
+				</div>
+				<div class="grid gap-8 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
+					<!-- Card 1 -->
+					<div class="rounded-lg p-6 flex flex-col items-center text-center">
+						<img
+							src="/path-to/emergency-housing.png"
+							alt="Emergency Housing"
+							class="h-24 mb-4"
+						/>
+						<h3 class="text-xl font-semibold text-gray-800">Emergency Housing</h3>
+						<p class="text-gray-600 mt-2">
+							Helping displaced families find safe, temporary homes after the fire.
+						</p>
+					</div>
+					<!-- Card 2 -->
+					<div class="rounded-lg p-6 flex flex-col items-center text-center">
+						<img
+							src="/path-to/gift-cards-groceries.png"
+							alt="Groceries & Gift Cards"
+							class="h-24 mb-4"
+						/>
+						<h3 class="text-xl font-semibold text-gray-800">Groceries & Gift Cards</h3>
+						<p class="text-gray-600 mt-2">
+							Providing families with flexible, immediate resources they can use right away.
+						</p>
+					</div>
+					<!-- Card 3 -->
+					<div class="rounded-lg p-6 flex flex-col items-center text-center">
+						<img
+							src="/path-to/cleanup.png"
+							alt="Debris Clean-Up"
+							class="h-24 mb-4"
+						/>
+						<h3 class="text-xl font-semibold text-gray-800">Debris & Ash Clean-Up</h3>
+						<p class="text-gray-600 mt-2">
+							Offering clean-up support and ash-sifting to recover meaningful items.
+						</p>
+					</div>
+					<!-- Card 4 -->
+					<div class="rounded-lg p-6 flex flex-col items-center text-center">
+						<img
+							src="/path-to/furniture.png"
+							alt="Furniture Replacement"
+							class="h-24 mb-4"
+						/>
+						<h3 class="text-xl font-semibold text-gray-800">Furniture Replacement</h3>
+						<p class="text-gray-600 mt-2">
+							Replacing essentials like beds, chairs, and other home furnishings.
+						</p>
+					</div>
+					<!-- Card 5 -->
+					<div class="rounded-lg p-6 flex flex-col items-center text-center">
+						<img
+							src="/path-to/prayer.png"
+							alt="Prayer & Pastoral Care"
+							class="h-24 mb-4"
+						/>
+						<h3 class="text-xl font-semibold text-gray-800">Prayer & Pastoral Care</h3>
+						<p class="text-gray-600 mt-2">
+							Providing spiritual encouragement and guidance through pastoral support.
+						</p>
+					</div>
+				</div>
+				<!-- CTA Button -->
+				<div class="mt-12 text-center">
+					<a
+						href="https://your-jotform-link.com"
+						class="inline-block px-6 py-3 text-white bg-indigo-600 hover:bg-indigo-700 font-medium rounded-md shadow"
+						>Request Support</a
+					>
+				</div>
+			</section>
+			<header class="hero">
+				<div class="hero-content">
+					<h1>The Need Is Great. Our God Is Greater.</h1>
+					<p>
+						Over 14,000 acres destroyed. Hundreds of families displaced. But hope remains — and it’s rising
+						through the hands of the Church.
+					</p>
+					<blockquote>
+						“The Lord is good, a refuge in times of trouble. He cares for those who trust him.” — Nahum 1:7
+					</blockquote>
+					<div class="hero-ctas">
+						<a
+							href="#donate"
+							class="btn primary"
+							>Donate to Fire Relief</a
+						>
+						<a
+							href="#volunteer"
+							class="btn secondary"
+							>Volunteer to Serve</a
+						>
+						<a
+							href="#help"
+							class="btn outline"
+							>Get Help Now</a
+						>
+					</div>
+				</div>
+			</header>
+			<section class="bg-red-50 text-center py-20 px-4">
+				<div class="max-w-4xl mx-auto">
+					<h1 class="text-4xl font-bold text-red-700 mb-4">The Need Is Great. Our God Is Greater.</h1>
+					<p class="text-lg text-gray-700 mb-6">
+						Over 14,000 acres destroyed. Hundreds of families displaced. But hope remains — and it’s rising
+						through the hands of the Church.
+					</p>
+					<p class="italic text-sm text-gray-600 mb-8">
+						“The Lord is good, a refuge in times of trouble. He cares for those who trust him.” — Nahum 1:7
+					</p>
+					<div class="flex flex-col sm:flex-row gap-4 justify-center">
+						<a
+							href="#donate"
+							class="bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded"
+							>Donate to Fire Relief</a
+						>
+						<a
+							href="#volunteer"
+							class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-3 px-6 rounded"
+							>Volunteer to Serve</a
+						>
+						<a
+							href="#help"
+							class="border border-gray-400 text-gray-800 py-3 px-6 rounded"
+							>Get Help Now</a
+						>
+					</div>
+				</div>
+			</section>
+			<section class="py-16 px-4 sm:px-6 lg:px-8">
+				<div class="max-w-7xl mx-auto">
+					<h2 class="text-3xl font-extrabold text-gray-900 mb-8 text-center">
+						Committed to the Renewal of Dena
+					</h2>
+					<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+						<!-- Card 1 -->
+						<div class="border border-gray-200 rounded-lg p-6 shadow-sm">
+							<h3 class="text-lg font-semibold text-gray-800 mb-2">🏠 Emergency Housing</h3>
+							<p class="text-sm text-gray-600">Providing temporary stays for displaced families.</p>
+						</div>
+						<!-- Card 2 -->
+						<div class="border border-gray-200 rounded-lg p-6 shadow-sm">
+							<h3 class="text-lg font-semibold text-gray-800 mb-2">🛒 Gift Cards & Groceries</h3>
+							<p class="text-sm text-gray-600">Supporting families with urgent daily expenses.</p>
+						</div>
+						<!-- Card 3 -->
+						<div class="border border-gray-200 rounded-lg p-6 shadow-sm">
+							<h3 class="text-lg font-semibold text-gray-800 mb-2">🧹 Debris & Ash Sifting</h3>
+							<p class="text-sm text-gray-600">Helping recover valuable items and clear homes.</p>
+						</div>
+						<!-- Card 4 -->
+						<div class="border border-gray-200 rounded-lg p-6 shadow-sm">
+							<h3 class="text-lg font-semibold text-gray-800 mb-2">🛋️ Furniture Replacement</h3>
+							<p class="text-sm text-gray-600">Replacing essentials lost in the fire.</p>
+						</div>
+						<!-- Card 5 -->
+						<div class="border border-gray-200 rounded-lg p-6 shadow-sm">
+							<h3 class="text-lg font-semibold text-gray-800 mb-2">🙏 Prayer & Pastoral Care</h3>
+							<p class="text-sm text-gray-600">Spiritual care and emotional support from pastors.</p>
+						</div>
+					</div>
+					<div class="mt-10 text-center">
+						<a
+							href="https://your-jotform-url.com"
+							class="inline-block px-6 py-3 bg-yellow-500 text-white font-semibold rounded-md shadow hover:bg-yellow-600 transition"
+						>
+							Request Support
+						</a>
+						<p class="text-sm text-gray-600 mt-2">
+							Impacted by the fires? We’re with you. Click above to apply for help.
+						</p>
+					</div>
+				</div>
+			</section>
+			<section
+				class="py-16 px-4"
+				id="help"
+			>
+				<div class="max-w-5xl mx-auto text-center">
+					<h2 class="text-3xl font-bold text-gray-800 mb-10">Committed to the Renewal of Dena</h2>
+					<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 text-left">
+						<div class="bg-gray-100 p-6 rounded shadow-sm">🏠 Emergency housing assistance</div>
+						<div class="bg-gray-100 p-6 rounded shadow-sm">🛒 Gift cards + groceries</div>
+						<div class="bg-gray-100 p-6 rounded shadow-sm">🧹 Debris clean-up + ash-sifting</div>
+						<div class="bg-gray-100 p-6 rounded shadow-sm">🛋️ Furniture + essentials</div>
+						<div class="bg-gray-100 p-6 rounded shadow-sm">🙏 Prayer + pastoral care</div>
+					</div>
+					<p class="mt-10 text-gray-600">Impacted by the fires? We’re with you.</p>
+					<a
+						href="https://your-jotform-link.com"
+						class="mt-2 inline-block text-blue-600 underline"
+						>Click here to apply for help</a
+					>
+				</div>
+			</section>
+			<section
+				class="py-16 px-4"
+				id="volunteer"
+			>
+				<div class="max-w-5xl mx-auto text-center">
+					<h2 class="text-3xl font-bold text-gray-800 mb-12">Every One of Us Can Be Part of the Response</h2>
+					<div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+						<div>
+							<h3 class="text-xl font-semibold text-gray-700 mb-2">🙏 Pray</h3>
+							<p>Download our prayer guide and pray through the needs.</p>
+							<div class="mt-2">
+								<a
+									href="#"
+									class="text-blue-600 underline"
+									>Download Guide</a
+								>
+								|
+								<a
+									href="#"
+									class="text-blue-600 underline"
+									>Submit a Prayer</a
+								>
+							</div>
+						</div>
+						<div>
+							<h3 class="text-xl font-semibold text-gray-700 mb-2">🎁 Give</h3>
+							<p>Support families and help us rebuild our church.</p>
+							<a
+								href="#donate"
+								class="text-blue-600 underline mt-2 inline-block"
+								>Give Now</a
+							>
+						</div>
+						<div>
+							<h3 class="text-xl font-semibold text-gray-700 mb-2">🙌 Serve</h3>
+							<p>Want to join us on the ground?</p>
+							<a
+								href="https://volunteer-signup-form.com"
+								class="text-blue-600 underline mt-2 inline-block"
+								>Volunteer Sign-Up</a
+							>
+						</div>
+						<div>
+							<h3 class="text-xl font-semibold text-gray-700 mb-2">🏡 Host</h3>
+							<p>Willing to open your home to displaced families?</p>
+							<a
+								href="https://host-signup-form.com"
+								class="text-blue-600 underline mt-2 inline-block"
+								>Become a Host</a
+							>
+						</div>
+						<div>
+							<h3 class="text-xl font-semibold text-gray-700 mb-2">🤝 Partner</h3>
+							<p>Church or org? Let’s collaborate on meeting needs.</p>
+							<a
+								href="https://partner-signup-form.com"
+								class="text-blue-600 underline mt-2 inline-block"
+								>Become a Partner</a
+							>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="py-16 px-4">
+				<div class="max-w-4xl mx-auto text-center">
+					<h2 class="text-3xl font-bold text-gray-800 mb-6">How the Fire Impacted Expressions Church</h2>
+					<p class="text-gray-700 mb-6">
+						We’re a new church plant renting space from Church of Christ Pasadena — and the entire building
+						burned down. As we help rebuild our community, we also need your help rebuilding the church.
+					</p>
+					<ul class="text-left text-gray-600 list-disc list-inside max-w-md mx-auto">
+						<li>Audio and video equipment</li>
+						<li>Laptops, printers, office supplies</li>
+						<li>Furniture, toys, ministry materials</li>
+						<li>Signage and banners</li>
+					</ul>
+					<a
+						href="#donate"
+						class="mt-6 inline-block bg-red-600 text-white py-3 px-6 rounded font-semibold hover:bg-red-700"
+						>Help Us Rebuild</a
+					>
+				</div>
+			</section>
+			<section class="bg-blue-50 py-16 px-4">
+				<div class="max-w-4xl mx-auto text-center">
+					<h2 class="text-3xl font-bold text-blue-800 mb-6">Helpful Resources for Those Affected</h2>
+					<ul class="text-left text-gray-700 list-disc list-inside max-w-md mx-auto space-y-2">
+						<li>📞 Call 211 for shelter + health services</li>
+						<li>🏠 FEMA application for homeowners/renters</li>
+						<li>💻 Free WiFi/showers at Planet Fitness</li>
+						<li>🛏 Airbnb emergency housing support</li>
+						<li>
+							📚 Victory Bible Church:
+							<a
+								href="#"
+								class="text-blue-600 underline"
+								>resource hub</a
+							>
+						</li>
+					</ul>
+				</div>
+			</section>
+			<section class="py-16 px-4">
+				<div class="max-w-3xl mx-auto">
+					<h2 class="text-3xl font-bold text-gray-800 text-center mb-8">Frequently Asked Questions</h2>
+					<details class="mb-4 border-b pb-2">
+						<summary class="cursor-pointer font-semibold text-gray-700">Where does my donation go?</summary>
+						<p class="mt-2 text-gray-600">
+							100% of donations go to supporting families affected by the fire and restoring lost church
+							resources.
+						</p>
+					</details>
+					<details class="mb-4 border-b pb-2">
+						<summary class="cursor-pointer font-semibold text-gray-700">
+							Is my donation tax deductible?
+						</summary>
+						<p class="mt-2 text-gray-600">
+							Yes, all donations are tax deductible through Expressions Church, a registered 501(c)(3).
+						</p>
+					</details>
+					<details class="mb-4 border-b pb-2">
+						<summary class="cursor-pointer font-semibold text-gray-700">Can I donate by check?</summary>
+						<p class="mt-2 text-gray-600">
+							Yes. Please mail checks to P.O. Box 133, 10 W. Bay State St., Alhambra, CA 91082
+						</p>
+					</details>
+					<details class="mb-4 border-b pb-2">
+						<summary class="cursor-pointer font-semibold text-gray-700">
+							What’s the difference between Fire Relief and General Giving?
+						</summary>
+						<p class="mt-2 text-gray-600">
+							Fire Relief funds go directly toward those impacted by the Eaton Fire. General Giving
+							supports church operations and ministry.
+						</p>
+					</details>
+				</div>
+			</section>
+			<footer class="bg-gray-900 text-gray-200 py-12 px-4">
+				<div class="max-w-4xl mx-auto text-center space-y-4">
+					<p>Need help or want to connect? Reach out to us:</p>
+					<form class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
+						<input
+							type="text"
+							placeholder="Name"
+							class="px-4 py-2 rounded bg-gray-800 border border-gray-700 text-white"
+						/>
+						<input
+							type="email"
+							placeholder="Email"
+							class="px-4 py-2 rounded bg-gray-800 border border-gray-700 text-white"
+						/>
+						<input
+							type="text"
+							placeholder="Message"
+							class="px-4 py-2 rounded bg-gray-800 border border-gray-700 text-white sm:col-span-3"
+						/>
+						<button
+							type="submit"
+							class="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded sm:col-span-3"
+						>
+							Send Message
+						</button>
+					</form>
+					<p class="mt-4">Email: info@expressions.church | Phone: (626) 538-7443</p>
+					<p>Meeting: 2540 E. Orange Grove Blvd, Pasadena, CA</p>
+					<p>Mailing: P.O. Box 133, 10 W. Bay State St., Alhambra, CA 91082</p>
+					<div class="flex justify-center space-x-4 mt-4">
+						<a
+							href="#"
+							aria-label="Instagram"
+							><img
+								src="/icons/instagram.svg"
+								class="w-6"
+						/></a>
+						<a
+							href="#"
+							aria-label="YouTube"
+							><img
+								src="/icons/youtube.svg"
+								class="w-6"
+						/></a>
+					</div>
+				</div>
+			</footer>
+		</main>
+		<script src="js/fire-relief.min.js"></script>
+		<script src="js/main.min.js"></script>
+	</body>
+	<footer class="bg-gray-900 text-gray-200 py-12 px-4">
+		<div class="max-w-4xl mx-auto text-center space-y-4">
+			<p>Need help or want to connect? Reach out to us:</p>
+			<form class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
+				<input
+					type="text"
+					placeholder="Name"
+					class="px-4 py-2 rounded bg-gray-800 border border-gray-700 text-white"
+				/>
+				<input
+					type="email"
+					placeholder="Email"
+					class="px-4 py-2 rounded bg-gray-800 border border-gray-700 text-white"
+				/>
+				<input
+					type="text"
+					placeholder="Message"
+					class="px-4 py-2 rounded bg-gray-800 border border-gray-700 text-white sm:col-span-3"
+				/>
+				<button
+					type="submit"
+					class="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded sm:col-span-3"
+				>
+					Send Message
+				</button>
+			</form>
+			<p class="mt-4">Email: info@expressions.church | Phone: (626) 538-7443</p>
+			<p>Meeting: 2540 E. Orange Grove Blvd, Pasadena, CA</p>
+			<p>Mailing: P.O. Box 133, 10 W. Bay State St., Alhambra, CA 91082</p>
+			<div class="flex justify-center space-x-4 mt-4">
+				<a
+					href="#"
+					aria-label="Instagram"
+					><img
+						src="/icons/instagram.svg"
+						class="w-6"
+				/></a>
+				<a
+					href="#"
+					aria-label="YouTube"
+					><img
+						src="/icons/youtube.svg"
+						class="w-6"
+				/></a>
+			</div>
+		</div>
+	</footer>
 </html>

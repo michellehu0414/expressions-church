@@ -1,0 +1,108 @@
+@use "@scss/abstracts/all-abstracts" as *;
+
+.intro-section {
+	@include flex(column, 2rem, center, center);
+	padding: 2.5rem 0 0 0;
+	position: relative;
+	background: rgba(223, 37, 37, 0.57);
+
+	#wildfire-svg-container {
+		position: absolute;
+		bottom: 0;
+        left: 0;
+        height: 90%;
+        resize: both;
+        overflow: auto;
+        z-index: -1;
+
+        svg {
+            height: 100%;
+        }
+	}
+
+	&__content-wrapper {
+		max-width: 90%;
+		margin: 0 auto;
+	}
+
+	&__text-wrapper {
+
+		> h2 {
+			margin-bottom: 1rem;
+		}
+
+		p {
+			margin-bottom: 0 !important;
+		}
+	}
+
+	@include breakpoint(med) {
+		padding: 3.5rem 0;
+        gap: 2.5rem;
+	}
+
+	@include breakpoint(lg) {
+		padding: 4.5rem 0;
+	}
+
+	&__stats-wrapper {
+		@include flex(column, 1rem, center, center);
+		padding: 2rem 1.5rem;
+		align-self: stretch;
+		background: rgba(15, 1, 1, 0.5);
+		width: 100%;
+		@include breakpoint(med) {
+			gap: 1.5rem;
+		}
+
+		@include breakpoint(lg) {
+			flex-direction: row;
+			padding: 1rem 3rem;
+			gap: 2rem;
+			align-self: stretch;
+		}
+	}
+}
+
+.stat {
+	@include flex(row, 0.75rem, center, center);
+	align-items: center;
+	text-align: center;
+
+    &__number,
+    &__label {
+        margin-bottom: 0;
+    }
+
+	&__number {
+		font-size: 2.25rem;
+		font-weight: 600;
+		line-height: 100%;
+		letter-spacing: -0.07125rem;
+	}
+
+	&__label {
+		font-size: 1.125rem;
+		line-height: 105%;
+        text-align: left;
+        letter-spacing: 0.01rem;
+	}
+
+	@include breakpoint(med) {
+		padding: 1.5rem;
+		gap: 1.5rem;
+
+		&__number {
+			font-size: 2.625rem;
+			letter-spacing: -0.07875rem;
+		}
+
+		&__label {
+			font-size: 2.625rem;
+		}
+	}
+
+	@include breakpoint(lg) {
+		gap: 2rem;
+	}
+}
