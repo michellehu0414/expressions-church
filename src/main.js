@@ -8,32 +8,35 @@ import { cardData } from "@components/GetInvolvedCards/GetInvolvedCards";
 
 // Call the function to render cards
 document.addEventListener("DOMContentLoaded", () => {
-  if (cardData) {
-    Object.keys(cardData).forEach((cardId) => {
-      const container = document.getElementById(cardId); // Find div with matching ID
-      if (container) {
-        const cardElement = createCard(cardData[cardId]); // Create card
-        container.appendChild(cardElement); // Insert into div
-      }
-    });
-  }
+	if (cardData) {
+		Object.keys(cardData).forEach((cardId) => {
+			const container = document.getElementById(cardId); // Find div with matching ID
+			if (container) {
+				// Clear the container to prevent duplicates
+				container.innerHTML = "";
 
-  createAccordion();
-  createCard();
+				const cardElement = createCard(cardData[cardId]); // Create card
+				container.appendChild(cardElement); // Insert into div
+			}
+		});
+	}
 
-  injectPageHeader();
-  const header = document.querySelector(".page-header");
+	createAccordion();
+	// createCard();
 
-  // Function to toggle the data attributes
-  function toggleButton(buttonName, value) {
-    if (header) {
-      header.setAttribute(`data-show-${buttonName}`, value);
-    }
-  }
+	injectPageHeader();
+	const header = document.querySelector(".page-header");
 
-  // Example usage
-  toggleButton("primary-button", "false");
-  toggleButton("secondary-button", "false");
-  toggleButton("third-button", "true");
-  toggleButton("fourth-button", "true");
+	// Function to toggle the data attributes
+	function toggleButton(buttonName, value) {
+		if (header) {
+			header.setAttribute(`data-show-${buttonName}`, value);
+		}
+	}
+
+	// Example usage
+	toggleButton("primary-button", "false");
+	toggleButton("secondary-button", "false");
+	toggleButton("third-button", "true");
+	toggleButton("fourth-button", "true");
 });
