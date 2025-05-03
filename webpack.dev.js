@@ -3,6 +3,7 @@ const baseConfig = require("./webpack.common.js");
 
 module.exports = merge(baseConfig, {
     mode: "development",
+    devtool: "eval-source-map",
 
     devServer: {
         static: "./public",
@@ -13,5 +14,4 @@ module.exports = merge(baseConfig, {
         liveReload: true,
     },
 
-    devtool: "eval-source-map",
 });
